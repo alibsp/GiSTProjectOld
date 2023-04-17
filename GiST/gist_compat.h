@@ -44,7 +44,7 @@
 
 
 #endif // WIN32
-
+#include <string.h>
 ///////////////////////////////////////////////////////////////////////////////
 // feature handling
 ///////////////////////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@
 // of it as an incentive to get gnu configure working.
 
 #ifndef HAVE_STRDUP
-#define strdup(s) strcpy(new char[strlen(s)+1], s)
+//#define strdup(s) strcpy(new char[strlen(s)+1], s)
 #endif // HAVE_STRDUP
 
 #ifdef HAVE_VALUES_H
@@ -119,7 +119,7 @@ extern "C"
     extern double drem(double x, double y);
     extern int finite(double x);
     extern double logb(double x);
-    extern double scalb(double x, int n);
+    //extern double scalb(double x, int n);
 };
 #endif // HAVE_COPYSIGN_PROTOS
 

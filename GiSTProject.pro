@@ -8,15 +8,14 @@ CONFIG -= app_bundle
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        #GiST/gist_cursor.cpp \
-        GiST/gist.cc \
+        GiST/gist_file.cpp \
+        GiST/vec_t.cpp \
         GiST/gist_cursor.cpp \
         GiST/gist_cursorext.cc \
-        GiST/gist_file.cc \
         GiST/gist_htab.cpp \
         GiST/gist_p.cc \
         GiST/gist_ustk.cc \
-        GiST/vec_t.cpp \
+        GiST/gist.cc \
         main.cpp
 
 # Default rules for deployment.

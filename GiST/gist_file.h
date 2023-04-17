@@ -13,6 +13,17 @@
 #include "gist_ext.h"	// for gist_ext_t::gist_ext_ids
 #include "gist_htab.h"	// for gist_htab
 
+struct header_info
+{
+public:
+    char* magicStr; // should be gist_file::magic
+    gist_ext_t::gist_ext_ids extId; // this file's extension ID
+    shpid_t freeList; // first free page in file
+    char* extName; // this file's extension name
+
+    header_info() : magicStr(NULL), extId(gist_ext_t::gist_numext), freeList(0), extName(NULL) {}
+};
+
 class gist_file {
 
 public:
@@ -22,16 +33,16 @@ public:
     ~gist_file();
 
     // Creates an 'empty' file (except for header info) with given name.
-    // Header info contains a "magic string" and the extension ID and name as well 
+    // Header info contains a "magic string" and the extension ID and name as well
     // as a pointer to the free page list (the first free page no).
     rc_t create(const char *filename, const gist_ext_t* ext);
 
     rc_t open(const char *filename, const gist_ext_t* ext);
     // open this file as a Gist file for subsequent operations;
-    // the extension ID is extracted from the header info and the 
+    // the extension ID is extracted from the header info and the
     // corresponding extension returned in 'ext'
 
-    rc_t flush(); 
+    rc_t flush();
     // write out all dirtied pages
 
     rc_t close();
@@ -41,13 +52,14 @@ public:
 
     static const int invalidIdx;
 
-    struct page_descr {
+    struct page_descr
+    {
         shpid_t pageNo; // pageno on disk
-	char *page; // pointer to in-mem page
-	bool isDirty; // true if modified since pinned
-	int pinCount; 
+        char *page; // pointer to in-mem page
+        bool isDirty; // true if modified since pinned
+        int pinCount;
 
-	page_descr() : pageNo(0), page(NULL), isDirty(false), pinCount(0) {}
+        page_descr() : pageNo(0), page(NULL), isDirty(false), pinCount(0) {}
     };
 
     // return true if no descriptor is pinned
@@ -70,7 +82,7 @@ public:
     void setDirty(page_descr *descr, bool isDirty);
     // change that page's status
 
-    // Returns the IDs of the pages on the freelist in 'list' and the number of 
+    // Returns the IDs of the pages on the freelist in 'list' and the number of
     // those pages in 'len'. 'len' must be set to the number of elements in 'list'
     // by the caller.
     rc_t freelist(shpid_t list[], int& len);
@@ -84,15 +96,7 @@ protected:
 
     static const char* magic;
 
-    struct header_info {
-        char* magicStr; // should be gist_file::magic
-	gist_ext_t::gist_ext_ids extId; // this file's extension ID
-	shpid_t freeList; // first free page in file
-	char* extName; // this file's extension name
 
-	header_info() :
-	    magicStr(NULL), extId(gist_ext_t::gist_numext), freeList(0), extName(NULL) {}
-    };
     header_info header;
     rc_t _read_header();
     rc_t _write_header();
@@ -104,7 +108,7 @@ protected:
 
     union {
         double d;
-	char buf[GISTBUFS * SM_PAGESIZE]; // buffers
+        char buf[GISTBUFS * SM_PAGESIZE]; // buffers
     } x;
     char *buffers;
 

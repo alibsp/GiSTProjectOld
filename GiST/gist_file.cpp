@@ -2,9 +2,6 @@
 // Copyright (c) 1997, Regents of the University of California
 // $Id: gist_file.cc,v 1.17 2000/03/15 00:24:25 mashah Exp $
 
-#ifdef __GNUG__
-#pragma implementation "gist_file.h"
-#endif
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +21,7 @@ using namespace std;
 // VCPORT_E
 
 #include <errno.h>
-
+#include <unistd.h>
 #include "gist_compat.h"	// for O_BINARY
 #include "gist_file.h"
 
@@ -34,8 +31,7 @@ const int gist_file::invalidIdx = -1;
 const char* gist_file::magic = "Gist data file";
 
 
-gist_file::gist_file() :
-    isOpen(false), fileHandle(0), fileSize(0), htab(), header()
+gist_file::gist_file() : isOpen(false), fileHandle(0), fileSize(0), htab(), header()
 {
     // set up page descriptors
     buffers = x.buf;
@@ -66,7 +62,7 @@ gist_file::create(
     assert(!isOpen);
     fileHandle = ::open(filename, O_RDWR | O_BINARY);
     if (fileHandle >= 0) { // filename exists
-        //::close(fileHandle);
+        ::close(fileHandle);
         return (eFILEERROR);
     }
 
@@ -96,13 +92,11 @@ gist_file::create(
     return(RCOK);
 }
 
-rc_t
-gist_file::open(
-    const char *filename,
-    const gist_ext_t*& ext)
+rc_t gist_file::open( const char *filename, const gist_ext_t* ext)
 {
-    if (isOpen) {
-	return (eFILEERROR);
+    if (isOpen)
+    {
+        return (eFILEERROR);
     }
 
     fileHandle = ::open(filename, O_RDWR | O_BINARY);
@@ -116,14 +110,14 @@ gist_file::open(
 
     // Verify that everything is as expected
     if (strcmp(header.magicStr, magic) != 0) {
-        //::close(fileHandle);
+        ::close(fileHandle);
 	cerr << "magic words not found in " << filename << endl;
         return(eFILEERROR); // error: magic words not found
     }
     // verify that the ext ID still 'means' the same extension
     if (strcmp(header.extName, gist_ext_t::gist_ext_list[header.extId]->myName) != 0) {
 	cerr << "extension name changed in " << filename << endl;
-        //::close(fileHandle);
+        ::close(fileHandle);
 	return(eFILEERROR);
     }
 
@@ -177,8 +171,7 @@ gist_file::close()
 #endif
 	// VCPORT_E
 
-   // return(::close(fileHandle));
-    return -1;
+    return(::close(fileHandle));
 }
 
 rc_t

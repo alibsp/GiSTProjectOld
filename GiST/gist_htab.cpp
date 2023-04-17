@@ -16,7 +16,8 @@ gist_htab::gist_htab()
 void
 gist_htab::reset()
 {
-    for (int i = 0; i < GISTBUFS; i++) {
+    for (int i = 0; i < GISTBUFS; i++)
+    {
         tab[i].key = 0;
         tab[i].value = 0;
         tab[i].inUse = false;

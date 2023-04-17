@@ -25,11 +25,11 @@ public:
 
 protected:
     
-    struct entry {
+    struct entry
+    {
         shpid_t key;
-	int value;
-	bool inUse;
-    };
+        int value;
+        bool inUse; };
 
     entry tab[GISTBUFS];
 
