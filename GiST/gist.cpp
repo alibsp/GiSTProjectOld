@@ -885,7 +885,8 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
         _unfix_page(rightSib);
     }
 
-    if (bpChanged && !wasSplit) {
+    if (bpChanged && !wasSplit)
+    {
         W_DO(_update_parent(rootNo, gstack, 1, bpv, vec_t(), 0));
 
         _unfix_page(leaf);
@@ -893,7 +894,8 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
 
     // unfix pages that haven't been unfixed before in calls to
     // _split() and _update_parent()
-    while (!gstack.is_empty()) {
+    while (!gstack.is_empty())
+    {
         gist_ustk_entry* e = gstack.pop();
         if (e->page.is_fixed()) {
             _unfix_page(e->page);
