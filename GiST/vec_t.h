@@ -27,7 +27,8 @@ struct VEC_t {
     vec_pair_t _pair[MAX_SMALL_VEC_SIZE];
 };
 
-class cvec_t : protected VEC_t {
+class cvec_t : protected VEC_t
+{
     friend class vec_t; // so vec_t can look at VEC_t
 public:
     enum dummy_enumid { max_small = MAX_SMALL_VEC_SIZE };
@@ -76,12 +77,12 @@ public:
 
 class vec_t : public cvec_t {
 public:
-    vec_t()
-        : cvec_t() {};
-    vec_t(const cvec_t& v1, const cvec_t& v2)
-        : cvec_t(v1, v2) {};
-    vec_t(const void* p, size_t l)
-        : cvec_t(p, l) {};
+    vec_t() : cvec_t() {};
+
+    vec_t(const cvec_t& v1, const cvec_t& v2) : cvec_t(v1, v2) {};
+
+    vec_t(const void* p, size_t l) : cvec_t(p, l) {};
+
     //vec_t(const vec_t& v, size_t offset, size_t limit)
     //: cvec_t(v, offset, limit)	{};
 
