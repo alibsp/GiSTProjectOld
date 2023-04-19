@@ -6,9 +6,6 @@
 #ifndef GIST_USTK_H
 #define GIST_USTK_H
 
-#ifdef __GNUG__
-#pragma interface "gist_ustk.h"
-#endif
 
 #include "gist_p.h"		// for gist_p
 

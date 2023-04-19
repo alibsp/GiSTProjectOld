@@ -6,6 +6,7 @@
 #ifndef GIST_DEFS_H
 #define GIST_DEFS_H
 
+#define UNUSED(x) (void)(x); //aldaghi
 
 #include <sys/types.h>	// for size_t
 #include <assert.h>	// for assert()

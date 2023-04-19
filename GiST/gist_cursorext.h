@@ -5,9 +5,6 @@
 #ifndef GIST_CURSOREXT_H
 #define GIST_CURSOREXT_H
 
-#ifdef __GNUG__
-#pragma interface "gist_cursorext.h"
-#endif
 
 #include "gist_defs.h"		// for shpid_t
 #include "gist_p.h"		// for gist_p::max_scnt

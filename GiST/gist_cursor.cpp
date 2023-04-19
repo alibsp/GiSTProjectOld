@@ -240,11 +240,14 @@ gist_lstk::reset()
 	(void) pop(e);
 	switch (e.typ) {
 	case gist_lstk_entry::eItem:
-	    delete e.val.item.key;
-	    delete e.val.item.data;
+        std::free(e.val.item.key);//aldaghi
+        std::free(e.val.item.data);//aldaghi
+        //delete e.val.item.key; //old
+        //delete e.val.item.data; //old
 	    break;
 	case gist_lstk_entry::eNode:
-	    delete e.val.node.key;
+        std::free(e.val.node.key);//aldaghi
+        //delete e.val.node.key;
 	    break;
 	default:
 	    break;

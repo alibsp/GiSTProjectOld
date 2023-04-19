@@ -5,10 +5,6 @@
 #ifndef GIST_H
 #define GIST_H
 
-#ifdef __GNUG__
-#pragma interface "gist.h"
-#endif
-
 #include "gist_defs.h" // for rc_t
 #include "gist_file.h" // for gist_file
 #include "gist_p.h"    // for gist_p::max_tup_sz

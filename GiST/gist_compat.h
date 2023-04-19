@@ -56,6 +56,8 @@
 //#define strdup(s) strcpy(new char[strlen(s)+1], s)
 #endif // HAVE_STRDUP
 
+#define HAVE_VALUES_H
+
 #ifdef HAVE_VALUES_H
 #include <values.h>
 #else // HAVE_VALUES_H

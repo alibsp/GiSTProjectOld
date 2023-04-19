@@ -2,9 +2,6 @@
 // Copyright (c) 1997, Regents of the University of California
 // $Id: gist_htab.cc,v 1.4 1998/06/18 00:54:26 aoki Exp $
 
-#ifdef __GNUG__
-#pragma implementation "gist_htab.h"
-#endif
 
 #include "gist_htab.h"
 

@@ -1,11 +1,13 @@
 #include <QCoreApplication>
-#include "GiST/gist_cursor.cpp"
+#include "GiST/gist.h"
+#include "GiST/gist_compat.h"
 
 
 
 int main(int argc, char *argv[])
 {
     QCoreApplication a(argc, argv);
-    Aldaghi aa;
-    return a.exec();
+    gist aa;
+    std::cout<<(1U << ((8 * (int) sizeof(int)) - 1))<<" "<< HIBITL << " "<<MAXINT<<" "<<8*sizeof(int)<<std::endl;
+    //return a.exec();
 }

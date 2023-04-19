@@ -2,9 +2,6 @@
 // Copyright (c) 1998, Regents of the University of California
 // $Id: gist_cursorext.cc,v 1.4 1998/12/14 00:46:50 marcel Exp $
 
-#ifdef __GNUG__
-#pragma implementation "gist_cursorext.h"
-#endif
 
 #include "gist.h"		// for gist::AlignedPred
 #include "gist_cursorext.h"
@@ -58,7 +55,7 @@ gist_stack_cursorext_t::gist_stack_cursorext_t(gist_cursorext_id id)
 
 rc_t
 gist_stack_cursorext_t::iter_reset(
-    gist_cursor_t& cursor)
+        gist_cursor_t& cursor)
 {
     assert(cursor.iter != NULL);
 
@@ -72,8 +69,8 @@ gist_stack_cursorext_t::iter_reset(
 
 rc_t
 gist_stack_cursorext_t::iter_init(
-    gist_cursor_t& cursor,
-    const shpid_t& root)
+        gist_cursor_t& cursor,
+        const shpid_t& root)
 {
     assert(cursor.iter == NULL);
 
@@ -86,9 +83,9 @@ gist_stack_cursorext_t::iter_init(
 
 rc_t
 gist_stack_cursorext_t::push_leaf(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem)
 {
     gist_lstk* stack = (gist_lstk*) cursor.iter;
     const keyrec_t& tup = page.rec(whichItem);
@@ -97,21 +94,21 @@ gist_stack_cursorext_t::push_leaf(
     keyv.set(x.pred, gist_p::max_tup_sz);
     cursor.ext->getKey(page, whichItem, keyv);
     stack->push((void *) keyv.ptr(0), keyv.len(0),
-	(void *) tup.elem(), tup.elen(), page.pid(), whichItem);
+                (void *) tup.elem(), tup.elen(), page.pid(), whichItem);
 
     return(RCOK);
 }
 
 rc_t
 gist_stack_cursorext_t::push_node(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem)
 {
     gist_lstk* stack = (gist_lstk*) cursor.iter;
     const keyrec_t& tup = page.rec(whichItem);
     if (tup.child() == 0) {
-	return(eBADSLOTNUMBER);
+        return(eBADSLOTNUMBER);
     }
     (void) stack->push(tup.child(), page.pid());
 
@@ -120,25 +117,25 @@ gist_stack_cursorext_t::push_node(
 
 rc_t
 gist_stack_cursorext_t::iter_update(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int numWhich,
-    const int which[])
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int numWhich,
+        const int which[])
 {
     assert(numWhich >= 0 && numWhich <= page.nrecs());
     assert(numWhich == page.nrecs() || which != NULL);
     assert(cursor.iter != NULL);
     
     for (int i = numWhich - 1; i >= 0; i--) {
-	int whichItem = which ? which[i] : (numWhich - 1) - i;
-	if (whichItem < 0 || whichItem > page.nrecs()) {
-	    return(eBADSLOTNUMBER);
-	}
-	if (page.is_leaf()) {
-	    W_DO(push_leaf(cursor, page, whichItem));
-	} else {
-	    W_DO(push_node(cursor, page, whichItem));
-	}
+        int whichItem = which ? which[i] : (numWhich - 1) - i;
+        if (whichItem < 0 || whichItem > page.nrecs()) {
+            return(eBADSLOTNUMBER);
+        }
+        if (page.is_leaf()) {
+            W_DO(push_leaf(cursor, page, whichItem));
+        } else {
+            W_DO(push_node(cursor, page, whichItem));
+        }
     }
 
     return(RCOK);
@@ -146,8 +143,8 @@ gist_stack_cursorext_t::iter_update(
 
 rc_t
 gist_stack_cursorext_t::iter_fetch(
-    gist_cursor_t& cursor,
-    void* item)
+        gist_cursor_t& cursor,
+        void* item)
 {
     assert(cursor.iter != NULL);
     assert(item != NULL);
@@ -156,26 +153,26 @@ gist_stack_cursorext_t::iter_fetch(
     gist_lstk_entry* ep = (gist_lstk_entry*) item;
 
     if (cursor.k <= 0 || stack->is_empty()) {
-	return(eEOF);
+        return(eEOF);
     }
 
     stack->pop(*ep);
     switch (ep->typ) {
     case gist_lstk_entry::eItem:
-	// from above we know cursor.k > 0
-	cursor.k--;
-	break;
+        // from above we know cursor.k > 0
+        cursor.k--;
+        break;
     case gist_lstk_entry::eNode:
-	if (cursor.io <= 0) {
-	    // there are no records left in the stack -- this is
-	    // depth-first search, so eItems will always be at the
-	    // top, if there are any.
-	    return(eEOF);
-	}
-	cursor.io--;
-	break;
+        if (cursor.io <= 0) {
+            // there are no records left in the stack -- this is
+            // depth-first search, so eItems will always be at the
+            // top, if there are any.
+            return(eEOF);
+        }
+        cursor.io--;
+        break;
     default:
-	break;
+        break;
     }
 
     return(RCOK);
@@ -186,11 +183,11 @@ gist_stack_cursorext_t::iter_fetch(
 ///////////////////////////////////////////////////////////////////////////////
 
 gist_queue_set_cursorext_t::gist_queue_set_cursorext_t(
-    gist_cursorext_id id,
-    ResetFct reset,
-    SetPrioFct prio,
-    SetStateFct state,
-    FinalFct final)
+        gist_cursorext_id id,
+        ResetFct reset,
+        SetPrioFct prio,
+        SetStateFct state,
+        FinalFct final)
     : gist_cursorext_t(id), setPrioFct(prio), setStateFct(state)
 {
     resetFct = (reset == NULL) ? &defaultReset : reset;
@@ -199,14 +196,15 @@ gist_queue_set_cursorext_t::gist_queue_set_cursorext_t(
 
 rc_t
 gist_queue_set_cursorext_t::defaultReset(
-    gist_cursor_t& cursor)
+        gist_cursor_t& cursor)
 {
-    return(RCOK);
+    UNUSED(cursor)
+            return(RCOK);
 }
 
 rc_t
 gist_queue_set_cursorext_t::iter_reset(
-    gist_cursor_t& cursor)
+        gist_cursor_t& cursor)
 {
     assert(cursor.iter != NULL);
 
@@ -222,8 +220,8 @@ gist_queue_set_cursorext_t::iter_reset(
 
 rc_t
 gist_queue_set_cursorext_t::iter_init(
-    gist_cursor_t& cursor,
-    const shpid_t& root)
+        gist_cursor_t& cursor,
+        const shpid_t& root)
 {
     assert(cursor.iter == NULL);
 
@@ -240,33 +238,34 @@ gist_queue_set_cursorext_t::iter_init(
 
 rc_t
 gist_queue_set_cursorext_t::push_leaf(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem,
-    const vec_t& keyv,
-    const gist_penalty_t& prio)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem,
+        const vec_t& keyv,
+        const gist_penalty_t& prio)
 {
     gist_prioq_t* queue = (gist_prioq_t*) cursor.iter;
     const keyrec_t& tup = page.rec(whichItem);
     queue->push(new gist_prioq_entry((void *) keyv.ptr(0), keyv.len(0),
-	(void *) tup.elem(), tup.elen(), page.pid(), whichItem, prio));
+                                     (void *) tup.elem(), tup.elen(), page.pid(), whichItem, prio));
 
     return(RCOK);
 }
 
 rc_t
 gist_queue_set_cursorext_t::push_node(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem,
-    const vec_t& keyv,
-    const gist_penalty_t& prio)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem,
+        const vec_t& keyv,
+        const gist_penalty_t& prio)
 
 {
-    gist_prioq_t* queue = (gist_prioq_t*) cursor.iter;
+    UNUSED(keyv)
+            gist_prioq_t* queue = (gist_prioq_t*) cursor.iter;
     const keyrec_t& tup = page.rec(whichItem);
     if (tup.child() == 0) {
-	return(eBADSLOTNUMBER);
+        return(eBADSLOTNUMBER);
     }
     queue->push(new gist_prioq_entry(tup.child(), page.pid(), prio));
 
@@ -275,29 +274,29 @@ gist_queue_set_cursorext_t::push_node(
 
 rc_t
 gist_queue_set_cursorext_t::push_node_key(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem,
-    const vec_t& keyv,
-    const gist_penalty_t& prio)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem,
+        const vec_t& keyv,
+        const gist_penalty_t& prio)
 {
     gist_prioq_t* queue = (gist_prioq_t*) cursor.iter;
     const keyrec_t& tup = page.rec(whichItem);
     if (tup.child() == 0) {
-	return(eBADSLOTNUMBER);
+        return(eBADSLOTNUMBER);
     }
     queue->push(new gist_prioq_entry(tup.child(), page.pid(), prio,
-	(void *) keyv.ptr(0), keyv.len(0)));
+                                     (void *) keyv.ptr(0), keyv.len(0)));
 
     return(RCOK);
 }
 
 rc_t
 gist_queue_set_cursorext_t::iter_update(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int numWhich,
-    const int which[])
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int numWhich,
+        const int which[])
 {
     assert(numWhich >= 0 && numWhich <= page.nrecs());
     assert(numWhich == page.nrecs() || which != NULL);
@@ -312,19 +311,21 @@ gist_queue_set_cursorext_t::iter_update(
 
 rc_t
 gist_queue_set_cursorext_t::defaultFinal(
-    gist_cursor_t& cursor,
-    gist_prioq_entry& entry,
-    bool isLast)
+        gist_cursor_t& cursor,
+        gist_prioq_entry& entry,
+        bool isLast)
 {
-    // by doing nothing, we will default to returning leaf entries
-    // from the queue until we run out (or hit the retrieval limit).
-    return((isLast == true) ? eEOF : RCOK);
+    UNUSED(cursor)
+            UNUSED(entry)
+            // by doing nothing, we will default to returning leaf entries
+            // from the queue until we run out (or hit the retrieval limit).
+            return((isLast == true) ? eEOF : RCOK);
 }
 
 rc_t
 gist_queue_set_cursorext_t::iter_fetch(
-    gist_cursor_t& cursor,
-    void* item)
+        gist_cursor_t& cursor,
+        void* item)
 {
     assert(cursor.iter != NULL);
     assert(item != NULL);
@@ -333,34 +334,36 @@ gist_queue_set_cursorext_t::iter_fetch(
     gist_prioq_entry* ep = (gist_prioq_entry*) item;
 
     if (cursor.k <= 0) {
-	return(eEOF);
+        return(eEOF);
     }
 
     while (queue->empty() == false) {
-	queue->pop(ep);
-	if (cursor.io > 0) {
-	    if (ep->typ == gist_lstk_entry::eItem) {
-		cursor.k--;
-	    } else if (ep->typ == gist_lstk_entry::eNode) {
-		cursor.io--;
-		delete [] ep->val.node.key;
-	    }
-	    return(RCOK);
-	}
-	// we're in the cleanup phase
-	W_DO(finalFct(cursor, *ep, false));
-	if (ep->typ == gist_lstk_entry::eItem) {
-	    cursor.k--;
-	    return(RCOK);
-	} else if (ep->typ == gist_lstk_entry::eNode) {
-	    delete [] ep->val.node.key;
-	}
+        queue->pop(ep);
+        if (cursor.io > 0) {
+            if (ep->typ == gist_lstk_entry::eItem) {
+                cursor.k--;
+            } else if (ep->typ == gist_lstk_entry::eNode) {
+                cursor.io--;
+                std::free(ep->val.node.key);//aldaghi
+                //delete [] ep->val.node.key; //old
+            }
+            return(RCOK);
+        }
+        // we're in the cleanup phase
+        W_DO(finalFct(cursor, *ep, false));
+        if (ep->typ == gist_lstk_entry::eItem) {
+            cursor.k--;
+            return(RCOK);
+        } else if (ep->typ == gist_lstk_entry::eNode) {
+            std::free(ep->val.node.key); //aldaghi
+            //delete [] ep->val.node.key; //old
+        }
     }
     // we're in the wrapup phase
     W_DO(finalFct(cursor, *ep, true));
     if (ep->typ == gist_lstk_entry::eItem) {
-	cursor.k--;
-	return(RCOK);
+        cursor.k--;
+        return(RCOK);
     }
 
     return(eEOF);
@@ -371,11 +374,11 @@ gist_queue_set_cursorext_t::iter_fetch(
 ///////////////////////////////////////////////////////////////////////////////
 
 gist_queue_cursorext_t::gist_queue_cursorext_t(
-    gist_cursorext_id id,
-    ResetFct reset,
-    PrioFct prio,
-    StateFct state,
-    FinalFct final)
+        gist_cursorext_id id,
+        ResetFct reset,
+        PrioFct prio,
+        StateFct state,
+        FinalFct final)
     : gist_queue_set_cursorext_t(id, reset, NULL, NULL, final)
 {
     prioFct = (prio == NULL) ? defaultPrio : prio;
@@ -384,12 +387,16 @@ gist_queue_cursorext_t::gist_queue_cursorext_t(
 
 rc_t
 gist_queue_cursorext_t::defaultPrio(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem,
-    const vec_t& keyv,
-    gist_penalty_t& prio)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem,
+        const vec_t& keyv,
+        gist_penalty_t& prio)
 {
+    UNUSED(cursor);
+    UNUSED(page);
+    UNUSED(whichItem);
+    UNUSED(keyv);
     prio = 1.0;
 
     return(RCOK);
@@ -397,16 +404,16 @@ gist_queue_cursorext_t::defaultPrio(
 
 rc_t
 gist_queue_cursorext_t::defaultState(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int whichItem,
-    const vec_t& keyv,
-    const gist_penalty_t& prio)
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int whichItem,
+        const vec_t& keyv,
+        const gist_penalty_t& prio)
 {
     if (page.is_leaf()) {
-	W_DO(push_leaf(cursor, page, whichItem, keyv, prio));
+        W_DO(push_leaf(cursor, page, whichItem, keyv, prio));
     } else {
-	W_DO(push_node(cursor, page, whichItem, keyv, prio));
+        W_DO(push_node(cursor, page, whichItem, keyv, prio));
     }
 
     return(RCOK);
@@ -414,29 +421,31 @@ gist_queue_cursorext_t::defaultState(
 
 rc_t
 gist_queue_cursorext_t::iter_update(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int numWhich,
-    const int which[])
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int numWhich,
+        const int which[])
 {
     assert(numWhich >= 0 && numWhich <= page.nrecs());
     assert(numWhich == page.nrecs() || which != NULL);
 
     for (int i = 0; i < numWhich; i++) {
-	int whichItem = which ? which[i] : i;
-	if (whichItem < 0 || whichItem > page.nrecs()) {
-	    return(eBADSLOTNUMBER);
-	}
+        int whichItem = which ? which[i] : i;
+        if (whichItem < 0 || whichItem > page.nrecs()) {
+            return(eBADSLOTNUMBER);
+        }
 
-	const keyrec_t& tup = page.rec(whichItem);
-	gist::AlignedPred x;
-	vec_t keyv;
-	keyv.set(x.pred, gist_p::max_tup_sz);
-	cursor.ext->getKey(page, whichItem, keyv);
+        const keyrec_t& tup = page.rec(whichItem);
+        UNUSED(tup);
 
-	gist_penalty_t prio;
-	W_DO(prioFct(cursor, page, whichItem, keyv, prio));
-	W_DO(stateFct(cursor, page, whichItem, keyv, prio));
+        gist::AlignedPred x;
+        vec_t keyv;
+        keyv.set(x.pred, gist_p::max_tup_sz);
+        cursor.ext->getKey(page, whichItem, keyv);
+
+        gist_penalty_t prio;
+        W_DO(prioFct(cursor, page, whichItem, keyv, prio));
+        W_DO(stateFct(cursor, page, whichItem, keyv, prio));
     }
     
     return(RCOK);
@@ -447,10 +456,10 @@ gist_queue_cursorext_t::iter_update(
 ///////////////////////////////////////////////////////////////////////////////
 
 gist_switch_cursorext_t::gist_switch_cursorext_t(
-    gist_cursorext_id id0,
-    SwitchFct sf,
-    gist_cursorext_id id1,
-    gist_cursorext_id id2)
+        gist_cursorext_id id0,
+        SwitchFct sf,
+        gist_cursorext_id id1,
+        gist_cursorext_id id2)
     : gist_cursorext_t(id0),
       switchFct(sf)
 {
@@ -462,8 +471,8 @@ gist_switch_cursorext_t::gist_switch_cursorext_t(
 
 void
 gist_switch_cursorext_t::cursor_copy(
-    gist_cursor_t& c1,
-    const gist_cursor_t& c2)
+        gist_cursor_t& c1,
+        const gist_cursor_t& c2)
 {
     c1.cext = c2.cext;
     c1.iter = c2.iter;
@@ -472,7 +481,7 @@ gist_switch_cursorext_t::cursor_copy(
 
 rc_t
 gist_switch_cursorext_t::iter_reset(
-    gist_cursor_t& cursor)
+        gist_cursor_t& cursor)
 {
     state* s = (state*) cursor.state;
 
@@ -481,9 +490,9 @@ gist_switch_cursorext_t::iter_reset(
     gist_cursor_t tmp;
     cursor_copy(tmp, cursor);
     for (int i = 0; i < 2 && status == RCOK; ++i) {
-	cursor_copy(cursor, s->cursors[i]);
-	status = cext[i]->iter_reset(cursor);
-	cursor_copy(s->cursors[i], cursor);
+        cursor_copy(cursor, s->cursors[i]);
+        status = cext[i]->iter_reset(cursor);
+        cursor_copy(s->cursors[i], cursor);
     }
     cursor_copy(cursor, tmp);
 
@@ -495,8 +504,8 @@ gist_switch_cursorext_t::iter_reset(
 
 rc_t
 gist_switch_cursorext_t::iter_init(
-    gist_cursor_t& cursor,
-    const shpid_t& root)
+        gist_cursor_t& cursor,
+        const shpid_t& root)
 {
     state* s = new state;
     s->which = 0;
@@ -507,10 +516,10 @@ gist_switch_cursorext_t::iter_init(
     gist_cursor_t tmp;
     cursor_copy(tmp, cursor);
     for (int i = 0; i < 2 && status == RCOK; ++i) {
-	cursor_copy(cursor, s->cursors[i]);
-	cursor.cext = cext[i];
-	status = cext[i]->iter_init(cursor, root);
-	cursor_copy(s->cursors[i], cursor);
+        cursor_copy(cursor, s->cursors[i]);
+        cursor.cext = cext[i];
+        status = cext[i]->iter_init(cursor, root);
+        cursor_copy(s->cursors[i], cursor);
     }
     cursor_copy(cursor, tmp);
 
@@ -519,10 +528,10 @@ gist_switch_cursorext_t::iter_init(
 
 rc_t
 gist_switch_cursorext_t::iter_update(
-    gist_cursor_t& cursor,
-    const gist_p& page,
-    int numWhich,
-    const int which[])
+        gist_cursor_t& cursor,
+        const gist_p& page,
+        int numWhich,
+        const int which[])
 {
     state* s = (state*) cursor.state;
 
@@ -534,7 +543,7 @@ gist_switch_cursorext_t::iter_update(
     cursor_copy(cursor, tmp);
 
     if (switchFct(cursor) == true) {
-	s->which = 1;
+        s->which = 1;
     }
 
     return(status);
@@ -542,8 +551,8 @@ gist_switch_cursorext_t::iter_update(
 
 rc_t
 gist_switch_cursorext_t::iter_fetch(
-    gist_cursor_t& cursor,
-    void* item)
+        gist_cursor_t& cursor,
+        void* item)
 {
     state* s = (state*) cursor.state;
 

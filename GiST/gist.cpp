@@ -12,11 +12,6 @@
 
 // VCPORT_B
 #include <unistd.h>
-#ifdef WIN32
-#pragma warning(disable : 4786) // Templates can cause names to get too long for \
-    // debug information. Disables this warning.
-#endif
-// VCPORT_E
 
 #include <math.h>
 #include <stdlib.h>
@@ -225,8 +220,8 @@ rc_t gist::create(const char* filename,
     W_DO(create(filename, extension));
 
     // set up temp files for BPs
-    char* temp1 = "temp1"; // to be changed later
-    char* temp2 = "temp2";
+    const char* temp1 = "temp1"; // to be changed later
+    const char* temp2 = "temp2";
     bool toTemp1 = true; // true: write BPs to temp1
 
     // VCPORT_B
@@ -451,7 +446,7 @@ rc_t gist::_insert_leaf(gist_p& page, // leaf to insert on
     bool& bpChanged) // out: true if the BP changed
 {
     int cnt = page.nrecs();
-
+    UNUSED(cnt)
     // insert new item
 
 #ifdef AMDB

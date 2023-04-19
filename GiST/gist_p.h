@@ -6,9 +6,6 @@
 #ifndef GIST_P_H
 #define GIST_P_H
 
-#ifdef __GNUG__
-#pragma interface "gist_p.h"
-#endif
 
 #include "gist_defs.h"		// for shpid_t
 #include "vec_t.h"		// for cvec_t

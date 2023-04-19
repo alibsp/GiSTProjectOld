@@ -6,9 +6,6 @@
 #ifndef GIST_FILE_H
 #define GIST_FILE_H
 
-#ifdef __GNUG__
-#pragma interface "gist_file.h"
-#endif
 
 #include "gist_ext.h"	// for gist_ext_t::gist_ext_ids
 #include "gist_htab.h"	// for gist_htab
@@ -24,7 +21,8 @@ public:
     header_info() : magicStr(NULL), extId(gist_ext_t::gist_numext), freeList(0), extName(NULL) {}
 };
 
-class gist_file {
+class gist_file
+{
 
 public:
     

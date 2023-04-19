@@ -2,9 +2,6 @@
 // Copyright (c) 1998, Regents of the University of California
 // $Id: gist_ustk.cc,v 1.4 1998/09/24 05:21:43 marcel Exp $
 
-#ifdef __GNUG__
-#pragma implementation "gist_ustk.h"
-#endif
 
 #include "gist_ustk.h"
 
