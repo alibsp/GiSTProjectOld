@@ -13,8 +13,7 @@
 // file was never linked into the application, it will not appear in
 // the table and therefore cannot be called).
 //
-gist_cursorext_t* 
-gist_cursorext_t::gist_cursorext_list[gist_cursorext_t::cext_numext];
+gist_cursorext_t* gist_cursorext_t::gist_cursorext_list[gist_cursorext_t::cext_numext];
 
 //
 // stack-based record traversal is used by internal routines (e.g.,

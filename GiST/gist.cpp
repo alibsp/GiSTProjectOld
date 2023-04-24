@@ -885,8 +885,7 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
         _unfix_page(rightSib);
     }
 
-    if (bpChanged && !wasSplit)
-    {
+    if (bpChanged && !wasSplit) {
         W_DO(_update_parent(rootNo, gstack, 1, bpv, vec_t(), 0));
 
         _unfix_page(leaf);
@@ -894,8 +893,7 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
 
     // unfix pages that haven't been unfixed before in calls to
     // _split() and _update_parent()
-    while (!gstack.is_empty())
-    {
+    while (!gstack.is_empty()) {
         gist_ustk_entry* e = gstack.pop();
         if (e->page.is_fixed()) {
             _unfix_page(e->page);
@@ -1256,9 +1254,11 @@ rc_t gist::fetch(gist_cursor_t& cursor,
     unsigned int idx;
 
     rc_t status;
-    if (cursor.cext->prio() == true) {
+    if (cursor.cext->prio() == true)
+    {
         status = _fetch_nn(cursor, key, klen, el, elen, leaf, idx, eof);
-    } else {
+    } else
+    {
         status = _fetch(cursor, key, klen, el, elen, leaf, idx, eof);
     }
 #ifdef AMDB
@@ -1275,7 +1275,8 @@ rc_t gist::fetch(gist_cursor_t& cursor,
     }
 #endif
 
-    if (eof) {
+    if (eof)
+    {
         cursor.reset(); // We're done, get rid of state.
     }
     return (status);
@@ -1354,8 +1355,10 @@ rc_t gist::_fetch(gist_cursor_t& cursor,
     int numMatches;
     int matches[gist_p::max_scnt];
     gist_lstk_entry e;
-    while (cext->iter_fetch(cursor, &e) != eEOF) {
-        if (e.typ == gist_lstk_entry::eItem) {
+    while (cext->iter_fetch(cursor, &e) != eEOF)
+    {
+        if (e.typ == gist_lstk_entry::eItem)
+        {
             W_DO(_copy_rec(key, klen, data, dlen, leafNo, idx, e));
             return (RCOK);
         }
@@ -1369,9 +1372,8 @@ rc_t gist::_fetch(gist_cursor_t& cursor,
         // limit would allow us to return (don't try to apply this
         // optimization to priority queues - at this point, we haven't
         // prioritized the items).
-        if (page.is_leaf() && numMatches > cursor.k) {
+        if (page.is_leaf() && numMatches > cursor.k)
             numMatches = cursor.k;
-        }
 
         cext->iter_update(cursor, page, numMatches, matches);
 

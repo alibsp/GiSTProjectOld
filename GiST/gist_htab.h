@@ -26,7 +26,8 @@ protected:
     {
         shpid_t key;
         int value;
-        bool inUse; };
+        bool inUse;
+    };
 
     entry tab[GISTBUFS];
 

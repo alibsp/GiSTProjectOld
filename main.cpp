@@ -19,16 +19,19 @@ void myPrintDataFct(
 }
 int main(int argc, char *argv[])
 {
-    QCoreApplication a(argc, argv);
+    //QCoreApplication a(argc, argv);
     gist myGist;
     myGist.create("Data.db", &bt_int_ext);
     int key1 = 5;
     int data1 = 1;
     int key2 = 3;
     int data2 = 2;
-    (void) myGist.insert((void *) &key1, sizeof(int), (void *) &data1, sizeof(int));
-    (void) myGist.insert((void *) &key2, sizeof(int), (void *) &data2, sizeof(int));
-    bt_query_t q(bt_query_t::bt_betw, new int(1), new int(6));
+    int key3 = 10;
+    int data3 = 3;
+    myGist.insert((void *) &key1, sizeof(int), (void *) &data1, sizeof(int));
+    myGist.insert((void *) &key2, sizeof(int), (void *) &data2, sizeof(int));
+    myGist.insert((void *) &key3, sizeof(int), (void *) &data3, sizeof(int));
+    bt_query_t q(bt_query_t::bt_betw, new int(0), new int(100));
     gist_cursor_t cursor;
     myGist.fetch_init(cursor, &q);
     bool eof = false;
