@@ -1,0 +1,107 @@
+\hypertarget{classbt__ext__t}{}\doxysection{bt\+\_\+ext\+\_\+t Class Reference}
+\label{classbt__ext__t}\index{bt\_ext\_t@{bt\_ext\_t}}
+
+
+Inheritance diagram for bt\+\_\+ext\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classbt__ext__t__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for bt\+\_\+ext\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classbt__ext__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ac5b9b1c50d880fbd664d4045591961b0}\label{classbt__ext__t_ac5b9b1c50d880fbd664d4045591961b0}} 
+typedef int($\ast$ {\bfseries Cmp\+Fct}) (const void $\ast$a, const void $\ast$b)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ae6d670582411846f60a46b19abc3815c}\label{classbt__ext__t_ae6d670582411846f60a46b19abc3815c}} 
+typedef int($\ast$ {\bfseries Size\+Fct}) (const void $\ast$e)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a91da1945e44e2a8018fd697284f43e36}\label{classbt__ext__t_a91da1945e44e2a8018fd697284f43e36}} 
+typedef void($\ast$ {\bfseries Print\+Fct}) (std\+::ostream \&s, const void $\ast$pred)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_acaa542c4367a0d4ff495e5a9fc9ec012}\label{classbt__ext__t_acaa542c4367a0d4ff495e5a9fc9ec012}} 
+typedef void($\ast$ {\bfseries Neg\+Infty\+Fct}) (void $\ast$x)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a25483c6f09ab1cfb311d80893c36320c}\label{classbt__ext__t_a25483c6f09ab1cfb311d80893c36320c}} 
+{\bfseries bt\+\_\+ext\+\_\+t} (gist\+\_\+ext\+\_\+t\+::gist\+\_\+ext\+\_\+ids id, const char $\ast$name, Print\+Pred\+Fct print\+Pred, Print\+Data\+Fct print\+Data, Parse\+Fct parse\+Pred, Parse\+Fct parse\+Data, Parse\+Query\+Fct parse\+Query, Cmp\+Fct key\+Cmp, Cmp\+Fct data\+Cmp, Size\+Fct key\+Size, Size\+Fct data\+Size, Neg\+Infty\+Fct neg\+Infty\+Key, Neg\+Infty\+Fct neg\+Infty\+Data)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a82b3c28a490e08fb648694c05fe895cf}\label{classbt__ext__t_a82b3c28a490e08fb648694c05fe895cf}} 
+rc\+\_\+t {\bfseries insert} (\mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&key, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&data, shpid\+\_\+t child)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_acac7b572fa04d4195d6823918bc2b536}\label{classbt__ext__t_acac7b572fa04d4195d6823918bc2b536}} 
+rc\+\_\+t {\bfseries remove} (\mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, const int slots\mbox{[}$\,$\mbox{]}, int num\+Slots)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ad5d104766d46438eefa1ee90f280ac83}\label{classbt__ext__t_ad5d104766d46438eefa1ee90f280ac83}} 
+rc\+\_\+t {\bfseries update\+Key} (\mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, int \&slot, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&new\+Key)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ad6c06bb20eca78cb5f9fdcdfe569632f}\label{classbt__ext__t_ad6c06bb20eca78cb5f9fdcdfe569632f}} 
+void {\bfseries find\+Min\+Pen} (const \mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&key, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&data, int \&slot)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a7635360f32a215a377d058b695deb30f}\label{classbt__ext__t_a7635360f32a215a377d058b695deb30f}} 
+void {\bfseries search} (\mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, const \mbox{\hyperlink{classgist__query__t}{gist\+\_\+query\+\_\+t}} $\ast$query, int matches\mbox{[}$\,$\mbox{]}, int \&num\+Matches)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_acf1f0c6a0e5e1230d588ab65f9d06c34}\label{classbt__ext__t_acf1f0c6a0e5e1230d588ab65f9d06c34}} 
+void {\bfseries get\+Key} (const \mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, int slot, \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&key)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a51834b3384c9975e0c26d8c509fcef9c}\label{classbt__ext__t_a51834b3384c9975e0c26d8c509fcef9c}} 
+rc\+\_\+t {\bfseries pick\+Split} (\mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, int right\+Entries\mbox{[}$\,$\mbox{]}, int \&num\+Right, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&old\+Bp, \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&left\+Bp, \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&right\+Bp, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&entry1, bool \&one\+Goes\+Right, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&entry2, bool \&two\+Goes\+Right)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_afd3232a6db82b9ab6d1c6e5447490b86}\label{classbt__ext__t_afd3232a6db82b9ab6d1c6e5447490b86}} 
+void {\bfseries union\+Bp} (const \mbox{\hyperlink{classgist__p}{gist\+\_\+p}} \&page, \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&bp, bool bp\+Is\+Valid, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&pred1, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&pred2, bool \&bp\+Changed)
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a8d195460aa828ac20f7c1573fd4f526e}\label{classbt__ext__t_a8d195460aa828ac20f7c1573fd4f526e}} 
+\mbox{\hyperlink{classgist__cursorext__t}{gist\+\_\+cursorext\+\_\+t}} $\ast$ {\bfseries query\+Cursor} (const \mbox{\hyperlink{classgist__query__t}{gist\+\_\+query\+\_\+t}} $\ast$query) const
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ad12e6fdd1e7d0aa5dd2f0a24e64429f4}\label{classbt__ext__t_ad12e6fdd1e7d0aa5dd2f0a24e64429f4}} 
+bool {\bfseries check} (const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&bp, const \mbox{\hyperlink{classvec__t}{vec\+\_\+t}} \&pred, int level)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a2470144179d1f557e50b0e97ebc4eb17}\label{classbt__ext__t_a2470144179d1f557e50b0e97ebc4eb17}} 
+Cmp\+Fct {\bfseries key\+Cmp}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a54333d1b94d01a1106820db90dc5eeed}\label{classbt__ext__t_a54333d1b94d01a1106820db90dc5eeed}} 
+Cmp\+Fct {\bfseries data\+Cmp}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a8b43357d9c936f857239c0145090d523}\label{classbt__ext__t_a8b43357d9c936f857239c0145090d523}} 
+Size\+Fct {\bfseries key\+Size}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_ab762d36539046ef10c2f1e84c2b7f8da}\label{classbt__ext__t_ab762d36539046ef10c2f1e84c2b7f8da}} 
+Size\+Fct {\bfseries data\+Size}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a5237ab417288c60dcdc87f1374ab64fc}\label{classbt__ext__t_a5237ab417288c60dcdc87f1374ab64fc}} 
+Print\+Fct {\bfseries pr\+Pred}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a41b43d703e27c4882cf6baaffaa23e56}\label{classbt__ext__t_a41b43d703e27c4882cf6baaffaa23e56}} 
+Print\+Fct {\bfseries pr\+Data}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a19e1eb7a3b1a2a5aa6552c1222d5d746}\label{classbt__ext__t_a19e1eb7a3b1a2a5aa6552c1222d5d746}} 
+Neg\+Infty\+Fct {\bfseries neg\+Infty\+Key}
+\item 
+\mbox{\Hypertarget{classbt__ext__t_a39b992d086149dfef3792a03067c604a}\label{classbt__ext__t_a39b992d086149dfef3792a03067c604a}} 
+Neg\+Infty\+Fct {\bfseries neg\+Infty\+Data}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+B\+Tree/gist\+\_\+btree.\+h\item 
+B\+Tree/gist\+\_\+btree.\+cpp\end{DoxyCompactItemize}

@@ -1,7 +1,0 @@
-<map id="dbFieldDescriptor::markUpdatedFields" name="dbFieldDescriptor::markUpdatedFields">
-<area shape="rect" id="node1" title=" " alt="" coords="655,35,803,76"/>
-<area shape="rect" id="node2" href="$classdbDatabase.html#a3c190e532238b7505976b169bfff55ab" title=" " alt="" coords="453,42,607,69"/>
-<area shape="rect" id="node3" href="$classdbFileTransactionLogger.html#a62fe3786e91e13fac9a60bd16f356bcf" title=" " alt="" coords="227,5,405,47"/>
-<area shape="rect" id="node4" href="$classdbAnyCursor.html#ac84c01ba117088d1f7cfafbb033c63e3" title=" " alt="" coords="237,71,395,98"/>
-<area shape="rect" id="node5" href="$classdbTimeSeriesProcessor.html#a5b9c0f2e29ed43c74e0dd7576979f0b2" title=" " alt="" coords="5,64,179,105"/>
-</map>

@@ -1,28 +1,5 @@
 var searchData=
 [
-  ['accesstype_15',['accessType',['../structdbDatabase_1_1OpenParameters.html#a2b11d89d7b74644f6536bcc197d5c82f',1,'dbDatabase::OpenParameters']]],
-  ['add_16',['add',['../classdbContainer.html#a6cec5f80f6863d6fed94ae8072535b31',1,'dbContainer::add(dbReference&lt; T &gt; const &amp;ref)'],['../classdbContainer.html#ad74cc261d287e80d5615354056d0aef1',1,'dbContainer::add(dbDatabase *db, dbReference&lt; T &gt; const &amp;ref)'],['../classdbTimeSeriesProcessor.html#a7084a931495d7eae1c660270ad53ff7e',1,'dbTimeSeriesProcessor::add()']]],
-  ['addindices_17',['addIndices',['../classdbDatabase.html#a3921d8358d7e883c6d8e48773b866363',1,'dbDatabase']]],
-  ['addlockowner_18',['addLockOwner',['../classdbDatabase.html#addf99cfff85de35ed30a025b8f892818',1,'dbDatabase']]],
-  ['addnewtable_19',['addNewTable',['../classdbDatabase.html#a87fb8519dfe13e0fbe260ecc5e928f0b',1,'dbDatabase']]],
-  ['adjustoffsets_20',['adjustOffsets',['../classdbFieldDescriptor.html#a04305bc583f66c1ca0ca3dfe23bd1e01',1,'dbFieldDescriptor']]],
-  ['adjustreferences_21',['adjustReferences',['../classdbFieldDescriptor.html#a91aff15178b8eba59d5c75af00626f6b',1,'dbFieldDescriptor']]],
-  ['alignment_22',['alignment',['../classdbFieldDescriptor.html#a39236ebf6bebba19b1a0a94008129652',1,'dbFieldDescriptor']]],
-  ['allocate_23',['allocate',['../classdbDatabase.html#a1dc9f3bd14614f803e622fe974f5ccee',1,'dbDatabase']]],
-  ['allocateid_24',['allocateId',['../classdbDatabase.html#acbf8431b60201e29e9efd07071550235',1,'dbDatabase']]],
-  ['allocateobject_25',['allocateObject',['../classdbDatabase.html#afc0381681c1378b2bfd5d5078045eea2',1,'dbDatabase']]],
-  ['allocaterow_26',['allocateRow',['../classdbDatabase.html#a56838815ecf19269f58d19de695a2e7a',1,'dbDatabase::allocateRow(oid_t tableId, size_t size)'],['../classdbDatabase.html#aa8b47528966a35e767d336dc2a8000cc',1,'dbDatabase::allocateRow(oid_t tableId, oid_t oid, size_t size)']]],
-  ['allowcolumnsdeletion_27',['allowColumnsDeletion',['../classdbDatabase.html#a21997d7169d1b4382367933dcae056ed',1,'dbDatabase']]],
-  ['andpredicate_28',['AndPredicate',['../classAndPredicate.html',1,'']]],
-  ['append_29',['append',['../classdbArray.html#ae82b18b5797d5755433c884eaa2acc6a',1,'dbArray']]],
-  ['appendunique_30',['appendUnique',['../classdbArray.html#a34a050a0c82dcec6e25531d1483a1dca',1,'dbArray']]],
-  ['appoffs_31',['appOffs',['../classdbFieldDescriptor.html#a0cbed0d4c4e7347309c79679474e4ced',1,'dbFieldDescriptor']]],
-  ['appsize_32',['appSize',['../classdbFieldDescriptor.html#a8e61f98af04ec6776f29046e6330bb6c',1,'dbFieldDescriptor::appSize()'],['../classdbTableDescriptor.html#aa5385626d96707e79695bc678bdaf1da',1,'dbTableDescriptor::appSize()']]],
-  ['apptype_33',['appType',['../classdbFieldDescriptor.html#a6cb4e272e358c7e61f41b0cda37b3a47',1,'dbFieldDescriptor']]],
-  ['area_34',['area',['../classrectangle.html#afaa8ad1159c58b50ed478ccca6831975',1,'rectangle']]],
-  ['arrayallocator_35',['arrayAllocator',['../classdbFieldDescriptor.html#afa5c8facb28dc40eb7eacfb324b468eb',1,'dbFieldDescriptor']]],
-  ['assign_36',['assign',['../classdbArray.html#a3113760eb60e9b4105b39eb810418838',1,'dbArray::assign()'],['../classdbDatabase.html#a30ea1fd8a039904daed402e975a6ca01',1,'dbDatabase::assign()']]],
-  ['at_37',['at',['../classdbCursor.html#add8c0121415cea5a6956dd4531f79a43',1,'dbCursor']]],
-  ['attach_38',['attach',['../classdbDatabase.html#ac9dd81c1cefb4f8df0a567b355869a2f',1,'dbDatabase::attach()'],['../classdbDatabase.html#a936c0e538ae9d7ca77f219eb83dd993e',1,'dbDatabase::attach(dbDatabaseThreadContext *ctx)']]],
-  ['autoincrementcount_39',['autoincrementCount',['../classdbTableDescriptor.html#a2a082c537d8bdbafd1a2d6fbed54581c',1,'dbTableDescriptor']]]
+  ['bt_5fext_5ft_2',['bt_ext_t',['../classbt__ext__t.html',1,'']]],
+  ['bt_5fquery_5ft_3',['bt_query_t',['../classbt__query__t.html',1,'']]]
 ];
