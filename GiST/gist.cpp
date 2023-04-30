@@ -94,9 +94,11 @@ rc_t gist::_new_page(shpid_t root,
     int2 level,
     gist_file::page_descr* descr)
 {
-    if (descr == NULL) {
+    if (descr == NULL)
+    {
         p._descr = _file.allocPage();
-    } else {
+    } else
+    {
         p._descr = descr;
     }
     assert(p._descr != NULL);
@@ -364,7 +366,8 @@ rc_t gist::_locate_leaf(shpid_t root, // root of index
     gist_p page;
     int index;
 
-    for (;;) {
+    for (;;)
+    {
         W_DO(_fix_page(page, currPid, LATCH_EX));
 
 #ifdef AMDB
@@ -805,6 +808,7 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
     gist_ustk gstack;
     bool wasSplit = false; // true if leaf is split
 
+    //پیدا کردن برگ مورد نظر
     W_DO(_locate_leaf(rootNo, gstack, keyv, datav));
     gist_p& leaf = gstack.top()->page;
 
@@ -830,16 +834,9 @@ rc_t gist::insert(const void* key, const int klen, const void* data, const int d
         vec_t leftv(x.pred, gist_p::max_tup_sz);
         vec_t rightv(y.pred, gist_p::max_tup_sz);
         bool newGoesRight, dummyBool;
-        W_DO(_ext->pickSplit(leaf,
-            rightEntries,
-            numRight,
-            bpv,
-            leftv,
-            rightv,
-            vec_t(keyv, datav),
-            newGoesRight,
-            vec_t(),
-            dummyBool));
+
+        W_DO( _ext->pickSplit(leaf, rightEntries, numRight, bpv, leftv, rightv,vec_t(keyv, datav), newGoesRight, vec_t(), dummyBool));
+
         assert(leftv.len(0) <= gist_p::max_tup_sz);
         assert(rightv.len(0) <= gist_p::max_tup_sz);
         assert(numRight <= gist_p::max_scnt);
@@ -1156,8 +1153,7 @@ rc_t gist::remove(const gist_query_t* query)
 //      RCOK
 /////////////////////////////////////////////////////////////////////////
 
-rc_t gist::fetch_init(gist_cursor_t& cursor,
-    const gist_query_t* query,
+rc_t gist::fetch_init(gist_cursor_t& cursor, const gist_query_t* query,
     int k,
     int io)
 {

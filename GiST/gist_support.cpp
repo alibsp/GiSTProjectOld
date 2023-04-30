@@ -128,11 +128,7 @@ gist_support::printSsPred(
 //
 /////////////////////////////////////////////////////////////////////////
 
-void
-gist_support::printStringBtPred(
-    std::ostream& s,
-    const vec_t& pred,
-    int level)
+void gist_support::printStringBtPred( std::ostream& s, const vec_t& pred, int level)
 {
     const char* str = (const char *) pred.ptr(0);
     if (str[0] == 1) {
@@ -184,21 +180,13 @@ gist_support::printInt(
 //      RCOK
 ///////////////////////////////////////////////////////////////////////////////
 
-rc_t
-gist_support::parseString(
-    const char* str,
-    void* outparam,
-    int& len)
+rc_t gist_support::parseString( const char* str, void* outparam, int& len)
 {
     std::istrstream s(str, strlen(str));
     return(parseString(s, outparam, len));
 }
 
-rc_t
-gist_support::parseString(
-    std::istream& s,
-    void* outparam,
-    int& len)
+rc_t gist_support::parseString(std::istream& s, void* outparam, int& len)
 {
     rc_t status;
     char* out = (char*) outparam;
@@ -480,10 +468,7 @@ _parseBtOp(
 // string are enclosed in single quotes (the qualification itself is 
 // enclosed in double quotes) and single quotes within a string are escaped
 // with '\'
-rc_t
-gist_support::parseStringQuery(
-    const char* str,
-    gist_query_t*& query)
+rc_t gist_support::parseStringQuery(const char* str, gist_query_t*& query)
 {
     std::istrstream s(str, strlen(str));
     rc_t status;

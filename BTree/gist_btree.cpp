@@ -21,6 +21,7 @@ using namespace std;
 #include "../GiST/gist_compat.h" // for MAXINT/MININT
 #include "../GiST/gist_cursorext.h" // for gist_cursorext_t::*
 #include "gist_btree.h"
+#include "../GiST/gist_support.h"
 //#include "../GiST/gist_support.h"	// for print<>, parse<>, etc.
 #include <assert.h>
 
@@ -808,24 +809,129 @@ bt_ext_t bt_int_ext(gist_ext_t::bt_int_ext_id, "bt_int_ext",
     int_size, int_size, int_negInfty, int_negInfty);
 
 
-//Comment by Aldaghi
-/*
-bt_ext_t bt_str_ext(gist_ext_t::bt_str_ext_id, "bt_str_ext",
-    gist_support::printStringBtPred, gist_support::printInt,
-    gist_support::parseString, gist_support::parseInt,
-    gist_support::parseStringQuery, str_cmp, int_cmp,
-    str_size, int_size, str_negInfty, int_negInfty);
-*/
+static void str_negInfty(void* s)
+{
+    *((char*)s) = '\0';
+}
 
+//Comment by Aldaghi
 
 static int str_size(const void* s)
 {
     return strlen((char*)s) + 1;
 }
 
-static void str_negInfty(void* s)
+/////////////////////////////////////////////////////////////////////////
+// gist_support::printStringBtPred - print predicates of string B-tree
+//
+// Description:
+//	- predicates are '\0'-delimited strings (-\infty encoded as '\1')
+//
+/////////////////////////////////////////////////////////////////////////
+
+void printStringBtPred( std::ostream& s, const vec_t& pred, int level)
 {
-    *((char*)s) = '\0';
+    const char* str = (const char *) pred.ptr(0);
+    if (str[0] == 1) {
+        // this is -\infty
+    s << "-INFTY";
+    }
+    s << "'" << str << "'";
 }
+
+rc_t parseString(std::istream& s, void* outparam, int& len)
+{
+    rc_t status;
+    char* out = (char*) outparam;
+
+    s >> ws; // skip over preceding whitespace
+    char ch;
+    s.get(ch);
+    if (ch != '\'') {
+    // string must start with "'"
+        return(ePARSEERROR);
+    }
+
+    len = 0;
+    // read chars until we hit the next '\''
+    bool escaped; // true if last char was escaped
+    do {
+    escaped = false;
+        s.get(ch);
+    if (ch == '\\') {
+        escaped = true;
+        s.get(ch);
+    }
+    out[len] = ch;
+    len++;
+    } while ((ch != '\'' || escaped) && !s.eof());
+    if (ch != '\'') {
+    // right quote missing
+        return(ePARSEERROR);
+    }
+    out[len-1] = '\0'; // -1: get rid of right quote
+    return(RCOK);
+}
+
+
+rc_t parseString( const char* str, void* outparam, int& len)
+{
+    std::istrstream s(str, strlen(str));
+    return(parseString(s, outparam, len));
+}
+
+// string are enclosed in single quotes (the qualification itself is
+// enclosed in double quotes) and single quotes within a string are escaped
+// with '\'
+rc_t parseStringQuery(const char* str, gist_query_t*& query)
+{
+    std::istrstream s(str, strlen(str));
+    rc_t status;
+    bt_query_t::bt_oper oper;
+    if ((status = _parseBtOp(s, oper)) != RCOK) {
+        return status;
+    }
+
+    if (oper == bt_query_t::bt_nooper) {
+        // no qualification, nothing to parse
+    bt_query_t* q = new bt_query_t(oper, NULL, NULL);
+    query = q;
+    return(RCOK);
+    }
+
+    const int MAXSTRLEN = 8192;
+    char arg1[MAXSTRLEN];
+    char arg2[MAXSTRLEN];
+    int dummy; // len not needed
+
+    // parse first argument
+    W_DO(parseString(s, arg1, dummy));
+    if (oper == bt_query_t::bt_betw) {
+    // parse second argument
+    W_DO(parseString(s, arg2, dummy));
+    }
+
+    // construct query
+    char* str1 = new char[strlen(arg1)+1];
+    char* str2 = NULL;
+    (void) memcpy(str1, arg1, strlen(arg1)+1);
+    if (oper == bt_query_t::bt_betw) {
+    str2 = new char[strlen(arg2)+1];
+    (void) memcpy(str2, arg2, strlen(arg2)+1);
+    }
+    bt_query_t* q = new bt_query_t(oper, str1, str2);
+    query = q;
+    return(RCOK);
+}
+
+
+bt_ext_t bt_str_ext(gist_ext_t::bt_str_ext_id, "bt_str_ext",
+    printStringBtPred, printInt,
+    parseString, parseInt,
+    parseStringQuery, str_cmp, int_cmp,
+    str_size, int_size, str_negInfty, int_negInfty);
+
+
+
 
 

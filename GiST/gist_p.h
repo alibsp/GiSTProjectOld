@@ -18,39 +18,39 @@ class gist;
  */
 struct page_s {
     struct slot_t {
-	int2 offset;		// -1 if vacant
-	uint2 length;
+        int2 offset;		// -1 if vacant
+        uint2 length;
     };
 
     class space_t {
     public:
-	space_t()	{};
-	~space_t()	{};
+        space_t()	{};
+        ~space_t()	{};
 
-	void init(int);
-	int nfree() const;
-	
-	int			usable();
-				// slot_bytes means bytes for new slots
-	rc_t			acquire(int amt, int slot_bytes);
-	void 			release(int amt);
+        void init(int);
+        int nfree() const;
+
+        int			usable();
+        // slot_bytes means bytes for new slots
+        rc_t			acquire(int amt, int slot_bytes);
+        void 			release(int amt);
 
     private:
-   
-	void _check_reserve();
-	
-	int2	_nfree;		// free space counter
+
+        void _check_reserve();
+
+        int2	_nfree;		// free space counter
     };
 
     enum {
-	data_sz = (SM_PAGESIZE 
-		   - sizeof(shpid_t)
-		   - sizeof(space_t)
-		   - 3 * sizeof(int2)
-		   - 1 * sizeof(int4)
-		   - 2 * sizeof(slot_t)
-		   - 2 * sizeof(int2)),
-	max_slot = data_sz / sizeof(slot_t) + 2
+        data_sz = (SM_PAGESIZE
+        - sizeof(shpid_t)
+        - sizeof(space_t)
+        - 3 * sizeof(int2)
+        - 1 * sizeof(int4)
+        - 2 * sizeof(slot_t)
+        - 2 * sizeof(int2)),
+        max_slot = data_sz / sizeof(slot_t) + 2
     };
 
     shpid_t	pid;			// id of the page
@@ -61,7 +61,7 @@ struct page_s {
     int4	fill1;			// make header multiple of 8 bytes
     char 	data[data_sz];		// must be aligned
     slot_t	reserved_slot[1];	// 2nd slot (declared to align
-					// end of _data)
+    // end of _data)
     slot_t	slot[1];		// 1st slot
 };
 
@@ -71,9 +71,9 @@ public:
     // note that a union for elen and child won't save any
     // space, because 'child' needs to be 4-byte aligned
     struct hdr_s {
-	uint2	klen;
-	uint2	elen;
-	shpid_t	child;
+        uint2	klen;
+        uint2	elen;
+        shpid_t	child;
     };
 
     const char* key() const;
@@ -106,27 +106,27 @@ public:
     typedef page_s::slot_t slot_t;
 
     enum {
-	data_sz = page_s::data_sz,
-	max_slot = data_sz / sizeof(slot_t) + 2
+        data_sz = page_s::data_sz,
+        max_slot = data_sz / sizeof(slot_t) + 2
     };
 
     enum {
-	max_tup_sz = data_sz / 2 - sizeof(slot_t) - sizeof(keyrec_t),
-	    // 2 entries minimum
-	max_scnt = (data_sz - sizeof(gistctrl_t)) / 
-	    (sizeof(keyrec_t) + sizeof(slot_t)) + 1
-	    // max # of slots on a page
+        max_tup_sz = data_sz / 2 - sizeof(slot_t) - sizeof(keyrec_t),
+        // 2 entries minimum
+        max_scnt = (data_sz - sizeof(gistctrl_t)) /
+        (sizeof(keyrec_t) + sizeof(slot_t)) + 1
+        // max # of slots on a page
     };
 
     gist_p();
     ~gist_p();
 
     rc_t 			format(
-	const shpid_t 		    pid,
-	const gistctrl_t	    *hdr);
+            const shpid_t 		    pid,
+            const gistctrl_t	    *hdr);
 
     rc_t			insert(
-        const keyrec_t		    &tup);
+            const keyrec_t		    &tup);
 
     rc_t			copy(gist_p& rsib);
 
@@ -148,11 +148,7 @@ public:
     static int			rec_size(size_t klen, size_t dlen);
 
     // the slot index is automatically corrected if a BP is present on the page
-    rc_t			insert(
-	const cvec_t& 		    key, 
-	const cvec_t& 		    el, 
-	int 			    slot, 
-	shpid_t 		    child = 0);
+    rc_t			insert( const cvec_t& key, const cvec_t& el,int slot, shpid_t child = 0);
     rc_t			remove(int slot);
 
     bool 			is_fixed() const;
@@ -162,18 +158,18 @@ public:
 
 private:
     static const int _HDR_CORRECTION;
-        // = 1: add to slot indices to compensate for hdr entry
+    // = 1: add to slot indices to compensate for hdr entry
 
     rc_t			_insert_expand(
-	int 			    idx,
-	int 			    cnt, 
-	const cvec_t 		    tp[]);
+            int 			    idx,
+            int 			    cnt,
+            const cvec_t 		    tp[]);
     
     rc_t			_remove_compress(int idx, int cnt);
     rc_t			_overwrite(
-	int 			    idx,
-	int 			    start,
-	const cvec_t& 		    data);
+            int 			    idx,
+            int 			    start,
+            const cvec_t& 		    data);
 
     // state
     page_s*                     _pp;
@@ -201,7 +197,7 @@ private:
 inline smsize_t 
 gist_p::_used_space()
 {
-    return (data_sz + 2 * sizeof(slot_t) - _pp->space.usable()); 
+    return (data_sz + 2 * sizeof(slot_t) - _pp->space.usable());
 }
 
 inline bool
