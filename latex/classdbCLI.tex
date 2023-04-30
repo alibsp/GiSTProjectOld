@@ -1,0 +1,198 @@
+\hypertarget{classdbCLI}{}\doxysection{db\+C\+LI Class Reference}
+\label{classdbCLI}\index{dbCLI@{dbCLI}}
+
+
+Collaboration diagram for db\+C\+LI\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=303pt]{classdbCLI__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbCLI_ae10ab3612a9714d0520b004076193d6b}\label{classdbCLI_ae10ab3612a9714d0520b004076193d6b}} 
+int {\bfseries xml\+\_\+export} (int session, F\+I\+LE $\ast$out)
+\item 
+\mbox{\Hypertarget{classdbCLI_aaaef40237356c99211a216537884a5a5}\label{classdbCLI_aaaef40237356c99211a216537884a5a5}} 
+int {\bfseries xml\+\_\+import} (int session, F\+I\+LE $\ast$in)
+\item 
+\mbox{\Hypertarget{classdbCLI_aa9da4638836f1f7207bd876112d87d86}\label{classdbCLI_aa9da4638836f1f7207bd876112d87d86}} 
+int {\bfseries create\+\_\+session} (char\+\_\+t const $\ast$database\+Path, char\+\_\+t const $\ast$file\+Path, unsigned transaction\+Commit\+Delay, int open\+Attr, size\+\_\+t init\+Database\+Size, size\+\_\+t extension\+Quantum, size\+\_\+t init\+Index\+Size, size\+\_\+t file\+Size\+Limit)
+\item 
+\mbox{\Hypertarget{classdbCLI_afd5aa3d11c8fa3ce63624e8306bea66a}\label{classdbCLI_afd5aa3d11c8fa3ce63624e8306bea66a}} 
+int {\bfseries create\+\_\+replication\+\_\+node} (int node\+Id, int n\+Servers, char $\ast$node\+Names\mbox{[}$\,$\mbox{]}, char\+\_\+t const $\ast$database\+Name, char\+\_\+t const $\ast$file\+Path, int open\+Attr, size\+\_\+t init\+Database\+Size, size\+\_\+t extension\+Quantum, size\+\_\+t init\+Index\+Size, size\+\_\+t file\+Size\+Limit)
+\item 
+\mbox{\Hypertarget{classdbCLI_a6921300a91a927c7b977a69362a1c15e}\label{classdbCLI_a6921300a91a927c7b977a69362a1c15e}} 
+int {\bfseries create\+\_\+statement} (int session, char const $\ast$sql)
+\item 
+\mbox{\Hypertarget{classdbCLI_ad9b1524f494cb8e49d4470df439b7c55}\label{classdbCLI_ad9b1524f494cb8e49d4470df439b7c55}} 
+int {\bfseries bind\+\_\+parameter} (int statement, char const $\ast$param\+\_\+name, int var\+\_\+type, void $\ast$var\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{classdbCLI_aba8af499d6891b7ffd50549059ef337d}\label{classdbCLI_aba8af499d6891b7ffd50549059ef337d}} 
+int {\bfseries bind\+\_\+column} (int statement, char const $\ast$column\+\_\+name, int var\+\_\+type, int $\ast$var\+\_\+len, void $\ast$var\+\_\+ptr)
+\item 
+\mbox{\Hypertarget{classdbCLI_a714a94da6e1f884703980dc28c68ff6e}\label{classdbCLI_a714a94da6e1f884703980dc28c68ff6e}} 
+int {\bfseries bind\+\_\+array\+\_\+column} (int statement, char const $\ast$column\+\_\+name, int var\+\_\+type, void $\ast$var\+\_\+ptr, cli\+\_\+column\+\_\+set\+\_\+ex set, cli\+\_\+column\+\_\+get\+\_\+ex get, void $\ast$user\+\_\+data)
+\item 
+\mbox{\Hypertarget{classdbCLI_ab600c55304bc0b761543e3f02dd3a80b}\label{classdbCLI_ab600c55304bc0b761543e3f02dd3a80b}} 
+int {\bfseries fetch} (int statement, int for\+\_\+update, cli\+\_\+cardinality\+\_\+t $\ast$n\+\_\+fetched\+\_\+records)
+\item 
+\mbox{\Hypertarget{classdbCLI_a29012f22a79a58dd93c667c98e622510}\label{classdbCLI_a29012f22a79a58dd93c667c98e622510}} 
+int {\bfseries fetch\+\_\+columns} (\mbox{\hyperlink{structstatement__desc}{statement\+\_\+desc}} $\ast$stmt)
+\item 
+\mbox{\Hypertarget{classdbCLI_a7255d801f81aa6225227e1e69e5aa833}\label{classdbCLI_a7255d801f81aa6225227e1e69e5aa833}} 
+int {\bfseries store\+\_\+columns} (char $\ast$buf, \mbox{\hyperlink{structstatement__desc}{statement\+\_\+desc}} $\ast$stmt, bool insert)
+\item 
+\mbox{\Hypertarget{classdbCLI_a2f1d6460f762bf8167bd124fe96d4f20}\label{classdbCLI_a2f1d6460f762bf8167bd124fe96d4f20}} 
+int {\bfseries insert} (int statement, cli\+\_\+oid\+\_\+t $\ast$oid)
+\item 
+\mbox{\Hypertarget{classdbCLI_a9cf082a91f86dbb4d75b3f9b7bf12394}\label{classdbCLI_a9cf082a91f86dbb4d75b3f9b7bf12394}} 
+int {\bfseries update} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a4bdfbf335aa64b20a808b0edf9c1f1cf}\label{classdbCLI_a4bdfbf335aa64b20a808b0edf9c1f1cf}} 
+int {\bfseries close\+\_\+cursor} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_ad273f846eb30e9a3f85195c4f822589e}\label{classdbCLI_ad273f846eb30e9a3f85195c4f822589e}} 
+int {\bfseries freeze} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a5f54a12b06ac90463f210fb4898644a1}\label{classdbCLI_a5f54a12b06ac90463f210fb4898644a1}} 
+int {\bfseries unfreeze} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a36b0fdaa2b3a0519136e221f2072a2d9}\label{classdbCLI_a36b0fdaa2b3a0519136e221f2072a2d9}} 
+int {\bfseries get\+\_\+first} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_ac9ff75fa473995814c551091bfa58df3}\label{classdbCLI_ac9ff75fa473995814c551091bfa58df3}} 
+int {\bfseries get\+\_\+last} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a4d4d98b498f98f904b13ab2f59b99009}\label{classdbCLI_a4d4d98b498f98f904b13ab2f59b99009}} 
+int {\bfseries get\+\_\+next} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a6427f71bfdbd979886d50ca49ab462b9}\label{classdbCLI_a6427f71bfdbd979886d50ca49ab462b9}} 
+int {\bfseries get\+\_\+prev} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a0ee82b5e0a5ff424a37438f23d9d228e}\label{classdbCLI_a0ee82b5e0a5ff424a37438f23d9d228e}} 
+int {\bfseries skip} (int statement, int n)
+\item 
+\mbox{\Hypertarget{classdbCLI_a1919dbd2e859dd85981f6eb19d8aa652}\label{classdbCLI_a1919dbd2e859dd85981f6eb19d8aa652}} 
+int {\bfseries seek} (int statement, cli\+\_\+oid\+\_\+t oid)
+\item 
+\mbox{\Hypertarget{classdbCLI_ab22e4be4ed0a553b72af9d67d1af66e3}\label{classdbCLI_ab22e4be4ed0a553b72af9d67d1af66e3}} 
+cli\+\_\+oid\+\_\+t {\bfseries get\+\_\+current\+\_\+oid} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a7a260e3cd1ba6b0a07b538aa79067f00}\label{classdbCLI_a7a260e3cd1ba6b0a07b538aa79067f00}} 
+int {\bfseries free\+\_\+statement} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a1dfeb2cc99f60e5363bdf6a5039a252c}\label{classdbCLI_a1dfeb2cc99f60e5363bdf6a5039a252c}} 
+int {\bfseries free\+\_\+statement} (\mbox{\hyperlink{structstatement__desc}{statement\+\_\+desc}} $\ast$stmt)
+\item 
+\mbox{\Hypertarget{classdbCLI_a1433ca3452d8ed738db2a1e691b9dfd6}\label{classdbCLI_a1433ca3452d8ed738db2a1e691b9dfd6}} 
+int {\bfseries release\+\_\+statement} (\mbox{\hyperlink{structstatement__desc}{statement\+\_\+desc}} $\ast$stmt)
+\item 
+\mbox{\Hypertarget{classdbCLI_aca8924fae5ef22e764cd3247d44065d2}\label{classdbCLI_aca8924fae5ef22e764cd3247d44065d2}} 
+int {\bfseries lock} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_adea3694947a3c21293c32117bf1bf099}\label{classdbCLI_adea3694947a3c21293c32117bf1bf099}} 
+int {\bfseries commit} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_a9b337f497c8c96fb453b5aac49b702d5}\label{classdbCLI_a9b337f497c8c96fb453b5aac49b702d5}} 
+int {\bfseries precommit} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_aab9c636e31f5ecda3080abbfdfc471fc}\label{classdbCLI_aab9c636e31f5ecda3080abbfdfc471fc}} 
+int {\bfseries abort} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_a31478b520016859969769a1b1558af5a}\label{classdbCLI_a31478b520016859969769a1b1558af5a}} 
+int {\bfseries remove} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a95c2d483c4d68e9a077669a154bce749}\label{classdbCLI_a95c2d483c4d68e9a077669a154bce749}} 
+int {\bfseries remove\+\_\+current} (int statement)
+\item 
+\mbox{\Hypertarget{classdbCLI_a47b7092dd6d19d95cfb9ad68dca88d40}\label{classdbCLI_a47b7092dd6d19d95cfb9ad68dca88d40}} 
+int {\bfseries describe} (int session, char const $\ast$table, \mbox{\hyperlink{structcli__field__descriptor}{cli\+\_\+field\+\_\+descriptor}} $\ast$$\ast$fields)
+\item 
+\mbox{\Hypertarget{classdbCLI_a5f3ef9025d08bee9fd1e05fa4d316761}\label{classdbCLI_a5f3ef9025d08bee9fd1e05fa4d316761}} 
+int {\bfseries describe\+\_\+layout} (int session, char const $\ast$table, \mbox{\hyperlink{structcli__field__layout}{cli\+\_\+field\+\_\+layout}} $\ast$$\ast$fields, int $\ast$rec\+\_\+size)
+\item 
+\mbox{\Hypertarget{classdbCLI_a52383cb18c90786e9606ef91fa4944ea}\label{classdbCLI_a52383cb18c90786e9606ef91fa4944ea}} 
+int {\bfseries show\+\_\+tables} (int session, \mbox{\hyperlink{structcli__table__descriptor}{cli\+\_\+table\+\_\+descriptor}} $\ast$$\ast$tables)
+\item 
+\mbox{\Hypertarget{classdbCLI_a4fe893d5f96b4bf98aafd4cb4428980b}\label{classdbCLI_a4fe893d5f96b4bf98aafd4cb4428980b}} 
+int {\bfseries match\+\_\+columns} (char const $\ast$table\+\_\+name, \mbox{\hyperlink{structstatement__desc}{statement\+\_\+desc}} $\ast$stmt)
+\item 
+\mbox{\Hypertarget{classdbCLI_a31410d8fc1a7a1371aaf366c33370568}\label{classdbCLI_a31410d8fc1a7a1371aaf366c33370568}} 
+int {\bfseries create\+\_\+table} (int session, char const $\ast$table\+Name, int n\+Columns, \mbox{\hyperlink{structcli__field__descriptor}{cli\+\_\+field\+\_\+descriptor}} $\ast$columns)
+\item 
+\mbox{\Hypertarget{classdbCLI_a9ddd7727b15ff520433442ec74a76544}\label{classdbCLI_a9ddd7727b15ff520433442ec74a76544}} 
+int {\bfseries alter\+\_\+table} (int session, char const $\ast$table\+Name, int n\+Columns, \mbox{\hyperlink{structcli__field__descriptor}{cli\+\_\+field\+\_\+descriptor}} $\ast$columns)
+\item 
+\mbox{\Hypertarget{classdbCLI_a5214bffc93875546f686d0d7610a3ab0}\label{classdbCLI_a5214bffc93875546f686d0d7610a3ab0}} 
+int {\bfseries drop\+\_\+table} (int session, char const $\ast$table\+Name)
+\item 
+\mbox{\Hypertarget{classdbCLI_a4e6e42823d99814a8535fda05af84d5a}\label{classdbCLI_a4e6e42823d99814a8535fda05af84d5a}} 
+int {\bfseries alter\+\_\+index} (int session, char const $\ast$table\+Name, char const $\ast$field\+Name, int new\+Flags)
+\item 
+\mbox{\Hypertarget{classdbCLI_a93d62b515192a22faf7e3ea998491a42}\label{classdbCLI_a93d62b515192a22faf7e3ea998491a42}} 
+cli\+\_\+error\+\_\+handler {\bfseries set\+\_\+error\+\_\+handler} (int session, cli\+\_\+error\+\_\+handler new\+\_\+handler, void $\ast$context)
+\item 
+\mbox{\Hypertarget{classdbCLI_af4f2390f1402e936922334f883334b32}\label{classdbCLI_af4f2390f1402e936922334f883334b32}} 
+int {\bfseries attach} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_a89ee6b35a9734cce762bcaae5088f299}\label{classdbCLI_a89ee6b35a9734cce762bcaae5088f299}} 
+int {\bfseries detach} (int session, int detach\+\_\+mode)
+\item 
+\mbox{\Hypertarget{classdbCLI_a24853d6b0903060cf7f8f26655a1136a}\label{classdbCLI_a24853d6b0903060cf7f8f26655a1136a}} 
+int {\bfseries get\+\_\+database\+\_\+state} (int session, \mbox{\hyperlink{structcli__database__monitor}{cli\+\_\+database\+\_\+monitor}} $\ast$monitor)
+\item 
+\mbox{\Hypertarget{classdbCLI_a40bee7e5ceb224b55c897f77c19ecdde}\label{classdbCLI_a40bee7e5ceb224b55c897f77c19ecdde}} 
+int {\bfseries get\+\_\+wrapping\+\_\+rectangle} (int session, char const $\ast$table, char const $\ast$field, \mbox{\hyperlink{structcli__rectangle__t}{cli\+\_\+rectangle\+\_\+t}} $\ast$rect)
+\item 
+\mbox{\Hypertarget{classdbCLI_ac52c547c5dc25bbb9f2e7e98a3e13cf1}\label{classdbCLI_ac52c547c5dc25bbb9f2e7e98a3e13cf1}} 
+int {\bfseries close} (int session)
+\item 
+\mbox{\Hypertarget{classdbCLI_afd667d85562ebdaf06611fe07db62808}\label{classdbCLI_afd667d85562ebdaf06611fe07db62808}} 
+int {\bfseries prepare\+\_\+query} (int session, char const $\ast$query)
+\item 
+\mbox{\Hypertarget{classdbCLI_acacd9f4967338294bd6df61c3362cc97}\label{classdbCLI_acacd9f4967338294bd6df61c3362cc97}} 
+int {\bfseries execute\+\_\+query} (int statement, int for\+\_\+update, void $\ast$record\+\_\+struct, va\+\_\+list params)
+\item 
+\mbox{\Hypertarget{classdbCLI_a4d0e74e4275f708b663cf3917ec08381}\label{classdbCLI_a4d0e74e4275f708b663cf3917ec08381}} 
+int {\bfseries execute\+\_\+query} (int statement, int for\+\_\+update, void $\ast$record\+\_\+struct, int n\+\_\+params, int $\ast$param\+\_\+types, void $\ast$$\ast$param\+\_\+values)
+\item 
+\mbox{\Hypertarget{classdbCLI_a0257c4c0c1ecba708686fbdc58c82ea0}\label{classdbCLI_a0257c4c0c1ecba708686fbdc58c82ea0}} 
+int {\bfseries insert\+\_\+struct} (int session, char const $\ast$table\+\_\+name, void $\ast$record\+\_\+struct, cli\+\_\+oid\+\_\+t $\ast$oid)
+\item 
+\mbox{\Hypertarget{classdbCLI_aa3bc6150f897d9730f8acfae841c3dae}\label{classdbCLI_aa3bc6150f897d9730f8acfae841c3dae}} 
+int {\bfseries join\+\_\+transaction} (int session, cli\+\_\+transaction\+\_\+context\+\_\+t ctx)
+\item 
+\mbox{\Hypertarget{classdbCLI_a547aded8b9447de02b3292b070aefcd2}\label{classdbCLI_a547aded8b9447de02b3292b070aefcd2}} 
+int {\bfseries backup} (int session, char\+\_\+t const $\ast$file\+\_\+name, int compactify)
+\item 
+\mbox{\Hypertarget{classdbCLI_af07f11ec7badd6a68cae58a38d877a74}\label{classdbCLI_af07f11ec7badd6a68cae58a38d877a74}} 
+int {\bfseries schedule\+\_\+backup} (int session, char\+\_\+t const $\ast$file\+\_\+name, int period)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbCLI_ae359ffcb28a2a2ef8f41bc0f90285a96}\label{classdbCLI_ae359ffcb28a2a2ef8f41bc0f90285a96}} 
+static int {\bfseries create\+\_\+table} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, char const $\ast$table\+Name, int n\+Columns, \mbox{\hyperlink{structcli__field__descriptor}{cli\+\_\+field\+\_\+descriptor}} $\ast$columns)
+\item 
+\mbox{\Hypertarget{classdbCLI_aaf8e944b20ed7dab0209a9851a77f1f0}\label{classdbCLI_aaf8e944b20ed7dab0209a9851a77f1f0}} 
+static int {\bfseries alter\+\_\+table} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, char const $\ast$table\+Name, int n\+Columns, \mbox{\hyperlink{structcli__field__descriptor}{cli\+\_\+field\+\_\+descriptor}} $\ast$columns)
+\item 
+\mbox{\Hypertarget{classdbCLI_abb917c9eb42eb1b3e3f77cebd4423dde}\label{classdbCLI_abb917c9eb42eb1b3e3f77cebd4423dde}} 
+static int {\bfseries alter\+\_\+index} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, char const $\ast$table\+Name, char const $\ast$field\+Name, int new\+Flags)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbCLI_ad394536d343eaed3c2fed1004de2c418}\label{classdbCLI_ad394536d343eaed3c2fed1004de2c418}} 
+static \mbox{\hyperlink{classdbCLI}{db\+C\+LI}} {\bfseries instance}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/localcli.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/localcli.\+cpp\end{DoxyCompactItemize}

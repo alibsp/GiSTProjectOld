@@ -1,0 +1,33 @@
+<map id="dbTableDescriptor" name="dbTableDescriptor">
+<area shape="rect" id="node1" title=" " alt="" coords="370,277,603,736"/>
+<area shape="rect" id="node3" href="$classdbDatabase.html" title=" " alt="" coords="1802,2216,2009,2924"/>
+<area shape="rect" id="node24" href="$classdbCompiler.html" title=" " alt="" coords="3231,887,3417,1301"/>
+<area shape="rect" id="node30" href="$classdbFieldDescriptor.html" title=" " alt="" coords="365,909,587,1279"/>
+<area shape="rect" id="node2" href="$classdbMutex.html" title=" " alt="" coords="5,5,128,215"/>
+<area shape="rect" id="node15" href="$structdbDatabase_1_1dbLocation.html" title=" " alt="" coords="1816,2987,1995,3093"/>
+<area shape="rect" id="node4" href="$classdbEvent.html" title=" " alt="" coords="438,1834,538,2073"/>
+<area shape="rect" id="node5" href="$classdbSemaphore.html" title=" " alt="" coords="601,1437,738,1735"/>
+<area shape="rect" id="node6" href="$classdbThreadContext.html" title=" " alt="" coords="824,1863,1051,2043"/>
+<area shape="rect" id="node7" href="$classdbTransactionLogger.html" title=" " alt="" coords="1075,1871,1269,2036"/>
+<area shape="rect" id="node8" href="$classdbSharedObject.html" title=" " alt="" coords="1293,1841,1515,2065"/>
+<area shape="rect" id="node9" href="$classdbGlobalCriticalSection.html" title=" " alt="" coords="1539,1827,1738,2080"/>
+<area shape="rect" id="node10" href="$classdbHeader.html" title=" " alt="" coords="1763,1797,1915,2109"/>
+<area shape="rect" id="node11" href="$classdbL2List.html" title=" " alt="" coords="3441,1019,3553,1169"/>
+<area shape="rect" id="node23" href="$classdbDatabaseThreadContext.html" title=" " alt="" coords="3248,1481,3469,1691"/>
+<area shape="rect" id="node12" href="$classdbVisitedObject.html" title=" " alt="" coords="2114,1915,2265,1992"/>
+<area shape="rect" id="node13" href="$classdbThread.html" title=" " alt="" coords="2358,1819,2541,2087"/>
+<area shape="rect" id="node14" href="$classdbInitializationMutex.html" title=" " alt="" coords="2565,1856,2750,2051"/>
+<area shape="rect" id="node16" href="$classdbFile.html" title=" " alt="" coords="2775,1805,2895,2102"/>
+<area shape="rect" id="node17" href="$classdbThreadPool.html" title=" " alt="" coords="2919,1893,3065,2014"/>
+<area shape="rect" id="node18" href="$classdbLocalEvent.html" title=" " alt="" coords="3089,1856,3199,2051"/>
+<area shape="rect" id="node19" href="$classdbXmlContext.html" title=" " alt="" coords="1939,1900,2090,2007"/>
+<area shape="rect" id="node20" href="$classdbTmpAllocator.html" title=" " alt="" coords="1934,1525,2095,1647"/>
+<area shape="rect" id="node21" href="$classFixedSizeAllocator.html" title=" " alt="" coords="3410,1863,3587,2043"/>
+<area shape="rect" id="node22" href="$classdbMonitor.html" title=" " alt="" coords="3223,1841,3385,2065"/>
+<area shape="rect" id="node25" href="$structdbStrLiteral.html" title=" " alt="" coords="3097,461,3194,553"/>
+<area shape="rect" id="node26" href="$structdbWStrLiteral.html" title=" " alt="" coords="3218,461,3329,553"/>
+<area shape="rect" id="node27" href="$classdbBinding.html" title=" " alt="" coords="3353,453,3439,560"/>
+<area shape="rect" id="node28" href="$classdbQueryElement.html" title=" " alt="" coords="3533,424,3689,589"/>
+<area shape="rect" id="node29" href="$classdbProcessId.html" title=" " alt="" coords="3089,1019,3207,1169"/>
+<area shape="rect" id="node31" href="$classdbAnyMethodTrampoline.html" title=" " alt="" coords="355,1511,576,1661"/>
+</map>

@@ -1,0 +1,195 @@
+\hypertarget{classdbServer}{}\doxysection{db\+Server Class Reference}
+\label{classdbServer}\index{dbServer@{dbServer}}
+
+
+Collaboration diagram for db\+Server\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbServer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_a3b93dbf912c31d4afa35c2865203ce17}\label{classdbServer_a3b93dbf912c31d4afa35c2865203ce17}} 
+void {\bfseries stop} ()
+\item 
+\mbox{\Hypertarget{classdbServer_a7d3597c28e9686702a724d01a3a6c599}\label{classdbServer_a7d3597c28e9686702a724d01a3a6c599}} 
+void {\bfseries start} ()
+\item 
+\mbox{\Hypertarget{classdbServer_af943bf12314a580198f4e525a74d7d17}\label{classdbServer_af943bf12314a580198f4e525a74d7d17}} 
+{\bfseries db\+Server} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, char const $\ast$server\+U\+RL, int optimal\+Number\+Of\+Threads=8, int connection\+Queue\+Len=64)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_af1d6ce7b45775a0ea1c6099925519592}\label{classdbServer_af1d6ce7b45775a0ea1c6099925519592}} 
+static \mbox{\hyperlink{classdbServer}{db\+Server}} $\ast$ {\bfseries find} (char const $\ast$server\+U\+RL)
+\item 
+\mbox{\Hypertarget{classdbServer_a9240ea95c9527abd97ecb537e6f9ca8c}\label{classdbServer_a9240ea95c9527abd97ecb537e6f9ca8c}} 
+static void {\bfseries cleanup} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_a869520e22595d25e617090f6705013dd}\label{classdbServer_a869520e22595d25e617090f6705013dd}} 
+void {\bfseries serve\+Client} ()
+\item 
+\mbox{\Hypertarget{classdbServer_a034f821e3d8e3ba1be1ac4fa9bcf69a4}\label{classdbServer_a034f821e3d8e3ba1be1ac4fa9bcf69a4}} 
+void {\bfseries accept\+Connection} (\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$sock)
+\item 
+\mbox{\Hypertarget{classdbServer_aaaded5f3519412ca08b13a858f2da2c3}\label{classdbServer_aaaded5f3519412ca08b13a858f2da2c3}} 
+bool {\bfseries freeze} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_ab0dd17c3d93d3cb0532ce50a0c3098c1}\label{classdbServer_ab0dd17c3d93d3cb0532ce50a0c3098c1}} 
+bool {\bfseries unfreeze} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_a08012c0ff38798d4ec06c811a452e943}\label{classdbServer_a08012c0ff38798d4ec06c811a452e943}} 
+bool {\bfseries get\+\_\+first} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_ae50bf2b1afda89448e64e2f5a06a1ada}\label{classdbServer_ae50bf2b1afda89448e64e2f5a06a1ada}} 
+bool {\bfseries get\+\_\+last} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_a9376f24e3809cfab349331d4dcf00fc5}\label{classdbServer_a9376f24e3809cfab349331d4dcf00fc5}} 
+bool {\bfseries get\+\_\+next} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_aedac2e4bbd9fe7d0c3ecd228a884a824}\label{classdbServer_aedac2e4bbd9fe7d0c3ecd228a884a824}} 
+bool {\bfseries get\+\_\+prev} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_a51395ed838f95b7606153c59021c9586}\label{classdbServer_a51395ed838f95b7606153c59021c9586}} 
+bool {\bfseries seek} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id, char $\ast$buf)
+\item 
+\mbox{\Hypertarget{classdbServer_a4eecf0cc0b6b7c98211936a5370f7d42}\label{classdbServer_a4eecf0cc0b6b7c98211936a5370f7d42}} 
+bool {\bfseries skip} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id, char $\ast$buf)
+\item 
+\mbox{\Hypertarget{classdbServer_a5f13d000c37738667f7db5d04bb5ba02}\label{classdbServer_a5f13d000c37738667f7db5d04bb5ba02}} 
+bool {\bfseries fetch} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, \mbox{\hyperlink{classdbStatement}{db\+Statement}} $\ast$stmt, oid\+\_\+t result)
+\item 
+\mbox{\Hypertarget{classdbServer_aabc5d341865f52f184f5a1986c823931}\label{classdbServer_aabc5d341865f52f184f5a1986c823931}} 
+bool {\bfseries fetch} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, \mbox{\hyperlink{classdbStatement}{db\+Statement}} $\ast$stmt)
+\item 
+\mbox{\Hypertarget{classdbServer_a8b3940a61c22e634409cb46e75997f57}\label{classdbServer_a8b3940a61c22e634409cb46e75997f57}} 
+bool {\bfseries remove} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_a575fa34d5323301ee2dc740a3257ab0b}\label{classdbServer_a575fa34d5323301ee2dc740a3257ab0b}} 
+bool {\bfseries remove\+\_\+current} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id)
+\item 
+\mbox{\Hypertarget{classdbServer_afaede20d2afc85b433494011d354b825}\label{classdbServer_afaede20d2afc85b433494011d354b825}} 
+bool {\bfseries update} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id, char $\ast$new\+\_\+data)
+\item 
+\mbox{\Hypertarget{classdbServer_a84be605368d8c4ea2d5ccf32dba6c855}\label{classdbServer_a84be605368d8c4ea2d5ccf32dba6c855}} 
+bool {\bfseries insert} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id, char $\ast$data, bool prepare)
+\item 
+\mbox{\Hypertarget{classdbServer_aa7ed85bad2fc4047171709e7a8aa1565}\label{classdbServer_aa7ed85bad2fc4047171709e7a8aa1565}} 
+bool {\bfseries select} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, int stmt\+\_\+id, char $\ast$data, bool prepare)
+\item 
+\mbox{\Hypertarget{classdbServer_ad69afb95d29b0aee199e8380b6c4c17b}\label{classdbServer_ad69afb95d29b0aee199e8380b6c4c17b}} 
+bool {\bfseries show\+\_\+tables} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session)
+\item 
+\mbox{\Hypertarget{classdbServer_a2aa3de705208e066dbfe2f31f7387386}\label{classdbServer_a2aa3de705208e066dbfe2f31f7387386}} 
+bool {\bfseries describe\+\_\+table} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, char const $\ast$table)
+\item 
+\mbox{\Hypertarget{classdbServer_a5b1e15298164edb01d9a4d052594ac0d}\label{classdbServer_a5b1e15298164edb01d9a4d052594ac0d}} 
+bool {\bfseries create\+\_\+table} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, char $\ast$data, bool create)
+\item 
+\mbox{\Hypertarget{classdbServer_a7d680372cddf52a8ef11c58e81913b38}\label{classdbServer_a7d680372cddf52a8ef11c58e81913b38}} 
+bool {\bfseries drop\+\_\+table} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, char $\ast$data)
+\item 
+\mbox{\Hypertarget{classdbServer_a562069d5657ab5d0b16ca40dcf25f96b}\label{classdbServer_a562069d5657ab5d0b16ca40dcf25f96b}} 
+bool {\bfseries alter\+\_\+index} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$session, char $\ast$data)
+\item 
+\mbox{\Hypertarget{classdbServer_aaf63da6888ef3d241f4e8972a6f43bd8}\label{classdbServer_aaf63da6888ef3d241f4e8972a6f43bd8}} 
+char $\ast$ {\bfseries check\+Columns} (\mbox{\hyperlink{classdbStatement}{db\+Statement}} $\ast$stmt, int n\+\_\+columns, \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc, char $\ast$data, int4 \&reponse, bool select)
+\item 
+\mbox{\Hypertarget{classdbServer_a7f82e2c74b5069edb94a41ae3656e0b0}\label{classdbServer_a7f82e2c74b5069edb94a41ae3656e0b0}} 
+\mbox{\hyperlink{classdbStatement}{db\+Statement}} $\ast$ {\bfseries find\+Statement} (\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$stmt, int stmt\+\_\+id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_a330914eeb495e4332d88cc0d2ebdca9a}\label{classdbServer_a330914eeb495e4332d88cc0d2ebdca9a}} 
+static void thread\+\_\+proc {\bfseries server\+Thread} (void $\ast$arg)
+\item 
+\mbox{\Hypertarget{classdbServer_a118487026e0c2800b9d778f40c46a496}\label{classdbServer_a118487026e0c2800b9d778f40c46a496}} 
+static void thread\+\_\+proc {\bfseries accept\+Local\+Thread} (void $\ast$arg)
+\item 
+\mbox{\Hypertarget{classdbServer_a1db40aa2f7337185a91a787eddeb2e64}\label{classdbServer_a1db40aa2f7337185a91a787eddeb2e64}} 
+static void thread\+\_\+proc {\bfseries accept\+Global\+Thread} (void $\ast$arg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_aa379176256f56a83d5cb03d7bfe69b8e}\label{classdbServer_aa379176256f56a83d5cb03d7bfe69b8e}} 
+\mbox{\hyperlink{classdbServer}{db\+Server}} $\ast$ {\bfseries next}
+\item 
+\mbox{\Hypertarget{classdbServer_a2b7c68340c776eacc05540f7e51779ed}\label{classdbServer_a2b7c68340c776eacc05540f7e51779ed}} 
+char $\ast$ {\bfseries U\+RL}
+\item 
+\mbox{\Hypertarget{classdbServer_a4ea0cb7ff8d838a2f327827d762466f1}\label{classdbServer_a4ea0cb7ff8d838a2f327827d762466f1}} 
+\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$ {\bfseries free\+List}
+\item 
+\mbox{\Hypertarget{classdbServer_a2c9c90e6fc956c8112c7345e5d79a2d5}\label{classdbServer_a2c9c90e6fc956c8112c7345e5d79a2d5}} 
+\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$ {\bfseries wait\+List}
+\item 
+\mbox{\Hypertarget{classdbServer_a55fb92ea15bbcc4963eaa72c3bd90a79}\label{classdbServer_a55fb92ea15bbcc4963eaa72c3bd90a79}} 
+\mbox{\hyperlink{classdbSession}{db\+Session}} $\ast$ {\bfseries active\+List}
+\item 
+\mbox{\Hypertarget{classdbServer_aa8b247d988ad2dc315228632a397de48}\label{classdbServer_aa8b247d988ad2dc315228632a397de48}} 
+int {\bfseries optimal\+Number\+Of\+Threads}
+\item 
+\mbox{\Hypertarget{classdbServer_ae0e629c05a260d1d649bc80f28b1e221}\label{classdbServer_ae0e629c05a260d1d649bc80f28b1e221}} 
+int {\bfseries n\+Active\+Threads}
+\item 
+\mbox{\Hypertarget{classdbServer_a569ac632bb5c7d716816fe29911b12cb}\label{classdbServer_a569ac632bb5c7d716816fe29911b12cb}} 
+int {\bfseries n\+Idle\+Threads}
+\item 
+\mbox{\Hypertarget{classdbServer_a700d3965028da7cdb39049c18e5373fb}\label{classdbServer_a700d3965028da7cdb39049c18e5373fb}} 
+int {\bfseries wait\+List\+Length}
+\item 
+\mbox{\Hypertarget{classdbServer_ab26f65082e3de9af48fd1b4ff3dfb1b3}\label{classdbServer_ab26f65082e3de9af48fd1b4ff3dfb1b3}} 
+bool {\bfseries cancel\+Wait}
+\item 
+\mbox{\Hypertarget{classdbServer_a2049d55a7bc90f753b57c433d990c0e5}\label{classdbServer_a2049d55a7bc90f753b57c433d990c0e5}} 
+bool {\bfseries cancel\+Accept}
+\item 
+\mbox{\Hypertarget{classdbServer_af2a7fbf2dd26abd68dc2d8e860d6375f}\label{classdbServer_af2a7fbf2dd26abd68dc2d8e860d6375f}} 
+bool {\bfseries cancel\+Session}
+\item 
+\mbox{\Hypertarget{classdbServer_a0fae8352fd553fe266494a06c7cc9d44}\label{classdbServer_a0fae8352fd553fe266494a06c7cc9d44}} 
+\mbox{\hyperlink{classdbMutex}{db\+Mutex}} {\bfseries mutex}
+\item 
+\mbox{\Hypertarget{classdbServer_ae5a3ddce681ba9c6afb5d49c024847ba}\label{classdbServer_ae5a3ddce681ba9c6afb5d49c024847ba}} 
+\mbox{\hyperlink{classdbLocalSemaphore}{db\+Local\+Semaphore}} {\bfseries go}
+\item 
+\mbox{\Hypertarget{classdbServer_a4c2a00ca369837104a1d7bbc8a4d076c}\label{classdbServer_a4c2a00ca369837104a1d7bbc8a4d076c}} 
+\mbox{\hyperlink{classdbLocalSemaphore}{db\+Local\+Semaphore}} {\bfseries done}
+\item 
+\mbox{\Hypertarget{classdbServer_af665fe7e207f5710e8bd02b88d542ca9}\label{classdbServer_af665fe7e207f5710e8bd02b88d542ca9}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries global\+Accept\+Sock}
+\item 
+\mbox{\Hypertarget{classdbServer_aec2bbc9ae9ebf5d409a6000b84f101e8}\label{classdbServer_aec2bbc9ae9ebf5d409a6000b84f101e8}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries local\+Accept\+Sock}
+\item 
+\mbox{\Hypertarget{classdbServer_a60439a4c546304f379fa397d9bb8024f}\label{classdbServer_a60439a4c546304f379fa397d9bb8024f}} 
+\mbox{\hyperlink{classdbThread}{db\+Thread}} {\bfseries local\+Accept\+Thread}
+\item 
+\mbox{\Hypertarget{classdbServer_a0af9aa382a9ffc866a7baa8a146152a0}\label{classdbServer_a0af9aa382a9ffc866a7baa8a146152a0}} 
+\mbox{\hyperlink{classdbThread}{db\+Thread}} {\bfseries global\+Accept\+Thread}
+\item 
+\mbox{\Hypertarget{classdbServer_aec14adab84090ae3a7f7b345c10a26f7}\label{classdbServer_aec14adab84090ae3a7f7b345c10a26f7}} 
+\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$ {\bfseries db}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbServer_a3fd734035b5e7da7c3f0bc3028cfa005}\label{classdbServer_a3fd734035b5e7da7c3f0bc3028cfa005}} 
+static \mbox{\hyperlink{classdbServer}{db\+Server}} $\ast$ {\bfseries chain}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/server.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/server.\+cpp\end{DoxyCompactItemize}

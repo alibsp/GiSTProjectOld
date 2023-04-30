@@ -1,0 +1,112 @@
+\hypertarget{classunix__socket}{}\doxysection{unix\+\_\+socket Class Reference}
+\label{classunix__socket}\index{unix\_socket@{unix\_socket}}
+
+
+Inheritance diagram for unix\+\_\+socket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classunix__socket__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for unix\+\_\+socket\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classunix__socket__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunix__socket_aa34e943a9b74277d09b5e66c8df3ae15}\label{classunix__socket_aa34e943a9b74277d09b5e66c8df3ae15}} 
+bool {\bfseries open} (int listen\+\_\+queue\+\_\+size)
+\item 
+\mbox{\Hypertarget{classunix__socket_a2b3f0f18c375563fa2a5043cfd61aa17}\label{classunix__socket_a2b3f0f18c375563fa2a5043cfd61aa17}} 
+bool {\bfseries connect} (int max\+\_\+attempts, time\+\_\+t timeout)
+\item 
+\mbox{\Hypertarget{classunix__socket_a95732877b0ed87bcb0518801751ed9b2}\label{classunix__socket_a95732877b0ed87bcb0518801751ed9b2}} 
+int {\bfseries read} (void $\ast$buf, size\+\_\+t min\+\_\+size, size\+\_\+t max\+\_\+size, time\+\_\+t timeout)
+\item 
+\mbox{\Hypertarget{classunix__socket_ae6e61388e19946bf0fb2975d892a9479}\label{classunix__socket_ae6e61388e19946bf0fb2975d892a9479}} 
+bool {\bfseries write} (void const $\ast$buf, size\+\_\+t size, time\+\_\+t timeout)
+\item 
+\mbox{\Hypertarget{classunix__socket_ad2611f93d79a63872bb7b1756f3e0cdc}\label{classunix__socket_ad2611f93d79a63872bb7b1756f3e0cdc}} 
+bool {\bfseries is\+\_\+ok} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_a6a0efa62536a2f2f63bbf59919c03796}\label{classunix__socket_a6a0efa62536a2f2f63bbf59919c03796}} 
+bool {\bfseries shutdown} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_a3e8e6b04586b8cb1cec371ba517625db}\label{classunix__socket_a3e8e6b04586b8cb1cec371ba517625db}} 
+bool {\bfseries close} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_a62006bdc81c02d6d078a93a96790eccb}\label{classunix__socket_a62006bdc81c02d6d078a93a96790eccb}} 
+char $\ast$ {\bfseries get\+\_\+peer\+\_\+name} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_ac98db9dd4c0e31db76b5e50e34077e57}\label{classunix__socket_ac98db9dd4c0e31db76b5e50e34077e57}} 
+void {\bfseries get\+\_\+error\+\_\+text} (char $\ast$buf, size\+\_\+t buf\+\_\+size)
+\item 
+\mbox{\Hypertarget{classunix__socket_ab2e79f2d14c7c9542967a7b195106dae}\label{classunix__socket_ab2e79f2d14c7c9542967a7b195106dae}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries accept} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_ae4b7337a0b2acbabc26c100f4388c441}\label{classunix__socket_ae4b7337a0b2acbabc26c100f4388c441}} 
+bool {\bfseries cancel\+\_\+accept} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_a506777c87fe232a99b916c87ecb891d1}\label{classunix__socket_a506777c87fe232a99b916c87ecb891d1}} 
+socket\+\_\+handle\+\_\+t {\bfseries get\+\_\+handle} ()
+\item 
+\mbox{\Hypertarget{classunix__socket_ae348cff8c5138dae908d1b8cbd3ebc95}\label{classunix__socket_ae348cff8c5138dae908d1b8cbd3ebc95}} 
+{\bfseries unix\+\_\+socket} (const char $\ast$address, socket\+\_\+domain domain)
+\item 
+\mbox{\Hypertarget{classunix__socket_a66e8c38aaa8c43f6756296fe769e7294}\label{classunix__socket_a66e8c38aaa8c43f6756296fe769e7294}} 
+{\bfseries unix\+\_\+socket} (int new\+\_\+fd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunix__socket_a4fd994eaa0232bad959cfe6eb5959b36}\label{classunix__socket_a4fd994eaa0232bad959cfe6eb5959b36}} 
+static char $\ast$ {\bfseries unix\+\_\+socket\+\_\+dir} = \char`\"{}/tmp/\char`\"{}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunix__socket_a6e3cfe1725aed71aee98d9a6f283126f}\label{classunix__socket_a6e3cfe1725aed71aee98d9a6f283126f}} 
+enum {\bfseries error\+\_\+codes} \{ \newline
+{\bfseries ok} = 0, 
+{\bfseries not\+\_\+opened} = -\/1, 
+{\bfseries bad\+\_\+address} = -\/2, 
+{\bfseries connection\+\_\+failed} = -\/3, 
+\newline
+{\bfseries broken\+\_\+pipe} = -\/4, 
+{\bfseries invalid\+\_\+access\+\_\+mode} = -\/5
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classunix__socket_a47769aa9f4eefb72a3910630e3958b68}\label{classunix__socket_a47769aa9f4eefb72a3910630e3958b68}} 
+int {\bfseries fd}
+\item 
+\mbox{\Hypertarget{classunix__socket_ab1f37cc7880e1c6ea0f3695e42582e22}\label{classunix__socket_ab1f37cc7880e1c6ea0f3695e42582e22}} 
+int {\bfseries errcode}
+\item 
+\mbox{\Hypertarget{classunix__socket_aacf48ce47b127aa3febc2eb505d45dc4}\label{classunix__socket_aacf48ce47b127aa3febc2eb505d45dc4}} 
+char $\ast$ {\bfseries address}
+\item 
+\mbox{\Hypertarget{classunix__socket_a35bce2b97a761c6b1d8aa24aafa1e5fc}\label{classunix__socket_a35bce2b97a761c6b1d8aa24aafa1e5fc}} 
+socket\+\_\+domain {\bfseries domain}
+\item 
+\mbox{\Hypertarget{classunix__socket_a8ee795814a04cf984976c4d62388383b}\label{classunix__socket_a8ee795814a04cf984976c4d62388383b}} 
+bool {\bfseries create\+\_\+file}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/unisock.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/unisock.\+cpp\end{DoxyCompactItemize}

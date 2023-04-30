@@ -1,0 +1,202 @@
+\hypertarget{classdbTransactionLogger}{}\doxysection{db\+Transaction\+Logger Class Reference}
+\label{classdbTransactionLogger}\index{dbTransactionLogger@{dbTransactionLogger}}
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+
+
+Inheritance diagram for db\+Transaction\+Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=241pt]{classdbTransactionLogger__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Transaction\+Logger\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=225pt]{classdbTransactionLogger__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual bool \mbox{\hyperlink{classdbTransactionLogger_ad87ad43273b0dcc60a15d3484708f55f}{insert}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, oid\+\_\+t oid, \mbox{\hyperlink{classdbRecord}{db\+Record}} const $\ast$dbs\+Obj, void const $\ast$app\+Obj)=0
+\item 
+virtual bool \mbox{\hyperlink{classdbTransactionLogger_a8cc5d10ace1087296834a472004c3c0e}{update}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, oid\+\_\+t oid, \mbox{\hyperlink{classdbRecord}{db\+Record}} const $\ast$dbs\+Obj, void const $\ast$app\+Obj)=0
+\item 
+virtual bool \mbox{\hyperlink{classdbTransactionLogger_a09b245506cd96eb119852b6e95dcc56a}{remove}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, oid\+\_\+t oid)=0
+\item 
+virtual bool \mbox{\hyperlink{classdbTransactionLogger_a355b94103283d578b21f065cd6c050a7}{commit\+Phase1}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classdbTransactionLogger_aafa9ac881c949f7eb0f2b29b49544a06}{commit\+Phase2}} ()=0
+\item 
+virtual void \mbox{\hyperlink{classdbTransactionLogger_aa5aade20974cba85510abde9643d1331}{rollback}} ()=0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Abstract interface for logging transaction 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbTransactionLogger_a355b94103283d578b21f065cd6c050a7}\label{classdbTransactionLogger_a355b94103283d578b21f065cd6c050a7}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!commitPhase1@{commitPhase1}}
+\index{commitPhase1@{commitPhase1}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{commitPhase1()}{commitPhase1()}}
+{\footnotesize\ttfamily virtual bool db\+Transaction\+Logger\+::commit\+Phase1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Perform first phase of transaction commit \begin{DoxyReturn}{Returns}
+true if commit is approved, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_aac4ae99d0dbde124b75c1202d6bebb8c}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_a355b94103283d578b21f065cd6c050a7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTransactionLogger_aafa9ac881c949f7eb0f2b29b49544a06}\label{classdbTransactionLogger_aafa9ac881c949f7eb0f2b29b49544a06}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!commitPhase2@{commitPhase2}}
+\index{commitPhase2@{commitPhase2}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{commitPhase2()}{commitPhase2()}}
+{\footnotesize\ttfamily virtual void db\+Transaction\+Logger\+::commit\+Phase2 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Perform second phase of transaction commit 
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_a43ca559da6edb539a7defef596ceaf97}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_aafa9ac881c949f7eb0f2b29b49544a06_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTransactionLogger_ad87ad43273b0dcc60a15d3484708f55f}\label{classdbTransactionLogger_ad87ad43273b0dcc60a15d3484708f55f}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!insert@{insert}}
+\index{insert@{insert}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily virtual bool db\+Transaction\+Logger\+::insert (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{oid\+\_\+t}]{oid,  }\item[{\mbox{\hyperlink{classdbRecord}{db\+Record}} const $\ast$}]{dbs\+Obj,  }\item[{void const $\ast$}]{app\+Obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Insert new object 
+\begin{DoxyParams}{Parameters}
+{\em table} & descriptor of table in which object is inserted \\
+\hline
+{\em oid} & object identifier \\
+\hline
+{\em dbs\+Obj} & database (packed) object body \\
+\hline
+{\em app\+Obj} & application object body \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if insert is approved, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_a8d8d1a8fbc91f89620e483d8cbc098ae}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_ad87ad43273b0dcc60a15d3484708f55f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTransactionLogger_a09b245506cd96eb119852b6e95dcc56a}\label{classdbTransactionLogger_a09b245506cd96eb119852b6e95dcc56a}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!remove@{remove}}
+\index{remove@{remove}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily virtual bool db\+Transaction\+Logger\+::remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Delete object 
+\begin{DoxyParams}{Parameters}
+{\em table} & descriptor of table \\
+\hline
+{\em oid} & object identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if remove is approved, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_ad9b091cc534a14276d2d02c817846a8e}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_a09b245506cd96eb119852b6e95dcc56a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTransactionLogger_aa5aade20974cba85510abde9643d1331}\label{classdbTransactionLogger_aa5aade20974cba85510abde9643d1331}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!rollback@{rollback}}
+\index{rollback@{rollback}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily virtual void db\+Transaction\+Logger\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Rollback transaction 
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_abcfc095aed8b5bf584cc0209b8d4814b}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_aa5aade20974cba85510abde9643d1331_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTransactionLogger_a8cc5d10ace1087296834a472004c3c0e}\label{classdbTransactionLogger_a8cc5d10ace1087296834a472004c3c0e}} 
+\index{dbTransactionLogger@{dbTransactionLogger}!update@{update}}
+\index{update@{update}!dbTransactionLogger@{dbTransactionLogger}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily virtual bool db\+Transaction\+Logger\+::update (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{oid\+\_\+t}]{oid,  }\item[{\mbox{\hyperlink{classdbRecord}{db\+Record}} const $\ast$}]{dbs\+Obj,  }\item[{void const $\ast$}]{app\+Obj }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+Update object 
+\begin{DoxyParams}{Parameters}
+{\em table} & descriptor of table \\
+\hline
+{\em oid} & object identifier \\
+\hline
+{\em dbs\+Obj} & database (packed) object body \\
+\hline
+{\em app\+Obj} & application object body \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if update is approved, false otherwise 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classdbFileTransactionLogger_a87a535fd74f3c2f6b7b054f0d947eef9}{db\+File\+Transaction\+Logger}}.
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTransactionLogger_a8cc5d10ace1087296834a472004c3c0e_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/database.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/database.\+cpp\end{DoxyCompactItemize}

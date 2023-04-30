@@ -1,0 +1,71 @@
+\hypertarget{classdbRtree}{}\doxysection{db\+Rtree Class Reference}
+\label{classdbRtree}\index{dbRtree@{dbRtree}}
+
+
+Collaboration diagram for db\+Rtree\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{classdbRtree__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtree_a132183e355772e3f53528767ec9c0f2f}\label{classdbRtree_a132183e355772e3f53528767ec9c0f2f}} 
+enum {\bfseries search\+Op} \{ \newline
+{\bfseries E\+Q\+U\+AL}, 
+{\bfseries O\+V\+E\+R\+L\+A\+PS}, 
+{\bfseries S\+U\+P\+E\+R\+S\+ET}, 
+{\bfseries P\+R\+O\+P\+E\+R\+\_\+\+S\+U\+P\+E\+R\+S\+ET}, 
+\newline
+{\bfseries S\+U\+B\+S\+ET}, 
+{\bfseries P\+R\+O\+P\+E\+R\+\_\+\+S\+U\+B\+S\+ET}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtree_a860946789bb9c7de2897568ed50a5dbd}\label{classdbRtree_a860946789bb9c7de2897568ed50a5dbd}} 
+static oid\+\_\+t {\bfseries allocate} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db)
+\item 
+\mbox{\Hypertarget{classdbRtree_ae3cf1ea34268ac9da9171330b5cd5d6a}\label{classdbRtree_ae3cf1ea34268ac9da9171330b5cd5d6a}} 
+static bool {\bfseries find} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc)
+\item 
+\mbox{\Hypertarget{classdbRtree_a8accd49713801916747946cc2660808d}\label{classdbRtree_a8accd49713801916747946cc2660808d}} 
+static void {\bfseries insert} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, oid\+\_\+t record\+Id, int offs)
+\item 
+\mbox{\Hypertarget{classdbRtree_a8c2cad70ebaadf8001bf9d46b913e2ce}\label{classdbRtree_a8c2cad70ebaadf8001bf9d46b913e2ce}} 
+static void {\bfseries insert} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, oid\+\_\+t record\+Id, \mbox{\hyperlink{classrectangle}{rectangle}} const \&r)
+\item 
+\mbox{\Hypertarget{classdbRtree_adbdf61cdd7d3dd51664de91d371ffb67}\label{classdbRtree_adbdf61cdd7d3dd51664de91d371ffb67}} 
+static void {\bfseries remove} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, oid\+\_\+t record\+Id, int offs)
+\item 
+\mbox{\Hypertarget{classdbRtree_a42ef6616259e5eb856bccf6f711c92d6}\label{classdbRtree_a42ef6616259e5eb856bccf6f711c92d6}} 
+static void {\bfseries purge} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id)
+\item 
+\mbox{\Hypertarget{classdbRtree_acf1924195dbae4246d768aa5cf5972f0}\label{classdbRtree_acf1924195dbae4246d768aa5cf5972f0}} 
+static void {\bfseries drop} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id)
+\item 
+\mbox{\Hypertarget{classdbRtree_a2da673fb09b0c33a9a765394cf278185}\label{classdbRtree_a2da673fb09b0c33a9a765394cf278185}} 
+static void {\bfseries cover} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, \mbox{\hyperlink{classrectangle}{rectangle}} \&r)
+\item 
+\mbox{\Hypertarget{classdbRtree_a2de61fbaedda8c89652535dc42e77b7c}\label{classdbRtree_a2de61fbaedda8c89652535dc42e77b7c}} 
+static void {\bfseries traverse} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t tree\+Id, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtree_a2d7a987b1ca645a9a628acbddd80858e}\label{classdbRtree_a2d7a987b1ca645a9a628acbddd80858e}} 
+int4 {\bfseries height}
+\item 
+\mbox{\Hypertarget{classdbRtree_a9fe92025729df2a89fb7fd5ef0ad8b33}\label{classdbRtree_a9fe92025729df2a89fb7fd5ef0ad8b33}} 
+oid\+\_\+t {\bfseries root}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/rtree.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/rtree.\+cpp\end{DoxyCompactItemize}

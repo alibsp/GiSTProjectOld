@@ -1,0 +1,96 @@
+\hypertarget{classreplication__socket__t}{}\doxysection{replication\+\_\+socket\+\_\+t Class Reference}
+\label{classreplication__socket__t}\index{replication\_socket\_t@{replication\_socket\_t}}
+
+
+Inheritance diagram for replication\+\_\+socket\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classreplication__socket__t__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for replication\+\_\+socket\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classreplication__socket__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_acc6461fc35da397fb0a3f054f2374a51}\label{classreplication__socket__t_acc6461fc35da397fb0a3f054f2374a51}} 
+enum \{ {\bfseries Max\+Sockets} = 8
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a8801afdc5b18b45d1a4425b82f84aee4}\label{classreplication__socket__t_a8801afdc5b18b45d1a4425b82f84aee4}} 
+virtual int {\bfseries read} (void $\ast$buf, size\+\_\+t min\+\_\+size, size\+\_\+t max\+\_\+size, time\+\_\+t timeout)
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a6f485bb51a42e5419393251512b46ad0}\label{classreplication__socket__t_a6f485bb51a42e5419393251512b46ad0}} 
+virtual bool {\bfseries write} (void const $\ast$buf, size\+\_\+t size, time\+\_\+t timeout)
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_afd532d449b19fc2b9eaa141e6544bf0b}\label{classreplication__socket__t_afd532d449b19fc2b9eaa141e6544bf0b}} 
+virtual bool {\bfseries is\+\_\+ok} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a0101af0f8da8d224fc8c664b2f8f07f5}\label{classreplication__socket__t_a0101af0f8da8d224fc8c664b2f8f07f5}} 
+virtual void {\bfseries get\+\_\+error\+\_\+text} (char $\ast$buf, size\+\_\+t buf\+\_\+size)
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a96b6e3bc9ffb9625a9306d78d95e52f2}\label{classreplication__socket__t_a96b6e3bc9ffb9625a9306d78d95e52f2}} 
+virtual bool {\bfseries shutdown} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a4d5893c0007173707563b688693240cc}\label{classreplication__socket__t_a4d5893c0007173707563b688693240cc}} 
+virtual bool {\bfseries close} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a5ec1dcdc1d144040b96a6c7d2c07514c}\label{classreplication__socket__t_a5ec1dcdc1d144040b96a6c7d2c07514c}} 
+virtual void {\bfseries handle\+Error} (int socket, const char $\ast$operation, const char $\ast$error)
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a8274716906289e183db81cf3efbb8e52}\label{classreplication__socket__t_a8274716906289e183db81cf3efbb8e52}} 
+virtual \mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries accept} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a21e8816b155346e6a9e9476979b2a90a}\label{classreplication__socket__t_a21e8816b155346e6a9e9476979b2a90a}} 
+virtual bool {\bfseries cancel\+\_\+accept} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_ac7b6004fd9876f473aa6ddf800438433}\label{classreplication__socket__t_ac7b6004fd9876f473aa6ddf800438433}} 
+virtual char $\ast$ {\bfseries get\+\_\+peer\+\_\+name} ()
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a913c8682f47ce5a09e4b243eeaf86230}\label{classreplication__socket__t_a913c8682f47ce5a09e4b243eeaf86230}} 
+virtual socket\+\_\+handle\+\_\+t {\bfseries get\+\_\+handle} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a2f404f93fa69a8a45f2f55f6e628493c}\label{classreplication__socket__t_a2f404f93fa69a8a45f2f55f6e628493c}} 
+static \mbox{\hyperlink{classreplication__socket__t}{replication\+\_\+socket\+\_\+t}} $\ast$ {\bfseries connect} (char const $\ast$addresses\mbox{[}$\,$\mbox{]}, int n\+\_\+addresses, int max\+\_\+attempts=D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+M\+A\+X\+\_\+\+A\+T\+T\+E\+M\+P\+TS, time\+\_\+t timeout=D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+E\+C\+O\+N\+N\+E\+C\+T\+\_\+\+T\+I\+M\+E\+O\+UT)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_add933ee9439d723cce19c9b3fa9688e8}\label{classreplication__socket__t_add933ee9439d723cce19c9b3fa9688e8}} 
+{\bfseries replication\+\_\+socket\+\_\+t} (char const $\ast$addresses\mbox{[}$\,$\mbox{]}, int n\+\_\+adresses, int max\+\_\+attempts, time\+\_\+t timeout)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a6a7369b9739763f22bbce7b2d03c54e5}\label{classreplication__socket__t_a6a7369b9739763f22bbce7b2d03c54e5}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$$\ast$ {\bfseries sockets}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_a2dea1bcf4d1826b221ec3bd1ff5f634a}\label{classreplication__socket__t_a2dea1bcf4d1826b221ec3bd1ff5f634a}} 
+int {\bfseries n\+\_\+sockets}
+\item 
+\mbox{\Hypertarget{classreplication__socket__t_ad5b4a57824d242ed2a8713a05edf9ef0}\label{classreplication__socket__t_ad5b4a57824d242ed2a8713a05edf9ef0}} 
+bool {\bfseries succeed}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/repsock.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/repsock.\+cpp\end{DoxyCompactItemize}

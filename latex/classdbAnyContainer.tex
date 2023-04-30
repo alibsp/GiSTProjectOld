@@ -1,0 +1,75 @@
+\hypertarget{classdbAnyContainer}{}\doxysection{db\+Any\+Container Class Reference}
+\label{classdbAnyContainer}\index{dbAnyContainer@{dbAnyContainer}}
+
+
+{\ttfamily \#include $<$container.\+h$>$}
+
+
+
+Inheritance diagram for db\+Any\+Container\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classdbAnyContainer__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Any\+Container\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyContainer__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a6fe0a82336969884f2c6713d241c92a7}\label{classdbAnyContainer_a6fe0a82336969884f2c6713d241c92a7}} 
+void {\bfseries create} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_af8b87ab52dfe4c99d890c43b72385abe}\label{classdbAnyContainer_af8b87ab52dfe4c99d890c43b72385abe}} 
+void {\bfseries purge} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a4b9f0243e2fa68d17f487cdbc0fafdc5}\label{classdbAnyContainer_a4b9f0243e2fa68d17f487cdbc0fafdc5}} 
+void {\bfseries deallocate} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a50297e3521f931164d9cea3b412e42c3}\label{classdbAnyContainer_a50297e3521f931164d9cea3b412e42c3}} 
+void {\bfseries add} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a8bb120ac92692597a12c2566a0d9d9e6}\label{classdbAnyContainer_a8bb120ac92692597a12c2566a0d9d9e6}} 
+void {\bfseries remove} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_aaefe30f1dc5b218339b89d25d8ac4eaf}\label{classdbAnyContainer_aaefe30f1dc5b218339b89d25d8ac4eaf}} 
+int {\bfseries search} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} \&cursor, void const $\ast$from, void const $\ast$till)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a675f2240d5b71e41554d47afe56b35cd}\label{classdbAnyContainer_a675f2240d5b71e41554d47afe56b35cd}} 
+int {\bfseries prefix\+Search} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} \&cursor, char const $\ast$key)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_ae33a973e8a3af76ffb4520078d1c6169}\label{classdbAnyContainer_ae33a973e8a3af76ffb4520078d1c6169}} 
+int {\bfseries prefix\+Search} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} \&cursor, wchar\+\_\+t const $\ast$key)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a2da634a708c886ab7fc7ed5095f9dddc}\label{classdbAnyContainer_a2da634a708c886ab7fc7ed5095f9dddc}} 
+int {\bfseries spatial\+Search} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} \&cursor, \mbox{\hyperlink{classrectangle}{rectangle}} const \&r, Spatial\+Search\+Type type)
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a9e4b17f0d82b1fe90c27ae3ed8c9e0df}\label{classdbAnyContainer_a9e4b17f0d82b1fe90c27ae3ed8c9e0df}} 
+{\bfseries db\+Any\+Container} (char const $\ast$field\+Name, \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} \&desc)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyContainer_a9c42710f8a5bcc90792b059a32eaeb9b}\label{classdbAnyContainer_a9c42710f8a5bcc90792b059a32eaeb9b}} 
+\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$ {\bfseries fd}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Base class for all containers. Container are implemented using T-\/\+Tree 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/container.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/container.\+cpp\end{DoxyCompactItemize}

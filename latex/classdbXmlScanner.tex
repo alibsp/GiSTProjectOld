@@ -1,0 +1,74 @@
+\hypertarget{classdbXmlScanner}{}\doxysection{db\+Xml\+Scanner Class Reference}
+\label{classdbXmlScanner}\index{dbXmlScanner@{dbXmlScanner}}
+
+
+Collaboration diagram for db\+Xml\+Scanner\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classdbXmlScanner__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a5d92783373be773fe9e23c7d58801408}\label{classdbXmlScanner_a5d92783373be773fe9e23c7d58801408}} 
+enum \{ {\bfseries Max\+Ident\+Size} = 256
+ \}
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_ac23f5010d1aef6d69a40aae689ad33cf}\label{classdbXmlScanner_ac23f5010d1aef6d69a40aae689ad33cf}} 
+enum {\bfseries token} \{ \newline
+{\bfseries xml\+\_\+ident}, 
+{\bfseries xml\+\_\+sconst}, 
+{\bfseries xml\+\_\+iconst}, 
+{\bfseries xml\+\_\+fconst}, 
+\newline
+{\bfseries xml\+\_\+lt}, 
+{\bfseries xml\+\_\+gt}, 
+{\bfseries xml\+\_\+lts}, 
+{\bfseries xml\+\_\+gts}, 
+\newline
+{\bfseries xml\+\_\+eq}, 
+{\bfseries xml\+\_\+eof}, 
+{\bfseries xml\+\_\+error}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_acccdadafd780a5d04ef9a450f2aaee4e}\label{classdbXmlScanner_acccdadafd780a5d04ef9a450f2aaee4e}} 
+{\bfseries db\+Xml\+Scanner} (F\+I\+LE $\ast$f)
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a06de11db6539128f8b75b53f728bf010}\label{classdbXmlScanner_a06de11db6539128f8b75b53f728bf010}} 
+token {\bfseries scan} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a370673cad634b1f9b475328bad5c63f2}\label{classdbXmlScanner_a370673cad634b1f9b475328bad5c63f2}} 
+void {\bfseries warning} (char const $\ast$msg)
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_aae5d5ca24c4827aa03a5f2e3ae145d4c}\label{classdbXmlScanner_aae5d5ca24c4827aa03a5f2e3ae145d4c}} 
+char $\ast$ {\bfseries get\+String} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a3e104238954b3312cc6365d999f7c1f7}\label{classdbXmlScanner_a3e104238954b3312cc6365d999f7c1f7}} 
+char $\ast$ {\bfseries get\+Identifier} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a047d186092da13bbe5f2eabd2399d557}\label{classdbXmlScanner_a047d186092da13bbe5f2eabd2399d557}} 
+size\+\_\+t {\bfseries get\+String\+Length} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_a951424cff6a8e9e17b29ad7aa77f2af8}\label{classdbXmlScanner_a951424cff6a8e9e17b29ad7aa77f2af8}} 
+db\+\_\+int8 {\bfseries get\+Int} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_ae3d6b4dc78e60cbdaad63d8499093925}\label{classdbXmlScanner_ae3d6b4dc78e60cbdaad63d8499093925}} 
+double {\bfseries get\+Real} ()
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_ad1f8e96bb1db9ebcdc5cdf2499ba0ab9}\label{classdbXmlScanner_ad1f8e96bb1db9ebcdc5cdf2499ba0ab9}} 
+bool {\bfseries expect} (int source\+Pos, token expected)
+\item 
+\mbox{\Hypertarget{classdbXmlScanner_afa757f016f464e5e8096c7e1a1ca1823}\label{classdbXmlScanner_afa757f016f464e5e8096c7e1a1ca1823}} 
+bool {\bfseries expect} (int source\+Pos, char $\ast$expected)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/xml.\+cpp\end{DoxyCompactItemize}

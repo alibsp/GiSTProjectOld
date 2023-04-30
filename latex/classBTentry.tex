@@ -1,0 +1,83 @@
+\hypertarget{classBTentry}{}\doxysection{B\+Tentry Class Reference}
+\label{classBTentry}\index{BTentry@{BTentry}}
+
+
+Inheritance diagram for B\+Tentry\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBTentry__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for B\+Tentry\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classBTentry__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBTentry_a39b8cf721db999afa416096c8555715c}\label{classBTentry_a39b8cf721db999afa416096c8555715c}} 
+{\bfseries B\+Tentry} (\mbox{\hyperlink{classBTintkey}{B\+Tintkey}} k, Gi\+S\+Tpage p)
+\item 
+\mbox{\Hypertarget{classBTentry_a805c41d7b0987fc4eec96813d1e6ac2a}\label{classBTentry_a805c41d7b0987fc4eec96813d1e6ac2a}} 
+{\bfseries B\+Tentry} (\mbox{\hyperlink{classBTkey}{B\+Tkey}} val, Gi\+S\+Tpage p)
+\item 
+\mbox{\Hypertarget{classBTentry_a5516d16a1e151b03c7aeb86a2e094f84}\label{classBTentry_a5516d16a1e151b03c7aeb86a2e094f84}} 
+{\bfseries B\+Tentry} (const \mbox{\hyperlink{classBTentry}{B\+Tentry}} \&e)
+\item 
+\mbox{\Hypertarget{classBTentry_ade1543dfdd48b46c017df8732f849d53}\label{classBTentry_ade1543dfdd48b46c017df8732f849d53}} 
+Gi\+S\+Tobjid {\bfseries IsA} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a9e2e898a716850340e2b360ca60f87e7}\label{classBTentry_a9e2e898a716850340e2b360ca60f87e7}} 
+\mbox{\hyperlink{classGiSTobject}{Gi\+S\+Tobject}} $\ast$ {\bfseries Copy} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a618d1e1da0c64b652dde8478f14492b8}\label{classBTentry_a618d1e1da0c64b652dde8478f14492b8}} 
+int {\bfseries Is\+Equal} (const \mbox{\hyperlink{classGiSTobject}{Gi\+S\+Tobject}} \&obj) const
+\item 
+\mbox{\Hypertarget{classBTentry_a801df41717f8d7ac9c9d46b759420665}\label{classBTentry_a801df41717f8d7ac9c9d46b759420665}} 
+\mbox{\hyperlink{classGiSTpenalty}{Gi\+S\+Tpenalty}} $\ast$ {\bfseries Penalty} (const \mbox{\hyperlink{classGiSTentry}{Gi\+S\+Tentry}} \&new\+Entry) const
+\item 
+\mbox{\Hypertarget{classBTentry_af50be0d11c559aa9a14c6734a342294f}\label{classBTentry_af50be0d11c559aa9a14c6734a342294f}} 
+\mbox{\hyperlink{classGiSTcompressedEntry}{Gi\+S\+Tcompressed\+Entry}} {\bfseries Compress} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a5e8cf528e3b3f458de03060eadf45cbe}\label{classBTentry_a5e8cf528e3b3f458de03060eadf45cbe}} 
+void {\bfseries Decompress} (const \mbox{\hyperlink{classGiSTcompressedEntry}{Gi\+S\+Tcompressed\+Entry}} entry)
+\item 
+\mbox{\Hypertarget{classBTentry_ad939bc63236f2b93f458f2f3564d425d}\label{classBTentry_ad939bc63236f2b93f458f2f3564d425d}} 
+int {\bfseries Compressed\+Length} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a0aba69d6f460467006b08c6053a4be09}\label{classBTentry_a0aba69d6f460467006b08c6053a4be09}} 
+const \mbox{\hyperlink{classBTkey}{B\+Tkey}} \& {\bfseries Lower\+Bound} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a327772abaebaf3e1502abc70287adf22}\label{classBTentry_a327772abaebaf3e1502abc70287adf22}} 
+const \mbox{\hyperlink{classBTkey}{B\+Tkey}} \& {\bfseries Upper\+Bound} () const
+\item 
+\mbox{\Hypertarget{classBTentry_a2b88d3064050dc5db973227cd5cb02cf}\label{classBTentry_a2b88d3064050dc5db973227cd5cb02cf}} 
+void {\bfseries Set\+Lower\+Bound} (const \mbox{\hyperlink{classBTkey}{B\+Tkey}} \&k)
+\item 
+\mbox{\Hypertarget{classBTentry_a57de5b99eaccf8a45351091285f1ee7b}\label{classBTentry_a57de5b99eaccf8a45351091285f1ee7b}} 
+void {\bfseries Set\+Lower\+Bound} (const char $\ast$c, const int l)
+\item 
+\mbox{\Hypertarget{classBTentry_ab120a0dc69cc1dc29ec8702a52fbec23}\label{classBTentry_ab120a0dc69cc1dc29ec8702a52fbec23}} 
+void {\bfseries Set\+Upper\+Bound} (const \mbox{\hyperlink{classBTkey}{B\+Tkey}} \&k)
+\item 
+\mbox{\Hypertarget{classBTentry_addf5c6666f01179e84ac77873286148e}\label{classBTentry_addf5c6666f01179e84ac77873286148e}} 
+void {\bfseries Set\+Upper\+Bound} (const char $\ast$c, const int l)
+\item 
+\mbox{\Hypertarget{classBTentry_af05a2a076e3b8ba76d79abb2737ef3c9}\label{classBTentry_af05a2a076e3b8ba76d79abb2737ef3c9}} 
+int {\bfseries Compare} (const \mbox{\hyperlink{classGiSTentry}{Gi\+S\+Tentry}} \&entry) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/\+Gi\+S\+T/\+B\+Tree/B\+Tentry.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/\+Gi\+S\+T/\+B\+Tree/B\+Tentry.\+cpp\end{DoxyCompactItemize}

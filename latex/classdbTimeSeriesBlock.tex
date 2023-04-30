@@ -1,0 +1,100 @@
+\hypertarget{classdbTimeSeriesBlock}{}\doxysection{db\+Time\+Series\+Block$<$ T $>$ Class Template Reference}
+\label{classdbTimeSeriesBlock}\index{dbTimeSeriesBlock$<$ T $>$@{dbTimeSeriesBlock$<$ T $>$}}
+
+
+{\ttfamily \#include $<$timeseries.\+h$>$}
+
+
+
+Collaboration diagram for db\+Time\+Series\+Block$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classdbTimeSeriesBlock__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbTimeSeriesBlock_a8d63f4d4868300bf0fc5e6f60fe3bb72}\label{classdbTimeSeriesBlock_a8d63f4d4868300bf0fc5e6f60fe3bb72}} 
+{\bfseries T\+Y\+P\+E\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+OR} ((K\+EY(block\+Id, I\+N\+D\+E\+X\+ED), F\+I\+E\+LD(used), F\+I\+E\+LD(elements)))
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbTimeSeriesBlock_ab1569f7e7d2da3c64ce5ba3201244752}\label{classdbTimeSeriesBlock_ab1569f7e7d2da3c64ce5ba3201244752}} 
+db\+\_\+int8 {\bfseries block\+Id}
+\item 
+\mbox{\Hypertarget{classdbTimeSeriesBlock_a72e52bf66a39426fc970c21f56ad03c4}\label{classdbTimeSeriesBlock_a72e52bf66a39426fc970c21f56ad03c4}} 
+db\+\_\+int4 {\bfseries used}
+\item 
+\mbox{\Hypertarget{classdbTimeSeriesBlock_a106c82d468638fa77aa4efd679648655}\label{classdbTimeSeriesBlock_a106c82d468638fa77aa4efd679648655}} 
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$ {\bfseries elements}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class db\+Time\+Series\+Block$<$ T $>$}
+
+Time series block contaning array of elements. Grouping several elements in one block (record) reduce space overhead and increase processing speed.~\newline
+ {\bfseries{Attention!}} This class is not serialized, so it is can be accessed only by one thread
+
+{\itshape You are defining your own time series class, for example\+:} 
+\begin{DoxyPre}
+class Stock \{
+  public:
+    char const* name;
+    TYPE\_DESCRIPTOR((KEY(name, INDEXED)));
+\};\end{DoxyPre}
+
+
+
+\begin{DoxyPre}class Quote \{
+  public:
+    int4        tickerDate;
+    real4       bid;
+    int4        bidSize;
+    real4       ask;
+    int4        askSize;\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    time\_t time() const \{ return tickerDate; \} // this method should be defined\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    TYPE\_DESCRIPTOR((FIELD(tickerDate), FIELD(bid), FIELD(bidSize), FIELD(ask), FIELD(askSize)));
+\};
+typedef dbTimeSeriesBlock<Quote>  DailyBlock;
+REGISTER\_TEMPLATE(DailyBlock);
+REGISTER(Stock);
+\end{DoxyPre}
+ {\itshape Now you can work with time series objects in the followin way\+:} 
+\begin{DoxyPre}
+\mbox{\hyperlink{classdbDatabase}{dbDatabase}} db;
+if (db.open("mydatabase.dbs")) \{
+    \mbox{\hyperlink{classdbTimeSeriesProcessor}{dbTimeSeriesProcessor}}<Quote> proc(db, MIN\_ELEMENTS\_IN\_BLOCK,MAX\_ELEMENTS\_IN\_BLOCK);
+    Quote quote;
+    // initialize quote
+    Stock stock;
+    stock.name = "AAD";
+    oid\_t stockId = insert(stock).getOid();
+    proc.add(stockId, quote); // add new element in time series\end{DoxyPre}
+
+
+
+\begin{DoxyPre}    Quote quoteBuf[MAX\_QUOTES];
+    // select quotes for the specified interval
+    int n = proc.getInterval(stockId, fromDate, tillDate, quoteBuf, MAX\_QUOTES);
+    for (int i = 0; i < n; i++) \{
+        printf("bid=d ask=\%d\(\backslash\)n", quoteBuf[i].bid, quoteBuf[i].ask);
+    \}
+\}  
+\end{DoxyPre}
+ 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/timeseries.\+h\end{DoxyCompactItemize}

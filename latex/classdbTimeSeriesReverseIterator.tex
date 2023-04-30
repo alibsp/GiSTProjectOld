@@ -1,0 +1,122 @@
+\hypertarget{classdbTimeSeriesReverseIterator}{}\doxysection{db\+Time\+Series\+Reverse\+Iterator$<$ T $>$ Class Template Reference}
+\label{classdbTimeSeriesReverseIterator}\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+
+
+{\ttfamily \#include $<$timeseries.\+h$>$}
+
+
+
+Collaboration diagram for db\+Time\+Series\+Reverse\+Iterator$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=267pt]{classdbTimeSeriesReverseIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesReverseIterator_ada5b42fe9944aa22748ee02f225eec8a}{start}} (\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$ $\ast$processor, oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesReverseIterator_aab2d0b5a697ede553b88202721eb7fe8}{current}} (T \&elem)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesReverseIterator_a4fd188e35fe449ea26697b130d8f02b8}{next}} ()
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesReverseIterator_a68f196eb90f0d59c25352f9de2eabbc3}{reset}} ()
+\item 
+\mbox{\hyperlink{classdbTimeSeriesReverseIterator_a16aeec16d95d5fde09d816ae5d9b2321}{db\+Time\+Series\+Reverse\+Iterator}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class db\+Time\+Series\+Reverse\+Iterator$<$ T $>$}
+
+Time series reverse iterator 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesReverseIterator_a16aeec16d95d5fde09d816ae5d9b2321}\label{classdbTimeSeriesReverseIterator_a16aeec16d95d5fde09d816ae5d9b2321}} 
+\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}!dbTimeSeriesReverseIterator@{dbTimeSeriesReverseIterator}}
+\index{dbTimeSeriesReverseIterator@{dbTimeSeriesReverseIterator}!dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbTimeSeriesReverseIterator()}{dbTimeSeriesReverseIterator()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterator costructor. If \mbox{\hyperlink{classdbTimeSeriesReverseIterator_aab2d0b5a697ede553b88202721eb7fe8}{current()}} or \mbox{\hyperlink{classdbTimeSeriesReverseIterator_a4fd188e35fe449ea26697b130d8f02b8}{next()}} method will always return false if them are invoked prior to \mbox{\hyperlink{classdbTimeSeriesReverseIterator_ada5b42fe9944aa22748ee02f225eec8a}{start()}} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesReverseIterator_aab2d0b5a697ede553b88202721eb7fe8}\label{classdbTimeSeriesReverseIterator_aab2d0b5a697ede553b88202721eb7fe8}} 
+\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}!current@{current}}
+\index{current@{current}!dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{current()}{current()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}}$<$ T $>$\+::current (\begin{DoxyParamCaption}\item[{T \&}]{elem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get current iterator element \begin{DoxyReturn}{Returns}
+{\ttfamily true} if there is current element, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbTimeSeriesReverseIterator_a4fd188e35fe449ea26697b130d8f02b8}\label{classdbTimeSeriesReverseIterator_a4fd188e35fe449ea26697b130d8f02b8}} 
+\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}!next@{next}}
+\index{next@{next}!dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}}$<$ T $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Move iterator position to next element. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if next element exists, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesReverseIterator_a4fd188e35fe449ea26697b130d8f02b8_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesReverseIterator_a68f196eb90f0d59c25352f9de2eabbc3}\label{classdbTimeSeriesReverseIterator_a68f196eb90f0d59c25352f9de2eabbc3}} 
+\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}!reset@{reset}}
+\index{reset@{reset}!dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}}$<$ T $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reset iterator to the initial state Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesReverseIterator_a68f196eb90f0d59c25352f9de2eabbc3_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesReverseIterator_ada5b42fe9944aa22748ee02f225eec8a}\label{classdbTimeSeriesReverseIterator_ada5b42fe9944aa22748ee02f225eec8a}} 
+\index{dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}!start@{start}}
+\index{start@{start}!dbTimeSeriesReverseIterator$<$ T $>$@{dbTimeSeriesReverseIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesReverseIterator}{db\+Time\+Series\+Reverse\+Iterator}}$<$ T $>$\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$ $\ast$}]{processor,  }\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Start iteration through elements belonging to the specified range. 
+\begin{DoxyParams}{Parameters}
+{\em processor} & pointer to time series processor \\
+\hline
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesReverseIterator_ada5b42fe9944aa22748ee02f225eec8a_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/timeseries.\+h\end{DoxyCompactItemize}

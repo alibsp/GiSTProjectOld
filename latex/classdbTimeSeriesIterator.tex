@@ -1,0 +1,122 @@
+\hypertarget{classdbTimeSeriesIterator}{}\doxysection{db\+Time\+Series\+Iterator$<$ T $>$ Class Template Reference}
+\label{classdbTimeSeriesIterator}\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+
+
+{\ttfamily \#include $<$timeseries.\+h$>$}
+
+
+
+Collaboration diagram for db\+Time\+Series\+Iterator$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=227pt]{classdbTimeSeriesIterator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesIterator_a80044e1681bab810204f2ec6e9014204}{start}} (\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$ $\ast$processor, oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesIterator_a0d98e0f3ac2e0a218908db9df02e48c2}{current}} (T \&elem)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesIterator_ac50bdd4885402b119b91342ce95035c2}{next}} ()
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesIterator_a57dd1b80c97a9b0027a46e2b13ebb9a4}{reset}} ()
+\item 
+\mbox{\hyperlink{classdbTimeSeriesIterator_aa596fb31dca38ba5f54e2fcdc6905f66}{db\+Time\+Series\+Iterator}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class db\+Time\+Series\+Iterator$<$ T $>$}
+
+Time series forward iterator 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesIterator_aa596fb31dca38ba5f54e2fcdc6905f66}\label{classdbTimeSeriesIterator_aa596fb31dca38ba5f54e2fcdc6905f66}} 
+\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}!dbTimeSeriesIterator@{dbTimeSeriesIterator}}
+\index{dbTimeSeriesIterator@{dbTimeSeriesIterator}!dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbTimeSeriesIterator()}{dbTimeSeriesIterator()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}}$<$ T $>$\+::\mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Iterator costructor. If \mbox{\hyperlink{classdbTimeSeriesIterator_a0d98e0f3ac2e0a218908db9df02e48c2}{current()}} or \mbox{\hyperlink{classdbTimeSeriesIterator_ac50bdd4885402b119b91342ce95035c2}{next()}} method will always return false if them are invoked prior to \mbox{\hyperlink{classdbTimeSeriesIterator_a80044e1681bab810204f2ec6e9014204}{start()}} 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesIterator_a0d98e0f3ac2e0a218908db9df02e48c2}\label{classdbTimeSeriesIterator_a0d98e0f3ac2e0a218908db9df02e48c2}} 
+\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}!current@{current}}
+\index{current@{current}!dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{current()}{current()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}}$<$ T $>$\+::current (\begin{DoxyParamCaption}\item[{T \&}]{elem }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get current iterator element \begin{DoxyReturn}{Returns}
+{\ttfamily true} if there is current element, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbTimeSeriesIterator_ac50bdd4885402b119b91342ce95035c2}\label{classdbTimeSeriesIterator_ac50bdd4885402b119b91342ce95035c2}} 
+\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}!next@{next}}
+\index{next@{next}!dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{next()}{next()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}}$<$ T $>$\+::next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Move iterator position to next element. \begin{DoxyReturn}{Returns}
+{\ttfamily true} if next element exists, {\ttfamily false} otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classdbTimeSeriesIterator_ac50bdd4885402b119b91342ce95035c2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesIterator_a57dd1b80c97a9b0027a46e2b13ebb9a4}\label{classdbTimeSeriesIterator_a57dd1b80c97a9b0027a46e2b13ebb9a4}} 
+\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}!reset@{reset}}
+\index{reset@{reset}!dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}}$<$ T $>$\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Reset iterator to the initial state Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=321pt]{classdbTimeSeriesIterator_a57dd1b80c97a9b0027a46e2b13ebb9a4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesIterator_a80044e1681bab810204f2ec6e9014204}\label{classdbTimeSeriesIterator_a80044e1681bab810204f2ec6e9014204}} 
+\index{dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}!start@{start}}
+\index{start@{start}!dbTimeSeriesIterator$<$ T $>$@{dbTimeSeriesIterator$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesIterator}{db\+Time\+Series\+Iterator}}$<$ T $>$\+::start (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$ $\ast$}]{processor,  }\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Start iteration through elements belonging to the specified range. 
+\begin{DoxyParams}{Parameters}
+{\em processor} & pointer to time series processor \\
+\hline
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesIterator_a80044e1681bab810204f2ec6e9014204_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/timeseries.\+h\end{DoxyCompactItemize}

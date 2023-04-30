@@ -1,0 +1,102 @@
+\hypertarget{classdbMethodTrampoline}{}\doxysection{db\+Method\+Trampoline$<$ T, R $>$ Class Template Reference}
+\label{classdbMethodTrampoline}\index{dbMethodTrampoline$<$ T, R $>$@{dbMethodTrampoline$<$ T, R $>$}}
+
+
+{\ttfamily \#include $<$class.\+h$>$}
+
+
+
+Inheritance diagram for db\+Method\+Trampoline$<$ T, R $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{classdbMethodTrampoline__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Method\+Trampoline$<$ T, R $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbMethodTrampoline__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbMethodTrampoline_a094fad99d68742aaf84b980c3f81d2fb}\label{classdbMethodTrampoline_a094fad99d68742aaf84b980c3f81d2fb}} 
+typedef R(T\+::$\ast$ {\bfseries mfunc}) ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classdbMethodTrampoline_a4f7ff884f64f345b482eeff730a816f9}{invoke}} (byte $\ast$data, void $\ast$result)
+\item 
+\mbox{\hyperlink{classdbAnyMethodTrampoline}{db\+Any\+Method\+Trampoline}} $\ast$ \mbox{\hyperlink{classdbMethodTrampoline_a4472493cd4f022ba86b195973a27dc3e}{optimize}} ()
+\item 
+\mbox{\Hypertarget{classdbMethodTrampoline_aaa7af603f087917a12ff2b3e1e3a2fe4}\label{classdbMethodTrampoline_aaa7af603f087917a12ff2b3e1e3a2fe4}} 
+{\bfseries db\+Method\+Trampoline} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd, mfunc f)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbMethodTrampoline_ab5eb697032e072123b2ed7caaabded68}\label{classdbMethodTrampoline_ab5eb697032e072123b2ed7caaabded68}} 
+mfunc {\bfseries method}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T, class R$>$\newline
+class db\+Method\+Trampoline$<$ T, R $>$}
+
+Template for method trampoline implementation 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbMethodTrampoline_a4f7ff884f64f345b482eeff730a816f9}\label{classdbMethodTrampoline_a4f7ff884f64f345b482eeff730a816f9}} 
+\index{dbMethodTrampoline$<$ T, R $>$@{dbMethodTrampoline$<$ T, R $>$}!invoke@{invoke}}
+\index{invoke@{invoke}!dbMethodTrampoline$<$ T, R $>$@{dbMethodTrampoline$<$ T, R $>$}}
+\doxysubsubsection{\texorpdfstring{invoke()}{invoke()}}
+{\footnotesize\ttfamily template$<$class T , class R $>$ \\
+void \mbox{\hyperlink{classdbMethodTrampoline}{db\+Method\+Trampoline}}$<$ T, R $>$\+::invoke (\begin{DoxyParamCaption}\item[{byte $\ast$}]{data,  }\item[{void $\ast$}]{result }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Invoke method 
+\begin{DoxyParams}{Parameters}
+{\em data} & pointer to the record insode database \\
+\hline
+{\em result} & pointer to place result in \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classdbAnyMethodTrampoline_abb4f2d309c23e30b9aa76dd0109d7129}{db\+Any\+Method\+Trampoline}}.
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=343pt]{classdbMethodTrampoline_a4f7ff884f64f345b482eeff730a816f9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbMethodTrampoline_a4472493cd4f022ba86b195973a27dc3e}\label{classdbMethodTrampoline_a4472493cd4f022ba86b195973a27dc3e}} 
+\index{dbMethodTrampoline$<$ T, R $>$@{dbMethodTrampoline$<$ T, R $>$}!optimize@{optimize}}
+\index{optimize@{optimize}!dbMethodTrampoline$<$ T, R $>$@{dbMethodTrampoline$<$ T, R $>$}}
+\doxysubsubsection{\texorpdfstring{optimize()}{optimize()}}
+{\footnotesize\ttfamily template$<$class T , class R $>$ \\
+\mbox{\hyperlink{classdbAnyMethodTrampoline}{db\+Any\+Method\+Trampoline}} $\ast$ \mbox{\hyperlink{classdbMethodTrampoline}{db\+Method\+Trampoline}}$<$ T, R $>$\+::optimize (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Get optimize trampoline. Optimized trampoline can be used for records which format in the database is the same as in application. In this case there is no need to fetch record and pointer insode database can be used intead \begin{DoxyReturn}{Returns}
+optimized nethod trampoline 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classdbAnyMethodTrampoline_aa0b1cf5d538f6dcf54abf2eee587cc6a}{db\+Any\+Method\+Trampoline}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/class.\+h\end{DoxyCompactItemize}

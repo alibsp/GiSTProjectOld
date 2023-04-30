@@ -1,0 +1,206 @@
+\hypertarget{structdbDatabase_1_1OpenParameters}{}\doxysection{db\+Database\+::Open\+Parameters Struct Reference}
+\label{structdbDatabase_1_1OpenParameters}\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+
+
+Collaboration diagram for db\+Database\+::Open\+Parameters\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=243pt]{structdbDatabase_1_1OpenParameters__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char\+\_\+t const  $\ast$ \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_ab2fd5838b2c63b8eeb486621b1ce99b4}{database\+Name}}
+\item 
+char\+\_\+t const  $\ast$ \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_aa7aa4274c842ea3135670943f292206a}{database\+File\+Path}}
+\item 
+time\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_aa36316be5a6c71b19dd5e84653cdfe09}{transaction\+Commit\+Delay}}
+\item 
+time\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a433710453f10d84abb0e7edf89639833}{wait\+Lock\+Timeout\+Msec}}
+\item 
+db\+Access\+Type \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a2b11d89d7b74644f6536bcc197d5c82f}{access\+Type}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a1cd0be4a5e37db1d2ca669e1b7d645d2}{init\+Size}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a1585558ed4f9169b634804ed498f395f}{extension\+Quantum}}
+\item 
+size\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_af199f461aa50895f1a4edef5e78a18f4}{init\+Index\+Size}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a283e8ac729f820d2ac21726355b5f215}{n\+Threads}}
+\item 
+offs\+\_\+t \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a8239abcbf52787085a8c6432eab5021f}{free\+Space\+Reuse\+Threshold}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a01d42f4aa2a81105001644c3085b9c72}{parallel\+Scan\+Threshold}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a4d3e310f8ab138a14a7e046b8aa07af4}{node\+Id}}
+\item 
+char $\ast$$\ast$ \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_ac9435a356ff228941a0c4abde18ac084}{node\+Addresses}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_aef90528775fc225ae15b377d2e7b8dbe}{n\+Nodes}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a0592bedcf64fc96f18c2179bc61cf23d}{poll\+Interval}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_ac68318ab1de867b05b91895635c21e5d}{wait\+Ready\+Timeout}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a119e907b673e633bcbae0ab216197c8d}{wait\+Status\+Timeout}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a1a5dd5a96ffde8a0713654525222386a}{recovery\+Connection\+Attempts}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a41973ac23955892f5383bb1140bbbb09}{startup\+Connection\+Attempts}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a14aa298ba587292b12aa60438a528a36}{replication\+Write\+Timeout}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a9eedd58fc80cc8ed533beac503ae363b}{max\+Async\+Recovery\+Iterations}}
+\item 
+int \mbox{\hyperlink{structdbDatabase_1_1OpenParameters_a1b48b99bb8d3541f18381f000c7e2637}{file\+Open\+Flags}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Structure to specify database open parameters 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a2b11d89d7b74644f6536bcc197d5c82f}\label{structdbDatabase_1_1OpenParameters_a2b11d89d7b74644f6536bcc197d5c82f}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!accessType@{accessType}}
+\index{accessType@{accessType}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{accessType}{accessType}}
+{\footnotesize\ttfamily db\+Access\+Type db\+Database\+::\+Open\+Parameters\+::access\+Type}
+
+Database access type \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_aa7aa4274c842ea3135670943f292206a}\label{structdbDatabase_1_1OpenParameters_aa7aa4274c842ea3135670943f292206a}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!databaseFilePath@{databaseFilePath}}
+\index{databaseFilePath@{databaseFilePath}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{databaseFilePath}{databaseFilePath}}
+{\footnotesize\ttfamily char\+\_\+t const$\ast$ db\+Database\+::\+Open\+Parameters\+::database\+File\+Path}
+
+Database file path \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_ab2fd5838b2c63b8eeb486621b1ce99b4}\label{structdbDatabase_1_1OpenParameters_ab2fd5838b2c63b8eeb486621b1ce99b4}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!databaseName@{databaseName}}
+\index{databaseName@{databaseName}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{databaseName}{databaseName}}
+{\footnotesize\ttfamily char\+\_\+t const$\ast$ db\+Database\+::\+Open\+Parameters\+::database\+Name}
+
+Database name \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a1585558ed4f9169b634804ed498f395f}\label{structdbDatabase_1_1OpenParameters_a1585558ed4f9169b634804ed498f395f}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!extensionQuantum@{extensionQuantum}}
+\index{extensionQuantum@{extensionQuantum}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{extensionQuantum}{extensionQuantum}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::\+Open\+Parameters\+::extension\+Quantum}
+
+Quantum for extending memory allocation bitmap \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a1b48b99bb8d3541f18381f000c7e2637}\label{structdbDatabase_1_1OpenParameters_a1b48b99bb8d3541f18381f000c7e2637}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!fileOpenFlags@{fileOpenFlags}}
+\index{fileOpenFlags@{fileOpenFlags}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{fileOpenFlags}{fileOpenFlags}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::file\+Open\+Flags}
+
+Bit mask of flags defined in db\+File\+::\+Open\+Flags. These flags specify mode of openning database file \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a8239abcbf52787085a8c6432eab5021f}\label{structdbDatabase_1_1OpenParameters_a8239abcbf52787085a8c6432eab5021f}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!freeSpaceReuseThreshold@{freeSpaceReuseThreshold}}
+\index{freeSpaceReuseThreshold@{freeSpaceReuseThreshold}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{freeSpaceReuseThreshold}{freeSpaceReuseThreshold}}
+{\footnotesize\ttfamily offs\+\_\+t db\+Database\+::\+Open\+Parameters\+::free\+Space\+Reuse\+Threshold}
+
+Threshold for amount of deallocated space after which allocation bitmap is scanned from the very beginning reusing deallocated object \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_af199f461aa50895f1a4edef5e78a18f4}\label{structdbDatabase_1_1OpenParameters_af199f461aa50895f1a4edef5e78a18f4}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!initIndexSize@{initIndexSize}}
+\index{initIndexSize@{initIndexSize}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{initIndexSize}{initIndexSize}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::\+Open\+Parameters\+::init\+Index\+Size}
+
+Initial database index size \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a1cd0be4a5e37db1d2ca669e1b7d645d2}\label{structdbDatabase_1_1OpenParameters_a1cd0be4a5e37db1d2ca669e1b7d645d2}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!initSize@{initSize}}
+\index{initSize@{initSize}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{initSize}{initSize}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::\+Open\+Parameters\+::init\+Size}
+
+Initial database file size \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a9eedd58fc80cc8ed533beac503ae363b}\label{structdbDatabase_1_1OpenParameters_a9eedd58fc80cc8ed533beac503ae363b}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!maxAsyncRecoveryIterations@{maxAsyncRecoveryIterations}}
+\index{maxAsyncRecoveryIterations@{maxAsyncRecoveryIterations}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{maxAsyncRecoveryIterations}{maxAsyncRecoveryIterations}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::max\+Async\+Recovery\+Iterations}
+
+Maximal number of asynchronous recovery iterations. If due to permanent updates of master database recovery can not be completed within specified number of iterations, then synchronous recovery is performed (master will not perform any transaction commits until the end of recovery). \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_aef90528775fc225ae15b377d2e7b8dbe}\label{structdbDatabase_1_1OpenParameters_aef90528775fc225ae15b377d2e7b8dbe}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!nNodes@{nNodes}}
+\index{nNodes@{nNodes}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{nNodes}{nNodes}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::n\+Nodes}
+
+Number of nodes in replicasted database \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_ac9435a356ff228941a0c4abde18ac084}\label{structdbDatabase_1_1OpenParameters_ac9435a356ff228941a0c4abde18ac084}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!nodeAddresses@{nodeAddresses}}
+\index{nodeAddresses@{nodeAddresses}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{nodeAddresses}{nodeAddresses}}
+{\footnotesize\ttfamily char$\ast$$\ast$ db\+Database\+::\+Open\+Parameters\+::node\+Addresses}
+
+Replicated database node addresses \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a4d3e310f8ab138a14a7e046b8aa07af4}\label{structdbDatabase_1_1OpenParameters_a4d3e310f8ab138a14a7e046b8aa07af4}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!nodeId@{nodeId}}
+\index{nodeId@{nodeId}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{nodeId}{nodeId}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::node\+Id}
+
+Replicated database node id \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a283e8ac729f820d2ac21726355b5f215}\label{structdbDatabase_1_1OpenParameters_a283e8ac729f820d2ac21726355b5f215}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!nThreads@{nThreads}}
+\index{nThreads@{nThreads}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{nThreads}{nThreads}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::n\+Threads}
+
+Concurrency level for sequential search and sort operations \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a01d42f4aa2a81105001644c3085b9c72}\label{structdbDatabase_1_1OpenParameters_a01d42f4aa2a81105001644c3085b9c72}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!parallelScanThreshold@{parallelScanThreshold}}
+\index{parallelScanThreshold@{parallelScanThreshold}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{parallelScanThreshold}{parallelScanThreshold}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::parallel\+Scan\+Threshold}
+
+Minimal number of records in the table when performing sequential search in parallel makes sense \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a0592bedcf64fc96f18c2179bc61cf23d}\label{structdbDatabase_1_1OpenParameters_a0592bedcf64fc96f18c2179bc61cf23d}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!pollInterval@{pollInterval}}
+\index{pollInterval@{pollInterval}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{pollInterval}{pollInterval}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::poll\+Interval}
+
+Interval of polling nodes \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a1a5dd5a96ffde8a0713654525222386a}\label{structdbDatabase_1_1OpenParameters_a1a5dd5a96ffde8a0713654525222386a}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!recoveryConnectionAttempts@{recoveryConnectionAttempts}}
+\index{recoveryConnectionAttempts@{recoveryConnectionAttempts}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{recoveryConnectionAttempts}{recoveryConnectionAttempts}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::recovery\+Connection\+Attempts}
+
+Maximal number of attempts to establish with other nodes during recovery \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a14aa298ba587292b12aa60438a528a36}\label{structdbDatabase_1_1OpenParameters_a14aa298ba587292b12aa60438a528a36}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!replicationWriteTimeout@{replicationWriteTimeout}}
+\index{replicationWriteTimeout@{replicationWriteTimeout}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{replicationWriteTimeout}{replicationWriteTimeout}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::replication\+Write\+Timeout}
+
+Timeout of writing to replication node. If write can not be completed within specified timeout, then node is considered to be dead and connection is hanged up. \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a41973ac23955892f5383bb1140bbbb09}\label{structdbDatabase_1_1OpenParameters_a41973ac23955892f5383bb1140bbbb09}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!startupConnectionAttempts@{startupConnectionAttempts}}
+\index{startupConnectionAttempts@{startupConnectionAttempts}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{startupConnectionAttempts}{startupConnectionAttempts}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::startup\+Connection\+Attempts}
+
+Maximal number of attempts to establish with other nodes at startup \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_aa36316be5a6c71b19dd5e84653cdfe09}\label{structdbDatabase_1_1OpenParameters_aa36316be5a6c71b19dd5e84653cdfe09}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!transactionCommitDelay@{transactionCommitDelay}}
+\index{transactionCommitDelay@{transactionCommitDelay}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{transactionCommitDelay}{transactionCommitDelay}}
+{\footnotesize\ttfamily time\+\_\+t db\+Database\+::\+Open\+Parameters\+::transaction\+Commit\+Delay}
+
+Transaction commit delay \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a433710453f10d84abb0e7edf89639833}\label{structdbDatabase_1_1OpenParameters_a433710453f10d84abb0e7edf89639833}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!waitLockTimeoutMsec@{waitLockTimeoutMsec}}
+\index{waitLockTimeoutMsec@{waitLockTimeoutMsec}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{waitLockTimeoutMsec}{waitLockTimeoutMsec}}
+{\footnotesize\ttfamily time\+\_\+t db\+Database\+::\+Open\+Parameters\+::wait\+Lock\+Timeout\+Msec}
+
+Deadlock detection timeout (after expiration of this timeout a lokc is revoked) \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_ac68318ab1de867b05b91895635c21e5d}\label{structdbDatabase_1_1OpenParameters_ac68318ab1de867b05b91895635c21e5d}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!waitReadyTimeout@{waitReadyTimeout}}
+\index{waitReadyTimeout@{waitReadyTimeout}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{waitReadyTimeout}{waitReadyTimeout}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::wait\+Ready\+Timeout}
+
+Timeout of waiting confirmation from standby node by new master node when it becomes active at startup \mbox{\Hypertarget{structdbDatabase_1_1OpenParameters_a119e907b673e633bcbae0ab216197c8d}\label{structdbDatabase_1_1OpenParameters_a119e907b673e633bcbae0ab216197c8d}} 
+\index{dbDatabase::OpenParameters@{dbDatabase::OpenParameters}!waitStatusTimeout@{waitStatusTimeout}}
+\index{waitStatusTimeout@{waitStatusTimeout}!dbDatabase::OpenParameters@{dbDatabase::OpenParameters}}
+\doxysubsubsection{\texorpdfstring{waitStatusTimeout}{waitStatusTimeout}}
+{\footnotesize\ttfamily int db\+Database\+::\+Open\+Parameters\+::wait\+Status\+Timeout}
+
+Timeout of requesting status of other nodes during startup 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/database.\+h\end{DoxyCompactItemize}

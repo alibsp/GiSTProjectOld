@@ -1,0 +1,45 @@
+\hypertarget{classFixedSizeAllocator}{}\doxysection{Fixed\+Size\+Allocator Class Reference}
+\label{classFixedSizeAllocator}\index{FixedSizeAllocator@{FixedSizeAllocator}}
+
+
+Collaboration diagram for Fixed\+Size\+Allocator\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classFixedSizeAllocator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_ac82c5bdb993bef1877951a8c5f376b10}\label{classFixedSizeAllocator_ac82c5bdb993bef1877951a8c5f376b10}} 
+void {\bfseries init} (size\+\_\+t min\+Size, size\+\_\+t max\+Size, size\+\_\+t quantum, size\+\_\+t buf\+Size)
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_a6893060ec2055f132e9c0af466b2f1eb}\label{classFixedSizeAllocator_a6893060ec2055f132e9c0af466b2f1eb}} 
+void {\bfseries reset} ()
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_afc83b5ab4eb18651e93c500ff6da351c}\label{classFixedSizeAllocator_afc83b5ab4eb18651e93c500ff6da351c}} 
+offs\+\_\+t {\bfseries allocate} (size\+\_\+t size)
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_a68964f2ffe3ca0ecbfe59f85b81c3267}\label{classFixedSizeAllocator_a68964f2ffe3ca0ecbfe59f85b81c3267}} 
+bool {\bfseries deallocate} (offs\+\_\+t offs, size\+\_\+t size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_aac0d47d47c2d3566caae53a8cd0be9d3}\label{classFixedSizeAllocator_aac0d47d47c2d3566caae53a8cd0be9d3}} 
+size\+\_\+t {\bfseries hits}
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_ab528e71272e24536cd5aa6f6054e58e8}\label{classFixedSizeAllocator_ab528e71272e24536cd5aa6f6054e58e8}} 
+size\+\_\+t {\bfseries faults}
+\item 
+\mbox{\Hypertarget{classFixedSizeAllocator_a2490f314398444c011e29bad62d515f3}\label{classFixedSizeAllocator_a2490f314398444c011e29bad62d515f3}} 
+size\+\_\+t {\bfseries retries}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/database.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/database.\+cpp\end{DoxyCompactItemize}

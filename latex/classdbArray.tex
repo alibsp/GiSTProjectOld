@@ -1,0 +1,444 @@
+\hypertarget{classdbArray}{}\doxysection{db\+Array$<$ T $>$ Class Template Reference}
+\label{classdbArray}\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+
+
+{\ttfamily \#include $<$array.\+h$>$}
+
+
+
+Inheritance diagram for db\+Array$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classdbArray__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Array$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classdbArray__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_afa00bfcbc725d39d73a4a3c9923cb1ce}\label{classdbArray_afa00bfcbc725d39d73a4a3c9923cb1ce}} 
+\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$ {\bfseries db\+Describe\+Components} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\item 
+\mbox{\hyperlink{classdbArray_ae2f2dceaeacc053d2177c4110c7d6baa}{db\+Array}} ()
+\item 
+\mbox{\hyperlink{classdbArray_a78dc092bfe63a7ac23859fdff1e23b60}{db\+Array}} (size\+\_\+t size)
+\item 
+\mbox{\hyperlink{classdbArray_a70e0b6f5bd71d9a9628c7d130fb93c49}{db\+Array}} (T const $\ast$ptr, size\+\_\+t size, size\+\_\+t allocate=0)
+\item 
+\mbox{\hyperlink{classdbArray_ad4ba1bd320fce9e84cb338a645b07f10}{db\+Array}} (\mbox{\hyperlink{classdbArray}{db\+Array}} const \&arr)
+\item 
+\mbox{\hyperlink{classdbArray_a69375fa3859802f953e898db52b9ae47}{$\sim$db\+Array}} ()
+\item 
+\mbox{\hyperlink{classdbArray}{db\+Array}} \& \mbox{\hyperlink{classdbArray_af948da352eed9d390fad223a274bbec0}{operator=}} (\mbox{\hyperlink{classdbArray}{db\+Array}} const \&arr)
+\item 
+T const  \& \mbox{\hyperlink{classdbArray_a2613d1c8fefedddfad4a50a740c632ff}{last}} ()
+\item 
+void \mbox{\hyperlink{classdbArray_a3113760eb60e9b4105b39eb810418838}{assign}} (T const $\ast$ptr, size\+\_\+t size, bool copy=true)
+\item 
+T const  \& \mbox{\hyperlink{classdbArray_a557ebe59446ae402de3a1136f3775d7c}{operator\mbox{[}$\,$\mbox{]}}} (size\+\_\+t index) const
+\item 
+void \mbox{\hyperlink{classdbArray_afcf2367d6c5ba93db9ecf43730ddb98f}{putat}} (size\+\_\+t index, T const \&value)
+\item 
+T const  \& \mbox{\hyperlink{classdbArray_a857c548a70f31c2b1c04b8125f6f67c2}{getat}} (size\+\_\+t index) const
+\item 
+void \mbox{\hyperlink{classdbArray_a260b787711d1440c9a143ae55da64396}{clear}} ()
+\item 
+\mbox{\Hypertarget{classdbArray_a04d841903611a351a758fef6b5d8d733}\label{classdbArray_a04d841903611a351a758fef6b5d8d733}} 
+int {\bfseries compare} (\mbox{\hyperlink{classdbArray}{db\+Array}} const \&other) const
+\item 
+void \mbox{\hyperlink{classdbArray_abd6d1fe56a158e9adc18c66f7aaebe8a}{resize}} (size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classdbArray_ae82b18b5797d5755433c884eaa2acc6a}{append}} (T const \&value)
+\item 
+int \mbox{\hyperlink{classdbArray_ae8e0c058451055566aa28062a58bb262}{bsearch}} (T value)
+\item 
+bool \mbox{\hyperlink{classdbArray_a34a050a0c82dcec6e25531d1483a1dca}{append\+Unique}} (T const \&value)
+\item 
+bool \mbox{\hyperlink{classdbArray_a10f2d54e6f32384a8f0a4da2ce60c800}{contains}} (T const \&value)
+\item 
+void \mbox{\hyperlink{classdbArray_a0b7b8095b5b0fb02554c24c4ce266e33}{insert}} (T const \&value, size\+\_\+t index=0)
+\item 
+void \mbox{\hyperlink{classdbArray_a1f6938c5109d5fd0be22dc359b8d8d75}{remove}} (size\+\_\+t index)
+\item 
+T const  $\ast$ \mbox{\hyperlink{classdbArray_ab3401c67d6da77c0dc97d93eb84d212d}{get}} () const
+\item 
+T $\ast$ \mbox{\hyperlink{classdbArray_a33f83f75fa3d3453c46dc71be29d5b77}{update}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_a118f19680c4476480958cd2b9f6fc18b}\label{classdbArray_a118f19680c4476480958cd2b9f6fc18b}} 
+static int {\bfseries array\+Comparator} (void const $\ast$a, void const $\ast$b, size\+\_\+t)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_a1ef9cf7ba2b9f5ff638b869fd2f4f9d1}\label{classdbArray_a1ef9cf7ba2b9f5ff638b869fd2f4f9d1}} 
+void {\bfseries memcpy} (T $\ast$dst, T const $\ast$src, size\+\_\+t len)
+\item 
+\mbox{\Hypertarget{classdbArray_a5a82246a9a4925b93ac6ad115e284a98}\label{classdbArray_a5a82246a9a4925b93ac6ad115e284a98}} 
+void {\bfseries memmove} (T $\ast$dst, T const $\ast$src, size\+\_\+t len)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_af92cdeaab6ac08a54db977c39994df1f}\label{classdbArray_af92cdeaab6ac08a54db977c39994df1f}} 
+static void {\bfseries array\+Allocator} (\mbox{\hyperlink{classdbAnyArray}{db\+Any\+Array}} $\ast$a\+Array, void $\ast$data, size\+\_\+t \mbox{\hyperlink{classdbAnyArray_a0bfe69cb50222ffb09af324af1dbc0a6}{length}})
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_abc1ebee2ac4d39fff981d4793ba11457}\label{classdbArray_abc1ebee2ac4d39fff981d4793ba11457}} 
+T $\ast$ {\bfseries data}
+\item 
+\mbox{\Hypertarget{classdbArray_a4a2af82ddac7e644433f94354f6f22e6}\label{classdbArray_a4a2af82ddac7e644433f94354f6f22e6}} 
+size\+\_\+t {\bfseries allocated}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbArray_a50b09a8c82d1eadae886f87a8734f5d9}\label{classdbArray_a50b09a8c82d1eadae886f87a8734f5d9}} 
+class {\bfseries db\+Table\+Descriptor}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class db\+Array$<$ T $>$}
+
+Template for arrays 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdbArray_ae2f2dceaeacc053d2177c4110c7d6baa}\label{classdbArray_ae2f2dceaeacc053d2177c4110c7d6baa}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!dbArray@{dbArray}}
+\index{dbArray@{dbArray}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbArray()}{dbArray()}\hspace{0.1cm}{\footnotesize\ttfamily [1/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::\mbox{\hyperlink{classdbArray}{db\+Array}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Default constructor \mbox{\Hypertarget{classdbArray_a78dc092bfe63a7ac23859fdff1e23b60}\label{classdbArray_a78dc092bfe63a7ac23859fdff1e23b60}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!dbArray@{dbArray}}
+\index{dbArray@{dbArray}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbArray()}{dbArray()}\hspace{0.1cm}{\footnotesize\ttfamily [2/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::\mbox{\hyperlink{classdbArray}{db\+Array}} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct array with specified length 
+\begin{DoxyParams}{Parameters}
+{\em size} & array length \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classdbArray_a78dc092bfe63a7ac23859fdff1e23b60_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_a70e0b6f5bd71d9a9628c7d130fb93c49}\label{classdbArray_a70e0b6f5bd71d9a9628c7d130fb93c49}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!dbArray@{dbArray}}
+\index{dbArray@{dbArray}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbArray()}{dbArray()}\hspace{0.1cm}{\footnotesize\ttfamily [3/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::\mbox{\hyperlink{classdbArray}{db\+Array}} (\begin{DoxyParamCaption}\item[{T const $\ast$}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{size\+\_\+t}]{allocate = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Construct array with specified content 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer to the elements \\
+\hline
+{\em size} & size of array \\
+\hline
+{\em allocate} & if 0, then array will just points to specified location of elements, otherwise elements will be copied to the created buffer \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classdbArray_a70e0b6f5bd71d9a9628c7d130fb93c49_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_ad4ba1bd320fce9e84cb338a645b07f10}\label{classdbArray_ad4ba1bd320fce9e84cb338a645b07f10}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!dbArray@{dbArray}}
+\index{dbArray@{dbArray}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbArray()}{dbArray()}\hspace{0.1cm}{\footnotesize\ttfamily [4/4]}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::\mbox{\hyperlink{classdbArray}{db\+Array}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$ const \&}]{arr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Copy constructor 
+\begin{DoxyParams}{Parameters}
+{\em arr} & source array \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbArray_a69375fa3859802f953e898db52b9ae47}\label{classdbArray_a69375fa3859802f953e898db52b9ae47}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!````~dbArray@{$\sim$dbArray}}
+\index{````~dbArray@{$\sim$dbArray}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{$\sim$dbArray()}{~dbArray()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::$\sim$\mbox{\hyperlink{classdbArray}{db\+Array}} (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Destructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbArray_ae82b18b5797d5755433c884eaa2acc6a}\label{classdbArray_ae82b18b5797d5755433c884eaa2acc6a}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!append@{append}}
+\index{append@{append}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{append()}{append()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::append (\begin{DoxyParamCaption}\item[{T const \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Append value to the array 
+\begin{DoxyParams}{Parameters}
+{\em value} & appended element \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=300pt]{classdbArray_ae82b18b5797d5755433c884eaa2acc6a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_a34a050a0c82dcec6e25531d1483a1dca}\label{classdbArray_a34a050a0c82dcec6e25531d1483a1dca}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!appendUnique@{appendUnique}}
+\index{appendUnique@{appendUnique}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{appendUnique()}{appendUnique()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::append\+Unique (\begin{DoxyParamCaption}\item[{T const \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Append value to the array, only if the value isn\textquotesingle{}t already there 
+\begin{DoxyParams}{Parameters}
+{\em value} & appended element \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classdbArray_a34a050a0c82dcec6e25531d1483a1dca_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_a3113760eb60e9b4105b39eb810418838}\label{classdbArray_a3113760eb60e9b4105b39eb810418838}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!assign@{assign}}
+\index{assign@{assign}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::assign (\begin{DoxyParamCaption}\item[{T const $\ast$}]{ptr,  }\item[{size\+\_\+t}]{size,  }\item[{bool}]{copy = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Assign content to the array 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & pointer to the assigned elements \\
+\hline
+{\em size} & number of elements \\
+\hline
+{\em copy} & if 0, then array will just points to specified location of elements, otherwise elements will be copied to the created buffer \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=338pt]{classdbArray_a3113760eb60e9b4105b39eb810418838_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_ae8e0c058451055566aa28062a58bb262}\label{classdbArray_ae8e0c058451055566aa28062a58bb262}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!bsearch@{bsearch}}
+\index{bsearch@{bsearch}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{bsearch()}{bsearch()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::bsearch (\begin{DoxyParamCaption}\item[{T}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Binary search in array Elements of array are assumed to be comparable and are stored in the array in ascending order 
+\begin{DoxyParams}{Parameters}
+{\em value} & searched value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+position of the element which is greater or equal than specified (or position beyond the last array element if specified key is grreater than any elment of the array) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_a260b787711d1440c9a143ae55da64396}\label{classdbArray_a260b787711d1440c9a143ae55da64396}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!clear@{clear}}
+\index{clear@{clear}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{clear()}{clear()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::clear (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Make array empty \mbox{\Hypertarget{classdbArray_a10f2d54e6f32384a8f0a4da2ce60c800}\label{classdbArray_a10f2d54e6f32384a8f0a4da2ce60c800}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!contains@{contains}}
+\index{contains@{contains}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{contains()}{contains()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::contains (\begin{DoxyParamCaption}\item[{T const \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Return true if the array contains the given item 
+\begin{DoxyParams}{Parameters}
+{\em value} & element \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classdbArray_a10f2d54e6f32384a8f0a4da2ce60c800_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_ab3401c67d6da77c0dc97d93eb84d212d}\label{classdbArray_ab3401c67d6da77c0dc97d93eb84d212d}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!get@{get}}
+\index{get@{get}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T const$\ast$ \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::get (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get pointer to array elements. You should not directly change them. \begin{DoxyReturn}{Returns}
+array elements 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_a857c548a70f31c2b1c04b8125f6f67c2}\label{classdbArray_a857c548a70f31c2b1c04b8125f6f67c2}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!getat@{getat}}
+\index{getat@{getat}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getat()}{getat()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T const\& \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::getat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get array element with specified index. 
+\begin{DoxyParams}{Parameters}
+{\em index} & element index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+element with specified index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_a0b7b8095b5b0fb02554c24c4ce266e33}\label{classdbArray_a0b7b8095b5b0fb02554c24c4ce266e33}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!insert@{insert}}
+\index{insert@{insert}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::insert (\begin{DoxyParamCaption}\item[{T const \&}]{value,  }\item[{size\+\_\+t}]{index = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Insert element in the array at specified position 
+\begin{DoxyParams}{Parameters}
+{\em value} & inserted value \\
+\hline
+{\em index} & insert position \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{classdbArray_a0b7b8095b5b0fb02554c24c4ce266e33_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_a2613d1c8fefedddfad4a50a740c632ff}\label{classdbArray_a2613d1c8fefedddfad4a50a740c632ff}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!last@{last}}
+\index{last@{last}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{last()}{last()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T const\& \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get last element of the array \begin{DoxyReturn}{Returns}
+last element of the array 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_af948da352eed9d390fad223a274bbec0}\label{classdbArray_af948da352eed9d390fad223a274bbec0}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!operator=@{operator=}}
+\index{operator=@{operator=}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbArray}{db\+Array}}\& \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$ const \&}]{arr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Assignment operator \begin{DoxyReturn}{Returns}
+this 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_a557ebe59446ae402de3a1136f3775d7c}\label{classdbArray_a557ebe59446ae402de3a1136f3775d7c}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!operator\mbox{[}\mbox{]}@{operator[]}}
+\index{operator\mbox{[}\mbox{]}@{operator[]}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{operator[]()}{operator[]()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T const\& \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::operator\mbox{[}$\,$\mbox{]} (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get array element with specified index. 
+\begin{DoxyParams}{Parameters}
+{\em index} & element index \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+element with specified index 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbArray_afcf2367d6c5ba93db9ecf43730ddb98f}\label{classdbArray_afcf2367d6c5ba93db9ecf43730ddb98f}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!putat@{putat}}
+\index{putat@{putat}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{putat()}{putat()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::putat (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index,  }\item[{T const \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Store element at the specified position 
+\begin{DoxyParams}{Parameters}
+{\em index} & element index \\
+\hline
+{\em value} & stored element value \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbArray_a1f6938c5109d5fd0be22dc359b8d8d75}\label{classdbArray_a1f6938c5109d5fd0be22dc359b8d8d75}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove element a specified position. 
+\begin{DoxyParams}{Parameters}
+{\em index} & position of the deleted element \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbArray_abd6d1fe56a158e9adc18c66f7aaebe8a}\label{classdbArray_abd6d1fe56a158e9adc18c66f7aaebe8a}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!resize@{resize}}
+\index{resize@{resize}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{resize()}{resize()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::resize (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Resize array 
+\begin{DoxyParams}{Parameters}
+{\em size} & new array size \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=335pt]{classdbArray_abd6d1fe56a158e9adc18c66f7aaebe8a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbArray_a33f83f75fa3d3453c46dc71be29d5b77}\label{classdbArray_a33f83f75fa3d3453c46dc71be29d5b77}} 
+\index{dbArray$<$ T $>$@{dbArray$<$ T $>$}!update@{update}}
+\index{update@{update}!dbArray$<$ T $>$@{dbArray$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+T$\ast$ \mbox{\hyperlink{classdbArray}{db\+Array}}$<$ T $>$\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get pointer to array elements to perform update. \begin{DoxyReturn}{Returns}
+array elements 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/array.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,914 @@
+\hypertarget{classdbAnyCursor}{}\doxysection{db\+Any\+Cursor Class Reference}
+\label{classdbAnyCursor}\index{dbAnyCursor@{dbAnyCursor}}
+
+
+{\ttfamily \#include $<$cursor.\+h$>$}
+
+
+
+Inheritance diagram for db\+Any\+Cursor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classdbAnyCursor__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Any\+Cursor\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a767f8879c859769f643d8e901fc182d2}{get\+Number\+Of\+Records}} () const
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a7d57bf0cf5e82e273c1df6ce94307eb7}{remove}} ()
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_abc85de4627fb2ffaefbd6a89281a1360}{is\+Empty}} () const
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_a0926f1da566f63bc34e06aee6233a74c}{is\+Update\+Cursor}} () const
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_adcd3f584232e7ce17df46942dacc45b6}{is\+Limit\+Reached}} () const
+\item 
+oid\+\_\+t $\ast$ \mbox{\hyperlink{classdbAnyCursor_ab8ef7bbfa68df59b19c1fd7833fa7042}{to\+Array\+Of\+Oid}} (oid\+\_\+t $\ast$arr) const
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a74cce7a9edb87a583cce071530ac5a83}{select}} (\mbox{\hyperlink{classdbQuery}{db\+Query}} \&query, db\+Cursor\+Type a\+Type, void $\ast$param\+Struct=N\+U\+LL)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a1dc593de4d003c6d228ada1de3e5f2dd}{select}} (\mbox{\hyperlink{classdbQuery}{db\+Query}} \&query, void $\ast$param\+Struct=N\+U\+LL)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_accc5279e09f4b30a7eef1f90c7f8cf59}{select}} (char const $\ast$condition, db\+Cursor\+Type a\+Type, void $\ast$param\+Struct=N\+U\+LL)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a4f970400426a615b91c7c32959a682fc}{select}} (char const $\ast$condition, void $\ast$param\+Struct=N\+U\+LL)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a9bd4a8a672cd9d1c5feb5e89ba6533b9}{select}} (db\+Cursor\+Type a\+Type)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a3e1677aaf03904717540e401c7330b18}{select}} ()
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a758ef3f30d13a36463c973019bbef59c}{select\+By\+Key}} (char const $\ast$key, void const $\ast$value)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a0cc527a4448a60a0c85b24975f784def}{select\+By\+Key}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$field, void const $\ast$value)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_a9853003f596b2bd1b67aa90112f44d4b}{select\+By\+Key\+Range}} (char const $\ast$key, void const $\ast$min\+Value, void const $\ast$max\+Value)
+\item 
+cardinality\+\_\+t \mbox{\hyperlink{classdbAnyCursor_ac4e6f49df41ade22ccf145628feb3613}{select\+By\+Key\+Range}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$field, void const $\ast$min\+Value, void const $\ast$max\+Value)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_ac84c01ba117088d1f7cfafbb033c63e3}{update}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_aeb1e5ca701dc0c3efb16edd8343f1646}{remove\+All}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a16812a92fe064956474b066451ee5dad}{remove\+All\+Selected}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a6acf5bb381b53dc53c4de808658e715e}{set\+Selection\+Limit}} (cardinality\+\_\+t lim)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_ab9107ad04d03d9a18db6d0308468b5bc}{unset\+Selection\+Limit}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a214cd49dd49a42a219acd9add1bc32e1}{set\+Prefetch\+Mode}} (bool mode)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_ab78b0243c708d777467caae3a0ad9b95}{enable\+Check\+For\+Duplicates}} (bool enabled)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_adb9b62823e65bfedda8aa99d478842ef}{reset}} ()
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_aea0c73fef0a54d2ef988c5eec8916033}{is\+Last}} () const
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_a6bd8ad85bf58942507e76c772903f838}{is\+First}} () const
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a4ceb98929b2c8885da5f10a460b0e598}{freeze}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a1ca79e06280a0e4717f70d8a0886945b}{unfreeze}} ()
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_a2340940931df9d1f9e91824b8d103b72}{skip}} (int n)
+\item 
+int \mbox{\hyperlink{classdbAnyCursor_a4c4bd14e6b2cfb1e5574f4444baabedc}{seek}} (oid\+\_\+t oid)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbAnyCursor_a53d5411a59557cb2a153ee29be1af1a7}{get\+Table}} ()
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_af518bc14e533c128069a97762f9e8816}{set\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$a\+Table)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a50de84731092cbe1ccccb4d77e333009}{set\+Record}} (void $\ast$rec)
+\item 
+void $\ast$ \mbox{\hyperlink{classdbAnyCursor_ace6738603fecf60d20273c39907b2603}{get\+Record}} ()
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_afaf93385671dcc342c223e82dee7e284}{is\+In\+Selection}} (oid\+\_\+t oid)
+\item 
+void \mbox{\hyperlink{classdbAnyCursor_a301d358cdea3a4bd335ded1c6a62c3eb}{fetch}} ()
+\item 
+bool \mbox{\hyperlink{classdbAnyCursor_a5c9477fd82f50118fa75c67202a2c02a}{has\+Next}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aa12ebe3784d8c8a8f5f14635dbf37f80}\label{classdbAnyCursor_aa12ebe3784d8c8a8f5f14635dbf37f80}} 
+void {\bfseries check\+For\+Duplicates} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a68dad8566aacd3509e3044f9775a70d3}\label{classdbAnyCursor_a68dad8566aacd3509e3044f9775a70d3}} 
+void {\bfseries deallocate\+Bitmap} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ad39fba5e3bf54ebc4f3e7fcb4c1ced93}\label{classdbAnyCursor_ad39fba5e3bf54ebc4f3e7fcb4c1ced93}} 
+bool {\bfseries is\+Marked} (oid\+\_\+t oid)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a207c762a3c117c493ef4ebff2a559779}\label{classdbAnyCursor_a207c762a3c117c493ef4ebff2a559779}} 
+void {\bfseries set\+Statement\+Limit} (\mbox{\hyperlink{classdbQuery}{db\+Query}} const \&q)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a255b0f5e4468f07c380f5ad8d75891db}\label{classdbAnyCursor_a255b0f5e4468f07c380f5ad8d75891db}} 
+void {\bfseries truncate\+Selection} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a14a09d5a719bcaa531b5150edeeaaf41}\label{classdbAnyCursor_a14a09d5a719bcaa531b5150edeeaaf41}} 
+void {\bfseries mark} (oid\+\_\+t oid)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ae951b0722a2b0dbca272141613dee5bd}\label{classdbAnyCursor_ae951b0722a2b0dbca272141613dee5bd}} 
+bool {\bfseries add} (oid\+\_\+t oid)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a85a8510cb68e725230eed28c2d7d9362}\label{classdbAnyCursor_a85a8510cb68e725230eed28c2d7d9362}} 
+byte $\ast$ {\bfseries fetch\+Next} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a60e9bdb70bd3fbfedfdb98fe954ca34b}\label{classdbAnyCursor_a60e9bdb70bd3fbfedfdb98fe954ca34b}} 
+byte $\ast$ {\bfseries fetch\+Prev} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_acf783ea433a8fc75f09a8d3b64f71483}\label{classdbAnyCursor_acf783ea433a8fc75f09a8d3b64f71483}} 
+bool {\bfseries goto\+Next} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a8597a49492be7243aec3839503a929d3}\label{classdbAnyCursor_a8597a49492be7243aec3839503a929d3}} 
+bool {\bfseries goto\+Prev} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a1e3a0efda67708ec88d72e8a1548e228}\label{classdbAnyCursor_a1e3a0efda67708ec88d72e8a1548e228}} 
+bool {\bfseries goto\+First} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ab8e4c073a08c380c7f4f1c4c00d5f2fd}\label{classdbAnyCursor_ab8e4c073a08c380c7f4f1c4c00d5f2fd}} 
+bool {\bfseries goto\+Last} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a0ce0567003f605e2865703835d6aaaf9}\label{classdbAnyCursor_a0ce0567003f605e2865703835d6aaaf9}} 
+bool {\bfseries move\+Next} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aec08b80e50430ed4080842264dcd6821}\label{classdbAnyCursor_aec08b80e50430ed4080842264dcd6821}} 
+bool {\bfseries move\+Prev} ()
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a766fee140293982ff558c3e1a7fd9fbf}\label{classdbAnyCursor_a766fee140293982ff558c3e1a7fd9fbf}} 
+void {\bfseries set\+Current} (\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a7eb5b2b02f8067b569edc35e46830ea3}\label{classdbAnyCursor_a7eb5b2b02f8067b569edc35e46830ea3}} 
+void {\bfseries adjust\+References} (size\+\_\+t base, size\+\_\+t size, size\+\_\+t shift)
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ab41487523e9b6dd8010deb336077f677}\label{classdbAnyCursor_ab41487523e9b6dd8010deb336077f677}} 
+{\bfseries db\+Any\+Cursor} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} \&a\+Table, db\+Cursor\+Type a\+Type, byte $\ast$rec)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aada86aa59763c50d8b669657498bb9f7}\label{classdbAnyCursor_aada86aa59763c50d8b669657498bb9f7}} 
+\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$ {\bfseries db}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a159fba29b99fbf5a8ec2f8d578b2cc7d}\label{classdbAnyCursor_a159fba29b99fbf5a8ec2f8d578b2cc7d}} 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ {\bfseries table}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a990f750667b76751365122c29b2b1c84}\label{classdbAnyCursor_a990f750667b76751365122c29b2b1c84}} 
+db\+Cursor\+Type {\bfseries type}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a0272f0736f91f0506cf2cd75affae8a0}\label{classdbAnyCursor_a0272f0736f91f0506cf2cd75affae8a0}} 
+db\+Cursor\+Type {\bfseries default\+Type}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a810e202c2a8af1b1e7afc6d75c899ff3}\label{classdbAnyCursor_a810e202c2a8af1b1e7afc6d75c899ff3}} 
+\mbox{\hyperlink{classdbSelection}{db\+Selection}} {\bfseries selection}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a7488b6927c7ab27a6147fcde4fc20ec6}\label{classdbAnyCursor_a7488b6927c7ab27a6147fcde4fc20ec6}} 
+bool {\bfseries all\+Records}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aca0f775b54e21cab082a2ea9908d673b}\label{classdbAnyCursor_aca0f775b54e21cab082a2ea9908d673b}} 
+oid\+\_\+t {\bfseries first\+Id}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a0cf0b076a44acb09cd1c04ba227dac79}\label{classdbAnyCursor_a0cf0b076a44acb09cd1c04ba227dac79}} 
+oid\+\_\+t {\bfseries last\+Id}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aac8a3f0dde4d8e7033c77f4bc5ba3f22}\label{classdbAnyCursor_aac8a3f0dde4d8e7033c77f4bc5ba3f22}} 
+oid\+\_\+t {\bfseries curr\+Id}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_af94675d4e9ee59ba78ab72016ab0a008}\label{classdbAnyCursor_af94675d4e9ee59ba78ab72016ab0a008}} 
+byte $\ast$ {\bfseries record}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a737dfc9084f103651b9e88a3657589a1}\label{classdbAnyCursor_a737dfc9084f103651b9e88a3657589a1}} 
+cardinality\+\_\+t {\bfseries limit}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aef472bb3b17fcf8758fe6d08a033d276}\label{classdbAnyCursor_aef472bb3b17fcf8758fe6d08a033d276}} 
+int4 $\ast$ {\bfseries bitmap}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a083cf22dbf029a2a728e61f4223b158c}\label{classdbAnyCursor_a083cf22dbf029a2a728e61f4223b158c}} 
+size\+\_\+t {\bfseries bitmap\+Size}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ab0b648fd39f8b06fee07f3b86c5f29a7}\label{classdbAnyCursor_ab0b648fd39f8b06fee07f3b86c5f29a7}} 
+bool {\bfseries eliminate\+Duplicates}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a65c12aca378990959636a9d21cf3c064}\label{classdbAnyCursor_a65c12aca378990959636a9d21cf3c064}} 
+bool {\bfseries check\+For\+Duplicated\+Is\+Enabled}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a6f343450aa67402d1796debd67957e16}\label{classdbAnyCursor_a6f343450aa67402d1796debd67957e16}} 
+bool {\bfseries prefetch}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a128db05318b7c3b7baf33fa63f66578c}\label{classdbAnyCursor_a128db05318b7c3b7baf33fa63f66578c}} 
+bool {\bfseries removed}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a674e7d24808b4a39aa789f2daf4d18f5}\label{classdbAnyCursor_a674e7d24808b4a39aa789f2daf4d18f5}} 
+bool {\bfseries last\+Record\+Was\+Deleted}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a406de51b97345fe51bac38c768d680ed}\label{classdbAnyCursor_a406de51b97345fe51bac38c768d680ed}} 
+cardinality\+\_\+t {\bfseries stmt\+Limit\+Start}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ae80355f0f07b5145a339897db5bec3d6}\label{classdbAnyCursor_ae80355f0f07b5145a339897db5bec3d6}} 
+cardinality\+\_\+t {\bfseries stmt\+Limit\+Len}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a05e676d13039d9184cd318b540dbb99d}\label{classdbAnyCursor_a05e676d13039d9184cd318b540dbb99d}} 
+cardinality\+\_\+t {\bfseries n\+Skipped}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a301ac0fbd4a22ca35f38c8bfb0b8a7e7}\label{classdbAnyCursor_a301ac0fbd4a22ca35f38c8bfb0b8a7e7}} 
+void $\ast$ {\bfseries param\+Base}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a0cbfed11363a24067344cf2b1bcab0ba}\label{classdbAnyCursor_a0cbfed11363a24067344cf2b1bcab0ba}} 
+class {\bfseries db\+Any\+Container}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a2982d512b212bfec5bccc8e0f909fc0c}\label{classdbAnyCursor_a2982d512b212bfec5bccc8e0f909fc0c}} 
+class {\bfseries db\+Database}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_ad210716296208a68775a7c66250c4e65}\label{classdbAnyCursor_ad210716296208a68775a7c66250c4e65}} 
+class {\bfseries db\+Hash\+Table}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a2b3ac8bb32222ab56ec9c2ecf7d83ad3}\label{classdbAnyCursor_a2b3ac8bb32222ab56ec9c2ecf7d83ad3}} 
+class {\bfseries db\+Ttree\+Node}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aba88fd99427a0422f9a627a59b4d8771}\label{classdbAnyCursor_aba88fd99427a0422f9a627a59b4d8771}} 
+class {\bfseries db\+Rtree\+Page}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a64dd55acd4f92599ccd05951eb1df813}\label{classdbAnyCursor_a64dd55acd4f92599ccd05951eb1df813}} 
+class {\bfseries db\+Rtree}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_aee47d29ae9ef55313d775e277718de39}\label{classdbAnyCursor_aee47d29ae9ef55313d775e277718de39}} 
+class {\bfseries db\+Sub\+Sql}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_adf2f570dcdf41fd9ae5eea37503548d0}\label{classdbAnyCursor_adf2f570dcdf41fd9ae5eea37503548d0}} 
+class {\bfseries db\+Statement}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a2c1ec30179a6eac3242b42cc1d03dc76}\label{classdbAnyCursor_a2c1ec30179a6eac3242b42cc1d03dc76}} 
+class {\bfseries db\+Server}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a1d6931bb41572da2fce48a66fc4224c0}\label{classdbAnyCursor_a1d6931bb41572da2fce48a66fc4224c0}} 
+class {\bfseries db\+C\+LI}
+\item 
+\mbox{\Hypertarget{classdbAnyCursor_a2ada188506f56ce9d6fd6f8e016490b9}\label{classdbAnyCursor_a2ada188506f56ce9d6fd6f8e016490b9}} 
+class {\bfseries Jni\+Result\+Set}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+Base class for all cursors 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbAnyCursor_ab78b0243c708d777467caae3a0ad9b95}\label{classdbAnyCursor_ab78b0243c708d777467caae3a0ad9b95}} 
+\index{dbAnyCursor@{dbAnyCursor}!enableCheckForDuplicates@{enableCheckForDuplicates}}
+\index{enableCheckForDuplicates@{enableCheckForDuplicates}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{enableCheckForDuplicates()}{enableCheckForDuplicates()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::enable\+Check\+For\+Duplicates (\begin{DoxyParamCaption}\item[{bool}]{enabled }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Enable or disable duplicates checking (if programmer knows that disjuncts in query do not intersect, then he can disable duplicate checking and avoid bitmap allocation \mbox{\Hypertarget{classdbAnyCursor_a301d358cdea3a4bd335ded1c6a62c3eb}\label{classdbAnyCursor_a301d358cdea3a4bd335ded1c6a62c3eb}} 
+\index{dbAnyCursor@{dbAnyCursor}!fetch@{fetch}}
+\index{fetch@{fetch}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{fetch()}{fetch()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::fetch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Fetch current record. You should use this method only if prefetch mode is disabled Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a301d358cdea3a4bd335ded1c6a62c3eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a301d358cdea3a4bd335ded1c6a62c3eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a4ceb98929b2c8885da5f10a460b0e598}\label{classdbAnyCursor_a4ceb98929b2c8885da5f10a460b0e598}} 
+\index{dbAnyCursor@{dbAnyCursor}!freeze@{freeze}}
+\index{freeze@{freeze}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{freeze()}{freeze()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::freeze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Freeze cursor. This method makes it possible to save current state of cursor, close transaction to allow other threads to proceed, and then later restore state of the cursor using unfreeze method and continue traversal through selected records. \mbox{\Hypertarget{classdbAnyCursor_a767f8879c859769f643d8e901fc182d2}\label{classdbAnyCursor_a767f8879c859769f643d8e901fc182d2}} 
+\index{dbAnyCursor@{dbAnyCursor}!getNumberOfRecords@{getNumberOfRecords}}
+\index{getNumberOfRecords@{getNumberOfRecords}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{getNumberOfRecords()}{getNumberOfRecords()}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::get\+Number\+Of\+Records (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of selected records \begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a767f8879c859769f643d8e901fc182d2_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_ace6738603fecf60d20273c39907b2603}\label{classdbAnyCursor_ace6738603fecf60d20273c39907b2603}} 
+\index{dbAnyCursor@{dbAnyCursor}!getRecord@{getRecord}}
+\index{getRecord@{getRecord}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{getRecord()}{getRecord()}}
+{\footnotesize\ttfamily void$\ast$ db\+Any\+Cursor\+::get\+Record (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get pointer to the location where fields of the current record are fetched \begin{DoxyReturn}{Returns}
+pointer to the memory location set by cursor constructor or set\+Record method 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a53d5411a59557cb2a153ee29be1af1a7}\label{classdbAnyCursor_a53d5411a59557cb2a153ee29be1af1a7}} 
+\index{dbAnyCursor@{dbAnyCursor}!getTable@{getTable}}
+\index{getTable@{getTable}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{getTable()}{getTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}}$\ast$ db\+Any\+Cursor\+::get\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get table for which cursor is opened \mbox{\Hypertarget{classdbAnyCursor_a5c9477fd82f50118fa75c67202a2c02a}\label{classdbAnyCursor_a5c9477fd82f50118fa75c67202a2c02a}} 
+\index{dbAnyCursor@{dbAnyCursor}!hasNext@{hasNext}}
+\index{hasNext@{hasNext}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{hasNext()}{hasNext()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::has\+Next (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Check if there is more records in the selection Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a5c9477fd82f50118fa75c67202a2c02a_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_abc85de4627fb2ffaefbd6a89281a1360}\label{classdbAnyCursor_abc85de4627fb2ffaefbd6a89281a1360}} 
+\index{dbAnyCursor@{dbAnyCursor}!isEmpty@{isEmpty}}
+\index{isEmpty@{isEmpty}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isEmpty()}{isEmpty()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+Empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks whether selection is empty \begin{DoxyReturn}{Returns}
+true if there is no current record 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a6bd8ad85bf58942507e76c772903f838}\label{classdbAnyCursor_a6bd8ad85bf58942507e76c772903f838}} 
+\index{dbAnyCursor@{dbAnyCursor}!isFirst@{isFirst}}
+\index{isFirst@{isFirst}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isFirst()}{isFirst()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+First (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Check whether current record is the first one in the selection \begin{DoxyReturn}{Returns}
+true if prev() method will return {\ttfamily N\+U\+LL} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classdbAnyCursor_a6bd8ad85bf58942507e76c772903f838_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_afaf93385671dcc342c223e82dee7e284}\label{classdbAnyCursor_afaf93385671dcc342c223e82dee7e284}} 
+\index{dbAnyCursor@{dbAnyCursor}!isInSelection@{isInSelection}}
+\index{isInSelection@{isInSelection}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isInSelection()}{isInSelection()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+In\+Selection (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})}
+
+Check if record with specified O\+ID is in selection \begin{DoxyReturn}{Returns}
+{\ttfamily true} if record with such O\+ID was selected 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_afaf93385671dcc342c223e82dee7e284_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_aea0c73fef0a54d2ef988c5eec8916033}\label{classdbAnyCursor_aea0c73fef0a54d2ef988c5eec8916033}} 
+\index{dbAnyCursor@{dbAnyCursor}!isLast@{isLast}}
+\index{isLast@{isLast}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isLast()}{isLast()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+Last (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Check whether current record is the last one in the selection \begin{DoxyReturn}{Returns}
+true if next() method will return {\ttfamily N\+U\+LL} 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=347pt]{classdbAnyCursor_aea0c73fef0a54d2ef988c5eec8916033_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_adcd3f584232e7ce17df46942dacc45b6}\label{classdbAnyCursor_adcd3f584232e7ce17df46942dacc45b6}} 
+\index{dbAnyCursor@{dbAnyCursor}!isLimitReached@{isLimitReached}}
+\index{isLimitReached@{isLimitReached}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isLimitReached()}{isLimitReached()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+Limit\+Reached (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Checks whether limit for number of selected reacord is reached \begin{DoxyReturn}{Returns}
+true if limit is reached 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_adcd3f584232e7ce17df46942dacc45b6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a0926f1da566f63bc34e06aee6233a74c}\label{classdbAnyCursor_a0926f1da566f63bc34e06aee6233a74c}} 
+\index{dbAnyCursor@{dbAnyCursor}!isUpdateCursor@{isUpdateCursor}}
+\index{isUpdateCursor@{isUpdateCursor}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{isUpdateCursor()}{isUpdateCursor()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::is\+Update\+Cursor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check whether this cursor can be used for update \begin{DoxyReturn}{Returns}
+true if it is update cursor 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a7d57bf0cf5e82e273c1df6ce94307eb7}\label{classdbAnyCursor_a7d57bf0cf5e82e273c1df6ce94307eb7}} 
+\index{dbAnyCursor@{dbAnyCursor}!remove@{remove}}
+\index{remove@{remove}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::remove (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remove current record Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a7d57bf0cf5e82e273c1df6ce94307eb7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a7d57bf0cf5e82e273c1df6ce94307eb7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_aeb1e5ca701dc0c3efb16edd8343f1646}\label{classdbAnyCursor_aeb1e5ca701dc0c3efb16edd8343f1646}} 
+\index{dbAnyCursor@{dbAnyCursor}!removeAll@{removeAll}}
+\index{removeAll@{removeAll}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{removeAll()}{removeAll()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::remove\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove all records in the table Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_aeb1e5ca701dc0c3efb16edd8343f1646_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_aeb1e5ca701dc0c3efb16edd8343f1646_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a16812a92fe064956474b066451ee5dad}\label{classdbAnyCursor_a16812a92fe064956474b066451ee5dad}} 
+\index{dbAnyCursor@{dbAnyCursor}!removeAllSelected@{removeAllSelected}}
+\index{removeAllSelected@{removeAllSelected}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{removeAllSelected()}{removeAllSelected()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::remove\+All\+Selected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Remove all selected records Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a16812a92fe064956474b066451ee5dad_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_adb9b62823e65bfedda8aa99d478842ef}\label{classdbAnyCursor_adb9b62823e65bfedda8aa99d478842ef}} 
+\index{dbAnyCursor@{dbAnyCursor}!reset@{reset}}
+\index{reset@{reset}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Reset cursor Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_adb9b62823e65bfedda8aa99d478842ef_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_adb9b62823e65bfedda8aa99d478842ef_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a4c4bd14e6b2cfb1e5574f4444baabedc}\label{classdbAnyCursor_a4c4bd14e6b2cfb1e5574f4444baabedc}} 
+\index{dbAnyCursor@{dbAnyCursor}!seek@{seek}}
+\index{seek@{seek}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{seek()}{seek()}}
+{\footnotesize\ttfamily int db\+Any\+Cursor\+::seek (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})}
+
+Position cursor on the record with the specified O\+ID 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object identifier of record \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+poistion of the record in the selection or -\/1 if record with such O\+ID is not in selection 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a4c4bd14e6b2cfb1e5574f4444baabedc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a4c4bd14e6b2cfb1e5574f4444baabedc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a3e1677aaf03904717540e401c7330b18}\label{classdbAnyCursor_a3e1677aaf03904717540e401c7330b18}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [1/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select all records from the table with default cursor type \begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_accc5279e09f4b30a7eef1f90c7f8cf59}\label{classdbAnyCursor_accc5279e09f4b30a7eef1f90c7f8cf59}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [2/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}\item[{char const $\ast$}]{condition,  }\item[{db\+Cursor\+Type}]{a\+Type,  }\item[{void $\ast$}]{param\+Struct = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Execute query. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & selection criteria \\
+\hline
+{\em a\+Type} & cursor type\+: {\ttfamily db\+Cursor\+For\+Update, db\+Cursor\+View\+Only} \\
+\hline
+{\em param\+Struct} & pointer to structure with parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a4f970400426a615b91c7c32959a682fc}\label{classdbAnyCursor_a4f970400426a615b91c7c32959a682fc}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [3/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}\item[{char const $\ast$}]{condition,  }\item[{void $\ast$}]{param\+Struct = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Execute query with default cursor type. 
+\begin{DoxyParams}{Parameters}
+{\em condition} & selection criteria \\
+\hline
+{\em param\+Struct} & pointer to structure with parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a9bd4a8a672cd9d1c5feb5e89ba6533b9}\label{classdbAnyCursor_a9bd4a8a672cd9d1c5feb5e89ba6533b9}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [4/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}\item[{db\+Cursor\+Type}]{a\+Type }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select all records from the table 
+\begin{DoxyParams}{Parameters}
+{\em a\+Type} & cursor type\+: {\ttfamily db\+Cursor\+For\+Update, db\+Cursor\+View\+Only} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a9bd4a8a672cd9d1c5feb5e89ba6533b9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a74cce7a9edb87a583cce071530ac5a83}\label{classdbAnyCursor_a74cce7a9edb87a583cce071530ac5a83}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [5/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbQuery}{db\+Query}} \&}]{query,  }\item[{db\+Cursor\+Type}]{a\+Type,  }\item[{void $\ast$}]{param\+Struct = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Execute query. 
+\begin{DoxyParams}{Parameters}
+{\em query} & selection criteria \\
+\hline
+{\em a\+Type} & cursor type\+: {\ttfamily db\+Cursor\+For\+Update, db\+Cursor\+View\+Only} \\
+\hline
+{\em param\+Struct} & pointer to structure with parameters. If you want to create reentrant precompiled query, i.\+e. query which can be used concurrently by different threadsm you should avoid to use static variables in such query, and instead of it place paramters into some structure, specify in query relative offsets to the parameters, fill local structure and pass pointer to it to select method. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a74cce7a9edb87a583cce071530ac5a83_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a74cce7a9edb87a583cce071530ac5a83_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a1dc593de4d003c6d228ada1de3e5f2dd}\label{classdbAnyCursor_a1dc593de4d003c6d228ada1de3e5f2dd}} 
+\index{dbAnyCursor@{dbAnyCursor}!select@{select}}
+\index{select@{select}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [6/6]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbQuery}{db\+Query}} \&}]{query,  }\item[{void $\ast$}]{param\+Struct = {\ttfamily NULL} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Execute query with default cursor type. 
+\begin{DoxyParams}{Parameters}
+{\em query} & selection criteria \\
+\hline
+{\em param\+Struct} & pointer to structure with parameters. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbAnyCursor_a758ef3f30d13a36463c973019bbef59c}\label{classdbAnyCursor_a758ef3f30d13a36463c973019bbef59c}} 
+\index{dbAnyCursor@{dbAnyCursor}!selectByKey@{selectByKey}}
+\index{selectByKey@{selectByKey}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{selectByKey()}{selectByKey()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select\+By\+Key (\begin{DoxyParamCaption}\item[{char const $\ast$}]{key,  }\item[{void const $\ast$}]{value }\end{DoxyParamCaption})}
+
+Select all records from the table with specified value of the key 
+\begin{DoxyParams}{Parameters}
+{\em key} & name of the key field \\
+\hline
+{\em value} & searched value of the key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a758ef3f30d13a36463c973019bbef59c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a0cc527a4448a60a0c85b24975f784def}\label{classdbAnyCursor_a0cc527a4448a60a0c85b24975f784def}} 
+\index{dbAnyCursor@{dbAnyCursor}!selectByKey@{selectByKey}}
+\index{selectByKey@{selectByKey}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{selectByKey()}{selectByKey()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select\+By\+Key (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{field,  }\item[{void const $\ast$}]{value }\end{DoxyParamCaption})}
+
+Select all records from the table with specified value of the key 
+\begin{DoxyParams}{Parameters}
+{\em field} & key field \\
+\hline
+{\em value} & searched value of the key \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a0cc527a4448a60a0c85b24975f784def_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a9853003f596b2bd1b67aa90112f44d4b}\label{classdbAnyCursor_a9853003f596b2bd1b67aa90112f44d4b}} 
+\index{dbAnyCursor@{dbAnyCursor}!selectByKeyRange@{selectByKeyRange}}
+\index{selectByKeyRange@{selectByKeyRange}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{selectByKeyRange()}{selectByKeyRange()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select\+By\+Key\+Range (\begin{DoxyParamCaption}\item[{char const $\ast$}]{key,  }\item[{void const $\ast$}]{min\+Value,  }\item[{void const $\ast$}]{max\+Value }\end{DoxyParamCaption})}
+
+Select all records from the table with specified range of the key values 
+\begin{DoxyParams}{Parameters}
+{\em key} & name of the key field \\
+\hline
+{\em min\+Value} & inclusive low bound for key values, if {\ttfamily N\+U\+LL} then there is no low bound \\
+\hline
+{\em max\+Value} & inclusive high bound for key values, if {\ttfamily N\+U\+LL} then there is no high bound \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a9853003f596b2bd1b67aa90112f44d4b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_ac4e6f49df41ade22ccf145628feb3613}\label{classdbAnyCursor_ac4e6f49df41ade22ccf145628feb3613}} 
+\index{dbAnyCursor@{dbAnyCursor}!selectByKeyRange@{selectByKeyRange}}
+\index{selectByKeyRange@{selectByKeyRange}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{selectByKeyRange()}{selectByKeyRange()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily cardinality\+\_\+t db\+Any\+Cursor\+::select\+By\+Key\+Range (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{field,  }\item[{void const $\ast$}]{min\+Value,  }\item[{void const $\ast$}]{max\+Value }\end{DoxyParamCaption})}
+
+Select all records from the table with specified range of the key values 
+\begin{DoxyParams}{Parameters}
+{\em field} & key field \\
+\hline
+{\em min\+Value} & inclusive low bound for key values, if {\ttfamily N\+U\+LL} then there is no low bound \\
+\hline
+{\em max\+Value} & inclusive high bound for key values, if {\ttfamily N\+U\+LL} then there is no high bound \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected records 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_ac4e6f49df41ade22ccf145628feb3613_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a214cd49dd49a42a219acd9add1bc32e1}\label{classdbAnyCursor_a214cd49dd49a42a219acd9add1bc32e1}} 
+\index{dbAnyCursor@{dbAnyCursor}!setPrefetchMode@{setPrefetchMode}}
+\index{setPrefetchMode@{setPrefetchMode}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{setPrefetchMode()}{setPrefetchMode()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::set\+Prefetch\+Mode (\begin{DoxyParamCaption}\item[{bool}]{mode }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set prefetch mode. By default, current record is fetch as soon as it is becomes current. But sometimesyou need only O\+I\+Ds of selected records. In this case setting prefetch\+Mode to false can help. 
+\begin{DoxyParams}{Parameters}
+{\em mode} & if {\ttfamily false} then current record is not fetched. You should explicitly call {\ttfamily fetch} method if you want to fetch it. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbAnyCursor_a50de84731092cbe1ccccb4d77e333009}\label{classdbAnyCursor_a50de84731092cbe1ccccb4d77e333009}} 
+\index{dbAnyCursor@{dbAnyCursor}!setRecord@{setRecord}}
+\index{setRecord@{setRecord}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{setRecord()}{setRecord()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::set\+Record (\begin{DoxyParamCaption}\item[{void $\ast$}]{rec }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set destination for selected record rec -\/ buffer to which fields of current record will be fetched \mbox{\Hypertarget{classdbAnyCursor_a6acf5bb381b53dc53c4de808658e715e}\label{classdbAnyCursor_a6acf5bb381b53dc53c4de808658e715e}} 
+\index{dbAnyCursor@{dbAnyCursor}!setSelectionLimit@{setSelectionLimit}}
+\index{setSelectionLimit@{setSelectionLimit}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{setSelectionLimit()}{setSelectionLimit()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::set\+Selection\+Limit (\begin{DoxyParamCaption}\item[{cardinality\+\_\+t}]{lim }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Specify maximal number of records to be selected Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a6acf5bb381b53dc53c4de808658e715e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_af518bc14e533c128069a97762f9e8816}\label{classdbAnyCursor_af518bc14e533c128069a97762f9e8816}} 
+\index{dbAnyCursor@{dbAnyCursor}!setTable@{setTable}}
+\index{setTable@{setTable}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{setTable()}{setTable()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::set\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{a\+Table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set table for the cursor 
+\begin{DoxyParams}{Parameters}
+{\em a\+Table} & table which records will be iterated \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_af518bc14e533c128069a97762f9e8816_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a2340940931df9d1f9e91824b8d103b72}\label{classdbAnyCursor_a2340940931df9d1f9e91824b8d103b72}} 
+\index{dbAnyCursor@{dbAnyCursor}!skip@{skip}}
+\index{skip@{skip}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{skip()}{skip()}}
+{\footnotesize\ttfamily bool db\+Any\+Cursor\+::skip (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+Skip specified number of records 
+\begin{DoxyParams}{Parameters}
+{\em n} & if positive then skip {\ttfamily n} records forward, if negative then skip {\ttfamily -\/n} records backward \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if specified number of records was successfully skipped, {\ttfamily false} if there is no next ({\ttfamily n $>$ 0}) or previous ({\ttfamily n $<$ 0}) record in the selction. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a2340940931df9d1f9e91824b8d103b72_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_ab8ef7bbfa68df59b19c1fd7833fa7042}\label{classdbAnyCursor_ab8ef7bbfa68df59b19c1fd7833fa7042}} 
+\index{dbAnyCursor@{dbAnyCursor}!toArrayOfOid@{toArrayOfOid}}
+\index{toArrayOfOid@{toArrayOfOid}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{toArrayOfOid()}{toArrayOfOid()}}
+{\footnotesize\ttfamily oid\+\_\+t $\ast$ db\+Any\+Cursor\+::to\+Array\+Of\+Oid (\begin{DoxyParamCaption}\item[{oid\+\_\+t $\ast$}]{arr }\end{DoxyParamCaption}) const}
+
+Extract O\+I\+Ds of selected recrods in array 
+\begin{DoxyParams}{Parameters}
+{\em arr} & if {\ttfamily arr} is not null, then this array is used as destination (it should be at least selection.\+n\+Rows long)~\newline
+ If {\ttfamily arr} is null, then new array is created by new oid\+\_\+t\mbox{[}\mbox{]} and returned by this method \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+if {\ttfamily arr} is not null, then {\ttfamily arr}, otherwise array created by this method 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_ab8ef7bbfa68df59b19c1fd7833fa7042_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_ab8ef7bbfa68df59b19c1fd7833fa7042_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_a1ca79e06280a0e4717f70d8a0886945b}\label{classdbAnyCursor_a1ca79e06280a0e4717f70d8a0886945b}} 
+\index{dbAnyCursor@{dbAnyCursor}!unfreeze@{unfreeze}}
+\index{unfreeze@{unfreeze}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{unfreeze()}{unfreeze()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::unfreeze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Unfreeze cursor. This method starts new transaction and restore state of the cursor Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_a1ca79e06280a0e4717f70d8a0886945b_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyCursor_ab9107ad04d03d9a18db6d0308468b5bc}\label{classdbAnyCursor_ab9107ad04d03d9a18db6d0308468b5bc}} 
+\index{dbAnyCursor@{dbAnyCursor}!unsetSelectionLimit@{unsetSelectionLimit}}
+\index{unsetSelectionLimit@{unsetSelectionLimit}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{unsetSelectionLimit()}{unsetSelectionLimit()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::unset\+Selection\+Limit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove selection limit \mbox{\Hypertarget{classdbAnyCursor_ac84c01ba117088d1f7cfafbb033c63e3}\label{classdbAnyCursor_ac84c01ba117088d1f7cfafbb033c63e3}} 
+\index{dbAnyCursor@{dbAnyCursor}!update@{update}}
+\index{update@{update}!dbAnyCursor@{dbAnyCursor}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void db\+Any\+Cursor\+::update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Update current record. You should changed value of current record before and then call update method to save changes to the database Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_ac84c01ba117088d1f7cfafbb033c63e3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyCursor_ac84c01ba117088d1f7cfafbb033c63e3_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/cursor.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/cursor.\+cpp\end{DoxyCompactItemize}

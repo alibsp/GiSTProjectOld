@@ -1,0 +1,84 @@
+\hypertarget{classdbRtreePage}{}\doxysection{db\+Rtree\+Page Class Reference}
+\label{classdbRtreePage}\index{dbRtreePage@{dbRtreePage}}
+
+
+Collaboration diagram for db\+Rtree\+Page\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classdbRtreePage__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdbRtreePage_1_1branch}{branch}}
+\item 
+struct \mbox{\hyperlink{structdbRtreePage_1_1reinsert__list}{reinsert\+\_\+list}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a0d01087f8e4bdca15f84c30c9f19c881}\label{classdbRtreePage_a0d01087f8e4bdca15f84c30c9f19c881}} 
+enum \{ {\bfseries card} = (db\+Page\+Size -\/ 4) / sizeof(branch), 
+{\bfseries min\+\_\+fill} = card/2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a77858d1788b1ce64ec48ac371d86fd54}\label{classdbRtreePage_a77858d1788b1ce64ec48ac371d86fd54}} 
+bool {\bfseries find} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc, int level) const
+\item 
+\mbox{\Hypertarget{classdbRtreePage_abeb9f5b1cd3d19fb12328b8a7f91b696}\label{classdbRtreePage_abeb9f5b1cd3d19fb12328b8a7f91b696}} 
+void {\bfseries cover} (\mbox{\hyperlink{classrectangle}{rectangle}} \&r) const
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a72064a82c727276ffc86b4a983c76417}\label{classdbRtreePage_a72064a82c727276ffc86b4a983c76417}} 
+void {\bfseries remove\+\_\+branch} (int i)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a85e248412771eacaf19bcb4a625b7c62}\label{classdbRtreePage_a85e248412771eacaf19bcb4a625b7c62}} 
+oid\+\_\+t {\bfseries next\+\_\+reinsert\+\_\+page} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtreePage_aca0638ab0be8347e1c1f3ba9cf3f1a0e}\label{classdbRtreePage_aca0638ab0be8347e1c1f3ba9cf3f1a0e}} 
+static bool {\bfseries find} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t root\+Id, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc, int level)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_abedd5b128c510b4d1f136c7ae7b511d7}\label{classdbRtreePage_abedd5b128c510b4d1f136c7ae7b511d7}} 
+static oid\+\_\+t {\bfseries insert} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classrectangle}{rectangle}} const \&r, oid\+\_\+t page\+Id, oid\+\_\+t record\+Id, int level)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a314b84cde69a82f0898bdd5c647eede2}\label{classdbRtreePage_a314b84cde69a82f0898bdd5c647eede2}} 
+static bool {\bfseries remove} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classrectangle}{rectangle}} const \&r, oid\+\_\+t page\+Id, oid\+\_\+t record\+Id, int level, \mbox{\hyperlink{structdbRtreePage_1_1reinsert__list}{reinsert\+\_\+list}} \&rlist)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_ae270991b91c6fa0edad892d67e9115bd}\label{classdbRtreePage_ae270991b91c6fa0edad892d67e9115bd}} 
+static void {\bfseries cover} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t page\+Id, \mbox{\hyperlink{classrectangle}{rectangle}} \&r)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_ac33456a4b1475f0c0140b678f6c64fb1}\label{classdbRtreePage_ac33456a4b1475f0c0140b678f6c64fb1}} 
+static oid\+\_\+t {\bfseries add\+\_\+branch} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t page\+Id, \mbox{\hyperlink{structdbRtreePage_1_1branch}{branch}} const \&br)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_ad6f1ae41da3423478f7bf8bfaf46f348}\label{classdbRtreePage_ad6f1ae41da3423478f7bf8bfaf46f348}} 
+static void {\bfseries purge} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t page\+Id, int level)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_ab101d98e32b0de581852aaca4c3df17e}\label{classdbRtreePage_ab101d98e32b0de581852aaca4c3df17e}} 
+static oid\+\_\+t {\bfseries allocate} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t record\+Id, \mbox{\hyperlink{classrectangle}{rectangle}} const \&r)
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a71732259516d57200216a2e271448293}\label{classdbRtreePage_a71732259516d57200216a2e271448293}} 
+static oid\+\_\+t {\bfseries allocate} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t root\+Id, oid\+\_\+t p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a21fcc3f6bcc05ebca306bb3622e8b6d3}\label{classdbRtreePage_a21fcc3f6bcc05ebca306bb3622e8b6d3}} 
+int4 {\bfseries n}
+\item 
+\mbox{\Hypertarget{classdbRtreePage_a3236ee5aab17aaa5b60d63a06efc1d3a}\label{classdbRtreePage_a3236ee5aab17aaa5b60d63a06efc1d3a}} 
+\mbox{\hyperlink{structdbRtreePage_1_1branch}{branch}} {\bfseries b} \mbox{[}card\mbox{]}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/rtree.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/rtree.\+cpp\end{DoxyCompactItemize}

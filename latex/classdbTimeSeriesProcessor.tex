@@ -1,0 +1,417 @@
+\hypertarget{classdbTimeSeriesProcessor}{}\doxysection{db\+Time\+Series\+Processor$<$ T $>$ Class Template Reference}
+\label{classdbTimeSeriesProcessor}\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+
+
+{\ttfamily \#include $<$timeseries.\+h$>$}
+
+
+
+Collaboration diagram for db\+Time\+Series\+Processor$<$ T $>$\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=238pt]{classdbTimeSeriesProcessor__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classdbTimeSeriesProcessor_ab4ff7fdc444b2e6fe78a3575019ba11d}{process}} (T const \&data)
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesProcessor_a7084a931495d7eae1c660270ad53ff7e}{add}} (oid\+\_\+t oid, T const \&data)
+\item 
+void \mbox{\hyperlink{classdbTimeSeriesProcessor_a62479f453dec01b9b1608224db67b744}{select}} (oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till)
+\item 
+time\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_a62de406959d586ddf4ac0f9f15f8e37c}{get\+First\+Time}} (oid\+\_\+t oid)
+\item 
+time\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_a6adafdc92fb2c52abb8c7b79130d57e9}{get\+Last\+Time}} (oid\+\_\+t oid)
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_a7181f9c9e9084f70fe530d767bff09c6}{get\+Number\+Of\+Elements}} (oid\+\_\+t oid)
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_a6d8740f44e6bcfdf2d8152e79038a0f1}{get\+Interval}} (oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till, T $\ast$buf, size\+\_\+t buf\+Size)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesProcessor_a0137078bb3ae4f687e1c5ad16227c7c3}{get\+Element}} (oid\+\_\+t oid, T \&elem, time\+\_\+t t)
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_ae68478e67823e9a2a6502b4d637613db}{get\+First\+Interval}} (oid\+\_\+t oid, time\+\_\+t till, T $\ast$buf, size\+\_\+t buf\+Size)
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor_ab23c969891d412166f7c40eeae3396d1}{get\+Last\+Interval}} (oid\+\_\+t oid, time\+\_\+t from, T $\ast$buf, size\+\_\+t buf\+Size)
+\item 
+bool \mbox{\hyperlink{classdbTimeSeriesProcessor_a5843a89a784d58a56f2cd40f4c5fa4e5}{has\+Element}} (oid\+\_\+t oid, time\+\_\+t t)
+\item 
+\mbox{\hyperlink{classdbTimeSeriesProcessor_aef0c0015f062b55d68b1781fe860ab80}{db\+Time\+Series\+Processor}} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} \&database, int min\+Elements\+In\+Block=100, int max\+Elements\+In\+Block=100, time\+\_\+t max\+Block\+Time\+Interval=0)
+\item 
+int \mbox{\hyperlink{classdbTimeSeriesProcessor_a5b9c0f2e29ed43c74e0dd7576979f0b2}{remove}} (oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till)
+\item 
+int \mbox{\hyperlink{classdbTimeSeriesProcessor_ab681a2bb7bea4b4161aaa8e28b662e49}{\+\_\+open\+Iterator\+Cursor}} (\mbox{\hyperlink{classdbCursor}{db\+Cursor}}$<$ \mbox{\hyperlink{classdbTimeSeriesBlock}{db\+Time\+Series\+Block}}$<$ T $>$ $>$ \&cursor, oid\+\_\+t oid, time\+\_\+t from, time\+\_\+t till)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T$>$\newline
+class db\+Time\+Series\+Processor$<$ T $>$}
+
+Time series processor.~\newline
+ Element of time series can be arbitrary type with declared T\+Y\+P\+E\+\_\+\+D\+E\+S\+C\+R\+I\+P\+T\+OR and defined {\ttfamily time\+\_\+t time()} method 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_aef0c0015f062b55d68b1781fe860ab80}\label{classdbTimeSeriesProcessor_aef0c0015f062b55d68b1781fe860ab80}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!dbTimeSeriesProcessor@{dbTimeSeriesProcessor}}
+\index{dbTimeSeriesProcessor@{dbTimeSeriesProcessor}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{dbTimeSeriesProcessor()}{dbTimeSeriesProcessor()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::\mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}} (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbDatabase}{db\+Database}} \&}]{database,  }\item[{int}]{min\+Elements\+In\+Block = {\ttfamily 100},  }\item[{int}]{max\+Elements\+In\+Block = {\ttfamily 100},  }\item[{time\+\_\+t}]{max\+Block\+Time\+Interval = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Time\+Series processor constructor 
+\begin{DoxyParams}{Parameters}
+{\em database} & reference to the database \\
+\hline
+{\em min\+Elements\+In\+Block} & preallocated number of the elements in the block\+: array with specified number of elements will be allocated for new block \\
+\hline
+{\em max\+Elements\+In\+Block} & maximal number of the elements in the block\+: block will be splitten if it has max\+Elements\+In\+Block elements and new is added to the block \\
+\hline
+{\em max\+Block\+Time\+Interval} & maximal interval between first and last element in the block, new block will be created if adding new element to the block cause violation of this assumption. If max\+Block\+Time\+Interval is 0, then it is assigned to doubled number of seconds in day multipied on max\+Elements\+In\+Block \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_ab681a2bb7bea4b4161aaa8e28b662e49}\label{classdbTimeSeriesProcessor_ab681a2bb7bea4b4161aaa8e28b662e49}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!\_openIteratorCursor@{\_openIteratorCursor}}
+\index{\_openIteratorCursor@{\_openIteratorCursor}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{\_openIteratorCursor()}{\_openIteratorCursor()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::\+\_\+open\+Iterator\+Cursor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbCursor}{db\+Cursor}}$<$ \mbox{\hyperlink{classdbTimeSeriesBlock}{db\+Time\+Series\+Block}}$<$ T $>$ $>$ \&}]{cursor,  }\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+This method should be actually private but since there is no portable way of declaration of friend templates classes recognized by all C++ compiler, it is made public. Do not use this method yourself. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_ab681a2bb7bea4b4161aaa8e28b662e49_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a7084a931495d7eae1c660270ad53ff7e}\label{classdbTimeSeriesProcessor_a7084a931495d7eae1c660270ad53ff7e}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!add@{add}}
+\index{add@{add}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{add()}{add()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::add (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{T const \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Add new element 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em data} & reference to the inserted element \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a7084a931495d7eae1c660270ad53ff7e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a0137078bb3ae4f687e1c5ad16227c7c3}\label{classdbTimeSeriesProcessor_a0137078bb3ae4f687e1c5ad16227c7c3}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getElement@{getElement}}
+\index{getElement@{getElement}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getElement()}{getElement()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+Element (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{T \&}]{elem,  }\item[{time\+\_\+t}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get time series element with specified time 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em elem} & reference to the extracted element \\
+\hline
+{\em t} & timestamp of extracted element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if element with specifed times exists in time series 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a0137078bb3ae4f687e1c5ad16227c7c3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a0137078bb3ae4f687e1c5ad16227c7c3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_ae68478e67823e9a2a6502b4d637613db}\label{classdbTimeSeriesProcessor_ae68478e67823e9a2a6502b4d637613db}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getFirstInterval@{getFirstInterval}}
+\index{getFirstInterval@{getFirstInterval}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getFirstInterval()}{getFirstInterval()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+First\+Interval (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{till,  }\item[{T $\ast$}]{buf,  }\item[{size\+\_\+t}]{buf\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select first N elements of times series with timestamp less than or equal to specified 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+{\em buf} & destination buffer for selected elements \\
+\hline
+{\em buf\+Size} & size of buffer\+: up to buf\+Size elements will be placed in buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected elements (can be less than buf\+Size if there are less elements in time series with timestamp less or equal than specified, but can not be greater than buf\+Size) 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_ae68478e67823e9a2a6502b4d637613db_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a62de406959d586ddf4ac0f9f15f8e37c}\label{classdbTimeSeriesProcessor_a62de406959d586ddf4ac0f9f15f8e37c}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getFirstTime@{getFirstTime}}
+\index{getFirstTime@{getFirstTime}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getFirstTime()}{getFirstTime()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+time\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+First\+Time (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the time of the first element in time series 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+earliest time in times series or -\/1 if there are no elements in time series 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a62de406959d586ddf4ac0f9f15f8e37c_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a6d8740f44e6bcfdf2d8152e79038a0f1}\label{classdbTimeSeriesProcessor_a6d8740f44e6bcfdf2d8152e79038a0f1}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getInterval@{getInterval}}
+\index{getInterval@{getInterval}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getInterval()}{getInterval()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+Interval (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till,  }\item[{T $\ast$}]{buf,  }\item[{size\+\_\+t}]{buf\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select elements belonging to the specified interval 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+{\em buf} & destination buffer for selected elements \\
+\hline
+{\em buf\+Size} & size of buffer\+: up to buf\+Size elements will be placed in buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of elements belonging to the specified interval (can be greater than buf\+Size) 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a6d8740f44e6bcfdf2d8152e79038a0f1_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a6d8740f44e6bcfdf2d8152e79038a0f1_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_ab23c969891d412166f7c40eeae3396d1}\label{classdbTimeSeriesProcessor_ab23c969891d412166f7c40eeae3396d1}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getLastInterval@{getLastInterval}}
+\index{getLastInterval@{getLastInterval}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getLastInterval()}{getLastInterval()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+Last\+Interval (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{T $\ast$}]{buf,  }\item[{size\+\_\+t}]{buf\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Select last N elements of times series with timestamp greater than or equal to specified 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em buf} & destination buffer for selected elements \\
+\hline
+{\em buf\+Size} & size of buffer\+: up to buf\+Size elements will be placed in buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of selected elements (can be less than buf\+Size if there are less elements in time series with timestamp greater or equal than specified, but can not be greater than buf\+Size) 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_ab23c969891d412166f7c40eeae3396d1_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a6adafdc92fb2c52abb8c7b79130d57e9}\label{classdbTimeSeriesProcessor_a6adafdc92fb2c52abb8c7b79130d57e9}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getLastTime@{getLastTime}}
+\index{getLastTime@{getLastTime}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getLastTime()}{getLastTime()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+time\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+Last\+Time (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get the time of the last element in time series 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+latest time in times series or -\/1 if there are no elements in time series 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a6adafdc92fb2c52abb8c7b79130d57e9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a7181f9c9e9084f70fe530d767bff09c6}\label{classdbTimeSeriesProcessor_a7181f9c9e9084f70fe530d767bff09c6}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!getNumberOfElements@{getNumberOfElements}}
+\index{getNumberOfElements@{getNumberOfElements}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{getNumberOfElements()}{getNumberOfElements()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+size\+\_\+t \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::get\+Number\+Of\+Elements (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of elements in time series. 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of elements in time series. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a7181f9c9e9084f70fe530d767bff09c6_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a5843a89a784d58a56f2cd40f4c5fa4e5}\label{classdbTimeSeriesProcessor_a5843a89a784d58a56f2cd40f4c5fa4e5}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!hasElement@{hasElement}}
+\index{hasElement@{hasElement}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{hasElement()}{hasElement()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+bool \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::has\+Element (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{t }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check if there is element for specified data in time series 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em t} & timestamp of checked element \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if element with specifed times exists in time series 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a5843a89a784d58a56f2cd40f4c5fa4e5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_ab4ff7fdc444b2e6fe78a3575019ba11d}\label{classdbTimeSeriesProcessor_ab4ff7fdc444b2e6fe78a3575019ba11d}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!process@{process}}
+\index{process@{process}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{process()}{process()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+virtual void \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::process (\begin{DoxyParamCaption}\item[{T const \&}]{data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+Virtual method for processing elements, Should be redefinedin derived class. 
+\begin{DoxyParams}{Parameters}
+{\em data} & reference to the processed data element \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_ab4ff7fdc444b2e6fe78a3575019ba11d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a5b9c0f2e29ed43c74e0dd7576979f0b2}\label{classdbTimeSeriesProcessor_a5b9c0f2e29ed43c74e0dd7576979f0b2}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!remove@{remove}}
+\index{remove@{remove}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+int \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::remove (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Remove elements for the sepcified period 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+number of removed elements 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a5b9c0f2e29ed43c74e0dd7576979f0b2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbTimeSeriesProcessor_a62479f453dec01b9b1608224db67b744}\label{classdbTimeSeriesProcessor_a62479f453dec01b9b1608224db67b744}} 
+\index{dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}!select@{select}}
+\index{select@{select}!dbTimeSeriesProcessor$<$ T $>$@{dbTimeSeriesProcessor$<$ T $>$}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+void \mbox{\hyperlink{classdbTimeSeriesProcessor}{db\+Time\+Series\+Processor}}$<$ T $>$\+::select (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{time\+\_\+t}]{from,  }\item[{time\+\_\+t}]{till }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Process elements in the block belonging to the specified range 
+\begin{DoxyParams}{Parameters}
+{\em oid} & time series identifer (O\+ID of the object associated with this time series) \\
+\hline
+{\em from} & inclusive low bound for element timestamp (set 0 to disable this criteria) \\
+\hline
+{\em till} & inclusive high bound for element timestamp (set I\+N\+F\+I\+N\+I\+T\+E\+\_\+\+T\+I\+ME to disable this criteria) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbTimeSeriesProcessor_a62479f453dec01b9b1608224db67b744_cgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/timeseries.\+h\end{DoxyCompactItemize}

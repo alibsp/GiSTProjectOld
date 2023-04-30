@@ -1,0 +1,67 @@
+\hypertarget{structdbInheritedAttribute}{}\doxysection{db\+Inherited\+Attribute Struct Reference}
+\label{structdbInheritedAttribute}\index{dbInheritedAttribute@{dbInheritedAttribute}}
+
+
+Collaboration diagram for db\+Inherited\+Attribute\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{structdbInheritedAttribute__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a6062dcd1817bceb201bde2e7a1927c6c}\label{structdbInheritedAttribute_a6062dcd1817bceb201bde2e7a1927c6c}} 
+enum \{ {\bfseries internal\+Str\+Buf\+Size} = 8$\ast$1024
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_af04d7be95c643c565d3c0c1be04d34b6}\label{structdbInheritedAttribute_af04d7be95c643c565d3c0c1be04d34b6}} 
+void {\bfseries remove\+Temporaries} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a456008a1414b25e333d8c906eac1a274}\label{structdbInheritedAttribute_a456008a1414b25e333d8c906eac1a274}} 
+byte $\ast$ {\bfseries record}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a48a678cff409f304762b2b4801dd0ed1}\label{structdbInheritedAttribute_a48a678cff409f304762b2b4801dd0ed1}} 
+oid\+\_\+t {\bfseries oid}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_abff98a669b8f25d10e516ce1008b166c}\label{structdbInheritedAttribute_abff98a669b8f25d10e516ce1008b166c}} 
+\mbox{\hyperlink{classdbTable}{db\+Table}} $\ast$ {\bfseries table}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_abee4d0c4470a0c4016a519d16659228d}\label{structdbInheritedAttribute_abee4d0c4470a0c4016a519d16659228d}} 
+\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$ {\bfseries db}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a395e0654f4df08b539da6869f4359c4c}\label{structdbInheritedAttribute_a395e0654f4df08b539da6869f4359c4c}} 
+\mbox{\hyperlink{structdbStringValue}{db\+String\+Value}} $\ast$ {\bfseries temp\+Strings}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a460e04cb2b55049215688891fef2f09a}\label{structdbInheritedAttribute_a460e04cb2b55049215688891fef2f09a}} 
+size\+\_\+t {\bfseries param\+Base}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a095c87e25902196203e6da33f5099367}\label{structdbInheritedAttribute_a095c87e25902196203e6da33f5099367}} 
+size\+\_\+t {\bfseries str\+Buf\+Pos}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a8a81156c01fc00504d991faec772894e}\label{structdbInheritedAttribute_a8a81156c01fc00504d991faec772894e}} 
+char {\bfseries str\+Buf} \mbox{[}internal\+Str\+Buf\+Size\mbox{]}
+\item 
+\mbox{\Hypertarget{structdbInheritedAttribute_a7e25362921502b18ea1e3eb88f7cd2c1}\label{structdbInheritedAttribute_a7e25362921502b18ea1e3eb88f7cd2c1}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>int {\bfseries index}\\
+\>jmp\_buf {\bfseries unwind}\\
+\} {\bfseries exists\_iterator} \mbox{[}dbCompiler::maxFreeVars\mbox{]}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/compiler.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/compiler.\+cpp\end{DoxyCompactItemize}

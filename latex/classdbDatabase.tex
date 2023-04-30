@@ -1,0 +1,3193 @@
+\hypertarget{classdbDatabase}{}\doxysection{db\+Database Class Reference}
+\label{classdbDatabase}\index{dbDatabase@{dbDatabase}}
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+
+
+Inheritance diagram for db\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classdbDatabase__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Database\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdbDatabase_1_1dbLocation}{db\+Location}}
+\item 
+struct \mbox{\hyperlink{structdbDatabase_1_1OpenParameters}{Open\+Parameters}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a999ee12431ea451d4087b34e318e8102}\label{classdbDatabase_a999ee12431ea451d4087b34e318e8102}} 
+enum {\bfseries db\+Access\+Type} \{ {\bfseries db\+Read\+Only}, 
+{\bfseries db\+All\+Access}, 
+{\bfseries db\+Concurrent\+Read}, 
+{\bfseries db\+Concurrent\+Update}
+ \}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a4e6af157f4f262cb3bf6e3301c18eff6}\label{classdbDatabase_a4e6af157f4f262cb3bf6e3301c18eff6}} 
+enum {\bfseries Detach\+Flags} \{ {\bfseries C\+O\+M\+M\+IT} = 1, 
+{\bfseries D\+E\+S\+T\+R\+O\+Y\+\_\+\+C\+O\+N\+T\+E\+XT} = 2
+ \}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a72a6ed09e85fdd60eb7ccc5cc268f0d0}\label{classdbDatabase_a72a6ed09e85fdd60eb7ccc5cc268f0d0}} 
+enum {\bfseries db\+Lock\+Type} \{ {\bfseries db\+Shared\+Lock}, 
+{\bfseries db\+Exclusive\+Lock}, 
+{\bfseries db\+Commit\+Lock}
+ \}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ac02087339de0dee94cbb269877a715ed}\label{classdbDatabase_ac02087339de0dee94cbb269877a715ed}} 
+enum {\bfseries db\+Error\+Class} \{ \newline
+{\bfseries No\+Error}, 
+{\bfseries Query\+Error}, 
+{\bfseries Arithmetic\+Error}, 
+{\bfseries Index\+Out\+Of\+Range\+Error}, 
+\newline
+{\bfseries Database\+Open\+Error}, 
+{\bfseries File\+Error}, 
+{\bfseries Out\+Of\+Memory\+Error}, 
+{\bfseries Deadlock}, 
+\newline
+{\bfseries Null\+Reference\+Error}, 
+{\bfseries Lock\+Revoked}, 
+{\bfseries File\+Limit\+Exeeded}, 
+{\bfseries Inconsistent\+Inverse\+Reference}, 
+\newline
+{\bfseries Database\+Read\+Only}, 
+{\bfseries Assertion\+Failed}, 
+{\bfseries Access\+To\+Deleted\+Object}, 
+{\bfseries No\+Current\+Record}, 
+\newline
+{\bfseries Readonly\+Cursor}, 
+{\bfseries Incompatible\+Schema\+Change}, 
+{\bfseries Rejected\+By\+Transaction\+Logger}
+ \}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a01c3d430d2e5528bd6f6eff8df16edf9}\label{classdbDatabase_a01c3d430d2e5528bd6f6eff8df16edf9}} 
+typedef void($\ast$ {\bfseries db\+Error\+Handler}) (int error, char const $\ast$msg, int msgarg, void $\ast$context)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a7292d5348484aa6e90ff5da3c94e01ff}{open}} (char\+\_\+t const $\ast$database\+Name, char\+\_\+t const $\ast$file\+Name=N\+U\+LL, time\+\_\+t wait\+Lock\+Timeout\+Msec=I\+N\+F\+I\+N\+I\+TE, time\+\_\+t commit\+Delay\+Sec=0)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a4e2aa3b70bf2d2124717a6843937b182}{open}} (\mbox{\hyperlink{structdbDatabase_1_1OpenParameters}{Open\+Parameters}} \&params)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a94ae05070b28588ddfa53d78c49c282d}{close}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a2e036cfcdc87258bfeaa63f7eaf4abd0}{commit}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_ae23bde067deb326cbecd312c88294b82}{precommit}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a6ea3547f89ddf83a428916647aff669e}{rollback}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_ab1db64ff0bf29bf87c5636bde4753539}{schedule\+Backup}} (char\+\_\+t const $\ast$file\+Name, time\+\_\+t period\+Sec)
+\item 
+void \mbox{\hyperlink{classdbDatabase_ac9dd81c1cefb4f8df0a567b355869a2f}{attach}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a936c0e538ae9d7ca77f219eb83dd993e}{attach}} (\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a68de6c9acf521dd39c565a0851fed9c9}{detach}} (int flags=C\+O\+M\+M\+IT$\vert$D\+E\+S\+T\+R\+O\+Y\+\_\+\+C\+O\+N\+T\+E\+XT)
+\item 
+void \mbox{\hyperlink{classdbDatabase_aa4b3ded01bf4d66edaf6111abcf91f6d}{lock}} (db\+Lock\+Type lock=db\+Exclusive\+Lock)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a9a8ca796e12f7b49e1c5b1d846c210da}{backup}} (char\+\_\+t const $\ast$file, bool compactify)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_afbf41f1ae851c55c5ffd3dfcc61b48ae}{backup}} (\mbox{\hyperlink{classdbFile}{db\+File}} $\ast$file, bool compactify)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a30ea1fd8a039904daed402e975a6ca01}{assign}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} \&desc)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a97fcfe6622f2d1380768bff1b1489c18}{set\+Concurrency}} (unsigned n\+Threads)
+\item 
+soffs\+\_\+t \mbox{\hyperlink{classdbDatabase_aa12a7f519b6b58179e875bd9bfe0394d}{get\+Allocated\+Size}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbDatabase_a7a9a7d4fef191fccaa8a7aa455763f3d}{get\+Database\+Size}} ()
+\item 
+size\+\_\+t \mbox{\hyperlink{classdbDatabase_a4717133aa73ac66e169e2866db32b377}{get\+Used\+Database\+Size}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_a5fb3e20e210e40a33116a4c1372c98d1}{get\+Number\+Of\+Readers}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_ae4af4ad21e1d3465bc1d16699bd3c613}{get\+Number\+Of\+Writers}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_a2c18de697f7111bca527a58c69b17c4d}{get\+Number\+Of\+Blocked\+Readers}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_a9c2336e08e59f1509304fe4934a80763}{get\+Number\+Of\+Blocked\+Writers}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_ad6a9ad3c0dbdf1055a7631c3a15be45f}{get\+Number\+Of\+Users}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a21997d7169d1b4382367933dcae056ed}{allow\+Columns\+Deletion}} (bool enabled=true)
+\item 
+void \mbox{\hyperlink{classdbDatabase_adccfd5692158b4653bd1fc9518bc29f1}{enable\+Cascade\+Delete}} (bool enabled=true)
+\item 
+void \mbox{\hyperlink{classdbDatabase_af1563fbac602be6f226dee65f09ea19b}{enable\+Inverse\+References\+Update}} (bool enabled=true)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a4adc553feaa1807e278aef2870904291}{prepare\+Query}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbQuery}{db\+Query}} \&query)
+\item 
+db\+Error\+Handler \mbox{\hyperlink{classdbDatabase_a3d2a99345575506fb4166a36dfb9934a}{set\+Error\+Handler}} (db\+Error\+Handler new\+Handler, void $\ast$error\+Handler\+Context=N\+U\+LL)
+\item 
+void \mbox{\hyperlink{classdbDatabase_ab8b4ad63d4a2fe3b3125dd958722104e}{set\+Transaction\+Logger}} (\mbox{\hyperlink{classdbTransactionLogger}{db\+Transaction\+Logger}} $\ast$logger)
+\item 
+virtual void \mbox{\hyperlink{classdbDatabase_a239cb01cd3eee54d5ae50763259037c8}{handle\+Error}} (db\+Error\+Class error, char const $\ast$msg=N\+U\+LL, int arg=0)
+\item 
+virtual void \mbox{\hyperlink{classdbDatabase_ae8b78f65b6067222daabe7258f3ad5e0}{format\+Error\+Message}} (char $\ast$buf, size\+\_\+t buf\+Size, db\+Error\+Class error, char const $\ast$msg=N\+U\+LL, int arg=0)
+\item 
+virtual void \mbox{\hyperlink{classdbDatabase_a7ae83e7bc84e4a52e34b6ed821ee05fd}{fatal\+Error}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a9de489204ef31d019e9eaa66e210c2e4}{insert\+Record}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, \mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} $\ast$ref, void const $\ast$record)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_ac5b2f4561e900dfe286ac33253445c7c}{is\+Open}} () const
+\item 
+bool \mbox{\hyperlink{classdbDatabase_af04b833ed1b639e09a76eb7746342772}{is\+In\+Write\+Transaction}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a80456be06029c32fa554962782d3f135}{is\+Committed}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a522d86ff1161892bd28a91bac7df1fb0}{is\+Attached}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_adf5c321543d0110eb43f171e1b0a8cea}{is\+Update\+Transaction}} ()
+\item 
+int \mbox{\hyperlink{classdbDatabase_a8f8d2ca71a591b81f3df73779320b9c5}{get\+Version}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_abb2369383f441c2d61f7cdbb7df9323a}{set\+File\+Size\+Limit}} (size\+\_\+t limit)
+\item 
+{\footnotesize template$<$class T $>$ }\\\mbox{\hyperlink{classdbReference}{db\+Reference}}$<$ T $>$ \mbox{\hyperlink{classdbDatabase_ae833cf5a5102fc4c29f1f8e6dffa3a3d}{insert}} (T const \&record)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_a29ab2f90bf4964b18306e682f4b0fe3b}{lookup\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a22a9f69b515413088b4f754dce9c81de}{get\+Memory\+Statistic}} (\mbox{\hyperlink{structdbMemoryStatistic}{db\+Memory\+Statistic}} \&stat)
+\item 
+int \mbox{\hyperlink{classdbDatabase_a9c5b3727f694984ca54bd898c6a8d4d6}{get\+Number\+Of\+Proceeded\+Transactions}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a9dc333ec67ab1547791b95635b156ba0}{is\+Valid\+Oid}} (oid\+\_\+t oid)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a3f09c9587e354f16b5355a74a9426e8d}{export\+Database\+To\+Xml}} (F\+I\+LE $\ast$out, char const $\ast$encoding=\char`\"{}U\+TF-\/8\char`\"{}, bool dtd=true)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a732eb89bfd4a4e5d5d86a86dd7dd93f0}{import\+Database\+From\+Xml}} (F\+I\+LE $\ast$in)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a5cdf49bcebd9ed31b1e766de0cf90145}{export\+Database\+To\+Xml}} (char\+\_\+t const $\ast$file, char const $\ast$encoding=\char`\"{}U\+TF-\/8\char`\"{}, bool dtd=true)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a143bc9a6e525da2bb8d2972e64f21131}{import\+Database\+From\+Xml}} (char\+\_\+t const $\ast$file)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a8524c1b921beca3ff9470fffbebae2e7}{set\+Fixed\+Size\+Allocator}} (size\+\_\+t min\+Size, size\+\_\+t max\+Size, size\+\_\+t quantum, size\+\_\+t buf\+Size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a7c1d956abca79a8d43f54391a24af557}{recover\+Free\+Oid\+List}} ()
+\item 
+\mbox{\hyperlink{classdbDatabase_a3e3dd7d2c9ea025630f57d4cde778d2d}{db\+Database}} (db\+Access\+Type type=db\+All\+Access, size\+\_\+t db\+Init\+Size=db\+Default\+Init\+Database\+Size, size\+\_\+t db\+Extension\+Quantum=db\+Default\+Extension\+Quantum, size\+\_\+t db\+Init\+Index\+Size=db\+Default\+Init\+Index\+Size, int n\+Threads=1, int mode=0$\vert$db\+Header\+::\+M\+O\+D\+E\+\_\+\+N\+O\+\_\+\+P\+T\+H\+R\+E\+A\+DS$\vert$db\+Header\+::\+M\+O\+D\+E\+\_\+\+O\+F\+F\+S\+\_\+64$\vert$db\+Header\+::\+M\+O\+D\+E\+\_\+\+A\+U\+T\+O\+I\+N\+C\+R\+E\+M\+E\+NT)
+\item 
+virtual \mbox{\hyperlink{classdbDatabase_a3ffbe2e46327a2dae459f619c5c405c7}{$\sim$db\+Database}} ()
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_a93f3b26b734abc2f9a051a5b25588688}{find\+Table\+By\+Name}} (char const $\ast$name)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_a13183fdf6469d80a1ee50d1286447ceb}{find\+Table\+By\+ID}} (oid\+\_\+t id)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_af46a0616cda64750e1a67c16c5d00afc}{get\+Tables}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad68a460ece08203ceaf70130468ae048}\label{classdbDatabase_ad68a460ece08203ceaf70130468ae048}} 
+int {\bfseries file\+Open\+Flags}
+\item 
+\mbox{\Hypertarget{classdbDatabase_adbf699f7162f9830abcbc9aee620d0d0}\label{classdbDatabase_adbf699f7162f9830abcbc9aee620d0d0}} 
+db\+Access\+Type {\bfseries access\+Type}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a6a0dcecd8fdc9d83c0919eed602e59a3}\label{classdbDatabase_a6a0dcecd8fdc9d83c0919eed602e59a3}} 
+size\+\_\+t {\bfseries init\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a8b376249b1b0ddcc995c89ee50fd239d}\label{classdbDatabase_a8b376249b1b0ddcc995c89ee50fd239d}} 
+size\+\_\+t {\bfseries extension\+Quantum}
+\item 
+\mbox{\Hypertarget{classdbDatabase_af1d4381b82277ee28ac02fb7295d8b24}\label{classdbDatabase_af1d4381b82277ee28ac02fb7295d8b24}} 
+size\+\_\+t {\bfseries init\+Index\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad181b56d45fcd7088270036e47bd9acf}\label{classdbDatabase_ad181b56d45fcd7088270036e47bd9acf}} 
+offs\+\_\+t {\bfseries free\+Space\+Reuse\+Threshold}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static char const  $\ast$const {\bfseries error\+Message} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a8f9fbcbb0438de1e9eb11d1f4ad64d17}\label{classdbDatabase_a8f9fbcbb0438de1e9eb11d1f4ad64d17}} 
+void {\bfseries export\+Scheme} (F\+I\+LE $\ast$out)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a5a7b285890b74ddd82e3e8e8b4ebaada}\label{classdbDatabase_a5a7b285890b74ddd82e3e8e8b4ebaada}} 
+void {\bfseries export\+Class} (F\+I\+LE $\ast$out, char $\ast$name, \mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$field\+List)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a1a8289ae153555ff924c0b0ae638edab}\label{classdbDatabase_a1a8289ae153555ff924c0b0ae638edab}} 
+oid\+\_\+t {\bfseries map\+Id} (long id)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a3a0a4a7344a2f153c35c1ab36b160e81}\label{classdbDatabase_a3a0a4a7344a2f153c35c1ab36b160e81}} 
+bool {\bfseries import\+Field} (char $\ast$terminator, \mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd, byte $\ast$rec, \mbox{\hyperlink{classdbXmlScanner}{db\+Xml\+Scanner}} \&scanner)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a164c24fdc4855536e1a41b7eeecc12ee}\label{classdbDatabase_a164c24fdc4855536e1a41b7eeecc12ee}} 
+bool {\bfseries import\+Record} (char $\ast$terminator, \mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$field\+List, byte $\ast$rec, \mbox{\hyperlink{classdbXmlScanner}{db\+Xml\+Scanner}} \&scanner)
+\item 
+\mbox{\Hypertarget{classdbDatabase_ae914bf6a6686536b399467f23a4e2ec3}\label{classdbDatabase_ae914bf6a6686536b399467f23a4e2ec3}} 
+void {\bfseries insert\+Record} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc, oid\+\_\+t oid, void const $\ast$record)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_a24b285e14f44da5ef855b00aaf3d79a0}{load\+Meta\+Table}} ()
+\item 
+\mbox{\Hypertarget{classdbDatabase_ae2e7ef3b1622119cdb8d3629f788f513}\label{classdbDatabase_ae2e7ef3b1622119cdb8d3629f788f513}} 
+void {\bfseries cleanup} (db\+Initialization\+Mutex\+::initialization\+Status status, int step)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a3e26ebbe946d4696302a8d0a72860be9}\label{classdbDatabase_a3e26ebbe946d4696302a8d0a72860be9}} 
+void {\bfseries delayed\+Commit} ()
+\item 
+\mbox{\Hypertarget{classdbDatabase_a3560389aa13eb5bd4bd09fdbce424e07}\label{classdbDatabase_a3560389aa13eb5bd4bd09fdbce424e07}} 
+void {\bfseries backup\+Scheduler} ()
+\item 
+\mbox{\Hypertarget{classdbDatabase_af84900915143c34736abc4acf519e44b}\label{classdbDatabase_af84900915143c34736abc4acf519e44b}} 
+virtual bool {\bfseries is\+Replicated} ()
+\item 
+\mbox{\Hypertarget{classdbDatabase_a60d531be840354f3b5e4abc7e9727287}\label{classdbDatabase_a60d531be840354f3b5e4abc7e9727287}} 
+virtual void {\bfseries close0} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_addf99cfff85de35ed30a025b8f892818}{add\+Lock\+Owner}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a813899e7266817ae8bbd08efb18512f5}{remove\+Lock\+Owner}} (long client\+Id)
+\item 
+void \mbox{\hyperlink{classdbDatabase_ab766c2eacea7646a2e08633f72c3f494}{commit}} (\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$ctx)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a9bed81caa1c77cb9659c948281bfdb07}{load\+Rectangle}} (\mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$opd)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a3b5a75006ec8ddb05076fe2b058a9791}{restore\+Tables\+Consistency}} ()
+\item 
+\mbox{\hyperlink{classdbRecord}{db\+Record}} $\ast$ \mbox{\hyperlink{classdbDatabase_a7bff04ecc071c89a2e9d27fda8cd326e}{get\+Row}} (oid\+\_\+t oid)
+\item 
+\mbox{\hyperlink{classdbRecord}{db\+Record}} $\ast$ \mbox{\hyperlink{classdbDatabase_af0c69119b136ded719412ceb3d34a322}{put\+Row}} (oid\+\_\+t oid, size\+\_\+t new\+Size)
+\item 
+\mbox{\hyperlink{classdbRecord}{db\+Record}} $\ast$ \mbox{\hyperlink{classdbDatabase_adf6df8cfd2f7aed207acda7d344e2701}{put\+Row}} (oid\+\_\+t oid)
+\item 
+byte $\ast$ \mbox{\hyperlink{classdbDatabase_a0f15caecea63b2da73defcf52b9731e6}{get}} (oid\+\_\+t oid)
+\item 
+byte $\ast$ \mbox{\hyperlink{classdbDatabase_a8e762278f8441f945fb1251cfa337a9b}{put}} (oid\+\_\+t oid)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_aba09d442af1512bb7804959acf9cc5d8}{is\+Prefix\+Search}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$and\+Expr, \mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$\&indexed\+Field)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a140ecf11366b8e3caae86ce16fa6f5eb}{is\+Index\+Applicable}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$and\+Expr, \mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$\&indexed\+Field)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a0b57c3c984384c0fe4c4b2dabfb03778}{is\+Index\+Applicable}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$and\+Expr)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a1d9f96b02f5dee044e349732d7e90635}{follow\+Inverse\+Reference}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$and\+Expr, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, oid\+\_\+t iref)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_aeae365fe755f6f1863630d051267790a}{exists\+Inverse\+Reference}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, int n\+Exists\+Clauses)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_aa517de92bedab61de7535cba9592d734}{exists\+Indexed\+Reference}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_aa1279f2d753844bd8ca27278e2920476}{evaluate}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, oid\+\_\+t oid, \mbox{\hyperlink{classdbTable}{db\+Table}} $\ast$table, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a5c648267c177b06ece03c0b882dc3679}{select}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a769c677fdfe52ff05e7ddc23e8e68dc2}{select}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbQuery}{db\+Query}} \&query)
+\item 
+void \mbox{\hyperlink{classdbDatabase_acf4d69bbf9a5f2fd81b58cec982bed89}{traverse}} (\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbQuery}{db\+Query}} \&query)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a3c190e532238b7505976b169bfff55ab}{update}} (oid\+\_\+t oid, \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, void const $\ast$record)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a43d95dcca86929a38385e913b6d82d34}{remove}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, oid\+\_\+t oid)
+\item 
+offs\+\_\+t \mbox{\hyperlink{classdbDatabase_a1dc9f3bd14614f803e622fe974f5ccee}{allocate}} (size\+\_\+t size, oid\+\_\+t oid=0)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a2dd6cab1f292e3eb992755c466f9da58}{deallocate}} (offs\+\_\+t pos, size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a0566e6d9d4166ae35199459d4466f192}{extend}} (offs\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a4bc62f8de139a5889c3eb1a5805246e8}{clone\+Bitmap}} (offs\+\_\+t pos, size\+\_\+t size)
+\item 
+oid\+\_\+t \mbox{\hyperlink{classdbDatabase_acbf8431b60201e29e9efd07071550235}{allocate\+Id}} (int n=1)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a9da75bf466b9ac8cd620ab6c61e28b58}{free\+Id}} (oid\+\_\+t oid, int n=1)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a46470691a99cdc9d4583e33239376970}{update\+Cursors}} (oid\+\_\+t oid, bool removed=false)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a5154bf2d07f0f7fa55752ad992d41dd4}{recovery}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a78274dd5406831e1a481ffdc5eaa0f16}{check\+Version}} ()
+\item 
+oid\+\_\+t \mbox{\hyperlink{classdbDatabase_afc0381681c1378b2bfd5d5078045eea2}{allocate\+Object}} (db\+Internal\+Object marker)
+\item 
+oid\+\_\+t \mbox{\hyperlink{classdbDatabase_a56838815ecf19269f58d19de695a2e7a}{allocate\+Row}} (oid\+\_\+t table\+Id, size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_aa8b47528966a35e767d336dc2a8000cc}{allocate\+Row}} (oid\+\_\+t table\+Id, oid\+\_\+t oid, size\+\_\+t size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a2bb0f17e4fc0179d10e160aa38b3a7ca}{free\+Row}} (oid\+\_\+t table\+Id, oid\+\_\+t oid)
+\item 
+void \mbox{\hyperlink{classdbDatabase_ac432785e0e6d98ccf39626148cf8797e}{free\+Object}} (oid\+\_\+t oid)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a67382226e535f25d8ea41e1a4a29c979}{begin\+Transaction}} (db\+Lock\+Type \mbox{\hyperlink{classdbDatabase_aa4b3ded01bf4d66edaf6111abcf91f6d}{lock}})
+\item 
+void \mbox{\hyperlink{classdbDatabase_a9acf4cd1d0bb15ff2c5f9d39549d2ee3}{end\+Transaction}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_ae473a34e15433e939d84c45c0591c5dc}{end\+Transaction}} (\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$ctx)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0299ee636bed5cb46c4aacb9e228639e}\label{classdbDatabase_a0299ee636bed5cb46c4aacb9e228639e}} 
+virtual void {\bfseries wait\+Transaction\+Acknowledgement} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_ad566f72830f65610dfd689f6f00cd735}{initialize\+Meta\+Table}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a34f7fdfb518f16af21864b9b900477bc}{load\+Scheme}} (bool alter)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a738af925a10c4c90c921dc22dc63ecde}{complete\+Descriptors\+Initialization}} ()
+\item 
+void \mbox{\hyperlink{classdbDatabase_a18a5d273dfd2b8eb59c4ef97f2617d5c}{reformat\+Table}} (oid\+\_\+t table\+Id, \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a3921d8358d7e883c6d8e48773b866363}{add\+Indices}} (bool alter, \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+oid\+\_\+t \mbox{\hyperlink{classdbDatabase_a87fb8519dfe13e0fbe260ecc5e928f0b}{add\+New\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a339c40e2a002dcc53d177cad63ae7b85}{update\+Table\+Descriptor}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc, oid\+\_\+t table\+Id)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a6bf2358ecc970b0eca70ced93c2e825e}{insert\+Inverse\+Reference}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd, oid\+\_\+t reverse\+Id, oid\+\_\+t target\+Id)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a8bfc7b7c8d974458643050db1862e2b9}{remove\+Inverse\+References}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc, oid\+\_\+t oid)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a5d97827e01d0a3576409f1c68f1c3b78}{remove\+Inverse\+Reference}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd, oid\+\_\+t reverse\+Id, oid\+\_\+t target\+Id)
+\item 
+void \mbox{\hyperlink{classdbDatabase_af352b817b47cf712846963c12d856030}{delete\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+void \mbox{\hyperlink{classdbDatabase_adeb26f12690c4e9bc23cd7a705588dd7}{drop\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$desc)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a9da87a3e15fd7341869bb1f1f16f78b2}{create\+Index}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{classdbDatabase_acbdb8fc1b45d984bcc99650ae2f048f5}{create\+Hash\+Table}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a61122929b1f769c4ee6d296eeb7ec095}{drop\+Index}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a905789bdca35ce20cde38be728cd1cf0}{drop\+Hash\+Table}} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\item 
+void \mbox{\hyperlink{classdbDatabase_ac92dba3c54ea234f5fd6f4c7ff831671}{link\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table, oid\+\_\+t table\+Id)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a21927e3fa2e6c1825aaf5d554bfb291a}{unlink\+Table}} (\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$table)
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a67c9f35342e402223106dfe5459c0835}{was\+Reserved}} (offs\+\_\+t pos, size\+\_\+t size)
+\item 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ \mbox{\hyperlink{classdbDatabase_a5b1abfc169742633951bb4abb9e153f8}{find\+Table}} (char const $\ast$name)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a53b3cef65260865e54b0a965c31cbd24}{set\+Dirty}} ()
+\item 
+bool \mbox{\hyperlink{classdbDatabase_a151af1acf48a814d05b8cce5e5e510ec}{is\+Free}} (offs\+\_\+t pos, int obj\+Bit\+Size)
+\item 
+void \mbox{\hyperlink{classdbDatabase_a72ee036a9ba7964eea364e3505fad369}{mark\+As\+Allocated}} (offs\+\_\+t pos, int obj\+Bit\+Size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a6779e673844fe7ddced6107e459a8487}\label{classdbDatabase_a6779e673844fe7ddced6107e459a8487}} 
+static void thread\+\_\+proc {\bfseries delayed\+Commit\+Proc} (void $\ast$arg)
+\item 
+\mbox{\Hypertarget{classdbDatabase_a942c1a3e615b266b020c5c39d555788f}\label{classdbDatabase_a942c1a3e615b266b020c5c39d555788f}} 
+static void thread\+\_\+proc {\bfseries backup\+Scheduler\+Proc} (void $\ast$arg)
+\item 
+static void \+\_\+fastcall \mbox{\hyperlink{classdbDatabase_ae8d1c76fac40f34db644e95083cc5408}{execute}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$expr, \mbox{\hyperlink{structdbInheritedAttribute}{db\+Inherited\+Attribute}} \&iattr, \mbox{\hyperlink{uniondbSynthesizedAttribute}{db\+Synthesized\+Attribute}} \&sattr)
+\item 
+static void \mbox{\hyperlink{classdbDatabase_a47a8a3df70e0ecb9e02c7f4af07858f9}{delete\+Compiled\+Query}} (\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$tree)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab6097ae4d84f2edcdfaae8db3ef99396}\label{classdbDatabase_ab6097ae4d84f2edcdfaae8db3ef99396}} 
+\mbox{\hyperlink{classdbThreadPool}{db\+Thread\+Pool}} {\bfseries thread\+Pool}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a9d637ed53a5aed3239738008e57c26ef}\label{classdbDatabase_a9d637ed53a5aed3239738008e57c26ef}} 
+\mbox{\hyperlink{classFixedSizeAllocator}{Fixed\+Size\+Allocator}} {\bfseries fixed\+Size\+Allocator}
+\item 
+\mbox{\Hypertarget{classdbDatabase_af1d4e1c347f72cf0f6008d1e32b7b9fc}\label{classdbDatabase_af1d4e1c347f72cf0f6008d1e32b7b9fc}} 
+\mbox{\hyperlink{classdbThreadContext}{db\+Thread\+Context}}$<$ \mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $>$ {\bfseries thread\+Context}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a27769dc52f5f47dc3afa314b9505ed5e}\label{classdbDatabase_a27769dc52f5f47dc3afa314b9505ed5e}} 
+byte $\ast$ {\bfseries base\+Addr}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab0e88fea58093fafefd51c2cff6e6dbd}\label{classdbDatabase_ab0e88fea58093fafefd51c2cff6e6dbd}} 
+\mbox{\hyperlink{classdbHeader}{db\+Header}} $\ast$ {\bfseries header}
+\item 
+\mbox{\Hypertarget{classdbDatabase_abdab254738eaca7655a63f2612c3796e}\label{classdbDatabase_abdab254738eaca7655a63f2612c3796e}} 
+offs\+\_\+t $\ast$ {\bfseries curr\+Index}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0cbac2838c7445fac16d1ecfa96db1f4}\label{classdbDatabase_a0cbac2838c7445fac16d1ecfa96db1f4}} 
+offs\+\_\+t $\ast$ {\bfseries index} \mbox{[}2\mbox{]}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a8f2e55460ecf193739591eb350e14926}\label{classdbDatabase_a8f2e55460ecf193739591eb350e14926}} 
+unsigned {\bfseries par\+Threads}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab7712c0d6f793cc0d18c50f0026e9203}\label{classdbDatabase_ab7712c0d6f793cc0d18c50f0026e9203}} 
+bool {\bfseries modified}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0cda3346446ed774fdb59e41146be2ee}\label{classdbDatabase_a0cda3346446ed774fdb59e41146be2ee}} 
+size\+\_\+t {\bfseries curr\+R\+Bitmap\+Page}
+\item 
+\mbox{\Hypertarget{classdbDatabase_abfc2a259ae8a9bac9ee8eff0a1ac8cee}\label{classdbDatabase_abfc2a259ae8a9bac9ee8eff0a1ac8cee}} 
+size\+\_\+t {\bfseries curr\+R\+Bitmap\+Offs}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a8d3bdcfc1b396692ada1ca07ecdee18d}\label{classdbDatabase_a8d3bdcfc1b396692ada1ca07ecdee18d}} 
+size\+\_\+t {\bfseries curr\+P\+Bitmap\+Page}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a7cd655a72f1f87675e5e6d37e99a28ad}\label{classdbDatabase_a7cd655a72f1f87675e5e6d37e99a28ad}} 
+size\+\_\+t {\bfseries curr\+P\+Bitmap\+Offs}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a872a15892d013e893256fa90b401d543}\label{classdbDatabase_a872a15892d013e893256fa90b401d543}} 
+size\+\_\+t {\bfseries bitmap\+End}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0562d00f7af6caa7832e731b7ec2f6e3}\label{classdbDatabase_a0562d00f7af6caa7832e731b7ec2f6e3}} 
+\mbox{\hyperlink{structdbDatabase_1_1dbLocation}{db\+Location}} $\ast$ {\bfseries reserved\+Chain}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a24d91656d562c9ad69b3b7d90cf2defe}\label{classdbDatabase_a24d91656d562c9ad69b3b7d90cf2defe}} 
+size\+\_\+t {\bfseries reserved\+Chain\+Length}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aebdd033895c3e477d622af4f84bab5e7}\label{classdbDatabase_aebdd033895c3e477d622af4f84bab5e7}} 
+char\+\_\+t $\ast$ {\bfseries database\+Name}
+\item 
+\mbox{\Hypertarget{classdbDatabase_afdc133e42db5e0faa042fe4cab4ddc77}\label{classdbDatabase_afdc133e42db5e0faa042fe4cab4ddc77}} 
+int {\bfseries database\+Name\+Len}
+\item 
+\mbox{\Hypertarget{classdbDatabase_affc4d0141361f25598e394066a20e098}\label{classdbDatabase_affc4d0141361f25598e394066a20e098}} 
+char\+\_\+t $\ast$ {\bfseries file\+Name}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab33f8bc8d22023fb48016ef3daed3283}\label{classdbDatabase_ab33f8bc8d22023fb48016ef3daed3283}} 
+int {\bfseries version}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a60e00e71747c07d353b1e623327530ed}\label{classdbDatabase_a60e00e71747c07d353b1e623327530ed}} 
+size\+\_\+t {\bfseries committed\+Index\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a19b16311882d8d5258a86654707736db}\label{classdbDatabase_a19b16311882d8d5258a86654707736db}} 
+size\+\_\+t {\bfseries curr\+Index\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a78b6c7122baf50f441a6851e39227077}\label{classdbDatabase_a78b6c7122baf50f441a6851e39227077}} 
+oid\+\_\+t {\bfseries updated\+Record\+Id}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a1784169218746b725d9b14fbc6d57c50}\label{classdbDatabase_a1784169218746b725d9b14fbc6d57c50}} 
+unsigned {\bfseries wait\+Lock\+Timeout}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ae3bd38e74327faf7b6dcc8e09d6fbe71}\label{classdbDatabase_ae3bd38e74327faf7b6dcc8e09d6fbe71}} 
+size\+\_\+t {\bfseries file\+Size\+Limit}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a2739bc330fc85d3ad420bab18ad0d677}\label{classdbDatabase_a2739bc330fc85d3ad420bab18ad0d677}} 
+bool {\bfseries uncommitted\+Changes}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a16371447c3741ad9ab6279013bf3c622}\label{classdbDatabase_a16371447c3741ad9ab6279013bf3c622}} 
+\mbox{\hyperlink{classdbFile}{db\+File}} {\bfseries file}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a19a327f3721fb5fc886f531b5641b720}\label{classdbDatabase_a19a327f3721fb5fc886f531b5641b720}} 
+\mbox{\hyperlink{classdbSharedObject}{db\+Shared\+Object}}$<$ \mbox{\hyperlink{classdbMonitor}{db\+Monitor}} $>$ {\bfseries shm}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a638d0d184bf9efb99a3eb54537a70bdd}\label{classdbDatabase_a638d0d184bf9efb99a3eb54537a70bdd}} 
+\mbox{\hyperlink{classdbGlobalCriticalSection}{db\+Global\+Critical\+Section}} {\bfseries cs}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a6c10d325d23f42ae14052e096bc3115d}\label{classdbDatabase_a6c10d325d23f42ae14052e096bc3115d}} 
+\mbox{\hyperlink{classdbGlobalCriticalSection}{db\+Global\+Critical\+Section}} {\bfseries mutator\+CS}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a31047633d30a9adcc08319c33d2a785c}\label{classdbDatabase_a31047633d30a9adcc08319c33d2a785c}} 
+\mbox{\hyperlink{classdbInitializationMutex}{db\+Initialization\+Mutex}} {\bfseries init\+Mutex}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aae38eea216c31105057fab6458932041}\label{classdbDatabase_aae38eea216c31105057fab6458932041}} 
+\mbox{\hyperlink{classdbSemaphore}{db\+Semaphore}} {\bfseries write\+Sem}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa375b901c7c0fe96f7959287ea06b29d}\label{classdbDatabase_aa375b901c7c0fe96f7959287ea06b29d}} 
+\mbox{\hyperlink{classdbSemaphore}{db\+Semaphore}} {\bfseries read\+Sem}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a755e297de09dc9cc8839e27e870801d1}\label{classdbDatabase_a755e297de09dc9cc8839e27e870801d1}} 
+\mbox{\hyperlink{classdbSemaphore}{db\+Semaphore}} {\bfseries upgrade\+Sem}
+\item 
+\mbox{\Hypertarget{classdbDatabase_adde64f2a1773ee6d050ac03ec76efc96}\label{classdbDatabase_adde64f2a1773ee6d050ac03ec76efc96}} 
+\mbox{\hyperlink{classdbEvent}{db\+Event}} {\bfseries backup\+Completed\+Event}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0a513946d2636e6ff28c8037259a4e69}\label{classdbDatabase_a0a513946d2636e6ff28c8037259a4e69}} 
+\mbox{\hyperlink{classdbMonitor}{db\+Monitor}} $\ast$ {\bfseries monitor}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab8b2f3c6ad9e786cdbcdc93aa6e1a6a8}\label{classdbDatabase_ab8b2f3c6ad9e786cdbcdc93aa6e1a6a8}} 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ {\bfseries tables}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a840444b362d3cde0a057aa086408d570}\label{classdbDatabase_a840444b362d3cde0a057aa086408d570}} 
+int $\ast$ {\bfseries bitmap\+Page\+Available\+Space}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a490e7557c0524e7abdb3ed07b961080a}\label{classdbDatabase_a490e7557c0524e7abdb3ed07b961080a}} 
+bool {\bfseries opened}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a36f9028585823ef45f0f2d43819d1ee8}\label{classdbDatabase_a36f9028585823ef45f0f2d43819d1ee8}} 
+soffs\+\_\+t {\bfseries allocated\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab348e587db29f9f9f5a7a8a1a0856250}\label{classdbDatabase_ab348e587db29f9f9f5a7a8a1a0856250}} 
+offs\+\_\+t {\bfseries deallocated\+Size}
+\item 
+\mbox{\Hypertarget{classdbDatabase_af2cf486e331d7c892b0b9e95f8d4c278}\label{classdbDatabase_af2cf486e331d7c892b0b9e95f8d4c278}} 
+time\+\_\+t {\bfseries commit\+Delay}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a86e2a608d58ed557f0364714063020ce}\label{classdbDatabase_a86e2a608d58ed557f0364714063020ce}} 
+time\+\_\+t {\bfseries commit\+Timeout}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ada3d221e5a8fcd124ff87f6ba31cad97}\label{classdbDatabase_ada3d221e5a8fcd124ff87f6ba31cad97}} 
+time\+\_\+t {\bfseries commit\+Timer\+Started}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa97d73973818de6765597d2d1b951016}\label{classdbDatabase_aa97d73973818de6765597d2d1b951016}} 
+\mbox{\hyperlink{classdbMutex}{db\+Mutex}} {\bfseries delayed\+Commit\+Start\+Timer\+Mutex}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a5101644a813d5c0fb1a37d089f60d4c8}\label{classdbDatabase_a5101644a813d5c0fb1a37d089f60d4c8}} 
+\mbox{\hyperlink{classdbMutex}{db\+Mutex}} {\bfseries delayed\+Commit\+Stop\+Timer\+Mutex}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa652aedf4cb1545c4861498bff4d3bff}\label{classdbDatabase_aa652aedf4cb1545c4861498bff4d3bff}} 
+\mbox{\hyperlink{classdbLocalEvent}{db\+Local\+Event}} {\bfseries delayed\+Commit\+Start\+Timer\+Event}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa6226cbe47d9f958acd2d1ef2ed4d420}\label{classdbDatabase_aa6226cbe47d9f958acd2d1ef2ed4d420}} 
+\mbox{\hyperlink{classdbEvent}{db\+Event}} {\bfseries delayed\+Commit\+Stop\+Timer\+Event}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a413241410ad4948fd2d5dbf51e731817}\label{classdbDatabase_a413241410ad4948fd2d5dbf51e731817}} 
+\mbox{\hyperlink{classdbLocalEvent}{db\+Local\+Event}} {\bfseries commit\+Thread\+Sync\+Event}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a334786a412e15dbab99d7ea19c5482b5}\label{classdbDatabase_a334786a412e15dbab99d7ea19c5482b5}} 
+bool {\bfseries delayed\+Commit\+Events\+Opened}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ac65c703d8f821ebcef76aa428b2670d4}\label{classdbDatabase_ac65c703d8f821ebcef76aa428b2670d4}} 
+\mbox{\hyperlink{classdbMutex}{db\+Mutex}} {\bfseries backup\+Mutex}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a90a9734f3805fb5f8f6316025b2a3702}\label{classdbDatabase_a90a9734f3805fb5f8f6316025b2a3702}} 
+\mbox{\hyperlink{classdbLocalEvent}{db\+Local\+Event}} {\bfseries backup\+Init\+Event}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a4cabb127a210d3a122b59827a7ce68fa}\label{classdbDatabase_a4cabb127a210d3a122b59827a7ce68fa}} 
+char\+\_\+t $\ast$ {\bfseries backup\+File\+Name}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ac79c8d1d01bc993dc412ac1baf6b017b}\label{classdbDatabase_ac79c8d1d01bc993dc412ac1baf6b017b}} 
+time\+\_\+t {\bfseries backup\+Period}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0756d5d93f5a999a78e95f20d5fbb4aa}\label{classdbDatabase_a0756d5d93f5a999a78e95f20d5fbb4aa}} 
+bool {\bfseries stop\+Delayed\+Commit\+Thread}
+\item 
+\mbox{\Hypertarget{classdbDatabase_acb40e0b40b58e0a1cb2ad986e4459240}\label{classdbDatabase_acb40e0b40b58e0a1cb2ad986e4459240}} 
+\mbox{\hyperlink{classdbThread}{db\+Thread}} {\bfseries backup\+Thread}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ac5ae296bb861d28d192fa9216f8b79e5}\label{classdbDatabase_ac5ae296bb861d28d192fa9216f8b79e5}} 
+\mbox{\hyperlink{classdbThread}{db\+Thread}} {\bfseries commit\+Thread}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a7bf88166a1bb8cad40d5aca1fbec2eef}\label{classdbDatabase_a7bf88166a1bb8cad40d5aca1fbec2eef}} 
+int {\bfseries access\+Count}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad4a63f650c1dabc09062793027d610a1}\label{classdbDatabase_ad4a63f650c1dabc09062793027d610a1}} 
+\mbox{\hyperlink{classdbL2List}{db\+L2\+List}} {\bfseries thread\+Context\+List}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad2eea1a55634f0371207dbaa3548bbf8}\label{classdbDatabase_ad2eea1a55634f0371207dbaa3548bbf8}} 
+\mbox{\hyperlink{classdbMutex}{db\+Mutex}} {\bfseries thread\+Context\+List\+Mutex}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a4f7db04d78e7f763573a8fa7aae6aea4}\label{classdbDatabase_a4f7db04d78e7f763573a8fa7aae6aea4}} 
+db\+Error\+Handler {\bfseries error\+Handler}
+\item 
+\mbox{\Hypertarget{classdbDatabase_af69cb7bdba0c39139181f75fd91ed361}\label{classdbDatabase_af69cb7bdba0c39139181f75fd91ed361}} 
+void $\ast$ {\bfseries error\+Handler\+Context}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a6a87d6952b55e4cf6c2a43bd6498f193}\label{classdbDatabase_a6a87d6952b55e4cf6c2a43bd6498f193}} 
+\mbox{\hyperlink{classdbTransactionLogger}{db\+Transaction\+Logger}} $\ast$ {\bfseries logger}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa25d45e51bf9824cd8f8f7c66808d4e7}\label{classdbDatabase_aa25d45e51bf9824cd8f8f7c66808d4e7}} 
+int {\bfseries scheme\+Version}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a96ec1180f29042413bd802a9acac0c3d}\label{classdbDatabase_a96ec1180f29042413bd802a9acac0c3d}} 
+\mbox{\hyperlink{classdbVisitedObject}{db\+Visited\+Object}} $\ast$ {\bfseries visited\+Chain}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a90142aafb256fea50b6f46d5864f84c3}\label{classdbDatabase_a90142aafb256fea50b6f46d5864f84c3}} 
+bool {\bfseries confirm\+Delete\+Columns}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ab8cd23947fbb5b49d179e437ba7684f6}\label{classdbDatabase_ab8cd23947fbb5b49d179e437ba7684f6}} 
+bool {\bfseries cascade\+Delete}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad5fdfa3efd35691750d453b38c515ebf}\label{classdbDatabase_ad5fdfa3efd35691750d453b38c515ebf}} 
+bool {\bfseries inverse\+References\+Update}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aa07fb7be04b8c2cdb27c75b93aa7c2ca}\label{classdbDatabase_aa07fb7be04b8c2cdb27c75b93aa7c2ca}} 
+long {\bfseries max\+Client\+Id}
+\item 
+\mbox{\Hypertarget{classdbDatabase_af0df21b0069bb028fd9db2683d122460}\label{classdbDatabase_af0df21b0069bb028fd9db2683d122460}} 
+long {\bfseries self\+Id}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad9f4f3c2d3b92c04f607f775c4bdfe66}\label{classdbDatabase_ad9f4f3c2d3b92c04f607f775c4bdfe66}} 
+\mbox{\hyperlink{classdbXmlContext}{db\+Xml\+Context}} $\ast$ {\bfseries xml\+Context}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad71f79d1c76a4960e0ebb054cbb94a5e}\label{classdbDatabase_ad71f79d1c76a4960e0ebb054cbb94a5e}} 
+unsigned {\bfseries parallel\+Scan\+Threshold}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad623d776e65e0ff2ba61dc7b5e92cee9}\label{classdbDatabase_ad623d776e65e0ff2ba61dc7b5e92cee9}} 
+\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ {\bfseries table\+Hash} \mbox{[}db\+Table\+Hash\+Size\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static size\+\_\+t {\bfseries internal\+Object\+Size} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad092f88ae47e6bb7933231051a8fa93d}\label{classdbDatabase_ad092f88ae47e6bb7933231051a8fa93d}} 
+class {\bfseries db\+Selection}
+\item 
+\mbox{\Hypertarget{classdbDatabase_abe8266c2bdd64bd612dd2819849e9e0a}\label{classdbDatabase_abe8266c2bdd64bd612dd2819849e9e0a}} 
+class {\bfseries db\+Any\+Cursor}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ad210716296208a68775a7c66250c4e65}\label{classdbDatabase_ad210716296208a68775a7c66250c4e65}} 
+class {\bfseries db\+Hash\+Table}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a37714b16af2cd076852a5ad470b51cc0}\label{classdbDatabase_a37714b16af2cd076852a5ad470b51cc0}} 
+class {\bfseries db\+Query}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a767c7c9d1f221bea13787257879d639a}\label{classdbDatabase_a767c7c9d1f221bea13787257879d639a}} 
+class {\bfseries db\+Ttree}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a2b3ac8bb32222ab56ec9c2ecf7d83ad3}\label{classdbDatabase_a2b3ac8bb32222ab56ec9c2ecf7d83ad3}} 
+class {\bfseries db\+Ttree\+Node}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a64dd55acd4f92599ccd05951eb1df813}\label{classdbDatabase_a64dd55acd4f92599ccd05951eb1df813}} 
+class {\bfseries db\+Rtree}
+\item 
+\mbox{\Hypertarget{classdbDatabase_aba88fd99427a0422f9a627a59b4d8771}\label{classdbDatabase_aba88fd99427a0422f9a627a59b4d8771}} 
+class {\bfseries db\+Rtree\+Page}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a9d01417e45bec567130ebfab438c1824}\label{classdbDatabase_a9d01417e45bec567130ebfab438c1824}} 
+class {\bfseries db\+Parallel\+Query\+Context}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a2c1ec30179a6eac3242b42cc1d03dc76}\label{classdbDatabase_a2c1ec30179a6eac3242b42cc1d03dc76}} 
+class {\bfseries db\+Server}
+\item 
+\mbox{\Hypertarget{classdbDatabase_afb473814664fb8c96389b9e14f80954b}\label{classdbDatabase_afb473814664fb8c96389b9e14f80954b}} 
+class {\bfseries db\+Column\+Binding}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a249d740cec354de394326d767079319a}\label{classdbDatabase_a249d740cec354de394326d767079319a}} 
+class {\bfseries db\+User\+Function\+Argument}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a0cbfed11363a24067344cf2b1bcab0ba}\label{classdbDatabase_a0cbfed11363a24067344cf2b1bcab0ba}} 
+class {\bfseries db\+Any\+Container}
+\item 
+\mbox{\Hypertarget{classdbDatabase_acbe49f02c9694ef8a21e5935ee067043}\label{classdbDatabase_acbe49f02c9694ef8a21e5935ee067043}} 
+class {\bfseries db\+File}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a1d6931bb41572da2fce48a66fc4224c0}\label{classdbDatabase_a1d6931bb41572da2fce48a66fc4224c0}} 
+class {\bfseries db\+C\+LI}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a7ac0cd0387955bcef1e05ef3b9c3b184}\label{classdbDatabase_a7ac0cd0387955bcef1e05ef3b9c3b184}} 
+class {\bfseries db\+File\+Transaction\+Logger}
+\item 
+\mbox{\Hypertarget{classdbDatabase_a4cd3201af790a033e34a6b533dc691e9}\label{classdbDatabase_a4cd3201af790a033e34a6b533dc691e9}} 
+class {\bfseries Gi\+S\+Tdb}
+\item 
+\mbox{\Hypertarget{classdbDatabase_afc7171fab72e1bfb29b8f9bf8090f1f9}\label{classdbDatabase_afc7171fab72e1bfb29b8f9bf8090f1f9}} 
+{\footnotesize template$<$class T $>$ }\\class {\bfseries db\+H\+Array}
+\item 
+\mbox{\Hypertarget{classdbDatabase_ae6966ce9dcbdda32b7c0bdf799fadce4}\label{classdbDatabase_ae6966ce9dcbdda32b7c0bdf799fadce4}} 
+struct {\bfseries db\+Location}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Database class 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classdbDatabase_a3e3dd7d2c9ea025630f57d4cde778d2d}\label{classdbDatabase_a3e3dd7d2c9ea025630f57d4cde778d2d}} 
+\index{dbDatabase@{dbDatabase}!dbDatabase@{dbDatabase}}
+\index{dbDatabase@{dbDatabase}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{dbDatabase()}{dbDatabase()}}
+{\footnotesize\ttfamily db\+Database\+::db\+Database (\begin{DoxyParamCaption}\item[{db\+Access\+Type}]{type = {\ttfamily dbAllAccess},  }\item[{size\+\_\+t}]{db\+Init\+Size = {\ttfamily dbDefaultInitDatabaseSize},  }\item[{size\+\_\+t}]{db\+Extension\+Quantum = {\ttfamily dbDefaultExtensionQuantum},  }\item[{size\+\_\+t}]{db\+Init\+Index\+Size = {\ttfamily dbDefaultInitIndexSize},  }\item[{int}]{n\+Threads = {\ttfamily 1},  }\item[{int}]{mode = {\ttfamily 0~$\vert$~dbHeader\+:\+:MODE\+\_\+NO\+\_\+PTHREADS~$\vert$~dbHeader\+:\+:MODE\+\_\+OFFS\+\_\+64~$\vert$~dbHeader\+:\+:MODE\+\_\+AUTOINCREMENT} }\end{DoxyParamCaption})}
+
+Database constructor 
+\begin{DoxyParams}{Parameters}
+{\em type} & access type\+: {\ttfamily db\+Database\+::db\+Read\+Only} or {\ttfamily db\+Database\+::db\+All\+Acces} \\
+\hline
+{\em db\+Init\+Size} & initial size of the database. If Fast\+DB is compiled with D\+I\+S\+K\+L\+E\+S\+S\+\_\+\+C\+O\+N\+F\+I\+G\+U\+R\+A\+T\+I\+ON option, then in this parameter {\bfseries{M\+A\+X\+I\+M\+AL}} size of the database should be specified (in this mode database can not be reallocated) \\
+\hline
+{\em db\+Extension\+Quantum} & quantum for extending memory allocation bitmap \\
+\hline
+{\em db\+Init\+Index\+Size} & initial index size (objects) \\
+\hline
+{\em n\+Threads} & concurrency level for sequential search and sort operations \\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classdbDatabase_a97fcfe6622f2d1380768bff1b1489c18}{set\+Concurrency(unsigned n\+Threads)}} 
+\end{DoxySeeAlso}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3e3dd7d2c9ea025630f57d4cde778d2d_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a3ffbe2e46327a2dae459f619c5c405c7}\label{classdbDatabase_a3ffbe2e46327a2dae459f619c5c405c7}} 
+\index{dbDatabase@{dbDatabase}!````~dbDatabase@{$\sim$dbDatabase}}
+\index{````~dbDatabase@{$\sim$dbDatabase}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{$\sim$dbDatabase()}{~dbDatabase()}}
+{\footnotesize\ttfamily db\+Database\+::$\sim$db\+Database (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Database detructor 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbDatabase_a3921d8358d7e883c6d8e48773b866363}\label{classdbDatabase_a3921d8358d7e883c6d8e48773b866363}} 
+\index{dbDatabase@{dbDatabase}!addIndices@{addIndices}}
+\index{addIndices@{addIndices}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{addIndices()}{addIndices()}}
+{\footnotesize\ttfamily bool db\+Database\+::add\+Indices (\begin{DoxyParamCaption}\item[{bool}]{alter,  }\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Add new indices to the table. 
+\begin{DoxyParams}{Parameters}
+{\em alter} & if true than indices can be added, otherwise there are some other active clients and adding new indices about which they will not know can lead to inconsistncy \\
+\hline
+{\em desc} & new table descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if indices were succesfully added 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3921d8358d7e883c6d8e48773b866363_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3921d8358d7e883c6d8e48773b866363_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_addf99cfff85de35ed30a025b8f892818}\label{classdbDatabase_addf99cfff85de35ed30a025b8f892818}} 
+\index{dbDatabase@{dbDatabase}!addLockOwner@{addLockOwner}}
+\index{addLockOwner@{addLockOwner}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{addLockOwner()}{addLockOwner()}}
+{\footnotesize\ttfamily void db\+Database\+::add\+Lock\+Owner (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Add information about lock owner Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_addf99cfff85de35ed30a025b8f892818_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a87fb8519dfe13e0fbe260ecc5e928f0b}\label{classdbDatabase_a87fb8519dfe13e0fbe260ecc5e928f0b}} 
+\index{dbDatabase@{dbDatabase}!addNewTable@{addNewTable}}
+\index{addNewTable@{addNewTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{addNewTable()}{addNewTable()}}
+{\footnotesize\ttfamily oid\+\_\+t db\+Database\+::add\+New\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Add new table to the database 
+\begin{DoxyParams}{Parameters}
+{\em desc} & -\/ descriptor of new table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+oid of created table descriptor record 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a87fb8519dfe13e0fbe260ecc5e928f0b_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a87fb8519dfe13e0fbe260ecc5e928f0b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a1dc9f3bd14614f803e622fe974f5ccee}\label{classdbDatabase_a1dc9f3bd14614f803e622fe974f5ccee}} 
+\index{dbDatabase@{dbDatabase}!allocate@{allocate}}
+\index{allocate@{allocate}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allocate()}{allocate()}}
+{\footnotesize\ttfamily offs\+\_\+t db\+Database\+::allocate (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{size,  }\item[{oid\+\_\+t}]{oid = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Allocate object in the database e
+\begin{DoxyParams}{Parameters}
+{\em size} & size of alocated object \\
+\hline
+{\em oid} & if oid is not 0, then allocated region position is stored in correcpondent cell of object index (needed for allocation of bitmap pages) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+position of allcoated region 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a1dc9f3bd14614f803e622fe974f5ccee_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a1dc9f3bd14614f803e622fe974f5ccee_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_acbf8431b60201e29e9efd07071550235}\label{classdbDatabase_acbf8431b60201e29e9efd07071550235}} 
+\index{dbDatabase@{dbDatabase}!allocateId@{allocateId}}
+\index{allocateId@{allocateId}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allocateId()}{allocateId()}}
+{\footnotesize\ttfamily oid\+\_\+t db\+Database\+::allocate\+Id (\begin{DoxyParamCaption}\item[{int}]{n = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Allocate object identifier(s) 
+\begin{DoxyParams}{Parameters}
+{\em n} & number of allocated object indentifiers \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object idenitifer (in case if n greater than 1, all n subsequent O\+I\+Ds are allocated and first one is returned 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_acbf8431b60201e29e9efd07071550235_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_afc0381681c1378b2bfd5d5078045eea2}\label{classdbDatabase_afc0381681c1378b2bfd5d5078045eea2}} 
+\index{dbDatabase@{dbDatabase}!allocateObject@{allocateObject}}
+\index{allocateObject@{allocateObject}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allocateObject()}{allocateObject()}}
+{\footnotesize\ttfamily oid\+\_\+t db\+Database\+::allocate\+Object (\begin{DoxyParamCaption}\item[{db\+Internal\+Object}]{marker }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Allocate internal object 
+\begin{DoxyParams}{Parameters}
+{\em marker} & internal object tag \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+oid of allocated object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_aa8b47528966a35e767d336dc2a8000cc}\label{classdbDatabase_aa8b47528966a35e767d336dc2a8000cc}} 
+\index{dbDatabase@{dbDatabase}!allocateRow@{allocateRow}}
+\index{allocateRow@{allocateRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allocateRow()}{allocateRow()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void db\+Database\+::allocate\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{table\+Id,  }\item[{oid\+\_\+t}]{oid,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Allocate record with specified O\+ID 
+\begin{DoxyParams}{Parameters}
+{\em table\+Id} & object identifier of the table \\
+\hline
+{\em oid} & record O\+ID \\
+\hline
+{\em size} & size of the created record as table descriptor in the database \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aa8b47528966a35e767d336dc2a8000cc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a56838815ecf19269f58d19de695a2e7a}\label{classdbDatabase_a56838815ecf19269f58d19de695a2e7a}} 
+\index{dbDatabase@{dbDatabase}!allocateRow@{allocateRow}}
+\index{allocateRow@{allocateRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allocateRow()}{allocateRow()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily oid\+\_\+t db\+Database\+::allocate\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{table\+Id,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Allocate record 
+\begin{DoxyParams}{Parameters}
+{\em table\+Id} & object identifier of the table \\
+\hline
+{\em size} & size of the created record as table descriptor in the database \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a56838815ecf19269f58d19de695a2e7a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a21997d7169d1b4382367933dcae056ed}\label{classdbDatabase_a21997d7169d1b4382367933dcae056ed}} 
+\index{dbDatabase@{dbDatabase}!allowColumnsDeletion@{allowColumnsDeletion}}
+\index{allowColumnsDeletion@{allowColumnsDeletion}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{allowColumnsDeletion()}{allowColumnsDeletion()}}
+{\footnotesize\ttfamily void db\+Database\+::allow\+Columns\+Deletion (\begin{DoxyParamCaption}\item[{bool}]{enabled = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Enable deletion of columns from the table when correspondent fields are renamed from class descriptor. By default it is switched of and database allows to delete fields only from empty table (to prevent unindented loose of data). 
+\begin{DoxyParams}{Parameters}
+{\em enabled} & true to enable column deletion in non empty tables \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a30ea1fd8a039904daed402e975a6ca01}\label{classdbDatabase_a30ea1fd8a039904daed402e975a6ca01}} 
+\index{dbDatabase@{dbDatabase}!assign@{assign}}
+\index{assign@{assign}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{assign()}{assign()}}
+{\footnotesize\ttfamily void db\+Database\+::assign (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} \&}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Assign table to the database 
+\begin{DoxyParams}{Parameters}
+{\em desc} & table descriptor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_ac9dd81c1cefb4f8df0a567b355869a2f}\label{classdbDatabase_ac9dd81c1cefb4f8df0a567b355869a2f}} 
+\index{dbDatabase@{dbDatabase}!attach@{attach}}
+\index{attach@{attach}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void db\+Database\+::attach (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Attach current thread to the database. This method should be executed for all threads except one which opened the database. Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ac9dd81c1cefb4f8df0a567b355869a2f_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a936c0e538ae9d7ca77f219eb83dd993e}\label{classdbDatabase_a936c0e538ae9d7ca77f219eb83dd993e}} 
+\index{dbDatabase@{dbDatabase}!attach@{attach}}
+\index{attach@{attach}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{attach()}{attach()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void db\+Database\+::attach (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$}]{ctx }\end{DoxyParamCaption})}
+
+Set transaction context for the current thread. Using this method allows to share the same transaction between different threads 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & transaction context which will be associated with the current thread \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a9a8ca796e12f7b49e1c5b1d846c210da}\label{classdbDatabase_a9a8ca796e12f7b49e1c5b1d846c210da}} 
+\index{dbDatabase@{dbDatabase}!backup@{backup}}
+\index{backup@{backup}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{backup()}{backup()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::backup (\begin{DoxyParamCaption}\item[{char\+\_\+t const $\ast$}]{file,  }\item[{bool}]{compactify }\end{DoxyParamCaption})}
+
+Perform backup to the file with specified name 
+\begin{DoxyParams}{Parameters}
+{\em file} & path to the backup file \\
+\hline
+{\em compactify} & if true then databae will be compactificated during backup -\/ i.\+e. all used objects will be placed together without holes; if false then backup is performed by just writting memory mapped object to the backup file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether backup was succeseful or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_afbf41f1ae851c55c5ffd3dfcc61b48ae}\label{classdbDatabase_afbf41f1ae851c55c5ffd3dfcc61b48ae}} 
+\index{dbDatabase@{dbDatabase}!backup@{backup}}
+\index{backup@{backup}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{backup()}{backup()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::backup (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFile}{db\+File}} $\ast$}]{file,  }\item[{bool}]{compactify }\end{DoxyParamCaption})}
+
+Perform backup to the specified file 
+\begin{DoxyParams}{Parameters}
+{\em file} & opened file to path to the backup file. This file will not be closed after backup completion. \\
+\hline
+{\em compactify} & if true then databae will be compactificated during backup -\/ i.\+e. all used objects will be placed together without holes; if false then backup is performed by just writting memory mapped object to the backup file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether backup was succeseful or not 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_afbf41f1ae851c55c5ffd3dfcc61b48ae_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a67382226e535f25d8ea41e1a4a29c979}\label{classdbDatabase_a67382226e535f25d8ea41e1a4a29c979}} 
+\index{dbDatabase@{dbDatabase}!beginTransaction@{beginTransaction}}
+\index{beginTransaction@{beginTransaction}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{beginTransaction()}{beginTransaction()}}
+{\footnotesize\ttfamily bool db\+Database\+::begin\+Transaction (\begin{DoxyParamCaption}\item[{db\+Lock\+Type}]{lock }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Start database transaction 
+\begin{DoxyParams}{Parameters}
+{\em lock} & lock type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if version of memory mapping object is not obsolete and reallocation is not possible 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a67382226e535f25d8ea41e1a4a29c979_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a67382226e535f25d8ea41e1a4a29c979_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a78274dd5406831e1a481ffdc5eaa0f16}\label{classdbDatabase_a78274dd5406831e1a481ffdc5eaa0f16}} 
+\index{dbDatabase@{dbDatabase}!checkVersion@{checkVersion}}
+\index{checkVersion@{checkVersion}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{checkVersion()}{checkVersion()}}
+{\footnotesize\ttfamily bool db\+Database\+::check\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check if program works with correct version of memory mapped object (if memory mapped object is reallocated by some client, its version number is incremented, so all other client will be able to notice it and also reallocate their memory mapping objects. \begin{DoxyReturn}{Returns}
+true if memory mapping object was successfully reallocated or no reallocation is needed at all 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a78274dd5406831e1a481ffdc5eaa0f16_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a78274dd5406831e1a481ffdc5eaa0f16_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a4bc62f8de139a5889c3eb1a5805246e8}\label{classdbDatabase_a4bc62f8de139a5889c3eb1a5805246e8}} 
+\index{dbDatabase@{dbDatabase}!cloneBitmap@{cloneBitmap}}
+\index{cloneBitmap@{cloneBitmap}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{cloneBitmap()}{cloneBitmap()}}
+{\footnotesize\ttfamily void db\+Database\+::clone\+Bitmap (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{pos,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Clone memory allocation bitmap for region \mbox{[}pos, pos+size) 
+\begin{DoxyParams}{Parameters}
+{\em pos} & start of region \\
+\hline
+{\em size} & size of region \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a4bc62f8de139a5889c3eb1a5805246e8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a4bc62f8de139a5889c3eb1a5805246e8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a94ae05070b28588ddfa53d78c49c282d}\label{classdbDatabase_a94ae05070b28588ddfa53d78c49c282d}} 
+\index{dbDatabase@{dbDatabase}!close@{close}}
+\index{close@{close}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{close()}{close()}}
+{\footnotesize\ttfamily void db\+Database\+::close (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Close database \mbox{\Hypertarget{classdbDatabase_a2e036cfcdc87258bfeaa63f7eaf4abd0}\label{classdbDatabase_a2e036cfcdc87258bfeaa63f7eaf4abd0}} 
+\index{dbDatabase@{dbDatabase}!commit@{commit}}
+\index{commit@{commit}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void db\+Database\+::commit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Commit transaction Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a2e036cfcdc87258bfeaa63f7eaf4abd0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a2e036cfcdc87258bfeaa63f7eaf4abd0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ab766c2eacea7646a2e08633f72c3f494}\label{classdbDatabase_ab766c2eacea7646a2e08633f72c3f494}} 
+\index{dbDatabase@{dbDatabase}!commit@{commit}}
+\index{commit@{commit}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{commit()}{commit()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void db\+Database\+::commit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Commit transaction 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & thread context \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ab766c2eacea7646a2e08633f72c3f494_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a738af925a10c4c90c921dc22dc63ecde}\label{classdbDatabase_a738af925a10c4c90c921dc22dc63ecde}} 
+\index{dbDatabase@{dbDatabase}!completeDescriptorsInitialization@{completeDescriptorsInitialization}}
+\index{completeDescriptorsInitialization@{completeDescriptorsInitialization}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{completeDescriptorsInitialization()}{completeDescriptorsInitialization()}}
+{\footnotesize\ttfamily bool db\+Database\+::complete\+Descriptors\+Initialization (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+This method is invoked by Sub\+S\+QL to complete table descriptors initialization after loading of all table descriptoes from thr database \begin{DoxyReturn}{Returns}
+true if intertable relation consuistency is rpeservedm false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a738af925a10c4c90c921dc22dc63ecde_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a738af925a10c4c90c921dc22dc63ecde_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_acbdb8fc1b45d984bcc99650ae2f048f5}\label{classdbDatabase_acbdb8fc1b45d984bcc99650ae2f048f5}} 
+\index{dbDatabase@{dbDatabase}!createHashTable@{createHashTable}}
+\index{createHashTable@{createHashTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{createHashTable()}{createHashTable()}}
+{\footnotesize\ttfamily void db\+Database\+::create\+Hash\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Create hash table for the field 
+\begin{DoxyParams}{Parameters}
+{\em fd} & field descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_acbdb8fc1b45d984bcc99650ae2f048f5_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a9da87a3e15fd7341869bb1f1f16f78b2}\label{classdbDatabase_a9da87a3e15fd7341869bb1f1f16f78b2}} 
+\index{dbDatabase@{dbDatabase}!createIndex@{createIndex}}
+\index{createIndex@{createIndex}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{createIndex()}{createIndex()}}
+{\footnotesize\ttfamily void db\+Database\+::create\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Create T-\/\+Tree index for the field 
+\begin{DoxyParams}{Parameters}
+{\em fd} & field descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9da87a3e15fd7341869bb1f1f16f78b2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a2dd6cab1f292e3eb992755c466f9da58}\label{classdbDatabase_a2dd6cab1f292e3eb992755c466f9da58}} 
+\index{dbDatabase@{dbDatabase}!deallocate@{deallocate}}
+\index{deallocate@{deallocate}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{deallocate()}{deallocate()}}
+{\footnotesize\ttfamily void db\+Database\+::deallocate (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{pos,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Deallocate region 
+\begin{DoxyParams}{Parameters}
+{\em pos} & start position of region \\
+\hline
+{\em size} & of region \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classdbDatabase_a2dd6cab1f292e3eb992755c466f9da58_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a2dd6cab1f292e3eb992755c466f9da58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a47a8a3df70e0ecb9e02c7f4af07858f9}\label{classdbDatabase_a47a8a3df70e0ecb9e02c7f4af07858f9}} 
+\index{dbDatabase@{dbDatabase}!deleteCompiledQuery@{deleteCompiledQuery}}
+\index{deleteCompiledQuery@{deleteCompiledQuery}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{deleteCompiledQuery()}{deleteCompiledQuery()}}
+{\footnotesize\ttfamily static void db\+Database\+::delete\+Compiled\+Query (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{tree }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+Cleanup compiled query \mbox{\Hypertarget{classdbDatabase_af352b817b47cf712846963c12d856030}\label{classdbDatabase_af352b817b47cf712846963c12d856030}} 
+\index{dbDatabase@{dbDatabase}!deleteTable@{deleteTable}}
+\index{deleteTable@{deleteTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{deleteTable()}{deleteTable()}}
+{\footnotesize\ttfamily void db\+Database\+::delete\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Delete all table records 
+\begin{DoxyParams}{Parameters}
+{\em desc} & table descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_af352b817b47cf712846963c12d856030_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_af352b817b47cf712846963c12d856030_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a68de6c9acf521dd39c565a0851fed9c9}\label{classdbDatabase_a68de6c9acf521dd39c565a0851fed9c9}} 
+\index{dbDatabase@{dbDatabase}!detach@{detach}}
+\index{detach@{detach}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{detach()}{detach()}}
+{\footnotesize\ttfamily void db\+Database\+::detach (\begin{DoxyParamCaption}\item[{int}]{flags = {\ttfamily COMMIT$\vert$DESTROY\+\_\+CONTEXT} }\end{DoxyParamCaption})}
+
+Detach thread from the database. 
+\begin{DoxyParams}{Parameters}
+{\em flags} & mask of Detach\+Flags C\+O\+M\+M\+IT and D\+E\+S\+T\+R\+O\+Y\+\_\+\+C\+O\+N\+T\+E\+XT \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a68de6c9acf521dd39c565a0851fed9c9_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a905789bdca35ce20cde38be728cd1cf0}\label{classdbDatabase_a905789bdca35ce20cde38be728cd1cf0}} 
+\index{dbDatabase@{dbDatabase}!dropHashTable@{dropHashTable}}
+\index{dropHashTable@{dropHashTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{dropHashTable()}{dropHashTable()}}
+{\footnotesize\ttfamily void db\+Database\+::drop\+Hash\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Drop hash table for the field 
+\begin{DoxyParams}{Parameters}
+{\em fd} & field descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a905789bdca35ce20cde38be728cd1cf0_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a61122929b1f769c4ee6d296eeb7ec095}\label{classdbDatabase_a61122929b1f769c4ee6d296eeb7ec095}} 
+\index{dbDatabase@{dbDatabase}!dropIndex@{dropIndex}}
+\index{dropIndex@{dropIndex}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{dropIndex()}{dropIndex()}}
+{\footnotesize\ttfamily void db\+Database\+::drop\+Index (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Drop T-\/\+Tree index for the field 
+\begin{DoxyParams}{Parameters}
+{\em fd} & field descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a61122929b1f769c4ee6d296eeb7ec095_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_adeb26f12690c4e9bc23cd7a705588dd7}\label{classdbDatabase_adeb26f12690c4e9bc23cd7a705588dd7}} 
+\index{dbDatabase@{dbDatabase}!dropTable@{dropTable}}
+\index{dropTable@{dropTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{dropTable()}{dropTable()}}
+{\footnotesize\ttfamily void db\+Database\+::drop\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Delete table from the database 
+\begin{DoxyParams}{Parameters}
+{\em desc} & table descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_adeb26f12690c4e9bc23cd7a705588dd7_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_adccfd5692158b4653bd1fc9518bc29f1}\label{classdbDatabase_adccfd5692158b4653bd1fc9518bc29f1}} 
+\index{dbDatabase@{dbDatabase}!enableCascadeDelete@{enableCascadeDelete}}
+\index{enableCascadeDelete@{enableCascadeDelete}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{enableCascadeDelete()}{enableCascadeDelete()}}
+{\footnotesize\ttfamily void db\+Database\+::enable\+Cascade\+Delete (\begin{DoxyParamCaption}\item[{bool}]{enabled = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Enable or disable cascade for relations with ownership (declared using O\+W\+N\+ER macro) By default when owner record is deleted then all members of relation are also deleted. Also member of relation is deleted when owner of relation is updated and this member is not present in the list any more 
+\begin{DoxyParams}{Parameters}
+{\em enabled} & true to enable cascade delete, false to disable it \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_af1563fbac602be6f226dee65f09ea19b}\label{classdbDatabase_af1563fbac602be6f226dee65f09ea19b}} 
+\index{dbDatabase@{dbDatabase}!enableInverseReferencesUpdate@{enableInverseReferencesUpdate}}
+\index{enableInverseReferencesUpdate@{enableInverseReferencesUpdate}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{enableInverseReferencesUpdate()}{enableInverseReferencesUpdate()}}
+{\footnotesize\ttfamily void db\+Database\+::enable\+Inverse\+References\+Update (\begin{DoxyParamCaption}\item[{bool}]{enabled = {\ttfamily true} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Enable or disable automatic update of inverse references 
+\begin{DoxyParams}{Parameters}
+{\em enabled} & true to enable automatic update of inverse references, false to disable it \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a9acf4cd1d0bb15ff2c5f9d39549d2ee3}\label{classdbDatabase_a9acf4cd1d0bb15ff2c5f9d39549d2ee3}} 
+\index{dbDatabase@{dbDatabase}!endTransaction@{endTransaction}}
+\index{endTransaction@{endTransaction}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{endTransaction()}{endTransaction()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void db\+Database\+::end\+Transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+End transaction Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9acf4cd1d0bb15ff2c5f9d39549d2ee3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ae473a34e15433e939d84c45c0591c5dc}\label{classdbDatabase_ae473a34e15433e939d84c45c0591c5dc}} 
+\index{dbDatabase@{dbDatabase}!endTransaction@{endTransaction}}
+\index{endTransaction@{endTransaction}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{endTransaction()}{endTransaction()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void db\+Database\+::end\+Transaction (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbDatabaseThreadContext}{db\+Database\+Thread\+Context}} $\ast$}]{ctx }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+End transaction with specified thread context 
+\begin{DoxyParams}{Parameters}
+{\em ctx} & thread context \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ae473a34e15433e939d84c45c0591c5dc_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_aa1279f2d753844bd8ca27278e2920476}\label{classdbDatabase_aa1279f2d753844bd8ca27278e2920476}} 
+\index{dbDatabase@{dbDatabase}!evaluate@{evaluate}}
+\index{evaluate@{evaluate}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{evaluate()}{evaluate()}}
+{\footnotesize\ttfamily bool db\+Database\+::evaluate (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{oid\+\_\+t}]{oid,  }\item[{\mbox{\hyperlink{classdbTable}{db\+Table}} $\ast$}]{table,  }\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Evaluate epression. This method initialie initiainherited attributes and invoke execute method 
+\begin{DoxyParams}{Parameters}
+{\em expr} & expression to be evaluated \\
+\hline
+{\em oid} & O\+ID of the inspected record \\
+\hline
+{\em table} & searched table \\
+\hline
+{\em cursor} & result set \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if this record match search condition, false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aa1279f2d753844bd8ca27278e2920476_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aa1279f2d753844bd8ca27278e2920476_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ae8d1c76fac40f34db644e95083cc5408}\label{classdbDatabase_ae8d1c76fac40f34db644e95083cc5408}} 
+\index{dbDatabase@{dbDatabase}!execute@{execute}}
+\index{execute@{execute}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{execute()}{execute()}}
+{\footnotesize\ttfamily void \+\_\+fastcall db\+Database\+::execute (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{\mbox{\hyperlink{structdbInheritedAttribute}{db\+Inherited\+Attribute}} \&}]{iattr,  }\item[{\mbox{\hyperlink{uniondbSynthesizedAttribute}{db\+Synthesized\+Attribute}} \&}]{sattr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+Execute expression. This method is most frequently recursivly called during evaluation of search predicate. 
+\begin{DoxyParams}{Parameters}
+{\em expr} & expression to be executed \\
+\hline
+{\em iattr} & inherited attributes -\/ attributes passed top-\/down (information like cursor, current record, ...) \\
+\hline
+{\em sattr} & synthesized attribute -\/ sttributes passed down-\/top (value of expression) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ae8d1c76fac40f34db644e95083cc5408_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ae8d1c76fac40f34db644e95083cc5408_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_aa517de92bedab61de7535cba9592d734}\label{classdbDatabase_aa517de92bedab61de7535cba9592d734}} 
+\index{dbDatabase@{dbDatabase}!existsIndexedReference@{existsIndexedReference}}
+\index{existsIndexedReference@{existsIndexedReference}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{existsIndexedReference()}{existsIndexedReference()}}
+{\footnotesize\ttfamily bool db\+Database\+::exists\+Indexed\+Reference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check whether index exists for derefenced field 
+\begin{DoxyParams}{Parameters}
+{\em expr} & dereference expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if reference field is indexed 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aa517de92bedab61de7535cba9592d734_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_aeae365fe755f6f1863630d051267790a}\label{classdbDatabase_aeae365fe755f6f1863630d051267790a}} 
+\index{dbDatabase@{dbDatabase}!existsInverseReference@{existsInverseReference}}
+\index{existsInverseReference@{existsInverseReference}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{existsInverseReference()}{existsInverseReference()}}
+{\footnotesize\ttfamily bool db\+Database\+::exists\+Inverse\+Reference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{int}]{n\+Exists\+Clauses }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check if there is inverse reference in the table rerefrenced from search predicate. 
+\begin{DoxyParams}{Parameters}
+{\em expr} & evaluated expression \\
+\hline
+{\em n\+Exists\+Clauses} & number of exists clauses in search wrapping this expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if inverse reference(s) exists and it is possible to perform backward traversal 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aeae365fe755f6f1863630d051267790a_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a5cdf49bcebd9ed31b1e766de0cf90145}\label{classdbDatabase_a5cdf49bcebd9ed31b1e766de0cf90145}} 
+\index{dbDatabase@{dbDatabase}!exportDatabaseToXml@{exportDatabaseToXml}}
+\index{exportDatabaseToXml@{exportDatabaseToXml}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{exportDatabaseToXml()}{exportDatabaseToXml()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::export\+Database\+To\+Xml (\begin{DoxyParamCaption}\item[{char\+\_\+t const $\ast$}]{file,  }\item[{char const $\ast$}]{encoding = {\ttfamily \char`\"{}UTF-\/8\char`\"{}},  }\item[{bool}]{dtd = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Export database in X\+ML format to the specified stream 
+\begin{DoxyParams}{Parameters}
+{\em file} & path of the file where X\+ML representation of database will be saved \\
+\hline
+{\em encoding} & generated X\+ML document encoding (no conversion to the specified encoding is performed, it just specified in xml document header) \\
+\hline
+{\em dtd} & generate Document Type Defintion (D\+TD) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if database was successfully exported to the specified file, false if file can not be opened 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5cdf49bcebd9ed31b1e766de0cf90145_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a3f09c9587e354f16b5355a74a9426e8d}\label{classdbDatabase_a3f09c9587e354f16b5355a74a9426e8d}} 
+\index{dbDatabase@{dbDatabase}!exportDatabaseToXml@{exportDatabaseToXml}}
+\index{exportDatabaseToXml@{exportDatabaseToXml}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{exportDatabaseToXml()}{exportDatabaseToXml()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void db\+Database\+::export\+Database\+To\+Xml (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{out,  }\item[{char const $\ast$}]{encoding = {\ttfamily \char`\"{}UTF-\/8\char`\"{}},  }\item[{bool}]{dtd = {\ttfamily true} }\end{DoxyParamCaption})}
+
+Export database in X\+ML format to the specified stream 
+\begin{DoxyParams}{Parameters}
+{\em out} & stream where X\+ML representation of database will be printed \\
+\hline
+{\em encoding} & generated X\+ML document encoding (no conversion to the specified encoding is performed, it just specified in xml document header) \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3f09c9587e354f16b5355a74a9426e8d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3f09c9587e354f16b5355a74a9426e8d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a0566e6d9d4166ae35199459d4466f192}\label{classdbDatabase_a0566e6d9d4166ae35199459d4466f192}} 
+\index{dbDatabase@{dbDatabase}!extend@{extend}}
+\index{extend@{extend}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{extend()}{extend()}}
+{\footnotesize\ttfamily void db\+Database\+::extend (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Checks whther allocated size is greater than size of databae file and recreate memory mapping object with larger size n the last case 
+\begin{DoxyParams}{Parameters}
+{\em size} & allocated size \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a0566e6d9d4166ae35199459d4466f192_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a0566e6d9d4166ae35199459d4466f192_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a7ae83e7bc84e4a52e34b6ed821ee05fd}\label{classdbDatabase_a7ae83e7bc84e4a52e34b6ed821ee05fd}} 
+\index{dbDatabase@{dbDatabase}!fatalError@{fatalError}}
+\index{fatalError@{fatalError}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{fatalError()}{fatalError()}}
+{\footnotesize\ttfamily void db\+Database\+::fatal\+Error (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Abort execution of application. In not redefined in derived class, this method is calls standard C runtime abort() Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a7ae83e7bc84e4a52e34b6ed821ee05fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a5b1abfc169742633951bb4abb9e153f8}\label{classdbDatabase_a5b1abfc169742633951bb4abb9e153f8}} 
+\index{dbDatabase@{dbDatabase}!findTable@{findTable}}
+\index{findTable@{findTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{findTable()}{findTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ db\+Database\+::find\+Table (\begin{DoxyParamCaption}\item[{char const $\ast$}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Find table using symbol name 
+\begin{DoxyParams}{Parameters}
+{\em name} & symbol table entry (returned by db\+Symbol\+Table\+::add method) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+table descriptor or {\ttfamily N\+U\+LL} if not found 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5b1abfc169742633951bb4abb9e153f8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a13183fdf6469d80a1ee50d1286447ceb}\label{classdbDatabase_a13183fdf6469d80a1ee50d1286447ceb}} 
+\index{dbDatabase@{dbDatabase}!findTableByID@{findTableByID}}
+\index{findTableByID@{findTableByID}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{findTableByID()}{findTableByID()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ db\+Database\+::find\+Table\+By\+ID (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{id }\end{DoxyParamCaption})}
+
+Find table by its O\+ID 
+\begin{DoxyParams}{Parameters}
+{\em id} & O\+ID of the table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+table descriptor or {\ttfamily N\+U\+LL} if not found 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a13183fdf6469d80a1ee50d1286447ceb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a93f3b26b734abc2f9a051a5b25588688}\label{classdbDatabase_a93f3b26b734abc2f9a051a5b25588688}} 
+\index{dbDatabase@{dbDatabase}!findTableByName@{findTableByName}}
+\index{findTableByName@{findTableByName}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{findTableByName()}{findTableByName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ db\+Database\+::find\+Table\+By\+Name (\begin{DoxyParamCaption}\item[{char const $\ast$}]{name }\end{DoxyParamCaption})}
+
+Find table by name. This method get symbol for specified name and call {\ttfamily find\+Table} method. 
+\begin{DoxyParams}{Parameters}
+{\em name} & name of table \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+table descriptor or {\ttfamily N\+U\+LL} if not found 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a93f3b26b734abc2f9a051a5b25588688_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a93f3b26b734abc2f9a051a5b25588688_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a1d9f96b02f5dee044e349732d7e90635}\label{classdbDatabase_a1d9f96b02f5dee044e349732d7e90635}} 
+\index{dbDatabase@{dbDatabase}!followInverseReference@{followInverseReference}}
+\index{followInverseReference@{followInverseReference}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{followInverseReference()}{followInverseReference()}}
+{\footnotesize\ttfamily bool db\+Database\+::follow\+Inverse\+Reference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{and\+Expr,  }\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{oid\+\_\+t}]{iref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+If query predicate contains operands from other tables (accessed by references) and inverse references exists, then Fast\+DB performs indexed search in referenced table and then go back using inverse referenced to query table. follow\+Inverse\+Reference method performs this backward traversal of inverse references. 
+\begin{DoxyParams}{Parameters}
+{\em expr} & evaluated expression \\
+\hline
+{\em and\+Expr} & if not null, then it is used as filter to all records selected by index search \\
+\hline
+{\em cursor} & cursor to collect selected records \\
+\hline
+{\em iref} & O\+ID of the selected records in referenced table \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a1d9f96b02f5dee044e349732d7e90635_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a1d9f96b02f5dee044e349732d7e90635_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ae8b78f65b6067222daabe7258f3ad5e0}\label{classdbDatabase_ae8b78f65b6067222daabe7258f3ad5e0}} 
+\index{dbDatabase@{dbDatabase}!formatErrorMessage@{formatErrorMessage}}
+\index{formatErrorMessage@{formatErrorMessage}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{formatErrorMessage()}{formatErrorMessage()}}
+{\footnotesize\ttfamily void db\+Database\+::format\+Error\+Message (\begin{DoxyParamCaption}\item[{char $\ast$}]{buf,  }\item[{size\+\_\+t}]{buf\+Size,  }\item[{db\+Error\+Class}]{error,  }\item[{char const $\ast$}]{msg = {\ttfamily NULL},  }\item[{int}]{arg = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Format error message 
+\begin{DoxyParams}{Parameters}
+{\em buf} & buffer where message will be placed \\
+\hline
+{\em buf\+Size} & size of buffer \\
+\hline
+{\em error} & class of the error \\
+\hline
+{\em msg} & error message \\
+\hline
+{\em arg} & optional argument \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a9da75bf466b9ac8cd620ab6c61e28b58}\label{classdbDatabase_a9da75bf466b9ac8cd620ab6c61e28b58}} 
+\index{dbDatabase@{dbDatabase}!freeId@{freeId}}
+\index{freeId@{freeId}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{freeId()}{freeId()}}
+{\footnotesize\ttfamily void db\+Database\+::free\+Id (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{int}]{n = {\ttfamily 1} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Free object identifier(s) 
+\begin{DoxyParams}{Parameters}
+{\em oid} & deallocated object identifer (or first of n deallocated subsequent identifiers if n greater than 1) \\
+\hline
+{\em n} & number of allocated object indentifiers \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9da75bf466b9ac8cd620ab6c61e28b58_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ac432785e0e6d98ccf39626148cf8797e}\label{classdbDatabase_ac432785e0e6d98ccf39626148cf8797e}} 
+\index{dbDatabase@{dbDatabase}!freeObject@{freeObject}}
+\index{freeObject@{freeObject}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{freeObject()}{freeObject()}}
+{\footnotesize\ttfamily void db\+Database\+::free\+Object (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Free internal object Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ac432785e0e6d98ccf39626148cf8797e_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a2bb0f17e4fc0179d10e160aa38b3a7ca}\label{classdbDatabase_a2bb0f17e4fc0179d10e160aa38b3a7ca}} 
+\index{dbDatabase@{dbDatabase}!freeRow@{freeRow}}
+\index{freeRow@{freeRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{freeRow()}{freeRow()}}
+{\footnotesize\ttfamily void db\+Database\+::free\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{table\+Id,  }\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Delete row from the table 
+\begin{DoxyParams}{Parameters}
+{\em table\+Id} & O\+ID of record with table descriptor \\
+\hline
+{\em oid} & identifier of deleted record \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a2bb0f17e4fc0179d10e160aa38b3a7ca_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a2bb0f17e4fc0179d10e160aa38b3a7ca_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a0f15caecea63b2da73defcf52b9731e6}\label{classdbDatabase_a0f15caecea63b2da73defcf52b9731e6}} 
+\index{dbDatabase@{dbDatabase}!get@{get}}
+\index{get@{get}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{get()}{get()}}
+{\footnotesize\ttfamily byte$\ast$ db\+Database\+::get (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Get record by O\+ID 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the record inside database 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a0f15caecea63b2da73defcf52b9731e6_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_aa12a7f519b6b58179e875bd9bfe0394d}\label{classdbDatabase_aa12a7f519b6b58179e875bd9bfe0394d}} 
+\index{dbDatabase@{dbDatabase}!getAllocatedSize@{getAllocatedSize}}
+\index{getAllocatedSize@{getAllocatedSize}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getAllocatedSize()}{getAllocatedSize()}}
+{\footnotesize\ttfamily soffs\+\_\+t db\+Database\+::get\+Allocated\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get size allocated in the database since open \begin{DoxyReturn}{Returns}
+delta between size of allocated and deallocated data 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a7a9a7d4fef191fccaa8a7aa455763f3d}\label{classdbDatabase_a7a9a7d4fef191fccaa8a7aa455763f3d}} 
+\index{dbDatabase@{dbDatabase}!getDatabaseSize@{getDatabaseSize}}
+\index{getDatabaseSize@{getDatabaseSize}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getDatabaseSize()}{getDatabaseSize()}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::get\+Database\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get size of the database file \begin{DoxyReturn}{Returns}
+database file size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a22a9f69b515413088b4f754dce9c81de}\label{classdbDatabase_a22a9f69b515413088b4f754dce9c81de}} 
+\index{dbDatabase@{dbDatabase}!getMemoryStatistic@{getMemoryStatistic}}
+\index{getMemoryStatistic@{getMemoryStatistic}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getMemoryStatistic()}{getMemoryStatistic()}}
+{\footnotesize\ttfamily void db\+Database\+::get\+Memory\+Statistic (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structdbMemoryStatistic}{db\+Memory\+Statistic}} \&}]{stat }\end{DoxyParamCaption})}
+
+Get information about state of database memory 
+\begin{DoxyParams}{Parameters}
+{\em stat} & placeholder for memory statistic \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a22a9f69b515413088b4f754dce9c81de_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a2c18de697f7111bca527a58c69b17c4d}\label{classdbDatabase_a2c18de697f7111bca527a58c69b17c4d}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfBlockedReaders@{getNumberOfBlockedReaders}}
+\index{getNumberOfBlockedReaders@{getNumberOfBlockedReaders}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfBlockedReaders()}{getNumberOfBlockedReaders()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Blocked\+Readers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of threads blocked while starting read-\/only transaction \begin{DoxyReturn}{Returns}
+number of threads which shared lock request was blocked 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a9c2336e08e59f1509304fe4934a80763}\label{classdbDatabase_a9c2336e08e59f1509304fe4934a80763}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfBlockedWriters@{getNumberOfBlockedWriters}}
+\index{getNumberOfBlockedWriters@{getNumberOfBlockedWriters}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfBlockedWriters()}{getNumberOfBlockedWriters()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Blocked\+Writers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of threads blocked while starting update transaction \begin{DoxyReturn}{Returns}
+number of threads which exclusive lock request was blocked 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a9c5b3727f694984ca54bd898c6a8d4d6}\label{classdbDatabase_a9c5b3727f694984ca54bd898c6a8d4d6}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfProceededTransactions@{getNumberOfProceededTransactions}}
+\index{getNumberOfProceededTransactions@{getNumberOfProceededTransactions}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfProceededTransactions()}{getNumberOfProceededTransactions()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Proceeded\+Transactions (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of transaction proceeded by all clients since database open. \begin{DoxyReturn}{Returns}
+number of committed or aborted transactions since database open. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a5fb3e20e210e40a33116a4c1372c98d1}\label{classdbDatabase_a5fb3e20e210e40a33116a4c1372c98d1}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfReaders@{getNumberOfReaders}}
+\index{getNumberOfReaders@{getNumberOfReaders}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfReaders()}{getNumberOfReaders()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Readers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of threads accessing database in shared mode (readonly) \begin{DoxyReturn}{Returns}
+number of granted shared locks 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_ad6a9ad3c0dbdf1055a7631c3a15be45f}\label{classdbDatabase_ad6a9ad3c0dbdf1055a7631c3a15be45f}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfUsers@{getNumberOfUsers}}
+\index{getNumberOfUsers@{getNumberOfUsers}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfUsers()}{getNumberOfUsers()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Users (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of processes attached to the database \begin{DoxyReturn}{Returns}
+number of processes openned the database 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_ae4af4ad21e1d3465bc1d16699bd3c613}\label{classdbDatabase_ae4af4ad21e1d3465bc1d16699bd3c613}} 
+\index{dbDatabase@{dbDatabase}!getNumberOfWriters@{getNumberOfWriters}}
+\index{getNumberOfWriters@{getNumberOfWriters}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getNumberOfWriters()}{getNumberOfWriters()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Number\+Of\+Writers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get number of threads accessing database in exclusiveh mode (for update) \begin{DoxyReturn}{Returns}
+number of granted exclusive locks (can be either 0 either 1) 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a7bff04ecc071c89a2e9d27fda8cd326e}\label{classdbDatabase_a7bff04ecc071c89a2e9d27fda8cd326e}} 
+\index{dbDatabase@{dbDatabase}!getRow@{getRow}}
+\index{getRow@{getRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getRow()}{getRow()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbRecord}{db\+Record}}$\ast$ db\+Database\+::get\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Get table row 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object indentifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+object with this oid 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a7bff04ecc071c89a2e9d27fda8cd326e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_af46a0616cda64750e1a67c16c5d00afc}\label{classdbDatabase_af46a0616cda64750e1a67c16c5d00afc}} 
+\index{dbDatabase@{dbDatabase}!getTables@{getTables}}
+\index{getTables@{getTables}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getTables()}{getTables()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}}$\ast$ db\+Database\+::get\+Tables (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get list of tables attached to the database \begin{DoxyReturn}{Returns}
+list of tables attached to the database 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a4717133aa73ac66e169e2866db32b377}\label{classdbDatabase_a4717133aa73ac66e169e2866db32b377}} 
+\index{dbDatabase@{dbDatabase}!getUsedDatabaseSize@{getUsedDatabaseSize}}
+\index{getUsedDatabaseSize@{getUsedDatabaseSize}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getUsedDatabaseSize()}{getUsedDatabaseSize()}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::get\+Used\+Database\+Size (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get used size of the database file \begin{DoxyReturn}{Returns}
+database file used size 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a8f8d2ca71a591b81f3df73779320b9c5}\label{classdbDatabase_a8f8d2ca71a591b81f3df73779320b9c5}} 
+\index{dbDatabase@{dbDatabase}!getVersion@{getVersion}}
+\index{getVersion@{getVersion}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{getVersion()}{getVersion()}}
+{\footnotesize\ttfamily int db\+Database\+::get\+Version (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Get database version \mbox{\Hypertarget{classdbDatabase_a239cb01cd3eee54d5ae50763259037c8}\label{classdbDatabase_a239cb01cd3eee54d5ae50763259037c8}} 
+\index{dbDatabase@{dbDatabase}!handleError@{handleError}}
+\index{handleError@{handleError}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{handleError()}{handleError()}}
+{\footnotesize\ttfamily void db\+Database\+::handle\+Error (\begin{DoxyParamCaption}\item[{db\+Error\+Class}]{error,  }\item[{char const $\ast$}]{msg = {\ttfamily NULL},  }\item[{int}]{arg = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Error handler. It can be redifined by application to implement application specific error handling. 
+\begin{DoxyParams}{Parameters}
+{\em error} & class of the error \\
+\hline
+{\em msg} & error message \\
+\hline
+{\em arg} & optional argument \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a239cb01cd3eee54d5ae50763259037c8_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a239cb01cd3eee54d5ae50763259037c8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a143bc9a6e525da2bb8d2972e64f21131}\label{classdbDatabase_a143bc9a6e525da2bb8d2972e64f21131}} 
+\index{dbDatabase@{dbDatabase}!importDatabaseFromXml@{importDatabaseFromXml}}
+\index{importDatabaseFromXml@{importDatabaseFromXml}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{importDatabaseFromXml()}{importDatabaseFromXml()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::import\+Database\+From\+Xml (\begin{DoxyParamCaption}\item[{char\+\_\+t const $\ast$}]{file }\end{DoxyParamCaption})}
+
+Import database from X\+ML data source 
+\begin{DoxyParams}{Parameters}
+{\em file} & path of the file with X\+ML data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if import succeed, false otherwise 
+
+true if database was successfully exported to the specified file, false if import failed 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a143bc9a6e525da2bb8d2972e64f21131_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a732eb89bfd4a4e5d5d86a86dd7dd93f0}\label{classdbDatabase_a732eb89bfd4a4e5d5d86a86dd7dd93f0}} 
+\index{dbDatabase@{dbDatabase}!importDatabaseFromXml@{importDatabaseFromXml}}
+\index{importDatabaseFromXml@{importDatabaseFromXml}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{importDatabaseFromXml()}{importDatabaseFromXml()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::import\+Database\+From\+Xml (\begin{DoxyParamCaption}\item[{F\+I\+LE $\ast$}]{in }\end{DoxyParamCaption})}
+
+Import database from X\+ML data source 
+\begin{DoxyParams}{Parameters}
+{\em in} & input stream with X\+ML data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if import succeed, false otherwise 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a732eb89bfd4a4e5d5d86a86dd7dd93f0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a732eb89bfd4a4e5d5d86a86dd7dd93f0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ad566f72830f65610dfd689f6f00cd735}\label{classdbDatabase_ad566f72830f65610dfd689f6f00cd735}} 
+\index{dbDatabase@{dbDatabase}!initializeMetaTable@{initializeMetaTable}}
+\index{initializeMetaTable@{initializeMetaTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{initializeMetaTable()}{initializeMetaTable()}}
+{\footnotesize\ttfamily void db\+Database\+::initialize\+Meta\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Initialize database metatable (table containning information about all other tables included metatable itself). This method is invoked during database initialzation. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ad566f72830f65610dfd689f6f00cd735_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ad566f72830f65610dfd689f6f00cd735_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ae833cf5a5102fc4c29f1f8e6dffa3a3d}\label{classdbDatabase_ae833cf5a5102fc4c29f1f8e6dffa3a3d}} 
+\index{dbDatabase@{dbDatabase}!insert@{insert}}
+\index{insert@{insert}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily template$<$class T $>$ \\
+\mbox{\hyperlink{classdbReference}{db\+Reference}}$<$T$>$ db\+Database\+::insert (\begin{DoxyParamCaption}\item[{T const \&}]{record }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Insert record in the database 
+\begin{DoxyParams}{Parameters}
+{\em record} & transient object to be insrted in the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+reference to the created object 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a6bf2358ecc970b0eca70ced93c2e825e}\label{classdbDatabase_a6bf2358ecc970b0eca70ced93c2e825e}} 
+\index{dbDatabase@{dbDatabase}!insertInverseReference@{insertInverseReference}}
+\index{insertInverseReference@{insertInverseReference}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{insertInverseReference()}{insertInverseReference()}}
+{\footnotesize\ttfamily void db\+Database\+::insert\+Inverse\+Reference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd,  }\item[{oid\+\_\+t}]{reverse\+Id,  }\item[{oid\+\_\+t}]{target\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Insert inverse reference. When reference or array of reference which is part of relation is updated then reference to the updated record is inserted in inverse reference field of all new referenced records (which were not referenced by this field before update). 
+\begin{DoxyParams}{Parameters}
+{\em fd} & descriptor of updated field (inverse reference should exist for this field) \\
+\hline
+{\em reverse\+Id} & O\+ID of updated record \\
+\hline
+{\em target\+Id} & O\+ID of record referenced by this field \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a6bf2358ecc970b0eca70ced93c2e825e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a6bf2358ecc970b0eca70ced93c2e825e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a9de489204ef31d019e9eaa66e210c2e4}\label{classdbDatabase_a9de489204ef31d019e9eaa66e210c2e4}} 
+\index{dbDatabase@{dbDatabase}!insertRecord@{insertRecord}}
+\index{insertRecord@{insertRecord}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{insertRecord()}{insertRecord()}}
+{\footnotesize\ttfamily void db\+Database\+::insert\+Record (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} $\ast$}]{ref,  }\item[{void const $\ast$}]{record }\end{DoxyParamCaption})}
+
+Insert record in the database 
+\begin{DoxyParams}{Parameters}
+{\em table} & table descriptor \\
+\hline
+{\em ref} & \mbox{[}out\mbox{]} pointer to the references where ID of created object will be stored \\
+\hline
+{\em record} & pointer to the transient object to be inserted in the table \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9de489204ef31d019e9eaa66e210c2e4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9de489204ef31d019e9eaa66e210c2e4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a522d86ff1161892bd28a91bac7df1fb0}\label{classdbDatabase_a522d86ff1161892bd28a91bac7df1fb0}} 
+\index{dbDatabase@{dbDatabase}!isAttached@{isAttached}}
+\index{isAttached@{isAttached}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isAttached()}{isAttached()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Attached (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if thread was attached to the database. Used mostly for debugging purposes. \mbox{\Hypertarget{classdbDatabase_a80456be06029c32fa554962782d3f135}\label{classdbDatabase_a80456be06029c32fa554962782d3f135}} 
+\index{dbDatabase@{dbDatabase}!isCommitted@{isCommitted}}
+\index{isCommitted@{isCommitted}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isCommitted()}{isCommitted()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Committed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if current transaction is committed. Used mostly for debugging purposes. \mbox{\Hypertarget{classdbDatabase_a151af1acf48a814d05b8cce5e5e510ec}\label{classdbDatabase_a151af1acf48a814d05b8cce5e5e510ec}} 
+\index{dbDatabase@{dbDatabase}!isFree@{isFree}}
+\index{isFree@{isFree}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isFree()}{isFree()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Free (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{pos,  }\item[{int}]{obj\+Bit\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check if given location is free 
+\begin{DoxyParams}{Parameters}
+{\em pos} & object offset \\
+\hline
+{\em obj\+Bit\+Size} & object size i quantums \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=323pt]{classdbDatabase_a151af1acf48a814d05b8cce5e5e510ec_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a151af1acf48a814d05b8cce5e5e510ec_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a0b57c3c984384c0fe4c4b2dabfb03778}\label{classdbDatabase_a0b57c3c984384c0fe4c4b2dabfb03778}} 
+\index{dbDatabase@{dbDatabase}!isIndexApplicable@{isIndexApplicable}}
+\index{isIndexApplicable@{isIndexApplicable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isIndexApplicable()}{isIndexApplicable()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Index\+Applicable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{and\+Expr }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check whether expression can be evaluated unsing index. If index is applicable, than index search is performed and result is stored in the cursor. 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em expr} & evaluated expression \\
+\hline
+{\em and\+Expr} & if not null, then it is used as filter to all records selected by index search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if expression was evaluated using index, false if index is not applicable and sequential search is required 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a140ecf11366b8e3caae86ce16fa6f5eb}\label{classdbDatabase_a140ecf11366b8e3caae86ce16fa6f5eb}} 
+\index{dbDatabase@{dbDatabase}!isIndexApplicable@{isIndexApplicable}}
+\index{isIndexApplicable@{isIndexApplicable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isIndexApplicable()}{isIndexApplicable()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Index\+Applicable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{and\+Expr,  }\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$\&}]{indexed\+Field }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check whether search can be performed using indices 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em expr} & evaluated expression \\
+\hline
+{\em and\+Expr} & if not null, then it is used as filter to all records selected by index search \\
+\hline
+{\em indexed\+Field} & \mbox{[}out\mbox{]} used to return information about which field was used to perfrom index search and so order in which selected records are sorted. If this order is the same as requested by \char`\"{}order by\char`\"{} clause, then no extra sorting is needed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if search was performed using indeices, false if index is not applicable and sequential search is required 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a140ecf11366b8e3caae86ce16fa6f5eb_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a140ecf11366b8e3caae86ce16fa6f5eb_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_af04b833ed1b639e09a76eb7746342772}\label{classdbDatabase_af04b833ed1b639e09a76eb7746342772}} 
+\index{dbDatabase@{dbDatabase}!isInWriteTransaction@{isInWriteTransaction}}
+\index{isInWriteTransaction@{isInWriteTransaction}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isInWriteTransaction()}{isInWriteTransaction()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+In\+Write\+Transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if we\textquotesingle{}re in write transaction \mbox{\Hypertarget{classdbDatabase_ac5b2f4561e900dfe286ac33253445c7c}\label{classdbDatabase_ac5b2f4561e900dfe286ac33253445c7c}} 
+\index{dbDatabase@{dbDatabase}!isOpen@{isOpen}}
+\index{isOpen@{isOpen}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isOpen()}{isOpen()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Open (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check if database is opened \mbox{\Hypertarget{classdbDatabase_aba09d442af1512bb7804959acf9cc5d8}\label{classdbDatabase_aba09d442af1512bb7804959acf9cc5d8}} 
+\index{dbDatabase@{dbDatabase}!isPrefixSearch@{isPrefixSearch}}
+\index{isPrefixSearch@{isPrefixSearch}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isPrefixSearch()}{isPrefixSearch()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Prefix\+Search (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{expr,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{and\+Expr,  }\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$\&}]{indexed\+Field }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Check whether query is prefix search\+: \char`\"{}\textquotesingle{}key\textquotesingle{} like field+\textquotesingle{}\%\textquotesingle{}\char`\"{} 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em expr} & evaluated expression \\
+\hline
+{\em and\+Expr} & if not null, then it is used as filter to all records selected by index search \\
+\hline
+{\em indexed\+Field} & \mbox{[}out\mbox{]} used to return information about which field was used to perfrom index search and so order in which selected records are sorted. If this order is the same as requested by \char`\"{}order by\char`\"{} clause, then no extra sorting is needed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if search was performed using indeices, false if index is not applicable and sequential search is required 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_aba09d442af1512bb7804959acf9cc5d8_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_adf5c321543d0110eb43f171e1b0a8cea}\label{classdbDatabase_adf5c321543d0110eb43f171e1b0a8cea}} 
+\index{dbDatabase@{dbDatabase}!isUpdateTransaction@{isUpdateTransaction}}
+\index{isUpdateTransaction@{isUpdateTransaction}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isUpdateTransaction()}{isUpdateTransaction()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Update\+Transaction (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Check if current transaction is updating database \mbox{\Hypertarget{classdbDatabase_a9dc333ec67ab1547791b95635b156ba0}\label{classdbDatabase_a9dc333ec67ab1547791b95635b156ba0}} 
+\index{dbDatabase@{dbDatabase}!isValidOid@{isValidOid}}
+\index{isValidOid@{isValidOid}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{isValidOid()}{isValidOid()}}
+{\footnotesize\ttfamily bool db\+Database\+::is\+Valid\+Oid (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check if O\+ID corresponds to the valid object 
+\begin{DoxyParams}{Parameters}
+{\em oid} & inspected O\+ID \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+whether O\+ID is valid or not 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_ac92dba3c54ea234f5fd6f4c7ff831671}\label{classdbDatabase_ac92dba3c54ea234f5fd6f4c7ff831671}} 
+\index{dbDatabase@{dbDatabase}!linkTable@{linkTable}}
+\index{linkTable@{linkTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{linkTable()}{linkTable()}}
+{\footnotesize\ttfamily void db\+Database\+::link\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{oid\+\_\+t}]{table\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Link table to the database table list 
+\begin{DoxyParams}{Parameters}
+{\em table} & table descriptor \\
+\hline
+{\em table\+Id} & O\+ID of record containing database table descriptor \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ac92dba3c54ea234f5fd6f4c7ff831671_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a24b285e14f44da5ef855b00aaf3d79a0}\label{classdbDatabase_a24b285e14f44da5ef855b00aaf3d79a0}} 
+\index{dbDatabase@{dbDatabase}!loadMetaTable@{loadMetaTable}}
+\index{loadMetaTable@{loadMetaTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{loadMetaTable()}{loadMetaTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ db\+Database\+::load\+Meta\+Table (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Loads all class descriptors. This method should be used Sub\+S\+QL and any other apllication which is should work with A\+NY database file. \begin{DoxyReturn}{Returns}
+metatable descriptor 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a24b285e14f44da5ef855b00aaf3d79a0_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a24b285e14f44da5ef855b00aaf3d79a0_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a9bed81caa1c77cb9659c948281bfdb07}\label{classdbDatabase_a9bed81caa1c77cb9659c948281bfdb07}} 
+\index{dbDatabase@{dbDatabase}!loadRectangle@{loadRectangle}}
+\index{loadRectangle@{loadRectangle}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{loadRectangle()}{loadRectangle()}}
+{\footnotesize\ttfamily void db\+Database\+::load\+Rectangle (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&}]{sc,  }\item[{\mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$}]{opd }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Load rectangle constant 
+\begin{DoxyParams}{Parameters}
+{\em sc} & search context. sc.\+literal\mbox{[}0\mbox{]}.rect will be assignedpointer to rectangle. \\
+\hline
+{\em opd} & constant expression of rectangle type \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a9bed81caa1c77cb9659c948281bfdb07_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a34f7fdfb518f16af21864b9b900477bc}\label{classdbDatabase_a34f7fdfb518f16af21864b9b900477bc}} 
+\index{dbDatabase@{dbDatabase}!loadScheme@{loadScheme}}
+\index{loadScheme@{loadScheme}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{loadScheme()}{loadScheme()}}
+{\footnotesize\ttfamily bool db\+Database\+::load\+Scheme (\begin{DoxyParamCaption}\item[{bool}]{alter }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Load database scheme. This method loads table decriptors from database, compare them with application classes, do necessary reformatting and save update andnew table decriptor in database 
+\begin{DoxyParams}{Parameters}
+{\em alter} & if true then schema can be altered, otherwise there are some other active clients working with this database so schema can not be altered \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a34f7fdfb518f16af21864b9b900477bc_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a34f7fdfb518f16af21864b9b900477bc_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_aa4b3ded01bf4d66edaf6111abcf91f6d}\label{classdbDatabase_aa4b3ded01bf4d66edaf6111abcf91f6d}} 
+\index{dbDatabase@{dbDatabase}!lock@{lock}}
+\index{lock@{lock}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{lock()}{lock()}}
+{\footnotesize\ttfamily void db\+Database\+::lock (\begin{DoxyParamCaption}\item[{db\+Lock\+Type}]{lock = {\ttfamily dbExclusiveLock} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Exclusivly lock the database. \mbox{\Hypertarget{classdbDatabase_a29ab2f90bf4964b18306e682f4b0fe3b}\label{classdbDatabase_a29ab2f90bf4964b18306e682f4b0fe3b}} 
+\index{dbDatabase@{dbDatabase}!lookupTable@{lookupTable}}
+\index{lookupTable@{lookupTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{lookupTable()}{lookupTable()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$ db\+Database\+::lookup\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})}
+
+Find cloned table desciptor assigned to this database 
+\begin{DoxyParams}{Parameters}
+{\em desc} & static unassigned table descriptor \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+clone of this table descriptor assigned to this databae or N\+U\+LL if not found. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a29ab2f90bf4964b18306e682f4b0fe3b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a72ee036a9ba7964eea364e3505fad369}\label{classdbDatabase_a72ee036a9ba7964eea364e3505fad369}} 
+\index{dbDatabase@{dbDatabase}!markAsAllocated@{markAsAllocated}}
+\index{markAsAllocated@{markAsAllocated}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{markAsAllocated()}{markAsAllocated()}}
+{\footnotesize\ttfamily void db\+Database\+::mark\+As\+Allocated (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{pos,  }\item[{int}]{obj\+Bit\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Set in memory allocation bitmap bits corresponding to the object 
+\begin{DoxyParams}{Parameters}
+{\em pos} & object offset \\
+\hline
+{\em obj\+Bit\+Size} & object size i quantums \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a72ee036a9ba7964eea364e3505fad369_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a72ee036a9ba7964eea364e3505fad369_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a7292d5348484aa6e90ff5da3c94e01ff}\label{classdbDatabase_a7292d5348484aa6e90ff5da3c94e01ff}} 
+\index{dbDatabase@{dbDatabase}!open@{open}}
+\index{open@{open}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::open (\begin{DoxyParamCaption}\item[{char\+\_\+t const $\ast$}]{database\+Name,  }\item[{char\+\_\+t const $\ast$}]{file\+Name = {\ttfamily NULL},  }\item[{time\+\_\+t}]{wait\+Lock\+Timeout\+Msec = {\ttfamily INFINITE},  }\item[{time\+\_\+t}]{commit\+Delay\+Sec = {\ttfamily 0} }\end{DoxyParamCaption})}
+
+Open database 
+\begin{DoxyParams}{Parameters}
+{\em database\+Name} & database name \\
+\hline
+{\em file\+Name} & path to the database file (if null, then file name daatbase\+Name + \char`\"{}.\+fdb\char`\"{} will be used) \\
+\hline
+{\em wait\+Lock\+Timeout\+Msec} & timeout for waiting locks, by default disabled \\
+\hline
+{\em commit\+Delay\+Sec} & delayed commit timeout, by default disabled \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if database was successfully opened 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a7292d5348484aa6e90ff5da3c94e01ff_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{classdbDatabase_a7292d5348484aa6e90ff5da3c94e01ff_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a4e2aa3b70bf2d2124717a6843937b182}\label{classdbDatabase_a4e2aa3b70bf2d2124717a6843937b182}} 
+\index{dbDatabase@{dbDatabase}!open@{open}}
+\index{open@{open}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{open()}{open()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily bool db\+Database\+::open (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structdbDatabase_1_1OpenParameters}{Open\+Parameters}} \&}]{params }\end{DoxyParamCaption})}
+
+Open database with parameters defined in \mbox{\hyperlink{structdbDatabase_1_1OpenParameters}{Open\+Parameters}} structure 
+\begin{DoxyParams}{Parameters}
+{\em params} & parameters for openning database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if database was successfully opened 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a4e2aa3b70bf2d2124717a6843937b182_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ae23bde067deb326cbecd312c88294b82}\label{classdbDatabase_ae23bde067deb326cbecd312c88294b82}} 
+\index{dbDatabase@{dbDatabase}!precommit@{precommit}}
+\index{precommit@{precommit}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{precommit()}{precommit()}}
+{\footnotesize\ttfamily void db\+Database\+::precommit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Release all locks hold by transaction allowing other clients to proceed but do not flush changes to the disk Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ae23bde067deb326cbecd312c88294b82_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_ae23bde067deb326cbecd312c88294b82_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a4adc553feaa1807e278aef2870904291}\label{classdbDatabase_a4adc553feaa1807e278aef2870904291}} 
+\index{dbDatabase@{dbDatabase}!prepareQuery@{prepareQuery}}
+\index{prepareQuery@{prepareQuery}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{prepareQuery()}{prepareQuery()}}
+{\footnotesize\ttfamily bool db\+Database\+::prepare\+Query (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbQuery}{db\+Query}} \&}]{query }\end{DoxyParamCaption})}
+
+Prepare query. This method can be used for explicit compilation of query and it\textquotesingle{}s validation 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em query} & query expression \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true} if query is successfully compiled, {\ttfamily false} othgerwise 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_a8e762278f8441f945fb1251cfa337a9b}\label{classdbDatabase_a8e762278f8441f945fb1251cfa337a9b}} 
+\index{dbDatabase@{dbDatabase}!put@{put}}
+\index{put@{put}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{put()}{put()}}
+{\footnotesize\ttfamily byte$\ast$ db\+Database\+::put (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Prepare for update of internal object. 
+\begin{DoxyParams}{Parameters}
+{\em oid} & internal object identifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer to the record inside database 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a8e762278f8441f945fb1251cfa337a9b_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_adf6df8cfd2f7aed207acda7d344e2701}\label{classdbDatabase_adf6df8cfd2f7aed207acda7d344e2701}} 
+\index{dbDatabase@{dbDatabase}!putRow@{putRow}}
+\index{putRow@{putRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{putRow()}{putRow()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbRecord}{db\+Record}}$\ast$ db\+Database\+::put\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Prepare for object update without changing its size 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object indetifier \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer inside database where object should should be stored 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_af0c69119b136ded719412ceb3d34a322}\label{classdbDatabase_af0c69119b136ded719412ceb3d34a322}} 
+\index{dbDatabase@{dbDatabase}!putRow@{putRow}}
+\index{putRow@{putRow}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{putRow()}{putRow()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classdbRecord}{db\+Record}} $\ast$ db\+Database\+::put\+Row (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{size\+\_\+t}]{new\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Prepare for row insertion or update. If record with such O\+ID not exists or it is first time when it was changed during this transaction or size of recrod is changed, than new record is alocated in the database. Otherwisepointer to existed recordis returned. 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object indetifier \\
+\hline
+{\em new\+Size} & size of new object \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+pointer inside database where object should should be stored 
+\end{DoxyReturn}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_af0c69119b136ded719412ceb3d34a322_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_af0c69119b136ded719412ceb3d34a322_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a7c1d956abca79a8d43f54391a24af557}\label{classdbDatabase_a7c1d956abca79a8d43f54391a24af557}} 
+\index{dbDatabase@{dbDatabase}!recoverFreeOidList@{recoverFreeOidList}}
+\index{recoverFreeOidList@{recoverFreeOidList}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{recoverFreeOidList()}{recoverFreeOidList()}}
+{\footnotesize\ttfamily void db\+Database\+::recover\+Free\+Oid\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Try to recover list of free O\+I\+Ds in case of its corruption by application. Corruption of free O\+I\+Ds list can be caused by bugs in application (such as \char`\"{}walking pointer\char`\"{} or out-\/of-\/bounds access). It most cases databases should be either recovered by automatic Fast\+DB recovery mechanism (which is involved when database was not closed normally) or by recovery from the backup or X\+ML dump. But if backup is not available and the only thing which is corrupted seems to be O\+ID list, then you can try to use this method. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a7c1d956abca79a8d43f54391a24af557_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a5154bf2d07f0f7fa55752ad992d41dd4}\label{classdbDatabase_a5154bf2d07f0f7fa55752ad992d41dd4}} 
+\index{dbDatabase@{dbDatabase}!recovery@{recovery}}
+\index{recovery@{recovery}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{recovery()}{recovery()}}
+{\footnotesize\ttfamily void db\+Database\+::recovery (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Perform database recovery after fault Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5154bf2d07f0f7fa55752ad992d41dd4_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5154bf2d07f0f7fa55752ad992d41dd4_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a18a5d273dfd2b8eb59c4ef97f2617d5c}\label{classdbDatabase_a18a5d273dfd2b8eb59c4ef97f2617d5c}} 
+\index{dbDatabase@{dbDatabase}!reformatTable@{reformatTable}}
+\index{reformatTable@{reformatTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{reformatTable()}{reformatTable()}}
+{\footnotesize\ttfamily void db\+Database\+::reformat\+Table (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{table\+Id,  }\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Reformat table according to new format 
+\begin{DoxyParams}{Parameters}
+{\em table\+Id} & O\+ID of changed tables \\
+\hline
+{\em desc} & new table descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a18a5d273dfd2b8eb59c4ef97f2617d5c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a18a5d273dfd2b8eb59c4ef97f2617d5c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a43d95dcca86929a38385e913b6d82d34}\label{classdbDatabase_a43d95dcca86929a38385e913b6d82d34}} 
+\index{dbDatabase@{dbDatabase}!remove@{remove}}
+\index{remove@{remove}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{remove()}{remove()}}
+{\footnotesize\ttfamily void db\+Database\+::remove (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Remove record from the database 
+\begin{DoxyParams}{Parameters}
+{\em table} & descriptor of the table to which record belongs \\
+\hline
+{\em oid} & record identifier \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a43d95dcca86929a38385e913b6d82d34_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a43d95dcca86929a38385e913b6d82d34_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a5d97827e01d0a3576409f1c68f1c3b78}\label{classdbDatabase_a5d97827e01d0a3576409f1c68f1c3b78}} 
+\index{dbDatabase@{dbDatabase}!removeInverseReference@{removeInverseReference}}
+\index{removeInverseReference@{removeInverseReference}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{removeInverseReference()}{removeInverseReference()}}
+{\footnotesize\ttfamily void db\+Database\+::remove\+Inverse\+Reference (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$}]{fd,  }\item[{oid\+\_\+t}]{reverse\+Id,  }\item[{oid\+\_\+t}]{target\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Remove inverse reference. When reference or array of reference which is part of relation is updated then reference to the updated record is removed from inverse reference field of all referenced records which are not reference any more from by this field. 
+\begin{DoxyParams}{Parameters}
+{\em fd} & descriptor of updated field (inverse reference should exist for this field) \\
+\hline
+{\em reverse\+Id} & O\+ID of updated record \\
+\hline
+{\em target\+Id} & O\+ID of record referenced by this field \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5d97827e01d0a3576409f1c68f1c3b78_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5d97827e01d0a3576409f1c68f1c3b78_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a8bfc7b7c8d974458643050db1862e2b9}\label{classdbDatabase_a8bfc7b7c8d974458643050db1862e2b9}} 
+\index{dbDatabase@{dbDatabase}!removeInverseReferences@{removeInverseReferences}}
+\index{removeInverseReferences@{removeInverseReferences}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{removeInverseReferences()}{removeInverseReferences()}}
+{\footnotesize\ttfamily void db\+Database\+::remove\+Inverse\+References (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc,  }\item[{oid\+\_\+t}]{oid }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Remove inverse references to the removed record 
+\begin{DoxyParams}{Parameters}
+{\em desc} & descriptor of table from which record is removed \\
+\hline
+{\em oid} & O\+ID of removed record \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a8bfc7b7c8d974458643050db1862e2b9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a8bfc7b7c8d974458643050db1862e2b9_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a813899e7266817ae8bbd08efb18512f5}\label{classdbDatabase_a813899e7266817ae8bbd08efb18512f5}} 
+\index{dbDatabase@{dbDatabase}!removeLockOwner@{removeLockOwner}}
+\index{removeLockOwner@{removeLockOwner}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{removeLockOwner()}{removeLockOwner()}}
+{\footnotesize\ttfamily void db\+Database\+::remove\+Lock\+Owner (\begin{DoxyParamCaption}\item[{long}]{client\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Remove information about lock owner Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a813899e7266817ae8bbd08efb18512f5_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a3b5a75006ec8ddb05076fe2b058a9791}\label{classdbDatabase_a3b5a75006ec8ddb05076fe2b058a9791}} 
+\index{dbDatabase@{dbDatabase}!restoreTablesConsistency@{restoreTablesConsistency}}
+\index{restoreTablesConsistency@{restoreTablesConsistency}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{restoreTablesConsistency()}{restoreTablesConsistency()}}
+{\footnotesize\ttfamily void db\+Database\+::restore\+Tables\+Consistency (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Restore consistency of table list of rows (last record should contain null reference in next field). This method is used during recovery after crash and during rollback. Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3b5a75006ec8ddb05076fe2b058a9791_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3b5a75006ec8ddb05076fe2b058a9791_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a6ea3547f89ddf83a428916647aff669e}\label{classdbDatabase_a6ea3547f89ddf83a428916647aff669e}} 
+\index{dbDatabase@{dbDatabase}!rollback@{rollback}}
+\index{rollback@{rollback}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{rollback()}{rollback()}}
+{\footnotesize\ttfamily void db\+Database\+::rollback (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Rollback transaction Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a6ea3547f89ddf83a428916647aff669e_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a6ea3547f89ddf83a428916647aff669e_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_ab1db64ff0bf29bf87c5636bde4753539}\label{classdbDatabase_ab1db64ff0bf29bf87c5636bde4753539}} 
+\index{dbDatabase@{dbDatabase}!scheduleBackup@{scheduleBackup}}
+\index{scheduleBackup@{scheduleBackup}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{scheduleBackup()}{scheduleBackup()}}
+{\footnotesize\ttfamily void db\+Database\+::schedule\+Backup (\begin{DoxyParamCaption}\item[{char\+\_\+t const $\ast$}]{file\+Name,  }\item[{time\+\_\+t}]{period\+Sec }\end{DoxyParamCaption})}
+
+Schedule backup 
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & path to backup file. If name ends with \textquotesingle{}?\textquotesingle{}, then each backup willbe placed in seprate file with \textquotesingle{}?\textquotesingle{} replaced with current timestamp \\
+\hline
+{\em period\+Sec} & period of performing backups in seconds \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a5c648267c177b06ece03c0b882dc3679}\label{classdbDatabase_a5c648267c177b06ece03c0b882dc3679}} 
+\index{dbDatabase@{dbDatabase}!select@{select}}
+\index{select@{select}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void db\+Database\+::select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Select all records from the table 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5c648267c177b06ece03c0b882dc3679_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a5c648267c177b06ece03c0b882dc3679_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a769c677fdfe52ff05e7ddc23e8e68dc2}\label{classdbDatabase_a769c677fdfe52ff05e7ddc23e8e68dc2}} 
+\index{dbDatabase@{dbDatabase}!select@{select}}
+\index{select@{select}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{select()}{select()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void db\+Database\+::select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbQuery}{db\+Query}} \&}]{query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Execute select query 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em query} & query expression \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a769c677fdfe52ff05e7ddc23e8e68dc2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a97fcfe6622f2d1380768bff1b1489c18}\label{classdbDatabase_a97fcfe6622f2d1380768bff1b1489c18}} 
+\index{dbDatabase@{dbDatabase}!setConcurrency@{setConcurrency}}
+\index{setConcurrency@{setConcurrency}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setConcurrency()}{setConcurrency()}}
+{\footnotesize\ttfamily void db\+Database\+::set\+Concurrency (\begin{DoxyParamCaption}\item[{unsigned}]{n\+Threads }\end{DoxyParamCaption})}
+
+Set concurrency level for sequential search and sort operations. By default, Fast\+DB tries to detect number of C\+P\+Us in system and create the same number of threads. 
+\begin{DoxyParams}{Parameters}
+{\em n\+Threads} & maximal number of threads to be created for perfroming cincurrent sequential search and sorting. \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a97fcfe6622f2d1380768bff1b1489c18_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a53b3cef65260865e54b0a965c31cbd24}\label{classdbDatabase_a53b3cef65260865e54b0a965c31cbd24}} 
+\index{dbDatabase@{dbDatabase}!setDirty@{setDirty}}
+\index{setDirty@{setDirty}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setDirty()}{setDirty()}}
+{\footnotesize\ttfamily void db\+Database\+::set\+Dirty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Mark database as been modified Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a53b3cef65260865e54b0a965c31cbd24_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a53b3cef65260865e54b0a965c31cbd24_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a3d2a99345575506fb4166a36dfb9934a}\label{classdbDatabase_a3d2a99345575506fb4166a36dfb9934a}} 
+\index{dbDatabase@{dbDatabase}!setErrorHandler@{setErrorHandler}}
+\index{setErrorHandler@{setErrorHandler}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setErrorHandler()}{setErrorHandler()}}
+{\footnotesize\ttfamily db\+Database\+::db\+Error\+Handler db\+Database\+::set\+Error\+Handler (\begin{DoxyParamCaption}\item[{db\+Database\+::db\+Error\+Handler}]{new\+Handler,  }\item[{void $\ast$}]{error\+Handler\+Context = {\ttfamily NULL} }\end{DoxyParamCaption})}
+
+Set error handler. Handler should be no-\/return function which perform stack unwind. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Handler} & new error handler \\
+\hline
+{\em error\+Handler\+Context} & user defined argument for error handler \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+previous handler 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classdbDatabase_abb2369383f441c2d61f7cdbb7df9323a}\label{classdbDatabase_abb2369383f441c2d61f7cdbb7df9323a}} 
+\index{dbDatabase@{dbDatabase}!setFileSizeLimit@{setFileSizeLimit}}
+\index{setFileSizeLimit@{setFileSizeLimit}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setFileSizeLimit()}{setFileSizeLimit()}}
+{\footnotesize\ttfamily void db\+Database\+::set\+File\+Size\+Limit (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{limit }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Specify database file size limit. Attempt to exeed this limit cause database error. 
+\begin{DoxyParams}{Parameters}
+{\em limit} & maximal file size in bytes \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a8524c1b921beca3ff9470fffbebae2e7}\label{classdbDatabase_a8524c1b921beca3ff9470fffbebae2e7}} 
+\index{dbDatabase@{dbDatabase}!setFixedSizeAllocator@{setFixedSizeAllocator}}
+\index{setFixedSizeAllocator@{setFixedSizeAllocator}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setFixedSizeAllocator()}{setFixedSizeAllocator()}}
+{\footnotesize\ttfamily void db\+Database\+::set\+Fixed\+Size\+Allocator (\begin{DoxyParamCaption}\item[{size\+\_\+t}]{min\+Size,  }\item[{size\+\_\+t}]{max\+Size,  }\item[{size\+\_\+t}]{quantum,  }\item[{size\+\_\+t}]{buf\+Size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initialize fixed size allocator 
+\begin{DoxyParams}{Parameters}
+{\em min\+Size} & minial object size allocated by this allocator \\
+\hline
+{\em max\+Size} & maximal object size allocated by this allocator \\
+\hline
+{\em quantum} & difference in size between fixed size allocator chains \\
+\hline
+{\em buf\+Size} & maximal number of free elements hold by this allocator \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_ab8b4ad63d4a2fe3b3125dd958722104e}\label{classdbDatabase_ab8b4ad63d4a2fe3b3125dd958722104e}} 
+\index{dbDatabase@{dbDatabase}!setTransactionLogger@{setTransactionLogger}}
+\index{setTransactionLogger@{setTransactionLogger}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{setTransactionLogger()}{setTransactionLogger()}}
+{\footnotesize\ttfamily void db\+Database\+::set\+Transaction\+Logger (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTransactionLogger}{db\+Transaction\+Logger}} $\ast$}]{logger }\end{DoxyParamCaption})}
+
+Set trasnaction logger. This method should be used to log transactions to some external destination. Logger should not be saved when transaction is replayed from this source. 
+\begin{DoxyParams}{Parameters}
+{\em logger} & trasnaction logger (N\+U\+LL to disable logging) \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_acf4d69bbf9a5f2fd81b58cec982bed89}\label{classdbDatabase_acf4d69bbf9a5f2fd81b58cec982bed89}} 
+\index{dbDatabase@{dbDatabase}!traverse@{traverse}}
+\index{traverse@{traverse}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{traverse()}{traverse()}}
+{\footnotesize\ttfamily void db\+Database\+::traverse (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$}]{cursor,  }\item[{\mbox{\hyperlink{classdbQuery}{db\+Query}} \&}]{query }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Perform table traverse\+: execute queries with \char`\"{}start from (follow by)\char`\"{} clause 
+\begin{DoxyParams}{Parameters}
+{\em cursor} & result set \\
+\hline
+{\em query} & query expression \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_acf4d69bbf9a5f2fd81b58cec982bed89_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=348pt]{classdbDatabase_acf4d69bbf9a5f2fd81b58cec982bed89_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a21927e3fa2e6c1825aaf5d554bfb291a}\label{classdbDatabase_a21927e3fa2e6c1825aaf5d554bfb291a}} 
+\index{dbDatabase@{dbDatabase}!unlinkTable@{unlinkTable}}
+\index{unlinkTable@{unlinkTable}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{unlinkTable()}{unlinkTable()}}
+{\footnotesize\ttfamily void db\+Database\+::unlink\+Table (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Unlink table from the database tables list 
+\begin{DoxyParams}{Parameters}
+{\em table} & table descriptor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classdbDatabase_a3c190e532238b7505976b169bfff55ab}\label{classdbDatabase_a3c190e532238b7505976b169bfff55ab}} 
+\index{dbDatabase@{dbDatabase}!update@{update}}
+\index{update@{update}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void db\+Database\+::update (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{table,  }\item[{void const $\ast$}]{record }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Update record 
+\begin{DoxyParams}{Parameters}
+{\em oid} & record identifier \\
+\hline
+{\em table} & descriptor of the table to which record belongs \\
+\hline
+{\em record} & updated image of the record \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3c190e532238b7505976b169bfff55ab_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a3c190e532238b7505976b169bfff55ab_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a46470691a99cdc9d4583e33239376970}\label{classdbDatabase_a46470691a99cdc9d4583e33239376970}} 
+\index{dbDatabase@{dbDatabase}!updateCursors@{updateCursors}}
+\index{updateCursors@{updateCursors}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{updateCursors()}{updateCursors()}}
+{\footnotesize\ttfamily void db\+Database\+::update\+Cursors (\begin{DoxyParamCaption}\item[{oid\+\_\+t}]{oid,  }\item[{bool}]{removed = {\ttfamily false} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Update record in in all active cursors if it this record is checnged in the database 
+\begin{DoxyParams}{Parameters}
+{\em oid} & object indentifier of checnged record \\
+\hline
+{\em removed} & true if record was removed \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a46470691a99cdc9d4583e33239376970_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a46470691a99cdc9d4583e33239376970_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a339c40e2a002dcc53d177cad63ae7b85}\label{classdbDatabase_a339c40e2a002dcc53d177cad63ae7b85}} 
+\index{dbDatabase@{dbDatabase}!updateTableDescriptor@{updateTableDescriptor}}
+\index{updateTableDescriptor@{updateTableDescriptor}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{updateTableDescriptor()}{updateTableDescriptor()}}
+{\footnotesize\ttfamily void db\+Database\+::update\+Table\+Descriptor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbTableDescriptor}{db\+Table\+Descriptor}} $\ast$}]{desc,  }\item[{oid\+\_\+t}]{table\+Id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+Update database table descriptor 
+\begin{DoxyParams}{Parameters}
+{\em desc} & application table descriptor \\
+\hline
+{\em table\+Id} & O\+ID of recrods with database table descriptor \\
+\hline
+\end{DoxyParams}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a339c40e2a002dcc53d177cad63ae7b85_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a339c40e2a002dcc53d177cad63ae7b85_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbDatabase_a67c9f35342e402223106dfe5459c0835}\label{classdbDatabase_a67c9f35342e402223106dfe5459c0835}} 
+\index{dbDatabase@{dbDatabase}!wasReserved@{wasReserved}}
+\index{wasReserved@{wasReserved}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{wasReserved()}{wasReserved()}}
+{\footnotesize\ttfamily bool db\+Database\+::was\+Reserved (\begin{DoxyParamCaption}\item[{offs\+\_\+t}]{pos,  }\item[{size\+\_\+t}]{size }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+Check if location is reserved 
+\begin{DoxyParams}{Parameters}
+{\em pos} & start position of the location \\
+\hline
+{\em size} & location size \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true id location was reserved 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbDatabase_a67c9f35342e402223106dfe5459c0835_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classdbDatabase_a0f1dc34252d02ee343dbdafa50869e35}\label{classdbDatabase_a0f1dc34252d02ee343dbdafa50869e35}} 
+\index{dbDatabase@{dbDatabase}!errorMessage@{errorMessage}}
+\index{errorMessage@{errorMessage}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{errorMessage}{errorMessage}}
+{\footnotesize\ttfamily char const  $\ast$const db\+Database\+::error\+Message\hspace{0.3cm}{\ttfamily [static]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{    \textcolor{stringliteral}{"No error"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Query syntax error"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Arithmetic exception"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Index out of range"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Database open error"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"File access error"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Out of memory"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Deadlock"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Null reference"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Lock revoked"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"File limit exeeded"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Inconsistent inverse reference"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Attempt to modify read-\/only database"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Assertion failed"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Access to deleted object"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"No current record"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Cursor is read-\/only"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Incompatible schema change"},}
+\DoxyCodeLine{    \textcolor{stringliteral}{"Operation is rejected by transaction logger"}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classdbDatabase_afd5bf9bfef366c8e521570c397d40303}\label{classdbDatabase_afd5bf9bfef366c8e521570c397d40303}} 
+\index{dbDatabase@{dbDatabase}!internalObjectSize@{internalObjectSize}}
+\index{internalObjectSize@{internalObjectSize}!dbDatabase@{dbDatabase}}
+\doxysubsubsection{\texorpdfstring{internalObjectSize}{internalObjectSize}}
+{\footnotesize\ttfamily size\+\_\+t db\+Database\+::internal\+Object\+Size\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \{}
+\DoxyCodeLine{    0,}
+\DoxyCodeLine{    dbPageSize,}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbTtree}{dbTtree}}),}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbTtreeNode}{dbTtreeNode}}),}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbHashTable}{dbHashTable}}),}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbHashTableItem}{dbHashTableItem}}),}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbRtree}{dbRtree}}),}
+\DoxyCodeLine{    \textcolor{keyword}{sizeof}(\mbox{\hyperlink{classdbRtreePage}{dbRtreePage}})}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/database.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/database.\+cpp\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/xml.\+cpp\end{DoxyCompactItemize}

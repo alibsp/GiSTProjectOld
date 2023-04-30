@@ -1,0 +1,118 @@
+\hypertarget{classdbAnyReference}{}\doxysection{db\+Any\+Reference Class Reference}
+\label{classdbAnyReference}\index{dbAnyReference@{dbAnyReference}}
+
+
+{\ttfamily \#include $<$reference.\+h$>$}
+
+
+
+Inheritance diagram for db\+Any\+Reference\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classdbAnyReference__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for db\+Any\+Reference\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=232pt]{classdbAnyReference__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyReference_afb18293e29f1165424fe3d6c57a0e884}\label{classdbAnyReference_afb18293e29f1165424fe3d6c57a0e884}} 
+{\bfseries db\+Any\+Reference} (oid\+\_\+t oid=0)
+\item 
+oid\+\_\+t \mbox{\hyperlink{classdbAnyReference_a48dd1f2d8d84b6e3ec583e2fd6c956fd}{get\+Oid}} () const
+\item 
+bool \mbox{\hyperlink{classdbAnyReference_a9f060c85753cb6ead1b7f8054240dc12}{operator$>$}} (\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref) const
+\item 
+bool \mbox{\hyperlink{classdbAnyReference_a75ce0d733fde9edb900cce6f6bd315f1}{operator$<$}} (\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref) const
+\item 
+bool \mbox{\hyperlink{classdbAnyReference_ae7c487a45f03df861c5319874fbeca36}{is\+Null}} () const
+\item 
+\mbox{\Hypertarget{classdbAnyReference_ad6f1b58a6d79ab516b2ba63e75def157}\label{classdbAnyReference_ad6f1b58a6d79ab516b2ba63e75def157}} 
+\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$ {\bfseries db\+Describe\+Components} (\mbox{\hyperlink{classdbFieldDescriptor}{db\+Field\+Descriptor}} $\ast$fd)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyReference_ad8c7ed04aa7aed5ba2fd10e619ef2003}\label{classdbAnyReference_ad8c7ed04aa7aed5ba2fd10e619ef2003}} 
+oid\+\_\+t {\bfseries oid}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbAnyReference_abe8266c2bdd64bd612dd2819849e9e0a}\label{classdbAnyReference_abe8266c2bdd64bd612dd2819849e9e0a}} 
+class {\bfseries db\+Any\+Cursor}
+\item 
+\mbox{\Hypertarget{classdbAnyReference_a2982d512b212bfec5bccc8e0f909fc0c}\label{classdbAnyReference_a2982d512b212bfec5bccc8e0f909fc0c}} 
+class {\bfseries db\+Database}
+\item 
+\mbox{\Hypertarget{classdbAnyReference_a9a3c4cc7afd89b6a33b18e5221d881ee}\label{classdbAnyReference_a9a3c4cc7afd89b6a33b18e5221d881ee}} 
+class {\bfseries db\+Field\+Descriptor}
+\item 
+bool \mbox{\hyperlink{classdbAnyReference_af0df09e6d27097581e979ece9afa02ff}{is\+Null}} (\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&ref)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all references 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classdbAnyReference_a48dd1f2d8d84b6e3ec583e2fd6c956fd}\label{classdbAnyReference_a48dd1f2d8d84b6e3ec583e2fd6c956fd}} 
+\index{dbAnyReference@{dbAnyReference}!getOid@{getOid}}
+\index{getOid@{getOid}!dbAnyReference@{dbAnyReference}}
+\doxysubsubsection{\texorpdfstring{getOid()}{getOid()}}
+{\footnotesize\ttfamily oid\+\_\+t db\+Any\+Reference\+::get\+Oid (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Get object idetifier \begin{DoxyReturn}{Returns}
+object identifier of referenced object 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classdbAnyReference_a48dd1f2d8d84b6e3ec583e2fd6c956fd_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{classdbAnyReference_ae7c487a45f03df861c5319874fbeca36}\label{classdbAnyReference_ae7c487a45f03df861c5319874fbeca36}} 
+\index{dbAnyReference@{dbAnyReference}!isNull@{isNull}}
+\index{isNull@{isNull}!dbAnyReference@{dbAnyReference}}
+\doxysubsubsection{\texorpdfstring{isNull()}{isNull()}}
+{\footnotesize\ttfamily bool db\+Any\+Reference\+::is\+Null (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Check whether reference is null \mbox{\Hypertarget{classdbAnyReference_a75ce0d733fde9edb900cce6f6bd315f1}\label{classdbAnyReference_a75ce0d733fde9edb900cce6f6bd315f1}} 
+\index{dbAnyReference@{dbAnyReference}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!dbAnyReference@{dbAnyReference}}
+\doxysubsubsection{\texorpdfstring{operator$<$()}{operator<()}}
+{\footnotesize\ttfamily bool db\+Any\+Reference\+::operator$<$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&}]{ref }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Operator for comparision of two references of the same type \mbox{\Hypertarget{classdbAnyReference_a9f060c85753cb6ead1b7f8054240dc12}\label{classdbAnyReference_a9f060c85753cb6ead1b7f8054240dc12}} 
+\index{dbAnyReference@{dbAnyReference}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!dbAnyReference@{dbAnyReference}}
+\doxysubsubsection{\texorpdfstring{operator$>$()}{operator>()}}
+{\footnotesize\ttfamily bool db\+Any\+Reference\+::operator$>$ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&}]{ref }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+Operator for comparision of two references of the same type 
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{classdbAnyReference_af0df09e6d27097581e979ece9afa02ff}\label{classdbAnyReference_af0df09e6d27097581e979ece9afa02ff}} 
+\index{dbAnyReference@{dbAnyReference}!isNull@{isNull}}
+\index{isNull@{isNull}!dbAnyReference@{dbAnyReference}}
+\doxysubsubsection{\texorpdfstring{isNull}{isNull}}
+{\footnotesize\ttfamily bool is\+Null (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classdbAnyReference}{db\+Any\+Reference}} const \&}]{ref }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+Check whether reference is null 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/reference.\+h\end{DoxyCompactItemize}

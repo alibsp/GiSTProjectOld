@@ -1,0 +1,100 @@
+\hypertarget{classsocket__t}{}\doxysection{socket\+\_\+t Class Reference}
+\label{classsocket__t}\index{socket\_t@{socket\_t}}
+
+
+Inheritance diagram for socket\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classsocket__t__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for socket\+\_\+t\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=191pt]{classsocket__t__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsocket__t_a2e83768ae7ea5652c303638d100c02a5}\label{classsocket__t_a2e83768ae7ea5652c303638d100c02a5}} 
+enum {\bfseries socket\+\_\+domain} \{ {\bfseries sock\+\_\+any\+\_\+domain}, 
+{\bfseries sock\+\_\+local\+\_\+domain}, 
+{\bfseries sock\+\_\+global\+\_\+domain}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsocket__t_a31216a74b20b1a05d1d15918a1fd955b}\label{classsocket__t_a31216a74b20b1a05d1d15918a1fd955b}} 
+bool {\bfseries read} (void $\ast$buf, size\+\_\+t size)
+\item 
+\mbox{\Hypertarget{classsocket__t_a991ba7170ae14a957574ee34f02a68e8}\label{classsocket__t_a991ba7170ae14a957574ee34f02a68e8}} 
+virtual int {\bfseries read} (void $\ast$buf, size\+\_\+t min\+\_\+size, size\+\_\+t max\+\_\+size, time\+\_\+t timeout=W\+A\+I\+T\+\_\+\+F\+O\+R\+E\+V\+ER)=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a13c6b9485f0ece6a4516f8579414d935}\label{classsocket__t_a13c6b9485f0ece6a4516f8579414d935}} 
+virtual bool {\bfseries write} (void const $\ast$buf, size\+\_\+t size, time\+\_\+t timeout=W\+A\+I\+T\+\_\+\+F\+O\+R\+E\+V\+ER)=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a5c30c33262234f4a5b6465b0fb117556}\label{classsocket__t_a5c30c33262234f4a5b6465b0fb117556}} 
+virtual bool {\bfseries is\+\_\+ok} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a054132a94fd2dee397b06a293dcb31e1}\label{classsocket__t_a054132a94fd2dee397b06a293dcb31e1}} 
+virtual void {\bfseries get\+\_\+error\+\_\+text} (char $\ast$buf, size\+\_\+t buf\+\_\+size)=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a1a4b891fe38ec4cfe081360e913f228d}\label{classsocket__t_a1a4b891fe38ec4cfe081360e913f228d}} 
+virtual \mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries accept} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a127b45cda99fd5b59572500bf367d9a4}\label{classsocket__t_a127b45cda99fd5b59572500bf367d9a4}} 
+virtual bool {\bfseries cancel\+\_\+accept} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_ae0ebbfd6c11bcdfa59f3603b5a986fa3}\label{classsocket__t_ae0ebbfd6c11bcdfa59f3603b5a986fa3}} 
+virtual bool {\bfseries shutdown} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a41cb03ef611c74000cd3640482f365c7}\label{classsocket__t_a41cb03ef611c74000cd3640482f365c7}} 
+virtual bool {\bfseries close} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a775f76fa0dcb2461611ea2e1d284ac34}\label{classsocket__t_a775f76fa0dcb2461611ea2e1d284ac34}} 
+virtual char $\ast$ {\bfseries get\+\_\+peer\+\_\+name} ()=0
+\item 
+\mbox{\Hypertarget{classsocket__t_a0619523be1b823e5fd391ac375d33b4a}\label{classsocket__t_a0619523be1b823e5fd391ac375d33b4a}} 
+virtual socket\+\_\+handle\+\_\+t {\bfseries get\+\_\+handle} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsocket__t_aff45e42828a8974c62fe7327c4a02536}\label{classsocket__t_aff45e42828a8974c62fe7327c4a02536}} 
+static \mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries connect} (char const $\ast$address, socket\+\_\+domain domain=sock\+\_\+any\+\_\+domain, int max\+\_\+attempts=D\+E\+F\+A\+U\+L\+T\+\_\+\+C\+O\+N\+N\+E\+C\+T\+\_\+\+M\+A\+X\+\_\+\+A\+T\+T\+E\+M\+P\+TS, time\+\_\+t timeout=D\+E\+F\+A\+U\+L\+T\+\_\+\+R\+E\+C\+O\+N\+N\+E\+C\+T\+\_\+\+T\+I\+M\+E\+O\+UT)
+\item 
+\mbox{\Hypertarget{classsocket__t_a7f3dcb53e03f4c9f0654c960494d3d51}\label{classsocket__t_a7f3dcb53e03f4c9f0654c960494d3d51}} 
+static \mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries create\+\_\+local} (char const $\ast$address, int listen\+\_\+queue\+\_\+size=D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+S\+T\+E\+N\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+ZE)
+\item 
+\mbox{\Hypertarget{classsocket__t_a03e4f16db0def40ed705eefcf7f083c1}\label{classsocket__t_a03e4f16db0def40ed705eefcf7f083c1}} 
+static \mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries create\+\_\+global} (char const $\ast$address, int listen\+\_\+queue\+\_\+size=D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+S\+T\+E\+N\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+ZE)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsocket__t_a47ab7b9f693b023b13d60e48e6dc7c81}\label{classsocket__t_a47ab7b9f693b023b13d60e48e6dc7c81}} 
+enum \{ {\bfseries ss\+\_\+open}, 
+{\bfseries ss\+\_\+shutdown}, 
+{\bfseries ss\+\_\+close}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classsocket__t_a8374ae7cc64f01e493e2e9f9f3ff23e8}\label{classsocket__t_a8374ae7cc64f01e493e2e9f9f3ff23e8}} 
+enum socket\+\_\+t\+:: \{ ... \}  {\bfseries state}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/sockio.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/unisock.\+cpp\end{DoxyCompactItemize}

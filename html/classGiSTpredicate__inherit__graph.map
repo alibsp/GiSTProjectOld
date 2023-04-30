@@ -1,0 +1,11 @@
+<map id="GiSTpredicate" name="GiSTpredicate">
+<area shape="rect" id="node1" title=" " alt="" coords="483,175,632,281"/>
+<area shape="rect" id="node3" href="$classAndPredicate.html" title=" " alt="" coords="5,403,149,524"/>
+<area shape="rect" id="node4" href="$classBTpredicate.html" title=" " alt="" coords="173,381,299,546"/>
+<area shape="rect" id="node5" href="$classNotPredicate.html" title=" " alt="" coords="323,403,466,524"/>
+<area shape="rect" id="node6" href="$classOrPredicate.html" title=" " alt="" coords="490,403,625,524"/>
+<area shape="rect" id="node7" href="$classPtrPredicate.html" title=" " alt="" coords="649,410,775,517"/>
+<area shape="rect" id="node8" href="$classRTpredicate.html" title=" " alt="" coords="800,329,925,597"/>
+<area shape="rect" id="node9" href="$classTruePredicate.html" title=" " alt="" coords="949,410,1085,517"/>
+<area shape="rect" id="node2" href="$classGiSTobject.html" title=" " alt="" coords="494,5,621,127"/>
+</map>

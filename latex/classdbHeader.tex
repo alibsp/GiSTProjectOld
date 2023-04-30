@@ -1,0 +1,97 @@
+\hypertarget{classdbHeader}{}\doxysection{db\+Header Class Reference}
+\label{classdbHeader}\index{dbHeader@{dbHeader}}
+
+
+{\ttfamily \#include $<$database.\+h$>$}
+
+
+
+Collaboration diagram for db\+Header\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=194pt]{classdbHeader__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbHeader_a3c05bba2faf30d7faf2cb264e3a79696}\label{classdbHeader_a3c05bba2faf30d7faf2cb264e3a79696}} 
+enum \{ \newline
+{\bfseries M\+O\+D\+E\+\_\+\+O\+I\+D\+\_\+64} = 0x01, 
+{\bfseries M\+O\+D\+E\+\_\+\+O\+F\+F\+S\+\_\+64} = 0x02, 
+{\bfseries M\+O\+D\+E\+\_\+\+A\+U\+T\+O\+I\+N\+C\+R\+E\+M\+E\+NT} = 0x04, 
+{\bfseries M\+O\+D\+E\+\_\+\+R\+E\+C\+T\+A\+N\+G\+L\+E\+\_\+\+D\+I\+M\+\_\+\+O\+LD} = 0x08, 
+\newline
+{\bfseries M\+O\+D\+E\+\_\+\+N\+O\+\_\+\+P\+T\+H\+R\+E\+A\+DS} = 0x10, 
+{\bfseries M\+O\+D\+E\+\_\+\+R\+E\+P\+L\+I\+C\+T\+I\+ON} = 0x20, 
+{\bfseries M\+O\+D\+E\+\_\+\+D\+O\+\_\+\+N\+O\+T\+\_\+\+R\+E\+U\+S\+E\+\_\+\+O\+ID} = 0x40, 
+{\bfseries M\+O\+D\+E\+\_\+\+A\+L\+I\+G\+N\+\_\+\+H\+E\+A\+D\+ER} = 0x80, 
+\newline
+{\bfseries M\+O\+D\+E\+\_\+\+P\+A\+D\+\_\+\+H\+E\+A\+D\+ER} = 0x100, 
+{\bfseries M\+O\+D\+E\+\_\+\+R\+E\+P\+L\+I\+C\+A\+T\+I\+ON} = 0x200, 
+{\bfseries M\+O\+D\+E\+\_\+\+R\+E\+C\+T\+A\+N\+G\+L\+E\+\_\+\+D\+IM} = 0x10000
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbHeader_ac5d2a51528c40b05f4f71a3f2dd09d7e}\label{classdbHeader_ac5d2a51528c40b05f4f71a3f2dd09d7e}} 
+int {\bfseries get\+Version} ()
+\item 
+\mbox{\Hypertarget{classdbHeader_aa152d3339a06632b2f50d62aa9c9aa88}\label{classdbHeader_aa152d3339a06632b2f50d62aa9c9aa88}} 
+bool {\bfseries is\+Compatible} ()
+\item 
+\mbox{\Hypertarget{classdbHeader_aef56d236ddabb577834fb0bc8655c2d3}\label{classdbHeader_aef56d236ddabb577834fb0bc8655c2d3}} 
+int {\bfseries get\+Current\+Mode} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbHeader_a6cb2af3d60553038caf0c24eef087e57}\label{classdbHeader_a6cb2af3d60553038caf0c24eef087e57}} 
+offs\+\_\+t {\bfseries size}
+\item 
+\mbox{\Hypertarget{classdbHeader_a63772a8c4ad315bb2c61ce9b73bfe480}\label{classdbHeader_a63772a8c4ad315bb2c61ce9b73bfe480}} 
+int4 {\bfseries curr}
+\item 
+\mbox{\Hypertarget{classdbHeader_ac837f7e2eb3b44cc56bfbc4091d95b2c}\label{classdbHeader_ac837f7e2eb3b44cc56bfbc4091d95b2c}} 
+int4 {\bfseries dirty}
+\item 
+\mbox{\Hypertarget{classdbHeader_ad79db2df08a940c5b96a36b0a6e3c454}\label{classdbHeader_ad79db2df08a940c5b96a36b0a6e3c454}} 
+int4 {\bfseries initialized}
+\item 
+\mbox{\Hypertarget{classdbHeader_af8222adec964bba3ce81c193b44e7a90}\label{classdbHeader_af8222adec964bba3ce81c193b44e7a90}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+struct \{\\
+\>offs\_t {\bfseries index}\\
+\>offs\_t {\bfseries shadowIndex}\\
+\>oid\_t {\bfseries indexSize}\\
+\>oid\_t {\bfseries shadowIndexSize}\\
+\>oid\_t {\bfseries indexUsed}\\
+\>oid\_t {\bfseries freeList}\\
+\} {\bfseries root} \mbox{[}2\mbox{]}\\
+
+\end{tabbing}\item 
+\mbox{\Hypertarget{classdbHeader_ab466e4f47964f8429a86bac13251b2be}\label{classdbHeader_ab466e4f47964f8429a86bac13251b2be}} 
+int4 {\bfseries major\+Version}
+\item 
+\mbox{\Hypertarget{classdbHeader_afd99dd30e9c8c8490c6f2781c3f79d9e}\label{classdbHeader_afd99dd30e9c8c8490c6f2781c3f79d9e}} 
+int4 {\bfseries minor\+Version}
+\item 
+\mbox{\Hypertarget{classdbHeader_a0980901352dd8563b7a117649044411f}\label{classdbHeader_a0980901352dd8563b7a117649044411f}} 
+int4 {\bfseries mode}
+\item 
+\mbox{\Hypertarget{classdbHeader_ab631772d194033e654e19fcf69c5b281}\label{classdbHeader_ab631772d194033e654e19fcf69c5b281}} 
+offs\+\_\+t {\bfseries used}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Database header 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/database.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/database.\+cpp\end{DoxyCompactItemize}

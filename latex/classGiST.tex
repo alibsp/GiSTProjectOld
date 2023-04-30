@@ -1,0 +1,88 @@
+\hypertarget{classGiST}{}\doxysection{Gi\+ST Class Reference}
+\label{classGiST}\index{GiST@{GiST}}
+
+
+Inheritance diagram for Gi\+ST\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classGiST__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Gi\+ST\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=188pt]{classGiST__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGiST_acfa1413f88ff11811c114b9e78eef353}\label{classGiST_acfa1413f88ff11811c114b9e78eef353}} 
+Gi\+S\+Tobjid {\bfseries IsA} () const
+\item 
+\mbox{\Hypertarget{classGiST_ad0266585fcf99da5d82f2de85726b051}\label{classGiST_ad0266585fcf99da5d82f2de85726b051}} 
+void {\bfseries Create} (const char $\ast$filename)
+\item 
+\mbox{\Hypertarget{classGiST_a9f50c0ff6aee55f22e3d4eb52974237a}\label{classGiST_a9f50c0ff6aee55f22e3d4eb52974237a}} 
+void {\bfseries Open} (const char $\ast$filename)
+\item 
+\mbox{\Hypertarget{classGiST_aca182960923eb2de2034985662139302}\label{classGiST_aca182960923eb2de2034985662139302}} 
+void {\bfseries Close} ()
+\item 
+\mbox{\Hypertarget{classGiST_a20d6da22a6d5edf038005a5518905a85}\label{classGiST_a20d6da22a6d5edf038005a5518905a85}} 
+\mbox{\hyperlink{classGiSTcursor}{Gi\+S\+Tcursor}} $\ast$ {\bfseries Search} (const \mbox{\hyperlink{classGiSTpredicate}{Gi\+S\+Tpredicate}} \&query) const
+\item 
+\mbox{\Hypertarget{classGiST_a9b7c1d29fb083ced0bacefde35fd5692}\label{classGiST_a9b7c1d29fb083ced0bacefde35fd5692}} 
+void {\bfseries Insert} (const \mbox{\hyperlink{classGiSTentry}{Gi\+S\+Tentry}} \&entry)
+\item 
+\mbox{\Hypertarget{classGiST_acaed25fdad50fca9e3a6fe4627f71709}\label{classGiST_acaed25fdad50fca9e3a6fe4627f71709}} 
+void {\bfseries Delete} (const \mbox{\hyperlink{classGiSTpredicate}{Gi\+S\+Tpredicate}} \&pred)
+\item 
+\mbox{\Hypertarget{classGiST_a8d27b8064bdcd7b44591c973bc5dfb85}\label{classGiST_a8d27b8064bdcd7b44591c973bc5dfb85}} 
+void {\bfseries Sync} ()
+\item 
+\mbox{\Hypertarget{classGiST_aff874491d71999724531f5efe7bb9d54}\label{classGiST_aff874491d71999724531f5efe7bb9d54}} 
+\mbox{\hyperlink{classGiSTstore}{Gi\+S\+Tstore}} $\ast$ {\bfseries Store} ()
+\item 
+\mbox{\Hypertarget{classGiST_afbb24d7509bdc631109246aad6e99d28}\label{classGiST_afbb24d7509bdc631109246aad6e99d28}} 
+int {\bfseries Is\+Open} ()
+\item 
+\mbox{\Hypertarget{classGiST_aba29c59106096806c03977d3abcc1113}\label{classGiST_aba29c59106096806c03977d3abcc1113}} 
+virtual int {\bfseries Is\+Ordered} () const
+\item 
+\mbox{\Hypertarget{classGiST_a96bb06bad0b58cb362348172ed9b4865}\label{classGiST_a96bb06bad0b58cb362348172ed9b4865}} 
+virtual int {\bfseries Forced\+Reinsert} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGiST_a9d1b196f574208dc0aa24353a56c60b7}\label{classGiST_a9d1b196f574208dc0aa24353a56c60b7}} 
+virtual \mbox{\hyperlink{classGiSTstore}{Gi\+S\+Tstore}} $\ast$ {\bfseries Create\+Store} () const =0
+\item 
+\mbox{\Hypertarget{classGiST_ae8068b48bd09cdc479bc065cd5f180d5}\label{classGiST_ae8068b48bd09cdc479bc065cd5f180d5}} 
+virtual \mbox{\hyperlink{classGiSTnode}{Gi\+S\+Tnode}} $\ast$ {\bfseries Create\+Node} () const =0
+\item 
+\mbox{\Hypertarget{classGiST_a2f23219bcb47537de41c8223fe80e240}\label{classGiST_a2f23219bcb47537de41c8223fe80e240}} 
+virtual \mbox{\hyperlink{classGiSTlist}{Gi\+S\+Tlist}}$<$ \mbox{\hyperlink{classGiSTentry}{Gi\+S\+Tentry}} $\ast$ $>$ {\bfseries Remove\+Top} (\mbox{\hyperlink{classGiSTnode}{Gi\+S\+Tnode}} $\ast$node)
+\item 
+\mbox{\Hypertarget{classGiST_a84e3d8b1cc36da857edf1fea48849048}\label{classGiST_a84e3d8b1cc36da857edf1fea48849048}} 
+virtual double {\bfseries Remove\+Ratio} () const
+\item 
+\mbox{\Hypertarget{classGiST_a05255560be6834fc76c9cbc671ed15f0}\label{classGiST_a05255560be6834fc76c9cbc671ed15f0}} 
+\mbox{\hyperlink{classGiSTnode}{Gi\+S\+Tnode}} $\ast$ {\bfseries Read\+Node} (const \mbox{\hyperlink{classGiSTpath}{Gi\+S\+Tpath}} \&path) const
+\item 
+\mbox{\Hypertarget{classGiST_a7aebe6775c92ff8fda7cf6816e669d71}\label{classGiST_a7aebe6775c92ff8fda7cf6816e669d71}} 
+void {\bfseries Write\+Node} (\mbox{\hyperlink{classGiSTnode}{Gi\+S\+Tnode}} $\ast$node)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/\+Gi\+S\+T/lib\+Gi\+S\+T/Gi\+S\+T.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/\+Gi\+S\+T/lib\+Gi\+S\+T/Gi\+S\+T.\+cpp\end{DoxyCompactItemize}

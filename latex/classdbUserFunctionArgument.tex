@@ -1,0 +1,69 @@
+\hypertarget{classdbUserFunctionArgument}{}\doxysection{db\+User\+Function\+Argument Class Reference}
+\label{classdbUserFunctionArgument}\index{dbUserFunctionArgument@{dbUserFunctionArgument}}
+
+
+{\ttfamily \#include $<$query.\+h$>$}
+
+
+
+Collaboration diagram for db\+User\+Function\+Argument\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classdbUserFunctionArgument__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbUserFunctionArgument_a940b4731f5d8ba453ee596ad607fb454}\label{classdbUserFunctionArgument_a940b4731f5d8ba453ee596ad607fb454}} 
+enum {\bfseries db\+Argument\+Type} \{ \newline
+{\bfseries at\+Integer}, 
+{\bfseries at\+Boolean}, 
+{\bfseries at\+String}, 
+{\bfseries at\+Real}, 
+\newline
+{\bfseries at\+Reference}, 
+{\bfseries at\+Raw\+Binary}, 
+{\bfseries at\+W\+String}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbUserFunctionArgument_afde6710e1ff1a53c012458bc8539d081}\label{classdbUserFunctionArgument_afde6710e1ff1a53c012458bc8539d081}} 
+db\+Argument\+Type {\bfseries type}
+\item 
+\mbox{\Hypertarget{classdbUserFunctionArgument_ad46ace8d899c843e8d9ca1f892de6fd8}\label{classdbUserFunctionArgument_ad46ace8d899c843e8d9ca1f892de6fd8}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>real8 {\bfseries realValue}\\
+\>db\_int8 {\bfseries intValue}\\
+\>bool {\bfseries boolValue}\\
+\>char const  $\ast$ {\bfseries strValue}\\
+\>wchar\_t const  $\ast$ {\bfseries wstrValue}\\
+\>oid\_t {\bfseries oidValue}\\
+\>void $\ast$ {\bfseries rawValue}\\
+\} {\bfseries u}\\
+
+\end{tabbing}\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbUserFunctionArgument_a2982d512b212bfec5bccc8e0f909fc0c}\label{classdbUserFunctionArgument_a2982d512b212bfec5bccc8e0f909fc0c}} 
+class {\bfseries db\+Database}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class represent argument of user defined funtion. \begin{DoxySeeAlso}{See also}
+\mbox{\hyperlink{classdbUserFunction}{db\+User\+Function}} class. 
+\end{DoxySeeAlso}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/query.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/query.\+cpp\end{DoxyCompactItemize}

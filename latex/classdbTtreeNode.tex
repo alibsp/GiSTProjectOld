@@ -1,0 +1,78 @@
+\hypertarget{classdbTtreeNode}{}\doxysection{db\+Ttree\+Node Class Reference}
+\label{classdbTtreeNode}\index{dbTtreeNode@{dbTtreeNode}}
+
+
+Collaboration diagram for db\+Ttree\+Node\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=213pt]{classdbTtreeNode__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_aaa5a8520d4bc83c6d15aa0910965b7d7}\label{classdbTtreeNode_aaa5a8520d4bc83c6d15aa0910965b7d7}} 
+bool {\bfseries find} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_aa99625982e4fff8eede782804a4f473d}\label{classdbTtreeNode_aa99625982e4fff8eede782804a4f473d}} 
+bool {\bfseries prefix\+Search} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbSearchContext}{db\+Search\+Context}} \&sc)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a24aa8b0f8881b593da009a007d37ed5a}\label{classdbTtreeNode_a24aa8b0f8881b593da009a007d37ed5a}} 
+bool {\bfseries traverse\+Forward} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a323bda380f1423d12a0dca85170025a4}\label{classdbTtreeNode_a323bda380f1423d12a0dca85170025a4}} 
+bool {\bfseries traverse\+Backward} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_aee510978f47cb62929663c94e619c790}\label{classdbTtreeNode_aee510978f47cb62929663c94e619c790}} 
+bool {\bfseries traverse\+Forward} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$cond)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a79a13e4c60ba1c00656ec914cfd494e4}\label{classdbTtreeNode_a79a13e4c60ba1c00656ec914cfd494e4}} 
+bool {\bfseries traverse\+Backward} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, \mbox{\hyperlink{classdbAnyCursor}{db\+Any\+Cursor}} $\ast$cursor, \mbox{\hyperlink{classdbExprNode}{db\+Expr\+Node}} $\ast$cond)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_aab9ef17fde9961d01934e47f8cc52737}\label{classdbTtreeNode_aab9ef17fde9961d01934e47f8cc52737}} 
+static oid\+\_\+t {\bfseries allocate} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t record\+Id)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a3db843b0a18a6b2341a7e926b362d87c}\label{classdbTtreeNode_a3db843b0a18a6b2341a7e926b362d87c}} 
+static bool {\bfseries insert} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t \&node\+Id, oid\+\_\+t record\+Id, void $\ast$key, int type, int sizeof\+Type, db\+U\+D\+T\+Comparator comparator, int offs)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_abcb0f62f6dee319190df0b06786bf15d}\label{classdbTtreeNode_abcb0f62f6dee319190df0b06786bf15d}} 
+static int {\bfseries remove} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t \&node\+Id, oid\+\_\+t record\+Id, void $\ast$key, int type, int sizeof\+Type, db\+U\+D\+T\+Comparator comparator, int offs)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a2b17297d4562cd8beae725ca45178391}\label{classdbTtreeNode_a2b17297d4562cd8beae725ca45178391}} 
+static int {\bfseries balance\+Right\+Branch} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t \&node\+Id)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a043a4658dbaea34db2e20a0a902ebdce}\label{classdbTtreeNode_a043a4658dbaea34db2e20a0a902ebdce}} 
+static int {\bfseries balance\+Left\+Branch} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t \&node\+Id)
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a49ab32745126fe65364140ca841dd5c0}\label{classdbTtreeNode_a49ab32745126fe65364140ca841dd5c0}} 
+static void {\bfseries purge} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} $\ast$db, oid\+\_\+t node\+Id)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_afaa58742664f8574a04fc8f322235d19}\label{classdbTtreeNode_afaa58742664f8574a04fc8f322235d19}} 
+oid\+\_\+t {\bfseries left}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_af3b5ec0b5f391a29ded1cb2357788e2d}\label{classdbTtreeNode_af3b5ec0b5f391a29ded1cb2357788e2d}} 
+oid\+\_\+t {\bfseries right}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a1612a44974ec1989988fda1238ee56d1}\label{classdbTtreeNode_a1612a44974ec1989988fda1238ee56d1}} 
+int1 {\bfseries balance}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_af246273bb310495f1bdbb34117bc27e6}\label{classdbTtreeNode_af246273bb310495f1bdbb34117bc27e6}} 
+nat2 {\bfseries n\+Items}
+\item 
+\mbox{\Hypertarget{classdbTtreeNode_a5ec080ef2898c822df5ded89cdd5e113}\label{classdbTtreeNode_a5ec080ef2898c822df5ded89cdd5e113}} 
+oid\+\_\+t {\bfseries item} \mbox{[}page\+Size\mbox{]}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/ttree.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/ttree.\+cpp\end{DoxyCompactItemize}

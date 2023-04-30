@@ -1,0 +1,168 @@
+\hypertarget{classWWWconnection}{}\doxysection{W\+W\+Wconnection Class Reference}
+\label{classWWWconnection}\index{WWWconnection@{WWWconnection}}
+
+
+Collaboration diagram for W\+W\+Wconnection\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classWWWconnection__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structWWWconnection_1_1name__value__pair}{name\+\_\+value\+\_\+pair}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a23ded9d4fb8c4b5ec4675af45d26d096}\label{classWWWconnection_a23ded9d4fb8c4b5ec4675af45d26d096}} 
+typedef void($\ast$ {\bfseries User\+Data\+Destructor}) (void $\ast$user\+Data)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a800dc93d70a899a2ad61aee7d7167e6a}\label{classWWWconnection_a800dc93d70a899a2ad61aee7d7167e6a}} 
+typedef bool($\ast$ {\bfseries handler}) (\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \&con)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae9a7e13d05ed7fc3ae878e01655fff0f}\label{classWWWconnection_ae9a7e13d05ed7fc3ae878e01655fff0f}} 
+void {\bfseries set\+User\+Data} (void $\ast$data, User\+Data\+Destructor destructor=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a37f985a9f5cae4059b50265b4157e568}\label{classWWWconnection_a37f985a9f5cae4059b50265b4157e568}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries append} (char const $\ast$str)
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae4a32d58e138e3d88ff292630ed9d943}\label{classWWWconnection_ae4a32d58e138e3d88ff292630ed9d943}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries append} (wchar\+\_\+t const $\ast$str)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a7d2cf82a2ef499c847d613ea476d45ee}\label{classWWWconnection_a7d2cf82a2ef499c847d613ea476d45ee}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries append} (const void $\ast$buf, int len)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a195bc65ca53c88d814b814788984b01b}\label{classWWWconnection_a195bc65ca53c88d814b814788984b01b}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (char const $\ast$str)
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae4174ca058aa5ae061ad3a9f7d506290}\label{classWWWconnection_ae4174ca058aa5ae061ad3a9f7d506290}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (wchar\+\_\+t const $\ast$str)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a1bb477515f0f22b6d2ab83605c58bc20}\label{classWWWconnection_a1bb477515f0f22b6d2ab83605c58bc20}} 
+void {\bfseries set\+Encoding} (W\+W\+Wencoding\+Type type)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a9b9217b8f67ed065641259a01c3f56ea}\label{classWWWconnection_a9b9217b8f67ed065641259a01c3f56ea}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (W\+W\+Wencoding\+Type type)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a003cb0f526d6cd94c0c94840982d279c}\label{classWWWconnection_a003cb0f526d6cd94c0c94840982d279c}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (int value)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a23fcb6ae8ad599a26673c49e8f93940c}\label{classWWWconnection_a23fcb6ae8ad599a26673c49e8f93940c}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (double value)
+\item 
+\mbox{\Hypertarget{classWWWconnection_ac6fe460823b51ec512e0168a3cce70cc}\label{classWWWconnection_ac6fe460823b51ec512e0168a3cce70cc}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (db\+\_\+int8 value)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a1a995058f705f4113523f3810141eaa4}\label{classWWWconnection_a1a995058f705f4113523f3810141eaa4}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \& {\bfseries operator$<$$<$} (oid\+\_\+t value)
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae2acda1e7fb01e9b324d7cb605c4904c}\label{classWWWconnection_ae2acda1e7fb01e9b324d7cb605c4904c}} 
+char $\ast$ {\bfseries get\+Stub} ()
+\item 
+\mbox{\Hypertarget{classWWWconnection_adce890aad6db43204e932a8b14bac781}\label{classWWWconnection_adce890aad6db43204e932a8b14bac781}} 
+char $\ast$ {\bfseries get\+Address} ()
+\item 
+\mbox{\Hypertarget{classWWWconnection_a9478333fff34054158e9cf21afe7c8ea}\label{classWWWconnection_a9478333fff34054158e9cf21afe7c8ea}} 
+char $\ast$ {\bfseries get\+Peer} ()
+\item 
+\mbox{\Hypertarget{classWWWconnection_a40db0b5a78aba27b821170de0d810f37}\label{classWWWconnection_a40db0b5a78aba27b821170de0d810f37}} 
+bool {\bfseries terminated\+By} (char const $\ast$str) const
+\item 
+\mbox{\Hypertarget{classWWWconnection_adfc5d38ef0bddab61ae18741afca6169}\label{classWWWconnection_adfc5d38ef0bddab61ae18741afca6169}} 
+char $\ast$ {\bfseries get} (char const $\ast$name, int n=0)
+\item 
+\mbox{\Hypertarget{classWWWconnection_a935ab8920d21b25bf2980ae8d7eff82e}\label{classWWWconnection_a935ab8920d21b25bf2980ae8d7eff82e}} 
+void {\bfseries add\+Pair} (char const $\ast$name, char const $\ast$value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a58216740a6f933e19ecdfbd3b102dc9e}\label{classWWWconnection_a58216740a6f933e19ecdfbd3b102dc9e}} 
+void $\ast$ {\bfseries user\+Data}
+\item 
+\mbox{\Hypertarget{classWWWconnection_aa91a4806365381055e0ed08d288c6101}\label{classWWWconnection_aa91a4806365381055e0ed08d288c6101}} 
+User\+Data\+Destructor {\bfseries user\+Data\+Destructor}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a04ea0d620e5e5c43e9d197e642f02fa7}\label{classWWWconnection_a04ea0d620e5e5c43e9d197e642f02fa7}} 
+enum \{ {\bfseries hash\+\_\+table\+\_\+size} = 1013
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ad715dbbf131a9f33da5d66a7b855bd1d}\label{classWWWconnection_ad715dbbf131a9f33da5d66a7b855bd1d}} 
+char $\ast$ {\bfseries extend\+Buffer} (size\+\_\+t inc)
+\item 
+\mbox{\Hypertarget{classWWWconnection_ab15018eb12d4e511c78daf59ff047458}\label{classWWWconnection_ab15018eb12d4e511c78daf59ff047458}} 
+void {\bfseries reset} ()
+\item 
+\mbox{\Hypertarget{classWWWconnection_a64954a4b1e14c483b0b8642c72d4cafe}\label{classWWWconnection_a64954a4b1e14c483b0b8642c72d4cafe}} 
+char $\ast$ {\bfseries unpack} (char $\ast$body, size\+\_\+t body\+\_\+length)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a020f6a83e66b56fe62ac64baad286b34}\label{classWWWconnection_a020f6a83e66b56fe62ac64baad286b34}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries sock}
+\item 
+\mbox{\Hypertarget{classWWWconnection_acc40187c279aa43d6f3fa37315caea49}\label{classWWWconnection_acc40187c279aa43d6f3fa37315caea49}} 
+char $\ast$ {\bfseries reply\+\_\+buf}
+\item 
+\mbox{\Hypertarget{classWWWconnection_acd5db23d674e67890c792199d1d5d959}\label{classWWWconnection_acd5db23d674e67890c792199d1d5d959}} 
+size\+\_\+t {\bfseries reply\+\_\+buf\+\_\+size}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ad03bdc3fc1935c3a25c16cb19a7e7493}\label{classWWWconnection_ad03bdc3fc1935c3a25c16cb19a7e7493}} 
+size\+\_\+t {\bfseries reply\+\_\+buf\+\_\+used}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a0fd856e0f0cf2fb78be98a1c9d8aa437}\label{classWWWconnection_a0fd856e0f0cf2fb78be98a1c9d8aa437}} 
+char $\ast$ {\bfseries stub}
+\item 
+\mbox{\Hypertarget{classWWWconnection_abfb2fff11755d4dcd0c33448858cc4f2}\label{classWWWconnection_abfb2fff11755d4dcd0c33448858cc4f2}} 
+char $\ast$ {\bfseries address}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae6db9d78f8d3397738c13889364dcd2d}\label{classWWWconnection_ae6db9d78f8d3397738c13889364dcd2d}} 
+char $\ast$ {\bfseries peer}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a6d64659026b2ae51e48ed77ac8ab2bcc}\label{classWWWconnection_a6d64659026b2ae51e48ed77ac8ab2bcc}} 
+\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} $\ast$ {\bfseries next}
+\item 
+\mbox{\Hypertarget{classWWWconnection_af524e914b3d10d96b9dbb0145f1fc7b1}\label{classWWWconnection_af524e914b3d10d96b9dbb0145f1fc7b1}} 
+W\+W\+Wencoding\+Type {\bfseries encoding}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a778526f9ff90d13a187872c8c25c60d9}\label{classWWWconnection_a778526f9ff90d13a187872c8c25c60d9}} 
+\mbox{\hyperlink{structWWWconnection_1_1name__value__pair}{name\+\_\+value\+\_\+pair}} $\ast$ {\bfseries hash\+\_\+table} \mbox{[}hash\+\_\+table\+\_\+size\mbox{]}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ab295bc4a0bdfc2da8d98491317478c9d}\label{classWWWconnection_ab295bc4a0bdfc2da8d98491317478c9d}} 
+\mbox{\hyperlink{structWWWconnection_1_1name__value__pair}{name\+\_\+value\+\_\+pair}} $\ast$ {\bfseries free\+\_\+pairs}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae597baf3f46f0fb768bd5755180eb05f}\label{classWWWconnection_ae597baf3f46f0fb768bd5755180eb05f}} 
+class {\bfseries W\+W\+Wapi}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ac41a27f7199bc42ceeb416f7fcd72ea8}\label{classWWWconnection_ac41a27f7199bc42ceeb416f7fcd72ea8}} 
+class {\bfseries C\+G\+Iapi}
+\item 
+\mbox{\Hypertarget{classWWWconnection_ae68fb7c722965d786b9889db7f11bcd7}\label{classWWWconnection_ae68fb7c722965d786b9889db7f11bcd7}} 
+class {\bfseries Queue\+Manager}
+\item 
+\mbox{\Hypertarget{classWWWconnection_a93c99641c2894673a023101bc5d37b37}\label{classWWWconnection_a93c99641c2894673a023101bc5d37b37}} 
+class {\bfseries H\+T\+T\+Papi}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/wwwapi.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/wwwapi.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,85 @@
+\hypertarget{classWWWapi}{}\doxysection{W\+W\+Wapi Class Reference}
+\label{classWWWapi}\index{WWWapi@{WWWapi}}
+
+
+Inheritance diagram for W\+W\+Wapi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{classWWWapi__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for W\+W\+Wapi\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classWWWapi__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structWWWapi_1_1dispatcher}{dispatcher}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWapi_aa3caad6111054b7b70b00af368907b23}\label{classWWWapi_aa3caad6111054b7b70b00af368907b23}} 
+{\bfseries W\+W\+Wapi} (\mbox{\hyperlink{classdbDatabase}{db\+Database}} \&db, int n\+\_\+handlers, \mbox{\hyperlink{structWWWapi_1_1dispatcher}{dispatcher}} $\ast$dispatch\+\_\+table)
+\item 
+\mbox{\Hypertarget{classWWWapi_a834f2099e0a70e2022133a1210782c92}\label{classWWWapi_a834f2099e0a70e2022133a1210782c92}} 
+bool {\bfseries open} (char const $\ast$socket\+\_\+address=\char`\"{}localhost\+:80\char`\"{}, socket\+\_\+t\+::socket\+\_\+domain domain=socket\+\_\+t\+::sock\+\_\+global\+\_\+domain, int listen\+\_\+queue=D\+E\+F\+A\+U\+L\+T\+\_\+\+L\+I\+S\+T\+E\+N\+\_\+\+Q\+U\+E\+U\+E\+\_\+\+S\+I\+ZE)
+\item 
+\mbox{\Hypertarget{classWWWapi_a08280e4ba9dd21f71c182ee1a7587658}\label{classWWWapi_a08280e4ba9dd21f71c182ee1a7587658}} 
+virtual bool {\bfseries serve} (\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \&con)=0
+\item 
+\mbox{\Hypertarget{classWWWapi_acf0b1b87a043770527ca570bf74f7080}\label{classWWWapi_acf0b1b87a043770527ca570bf74f7080}} 
+bool {\bfseries connect} (\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \&con)
+\item 
+\mbox{\Hypertarget{classWWWapi_a9c15043741271d3c2a865009e69843c8}\label{classWWWapi_a9c15043741271d3c2a865009e69843c8}} 
+void {\bfseries cancel} ()
+\item 
+\mbox{\Hypertarget{classWWWapi_af76f32e335f0cc3fa7c0056f2f2df6c9}\label{classWWWapi_af76f32e335f0cc3fa7c0056f2f2df6c9}} 
+void {\bfseries close} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWapi_a1aad0cc476c71a9d6254739e93055e20}\label{classWWWapi_a1aad0cc476c71a9d6254739e93055e20}} 
+enum \{ {\bfseries hash\+\_\+table\+\_\+size} = 113
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWapi_a0755a9ee73dcc18db7162648ff49642e}\label{classWWWapi_a0755a9ee73dcc18db7162648ff49642e}} 
+bool {\bfseries dispatch} (\mbox{\hyperlink{classWWWconnection}{W\+W\+Wconnection}} \&con, char $\ast$page)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classWWWapi_a5853fb882463084af59846ff744b1c57}\label{classWWWapi_a5853fb882463084af59846ff744b1c57}} 
+\mbox{\hyperlink{classsocket__t}{socket\+\_\+t}} $\ast$ {\bfseries sock}
+\item 
+\mbox{\Hypertarget{classWWWapi_a82fda6b845580e6307022d1987c0c12e}\label{classWWWapi_a82fda6b845580e6307022d1987c0c12e}} 
+bool {\bfseries canceled}
+\item 
+\mbox{\Hypertarget{classWWWapi_ab7cec671ad1ca969080d8f6ca35d908a}\label{classWWWapi_ab7cec671ad1ca969080d8f6ca35d908a}} 
+char $\ast$ {\bfseries address}
+\item 
+\mbox{\Hypertarget{classWWWapi_a31120e9afcbaf2d1b052a576b92bea63}\label{classWWWapi_a31120e9afcbaf2d1b052a576b92bea63}} 
+\mbox{\hyperlink{classdbDatabase}{db\+Database}} \& {\bfseries db}
+\item 
+\mbox{\Hypertarget{classWWWapi_a4fd64410c8df715f2199df3c287a7833}\label{classWWWapi_a4fd64410c8df715f2199df3c287a7833}} 
+\mbox{\hyperlink{structWWWapi_1_1dispatcher}{dispatcher}} $\ast$ {\bfseries hash\+\_\+table} \mbox{[}hash\+\_\+table\+\_\+size\mbox{]}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/wwwapi.\+h\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/src/wwwapi.\+cpp\end{DoxyCompactItemize}

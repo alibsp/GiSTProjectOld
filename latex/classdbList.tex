@@ -1,0 +1,62 @@
+\hypertarget{classdbList}{}\doxysection{db\+List Class Reference}
+\label{classdbList}\index{dbList@{dbList}}
+
+
+Collaboration diagram for db\+List\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{classdbList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbList_a5412b686c4a6fc10078ff20f475bf08d}\label{classdbList_a5412b686c4a6fc10078ff20f475bf08d}} 
+enum {\bfseries Node\+Type} \{ \newline
+{\bfseries n\+Integer}, 
+{\bfseries n\+Bool}, 
+{\bfseries n\+Real}, 
+{\bfseries n\+String}, 
+\newline
+{\bfseries n\+Tuple}, 
+{\bfseries n\+Autoinc}, 
+{\bfseries n\+Identifier}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbList_a5b5e112bef3eb58548f8b0e424243161}\label{classdbList_a5b5e112bef3eb58548f8b0e424243161}} 
+{\bfseries db\+List} (int type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classdbList_a3d062fb362652df05c5bd3a31b903a76}\label{classdbList_a3d062fb362652df05c5bd3a31b903a76}} 
+\mbox{\hyperlink{classdbList}{db\+List}} $\ast$ {\bfseries next}
+\item 
+\mbox{\Hypertarget{classdbList_ad79dddf8dd4aaabe0b07751c1c15093a}\label{classdbList_ad79dddf8dd4aaabe0b07751c1c15093a}} 
+int {\bfseries type}
+\item 
+\mbox{\Hypertarget{classdbList_a62bdad9245214a4f10cec5dd9c3b5d98}\label{classdbList_a62bdad9245214a4f10cec5dd9c3b5d98}} 
+\begin{tabbing}
+xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=xx\=\kill
+union \{\\
+\>bool {\bfseries bval}\\
+\>db\_int8 {\bfseries ival}\\
+\>real8 {\bfseries fval}\\
+\>char $\ast$ {\bfseries sval}\\
+\>struct \{\\
+\>\>int {\bfseries nComponents}\\
+\>\>\mbox{\hyperlink{classdbList}{dbList}} $\ast$ {\bfseries components}\\
+\>\} {\bfseries aggregate}\\
+\}; \\
+
+\end{tabbing}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/aliakbaraledaghi/\+Programming/\+Gi\+S\+T/\+Gist\+In\+Fast\+D\+B/inc/subsql.\+h\end{DoxyCompactItemize}
