@@ -1,4 +1,5 @@
 #include <QCoreApplication>
+#include <QElapsedTimer>
 #include "GiST/gist.h"
 #include "BTree/gist_btree.h"
 #include "GiST/gist_cursor.h"
@@ -104,7 +105,7 @@ int stringTest()
         srand(time(0));
         int lb = 3, ub = 100;
 
-        for (int i = 0, k=1; i < 1000; i++)
+        for (int i = 0, k=1; i < 10000; i++)
         {
             for (int j = 0; j < 1000; j++)
             {
@@ -114,7 +115,9 @@ int stringTest()
                 int data = k++;
                 myGist.insert((void *) &key, 100, (void *) &data, sizeof(int));
             }
+            //12532000 + 131000 + 118000 + 166000 + 1000 + 100000
             myGist.flush();
+            cout << "Insert "<<k-1<< " Record ok" << endl;
         }
     }
     else // File maybe Exist
@@ -125,13 +128,22 @@ int stringTest()
             return 0;
         }
     }
+    //char my_key[100]="Ali Aldaghi";
+//    int my_data = 1000;
+//    myGist.insert((void *) &my_key, 100, (void *) &my_data, sizeof(int));
+
+    //bt_query_t qRemove(bt_query_t::bt_eq, my_key, my_key);
+
+    //myGist.remove(&qRemove);
 
     char key1[100] = "Ali";
-    char key2[100] = "Alizzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+    char key2[100] = "Alizzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
 
+    QElapsedTimer timer;
+    timer.start();
 
-    //bt_query_t q(bt_query_t::bt_betw, key1, key2);
-    bt_query_t q(bt_query_t::bt_eq, &key1, key2);
+    bt_query_t q(bt_query_t::bt_betw, key1, key2);
+    //bt_query_t q(bt_query_t::bt_eq, &key1, key2);
     gist_cursor_t cursor;
     if(myGist.fetch_init(cursor, &q)!=RCOK)
     {
@@ -151,9 +163,10 @@ int stringTest()
             return(eERROR);
         }
         if (!eof)
-            std::cout<<(char*)&key<<"->"<<data<<endl;
+            cout<<(char*)&key<<"->"<<data<<endl;
         // process key and data...
     }
+    cout<<endl<<"Time is:"<<timer.elapsed()<<endl;
     return 0;
 }
 int main(int argc, char *argv[])
