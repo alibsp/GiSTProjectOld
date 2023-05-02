@@ -218,9 +218,7 @@ gist_queue_set_cursorext_t::iter_reset(
 } 
 
 rc_t
-gist_queue_set_cursorext_t::iter_init(
-        gist_cursor_t& cursor,
-        const shpid_t& root)
+gist_queue_set_cursorext_t::iter_init(gist_cursor_t& cursor, const shpid_t& root)
 {
     assert(cursor.iter == NULL);
 

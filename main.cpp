@@ -18,64 +18,143 @@ void myPrintDataFct(std::ostream& s, // what to print to
 }
 
 
-void intTest()
+int intTest()
 {
     gist myGist;
     //ایجاد پایگاه داده با افزونه BTree
-    myGist.create("Data.db", &bt_int_ext);
-    int key1 = 5;
-    int data1 = 1;
-    int key2 = 3;
-    int data2 = 2;
-    int key3 = 10;
-    int data3 = 3;
-    myGist.insert((void *) &key1, sizeof(int), (void *) &data1, sizeof(int));
-    myGist.insert((void *) &key2, sizeof(int), (void *) &data2, sizeof(int));
-    myGist.insert((void *) &key3, sizeof(int), (void *) &data3, sizeof(int));
-    bt_query_t q(bt_query_t::bt_betw, new int(4), new int(100));
+    if(myGist.create("DataInt.db", &bt_int_ext)==RCOK)
+    {
+
+        //تولید اعداد تصادفی برای درج در پایگاه داده
+        srand(time(0));
+        int lb = -10000000, ub = 10000000;
+        for (int i = 0; i < 1000; i++)
+        {
+            for (int j = 0; j < 10000; j++)
+            {
+                int key = (rand() % (ub - lb + 1)) + lb;
+                int data = (rand() % (ub - lb + 1)) + lb;
+                myGist.insert((void *) &key, sizeof(int), (void *) &data, sizeof(int));
+            }
+            myGist.flush();
+        }
+    }
+    else // File maybe Exist
+    {
+        if(myGist.open("DataInt.db")!=RCOK)
+        {
+            cerr << "Can't Open File." << endl;
+            return 0;
+        }
+    }
+
+    bt_query_t q(bt_query_t::bt_betw, new int(1200), new int(1500));
     gist_cursor_t cursor;
-    myGist.fetch_init(cursor, &q);
+
+    if(myGist.fetch_init(cursor, &q)!=RCOK)
+    {
+        cerr << "Can't initialize cursor." << endl;
+        return(eERROR);
+    }
+
     bool eof = false;
     int key, data;
-    smsize_t keysz=2, datasz=2;
+    smsize_t keysz=sizeof(int), datasz=sizeof(int);
     while (!eof)
     {
-        (void) myGist.fetch(cursor, &key, keysz, &data, datasz, eof);
+        if(myGist.fetch(cursor, (void *)&key, keysz, (void *)&data, datasz, eof)!=RCOK)
+        {
+            cerr << "Can't fetch from cursor." << endl;
+            return(eERROR);
+        }
         if (!eof)
+        {
             std::cout<<key<<"->"<<data<<endl;
+        }
         // process key and data...
     }
+    return 1;
 }
 
-void stringTest()
+static char *rand_string(char *str, size_t size)
+{
+    const char charset[] = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.-";
+
+    if (size)
+    {
+        --size;
+        for (size_t n = 0; n < size; n++)
+        {
+            int key = rand() % (int) (sizeof charset - 1);
+            str[n] = charset[key];
+        }
+        str[size] = '\0';
+    }
+    return str;
+}
+
+int stringTest()
 {
     gist myGist;
     //ایجاد پایگاه داده با افزونه BTree
-    myGist.create("Data.db", &bt_str_ext);
-    char key1[10] = "Ali";
-    int data1 = 1;
-    char key2[10] = "Hasan";
-    int data2 = 2;
-    char key3[10] = "Amir";
-    int data3 = 3;
-    myGist.insert((void *) &key1, 10, (void *) &data1, sizeof(int));
-    myGist.insert((void *) &key2, 10, (void *) &data2, sizeof(int));
-    myGist.insert((void *) &key3, 10, (void *) &data3, sizeof(int));
+    if(myGist.create("DataString.db", &bt_str_ext)==RCOK)
+    {
 
-    bt_query_t q(bt_query_t::bt_betw, key1, key3);
+        //تولید رشته های تصادفی برای درج در پایگاه داده
+        srand(time(0));
+        int lb = 3, ub = 100;
+
+        for (int i = 0, k=1; i < 1000; i++)
+        {
+            for (int j = 0; j < 1000; j++)
+            {
+                char key[100]={0};
+                int len=(rand() % (ub - lb + 1)) + lb;
+                rand_string(key, len);
+                int data = k++;
+                myGist.insert((void *) &key, 100, (void *) &data, sizeof(int));
+            }
+            myGist.flush();
+        }
+    }
+    else // File maybe Exist
+    {
+        if(myGist.open("DataString.db")!=RCOK)
+        {
+            cerr << "Can't Open File." << endl;
+            return 0;
+        }
+    }
+
+    char key1[100] = "Ali";
+    char key2[100] = "Alizzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz";
+
+
+    //bt_query_t q(bt_query_t::bt_betw, key1, key2);
+    bt_query_t q(bt_query_t::bt_eq, &key1, key2);
     gist_cursor_t cursor;
-    myGist.fetch_init(cursor, &q);
+    if(myGist.fetch_init(cursor, &q)!=RCOK)
+    {
+        cerr << "Can't initialize cursor." << endl;
+        return(eERROR);
+    }
     bool eof = false;
-    char* key = "----------";
+
     int data;
-    smsize_t keysz, datasz;
+    smsize_t keysz=100, datasz=sizeof(int);
+    char key[100]={0};
     while (!eof)
     {
-        (void) myGist.fetch(cursor, key, keysz, &data, datasz, eof);
+        if(myGist.fetch(cursor, (void *)&key, keysz, (void *)&data, datasz, eof)!=RCOK)
+        {
+            cerr << "Can't fetch from cursor." << endl;
+            return(eERROR);
+        }
         if (!eof)
-            std::cout<<key<<"->"<<data<<endl;
+            std::cout<<(char*)&key<<"->"<<data<<endl;
         // process key and data...
     }
+    return 0;
 }
 int main(int argc, char *argv[])
 {

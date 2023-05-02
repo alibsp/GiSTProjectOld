@@ -1203,7 +1203,8 @@ rc_t gist::_static_fix_page(gist_file& file,
     latch_mode_t mode)
 {
     page._descr = file.pinPage(pageNo);
-    if (page._descr == NULL) {
+    if (page._descr == NULL)
+    {
         return eOUTOFSPACE;
     }
     page._pp = (page_s*)page._descr->page;
@@ -1239,12 +1240,7 @@ void gist::_static_unfix_page(gist_file& file, gist_p& page)
 //      RCOK
 /////////////////////////////////////////////////////////////////////////
 
-rc_t gist::fetch(gist_cursor_t& cursor,
-    void* key,
-    smsize_t& klen,
-    void* el,
-    smsize_t& elen,
-    bool& eof)
+rc_t gist::fetch(gist_cursor_t& cursor, void* key, smsize_t& klen, void* el, smsize_t& elen, bool& eof)
 {
     shpid_t leaf;
     unsigned int idx;

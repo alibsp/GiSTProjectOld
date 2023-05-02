@@ -34,12 +34,12 @@ bt_query_t::bt_query_t(bt_oper oper, void* val1, void* val2)
 
 bt_query_t::~bt_query_t()
 {
-    if (val1 != NULL)
+    /*if (val1 != NULL)
         std::free(val1);//aldaghi
-        //delete val1;//old
+    //delete val1;//old
     if (val2 != NULL)
         std::free(val2);//aldaghi
-        //delete val2;//old
+    //delete val2;//old*/
 }
 
 static int int_cmp(const void* a, const void* b)
@@ -75,6 +75,12 @@ static int double_cmp(const void* a, const void* b)
 static int str_cmp(const void* a, const void* b)
 {
     return (strcmp((const char*)a, (const char*)b));
+    for(int i=0;i<3;i++)
+        if(((const char*)a)[i]!=((const char*)b)[i])
+        {
+            return (strcmp((const char*)a, (const char*)b));
+        }
+    return 0;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -85,19 +91,19 @@ static int str_cmp(const void* a, const void* b)
 ///////////////////////////////////////////////////////////////////////////////
 
 bt_ext_t::bt_ext_t(
-    gist_ext_t::gist_ext_ids id,
-    const char* name,
-    PrintPredFct printPred,
-    PrintDataFct printData,
-    ParseFct parsePred,
-    ParseFct parseData,
-    ParseQueryFct parseQuery,
-    CmpFct keyCmp,
-    CmpFct dataCmp,
-    SizeFct keySize,
-    SizeFct dataSize,
-    NegInftyFct negInftyKey,
-    NegInftyFct negInftyData)
+        gist_ext_t::gist_ext_ids id,
+        const char* name,
+        PrintPredFct printPred,
+        PrintDataFct printData,
+        ParseFct parsePred,
+        ParseFct parseData,
+        ParseQueryFct parseQuery,
+        CmpFct keyCmp,
+        CmpFct dataCmp,
+        SizeFct keySize,
+        SizeFct dataSize,
+        NegInftyFct negInftyKey,
+        NegInftyFct negInftyData)
     : gist_ext_t(id, name, printPred, printData, parsePred, parseData, parseQuery)
     , keyCmp(keyCmp)
     , dataCmp(dataCmp)
@@ -116,10 +122,10 @@ bt_ext_t::bt_ext_t(
 ///////////////////////////////////////////////////////////////////////////////
 
 rc_t bt_ext_t::insert(
-    gist_p& page,
-    const vec_t& key,
-    const vec_t& dataPtr,
-    shpid_t child)
+        gist_p& page,
+        const vec_t& key,
+        const vec_t& dataPtr,
+        shpid_t child)
 {
     const void* data;
     if (page.is_leaf()) {
@@ -144,9 +150,9 @@ rc_t bt_ext_t::insert(
 ///////////////////////////////////////////////////////////////////////////////
 
 rc_t bt_ext_t::remove(
-    gist_p& page,
-    const int slots[],
-    int numSlots)
+        gist_p& page,
+        const int slots[],
+        int numSlots)
 {
     for (int i = numSlots - 1; i >= 0; i--) {
         W_DO(page.remove(slots[i]));
@@ -165,9 +171,9 @@ rc_t bt_ext_t::remove(
 ///////////////////////////////////////////////////////////////////////////////
 
 rc_t bt_ext_t::updateKey(
-    gist_p& page,
-    int& slot,
-    const vec_t& newKey)
+        gist_p& page,
+        int& slot,
+        const vec_t& newKey)
 {
     UNUSED(page);
     UNUSED(slot);
@@ -185,11 +191,7 @@ rc_t bt_ext_t::updateKey(
 //      RCOK
 ///////////////////////////////////////////////////////////////////////////////
 
-void bt_ext_t::findMinPen(
-    const gist_p& page,
-    const vec_t& key,
-    const vec_t& data,
-    int& slot)
+void bt_ext_t::findMinPen(const gist_p& page, const vec_t& key, const vec_t& data, int& slot)
 {
     slot = _binSearch(page, key.ptr(0), data.ptr(0), false);
     assert(slot != -1);
@@ -206,31 +208,33 @@ void bt_ext_t::findMinPen(
 ///////////////////////////////////////////////////////////////////////////////
 
 void bt_ext_t::search(
-    gist_p& page,
-    const gist_query_t* query,
-    int matches[],
-    int& numMatches)
+        gist_p& page,
+        const gist_query_t* query,
+        int matches[],
+        int& numMatches)
 {
     const bt_query_t* q = (const bt_query_t*)query;
     int start, end; // start and end slot to scan
 
     numMatches = 0;
-    switch (q->oper) {
+    switch (q->oper)
+    {
     case bt_query_t::bt_nooper:
         start = 0;
         end = page.nrecs() - 1;
         break;
     case bt_query_t::bt_eq:
         start = _binSearch(page, q->val1, NULL, true);
-        if (start == -1) {
+        if (start == -1)
+        {
             // we're not going to find anything here
             return;
         }
         // if we're at an internal node and val1 == key[start], there might be
         // duplicates of val on the child to the left of child[start] (unless
         // we're already at the left boundary)
-        if (!page.is_leaf() && start > 0 && keyCmp(page.rec(start).key(), q->val1) == 0) {
-
+        if (!page.is_leaf() && start > 0 && keyCmp(page.rec(start).key(), q->val1) == 0)
+        {
             start--;
         }
 
@@ -264,75 +268,79 @@ void bt_ext_t::search(
 
     bool hit = false;
     bool stop = false; // bt_eq might tell us to stop
-    for (int slot = start; slot <= end; slot++) {
-        if (page.is_leaf()) {
-            switch (q->oper) {
+    for (int slot = start; slot <= end; slot++)
+    {
+        if (page.is_leaf())
+        {
+            switch (q->oper)
+            {
             case bt_query_t::bt_nooper:
                 hit = true;
                 break;
             case bt_query_t::bt_eq:
-                if (keyCmp(page.rec(slot).key(), q->val1) == 0) {
+                if (keyCmp(page.rec(slot).key(), q->val1) == 0)
                     hit = true;
-                } else {
+                else
+                {
                     hit = false;
                     stop = true; // no more equal keys on this page
                 }
                 break;
             case bt_query_t::bt_lt:
-                if (slot != end || keyCmp(page.rec(slot).key(), q->val1) < 0) {
+                if (slot != end || keyCmp(page.rec(slot).key(), q->val1) < 0)
                     hit = true;
-                }
                 break;
             case bt_query_t::bt_le:
                 hit = true;
                 break;
             case bt_query_t::bt_gt:
-                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) > 0) {
+                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) > 0)
                     hit = true;
-                }
                 break;
             case bt_query_t::bt_ge:
                 // start positioned on rightmost item <= key, we must only return
                 // items < key
-                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) >= 0) {
+                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) >= 0)
                     hit = true;
-                }
                 break;
             case bt_query_t::bt_betw:
-                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) >= 0) {
+                if (slot != start || keyCmp(page.rec(slot).key(), q->val1) >= 0)
                     hit = true;
-                }
                 break;
             default: // something's fishy
                 assert(0);
             }
 
-        } else { // internal node
-            switch (q->oper) {
+        } else
+        { // internal node
+            switch (q->oper)
+            {
             case bt_query_t::bt_lt:
-                if (slot == end) {
+                if (slot == end)
+                {
                     // only goto child if its smallest key < val1; _binSearch()
                     // might have found key == val1)
                     if (keyCmp(page.rec(slot).key(), q->val1) < 0)
                         hit = true;
-                } else {
+                } else
                     hit = true;
-                }
+
                 break;
             case bt_query_t::bt_eq:
                 // stop checking the entries when we hit one that's > val1
-                if (keyCmp(page.rec(slot).key(), q->val1) > 0) {
+                if (keyCmp(page.rec(slot).key(), q->val1) > 0)
+                {
                     hit = false;
                     stop = true;
-                } else {
+                } else
                     hit = true;
-                }
                 break;
             default:
                 hit = true;
             }
         }
-        if (hit) {
+        if (hit)
+        {
             matches[numMatches] = slot;
             numMatches++;
             hit = false;
@@ -351,9 +359,9 @@ void bt_ext_t::search(
 ///////////////////////////////////////////////////////////////////////////////
 
 void bt_ext_t::getKey(
-    const gist_p& page,
-    int slot,
-    vec_t& key)
+        const gist_p& page,
+        int slot,
+        vec_t& key)
 {
     const keyrec_t& tup = page.rec(slot);
     key.set(tup.key(), tup.klen());
@@ -375,16 +383,16 @@ void bt_ext_t::getKey(
 ///////////////////////////////////////////////////////////////////////////////
 
 rc_t bt_ext_t::pickSplit(
-    gist_p& page,
-    int rightEntries[],
-    int& numRight,
-    const vec_t& oldBp,
-    vec_t& leftBp,
-    vec_t& rightBp,
-    const vec_t& entry1,
-    bool& oneGoesRight,
-    const vec_t& entry2,
-    bool& twoGoesRight)
+        gist_p& page,
+        int rightEntries[],
+        int& numRight,
+        const vec_t& oldBp,
+        vec_t& leftBp,
+        vec_t& rightBp,
+        const vec_t& entry1,
+        bool& oneGoesRight,
+        const vec_t& entry2,
+        bool& twoGoesRight)
 {
     // first, count the number of bytes used for all keys (also the new ones)
     int totalBytes = 0;
@@ -410,7 +418,8 @@ rc_t bt_ext_t::pickSplit(
     // (entries[] contains sizes for all entries in key/data order, including new entries)
     int total = 0;
     i = 0;
-    while (total < totalBytes / 2 && i < slotCnt) {
+    while (total < totalBytes / 2 && i < slotCnt)
+    {
         total += entries[i].hdr->klen();
         i++;
     }
@@ -420,24 +429,30 @@ rc_t bt_ext_t::pickSplit(
     numRight = 0;
     oneGoesRight = false;
     twoGoesRight = false;
-    for (int j = i; j < slotCnt; j++) {
-        if (entries[j].slot > 0) {
+    for (int j = i; j < slotCnt; j++)
+    {
+        if (entries[j].slot > 0)
+        {
             rightEntries[numRight] = entries[j].slot;
             numRight++;
-        } else if (entries[j].slot == -1) {
+        } else if (entries[j].slot == -1)
+        {
             oneGoesRight = true;
-        } else {
+        } else
+        {
             assert(entries[j].slot == -2);
             twoGoesRight = true;
         }
     }
 
     // the BP of the original node stays the same
-    if (oldBp.size() != 0) {
+    if (oldBp.size() != 0)
+    {
         (void)memcpy(leftBp.ptr(0), oldBp.ptr(0), oldBp.len(0));
         const void* leftptr = leftBp.ptr(0);
         leftBp.set(leftptr, oldBp.len(0));
-    } else {
+    } else
+    {
         // this is what used to be the root;
         // the BP becomes -infinity
         void* leftptr = leftBp.ptr(0);
@@ -452,27 +467,32 @@ rc_t bt_ext_t::pickSplit(
     // the BP of the new right sibling is the item at the split point
     void* rightptr = rightBp.ptr(0);
     int rightlen;
-    if (entries[i].slot > 0) {
+    if (entries[i].slot > 0)
+    {
         // take then BP from the page
         const keyrec_t& tup = page.rec(entries[i].slot);
         (void)memcpy(rightptr, tup.key(), tup.klen());
         rightlen = tup.klen();
-        if (page.is_leaf()) {
+        if (page.is_leaf())
+        {
             // also copy the data ptr
             (void)memcpy((void*)((char*)rightptr + rightlen), tup.elem(), tup.elen());
             rightlen += tup.elen();
         }
-    } else {
+    } else
+    {
         const vec_t* e;
-        if (entries[i].slot == -1) {
+        if (entries[i].slot == -1)
             e = &entry1;
-        } else {
+        else
+        {
             assert(entries[i].slot == -2);
             e = &entry2;
         }
         (void)memcpy(rightptr, e->ptr(0), e->len(0));
         rightlen = e->len(0);
-        if (page.is_leaf()) {
+        if (page.is_leaf())
+        {
             (void)memcpy((void*)((char*)rightptr + (int)rightlen), e->ptr(1), e->len(1));
             rightlen += e->len(1);
         }
@@ -494,12 +514,12 @@ rc_t bt_ext_t::pickSplit(
 /////////////////////////////////////////////////////////////////////////
 
 void bt_ext_t::unionBp(
-    const gist_p& page, // in
-    vec_t& bp, // in/out
-    bool bpIsValid, // in
-    const vec_t& pred1, // in
-    const vec_t& pred2, // in
-    bool& bpChanged) // out
+        const gist_p& page, // in
+        vec_t& bp, // in/out
+        bool bpIsValid, // in
+        const vec_t& pred1, // in
+        const vec_t& pred2, // in
+        bool& bpChanged) // out
 {
     UNUSED(page);
     UNUSED(bp);
@@ -510,21 +530,21 @@ void bt_ext_t::unionBp(
 }
 
 gist_cursorext_t*
-bt_ext_t::queryCursor(
-    const gist_query_t* query) const
+bt_ext_t::queryCursor(const gist_query_t* query) const
 {
     UNUSED(query);
     return gist_cursorext_t::gist_cursorext_list[gist_cursorext_t::cext_stack_id];
 }
 
 bool bt_ext_t::check(
-    const vec_t& bp,
-    const vec_t& pred,
-    int level)
+        const vec_t& bp,
+        const vec_t& pred,
+        int level)
 {
     if (keyCmp(pred.ptr(0), bp.ptr(0)) < 0)
         return false;
-    if (level > 1) {
+    if (level > 1)
+    {
         // check data contained in predicate
         void* bpData = (char*)bp.ptr(0) + keySize(bp.ptr(0));
         void* predData = (char*)pred.ptr(0) + keySize(pred.ptr(0));
@@ -533,11 +553,7 @@ bool bt_ext_t::check(
     return true;
 }
 
-int bt_ext_t::_binSearch(
-    const gist_p& page,
-    const void* key,
-    const void* data,
-    bool keyOnly) // true: only compare keys
+int bt_ext_t::_binSearch(const gist_p& page, const void* key, const void* data, bool keyOnly) // true: only compare keys
 {
     int hi = page.nrecs() - 1;
     if (hi == -1) {
@@ -550,26 +566,28 @@ int bt_ext_t::_binSearch(
     const void* middata;
     int res;
 
-    for (;;) {
+    for (;;)
+    {
         mid = (hi + lo) / 2;
         const keyrec_t& tup = page.rec(mid);
         midkey = tup.key();
-        if (page.is_leaf()) {
+        if (page.is_leaf())
             middata = tup.elem();
-        } else {
+        else
+        {
             int sz = this->keySize(midkey);
             middata = (const void*)(((char*)midkey) + sz);
         }
         res = keyCmp(key, midkey);
-        if (!keyOnly && res == 0) {
+        if (!keyOnly && res == 0)
             res = dataCmp(data, middata);
-        }
-        if (res < 0) {
+        if (res < 0)
             // key is smaller than midpoint
             hi = mid - 1;
-        } else if (res > 0) {
+        else if (res > 0)
             lo = mid + 1;
-        } else {
+        else
+        {
             // found an exact match, but not sure it's the first one
             hi = mid; // not mid - 1, we might end up returning mid
             if (hi == lo)
@@ -581,8 +599,8 @@ int bt_ext_t::_binSearch(
 #if 0 // just for explanatory purposes
     if (res < 0) {
         return mid-1;
-	// because mid-1 is our upper bound, but also our lower bound
-	// (hi <= lo) 
+        // because mid-1 is our upper bound, but also our lower bound
+        // (hi <= lo)
     } else {
         // res > 0: lo = hi, because mid < hi and lo now = mid + 1
         return hi;
@@ -594,12 +612,12 @@ int bt_ext_t::_binSearch(
 // would occupy). Returns this info through array of PosInfos, two of which will
 // contain info for new entries
 void bt_ext_t::_loadPosInfo(
-    gist_p& page,
-    const vec_t& entry1,
-    const vec_t& entry2,
-    keyrec_t::hdr_s& hdr1, // in: hdr_s for 1st entry, needed for entries[]
-    keyrec_t::hdr_s& hdr2, // in: hdr_s for 2nd entry, needed for entries[]
-    PosInfo entries[]) // out: hdrs of all items of page + new entries, sorted in key/data order
+        gist_p& page,
+        const vec_t& entry1,
+        const vec_t& entry2,
+        keyrec_t::hdr_s& hdr1, // in: hdr_s for 1st entry, needed for entries[]
+        keyrec_t::hdr_s& hdr2, // in: hdr_s for 2nd entry, needed for entries[]
+        PosInfo entries[]) // out: hdrs of all items of page + new entries, sorted in key/data order
 {
     int cnt = page.nrecs();
     int numEntries = cnt;
@@ -609,14 +627,16 @@ void bt_ext_t::_loadPosInfo(
         entries[k].slot = k;
     }
 
-    if (entry1.size() == 0) {
+    if (entry1.size() == 0)
+    {
         // no entries to add to PosInfo, we're done
         return;
     }
 
     // Figure out where entry1/-2 would go.
     const void *data1, *data2;
-    if (page.is_leaf()) {
+    if (page.is_leaf())
+    {
         data1 = entry1.ptr(1);
         data2 = entry2.ptr(1);
     } else {
@@ -628,32 +648,39 @@ void bt_ext_t::_loadPosInfo(
     int twoSlot = -1;
     const vec_t* firstEntry = NULL; // new entry with "lower" slot index
     const vec_t* secondEntry = NULL; // new entry with "higher" slot index
-    if (entry2.size() != 0) {
+    if (entry2.size() != 0)
+    {
         twoSlot = _binSearch(page, entry2.ptr(0), data2, false) + 1;
-        if (oneSlot == twoSlot) {
+        if (oneSlot == twoSlot)
+        {
             // we have to determine which one of the entries goes first
             int res = keyCmp(entry1.ptr(0), entry2.ptr(0));
-            if (res == 0) {
+            if (res == 0)
                 res = dataCmp(data1, data2);
-            }
-            if (res < 0) {
+            if (res < 0)
+            {
                 firstEntry = &entry1;
                 secondEntry = &entry2;
-            } else if (res > 0) {
+            } else if (res > 0)
+            {
                 firstEntry = &entry2;
                 secondEntry = &entry1;
-            } else {
+            } else
+            {
                 // res == 0: something's wrong (we've got perfect duplicates)
                 assert(0);
             }
-        } else if (oneSlot < twoSlot) {
+        } else if (oneSlot < twoSlot)
+        {
             firstEntry = &entry1;
             secondEntry = &entry2;
-        } else { // oneSlot > twoSlot
+        } else
+        { // oneSlot > twoSlot
             firstEntry = &entry2;
             secondEntry = &entry2;
         }
-    } else {
+    } else
+    {
         // we only have entry1
         secondEntry = &entry1;
     }
@@ -664,17 +691,20 @@ void bt_ext_t::_loadPosInfo(
     // insert one entry
     hdr1.klen = secondEntry->len(0);
     numEntries++;
-    for (k = numEntries - 1; k > secondSlot; k--) {
+    for (k = numEntries - 1; k > secondSlot; k--)
+    {
         entries[k] = entries[k - 1];
     }
     entries[secondSlot].hdr = (keyrec_t*)&hdr1;
     entries[secondSlot].slot = (oneGoesFirst ? -2 : -1);
 
     // insert other entry
-    if (entry2.size() != 0) {
+    if (entry2.size() != 0)
+    {
         hdr2.klen = firstEntry->len(0);
         numEntries++;
-        for (k = numEntries - 1; k > firstSlot; k--) {
+        for (k = numEntries - 1; k > firstSlot; k--)
+        {
             entries[k] = entries[k - 1];
         }
         entries[firstSlot].hdr = (keyrec_t*)&hdr2;
@@ -684,13 +714,13 @@ void bt_ext_t::_loadPosInfo(
 
 static int int_size(const void* i)
 {
-    UNUSED(i)
+    UNUSED(i);
     return sizeof(int);
 }
 
 static void int_negInfty(void* i)
 {
-    UNUSED(i)
+    UNUSED(i);
     // can't use assignment, i might not be aligned properly
     int min = MININT;
     (void)memcpy(i, (void*)&min, sizeof(min));
@@ -704,10 +734,7 @@ static void int_negInfty(void* i)
     int_size, int_size, int_negInfty, int_negInfty);
 */
 
-void printIntBtPred(
-    std::ostream& s,
-    const vec_t& pred,
-    int level)
+void printIntBtPred( std::ostream& s, const vec_t& pred, int level)
 {
     s << *((int *) pred.ptr(0));
 }
@@ -741,25 +768,24 @@ rc_t _parseBtOp(std::istrstream& s, bt_query_t::bt_oper& oper)
     s >> op;
     if (s.fail()) {
         // no qualification
-    oper = bt_query_t::bt_nooper;
-    return RCOK;
+        oper = bt_query_t::bt_nooper;
+        return RCOK;
     }
-    if (strcmp(op, "=") == 0) {
+    if (strcmp(op, "=") == 0)
         oper = bt_query_t::bt_eq;
-    } else if (strcmp(op, "<") == 0) {
+    else if (strcmp(op, "<") == 0)
         oper = bt_query_t::bt_lt;
-    } else if (strcmp(op, "<=") == 0) {
+    else if (strcmp(op, "<=") == 0)
         oper = bt_query_t::bt_le;
-    } else if (strcmp(op, ">") == 0) {
+    else if (strcmp(op, ">") == 0)
         oper = bt_query_t::bt_gt;
-    } else if (strcmp(op, ">=") == 0) {
+    else if (strcmp(op, ">=") == 0)
         oper = bt_query_t::bt_ge;
-    } else if (strcmp(op, "between") == 0) {
+    else if (strcmp(op, "between") == 0)
         oper = bt_query_t::bt_betw;
-    } else {
+    else
         // didn't recognize that operator
-    return ePARSEERROR;
-    }
+        return ePARSEERROR;
 
     return RCOK;
 }
@@ -771,15 +797,15 @@ rc_t parseIntQuery(const char* str, gist_query_t*& query)
     std::istrstream s(str, strlen(str));
     rc_t status;
     bt_query_t::bt_oper oper;
-    if ((status = _parseBtOp(s, oper)) != RCOK) {
+    if ((status = _parseBtOp(s, oper)) != RCOK)
         return status;
-    }
 
-    if (oper == bt_query_t::bt_nooper) {
+    if (oper == bt_query_t::bt_nooper)
+    {
         // no qualification, nothing to parse
-    bt_query_t* q = new bt_query_t(oper, NULL, NULL);
-    query = q;
-    return(RCOK);
+        bt_query_t* q = new bt_query_t(oper, NULL, NULL);
+        query = q;
+        return(RCOK);
     }
 
     int arg1, arg2;
@@ -787,7 +813,7 @@ rc_t parseIntQuery(const char* str, gist_query_t*& query)
 
     W_DO(parseInt(s, (void*) &arg1, dummy));
     if (oper == bt_query_t::bt_betw) {
-    W_DO(parseInt(s, (void*) &arg2, dummy));
+        W_DO(parseInt(s, (void*) &arg2, dummy));
     }
 
     // construct query
@@ -803,10 +829,10 @@ rc_t parseIntQuery(const char* str, gist_query_t*& query)
 
 
 bt_ext_t bt_int_ext(gist_ext_t::bt_int_ext_id, "bt_int_ext",
-    printIntBtPred, printInt,
-    parseInt, parseInt,
-    parseIntQuery, int_cmp, int_cmp,
-    int_size, int_size, int_negInfty, int_negInfty);
+                    printIntBtPred, printInt,
+                    parseInt, parseInt,
+                    parseIntQuery, int_cmp, int_cmp,
+                    int_size, int_size, int_negInfty, int_negInfty);
 
 
 static void str_negInfty(void* s)
@@ -834,7 +860,7 @@ void printStringBtPred( std::ostream& s, const vec_t& pred, int level)
     const char* str = (const char *) pred.ptr(0);
     if (str[0] == 1) {
         // this is -\infty
-    s << "-INFTY";
+        s << "-INFTY";
     }
     s << "'" << str << "'";
 }
@@ -848,7 +874,7 @@ rc_t parseString(std::istream& s, void* outparam, int& len)
     char ch;
     s.get(ch);
     if (ch != '\'') {
-    // string must start with "'"
+        // string must start with "'"
         return(ePARSEERROR);
     }
 
@@ -856,17 +882,17 @@ rc_t parseString(std::istream& s, void* outparam, int& len)
     // read chars until we hit the next '\''
     bool escaped; // true if last char was escaped
     do {
-    escaped = false;
+        escaped = false;
         s.get(ch);
-    if (ch == '\\') {
-        escaped = true;
-        s.get(ch);
-    }
-    out[len] = ch;
-    len++;
+        if (ch == '\\') {
+            escaped = true;
+            s.get(ch);
+        }
+        out[len] = ch;
+        len++;
     } while ((ch != '\'' || escaped) && !s.eof());
     if (ch != '\'') {
-    // right quote missing
+        // right quote missing
         return(ePARSEERROR);
     }
     out[len-1] = '\0'; // -1: get rid of right quote
@@ -888,15 +914,17 @@ rc_t parseStringQuery(const char* str, gist_query_t*& query)
     std::istrstream s(str, strlen(str));
     rc_t status;
     bt_query_t::bt_oper oper;
-    if ((status = _parseBtOp(s, oper)) != RCOK) {
+    if ((status = _parseBtOp(s, oper)) != RCOK)
+    {
         return status;
     }
 
-    if (oper == bt_query_t::bt_nooper) {
+    if (oper == bt_query_t::bt_nooper)
+    {
         // no qualification, nothing to parse
-    bt_query_t* q = new bt_query_t(oper, NULL, NULL);
-    query = q;
-    return(RCOK);
+        bt_query_t* q = new bt_query_t(oper, NULL, NULL);
+        query = q;
+        return(RCOK);
     }
 
     const int MAXSTRLEN = 8192;
@@ -906,18 +934,20 @@ rc_t parseStringQuery(const char* str, gist_query_t*& query)
 
     // parse first argument
     W_DO(parseString(s, arg1, dummy));
-    if (oper == bt_query_t::bt_betw) {
-    // parse second argument
-    W_DO(parseString(s, arg2, dummy));
+    if (oper == bt_query_t::bt_betw)
+    {
+        // parse second argument
+        W_DO(parseString(s, arg2, dummy));
     }
 
     // construct query
     char* str1 = new char[strlen(arg1)+1];
     char* str2 = NULL;
     (void) memcpy(str1, arg1, strlen(arg1)+1);
-    if (oper == bt_query_t::bt_betw) {
-    str2 = new char[strlen(arg2)+1];
-    (void) memcpy(str2, arg2, strlen(arg2)+1);
+    if (oper == bt_query_t::bt_betw)
+    {
+        str2 = new char[strlen(arg2)+1];
+        (void) memcpy(str2, arg2, strlen(arg2)+1);
     }
     bt_query_t* q = new bt_query_t(oper, str1, str2);
     query = q;
@@ -926,10 +956,10 @@ rc_t parseStringQuery(const char* str, gist_query_t*& query)
 
 
 bt_ext_t bt_str_ext(gist_ext_t::bt_str_ext_id, "bt_str_ext",
-    printStringBtPred, printInt,
-    parseString, parseInt,
-    parseStringQuery, str_cmp, int_cmp,
-    str_size, int_size, str_negInfty, int_negInfty);
+                    printStringBtPred, printInt,
+                    parseString, parseInt,
+                    parseStringQuery, str_cmp, int_cmp,
+                    str_size, int_size, str_negInfty, int_negInfty);
 
 
 

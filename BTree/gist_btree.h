@@ -55,7 +55,8 @@ public:
  * the key and data of it's leftmost leaf item. The exceptions are the
  * BPs of the leftmost nodes at each level, which contain (-\infty,
  * -\infty).  */
-class bt_ext_t : public gist_ext_t {
+class bt_ext_t : public gist_ext_t
+{
 public:
     // generic comparison function
     typedef int (*CmpFct)(const void* a, const void* b);
@@ -77,9 +78,9 @@ public:
     NegInftyFct negInftyKey, negInftyData;
 
     bt_ext_t( gist_ext_t::gist_ext_ids id, const char* name, PrintPredFct printPred,
-        PrintDataFct printData, ParseFct parsePred, ParseFct parseData, ParseQueryFct parseQuery,
-        CmpFct keyCmp, CmpFct dataCmp, SizeFct keySize, SizeFct dataSize,
-        NegInftyFct negInftyKey, NegInftyFct negInftyData);
+              PrintDataFct printData, ParseFct parsePred, ParseFct parseData, ParseQueryFct parseQuery,
+              CmpFct keyCmp, CmpFct dataCmp, SizeFct keySize, SizeFct dataSize,
+              NegInftyFct negInftyKey, NegInftyFct negInftyData);
 
     rc_t insert(gist_p& page, const vec_t& key, const vec_t& data, shpid_t child);
     rc_t remove(gist_p& page, const int slots[], int numSlots);
@@ -90,14 +91,14 @@ public:
     void getKey( const gist_p& page, int slot, vec_t& key);
 
     rc_t pickSplit( gist_p& page, int rightEntries[], int& numRight, const vec_t& oldBp, vec_t& leftBp, vec_t& rightBp, const vec_t& entry1,
-        bool& oneGoesRight, const vec_t& entry2, bool& twoGoesRight);
+                    bool& oneGoesRight, const vec_t& entry2, bool& twoGoesRight);
 
     void unionBp( const gist_p& page, // in
-        vec_t& bp, // in/out
-        bool bpIsValid, // in
-        const vec_t& pred1, // in
-        const vec_t& pred2, // in
-        bool& bpChanged); // out
+                  vec_t& bp, // in/out
+                  bool bpIsValid, // in
+                  const vec_t& pred1, // in
+                  const vec_t& pred2, // in
+                  bool& bpChanged); // out
 
     gist_cursorext_t* queryCursor( const gist_query_t* query) const;
 
@@ -107,24 +108,15 @@ private:
     // Finds the first slot on the page with an equal key (and data, if 'data'
     // is valid), or, if none should exist, the rightmost item with a smaller key
     // (or data, if !keyOnly).
-    int _binSearch(
-        const gist_p& page,
-        const void* key,
-        const void* data,
-        bool keyOnly);
+    int _binSearch(const gist_p& page, const void* key, const void* data, bool keyOnly);
 
-    struct PosInfo {
+    struct PosInfo
+    {
         const keyrec_t* hdr;
         int slot; // slot index on page; or: -1: entry1, -2: entry2
     };
 
-    void _loadPosInfo(
-        gist_p& page,
-        const vec_t& entry1,
-        const vec_t& entry2,
-        keyrec_t::hdr_s& hdr1,
-        keyrec_t::hdr_s& hdr2,
-        PosInfo entries[]);
+    void _loadPosInfo( gist_p& page, const vec_t& entry1, const vec_t& entry2, keyrec_t::hdr_s& hdr1,keyrec_t::hdr_s& hdr2, PosInfo entries[]);
 };
 
 extern bt_ext_t bt_int_ext;
