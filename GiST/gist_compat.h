@@ -41,6 +41,7 @@
 #define HAVE_MALLOC_H
 #define HAVE_O_BINARY
 #define	HAVE_STL_V3
+#define HAVE_UNISTD_H
 
 
 #endif // WIN32
@@ -56,7 +57,7 @@
 //#define strdup(s) strcpy(new char[strlen(s)+1], s)
 #endif // HAVE_STRDUP
 
-#define HAVE_VALUES_H
+//#define HAVE_VALUES_H
 
 #ifdef HAVE_VALUES_H
 #include <values.h>

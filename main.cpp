@@ -169,8 +169,14 @@ int stringTest()
     cout<<endl<<"Time is:"<<timer.elapsed()<<endl;
     return 0;
 }
+int partData()
+{
+
+}
+
 int main(int argc, char *argv[])
 {
     //intTest();
-    stringTest();
+    //stringTest();
+    partData()
 }
