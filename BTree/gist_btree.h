@@ -35,7 +35,7 @@ public:
     };
 
     // val1 and val2 must have been allocated with new()
-    bt_query_t(bt_oper oper, void* val1, void* val2);
+    bt_query_t(bt_oper oper, void* val1, void* val2=NULL);
     // delete()s val1 and val2
     ~bt_query_t();
 
@@ -121,6 +121,7 @@ private:
 
 extern bt_ext_t bt_int_ext;
 extern bt_ext_t bt_str_ext; // 0-terminated strings
+extern bt_ext_t bt_str_key_ext; // 0-terminated strings
 
 #ifdef AMDB
 extern amdb_ext_t amdb_bt_int_ext;

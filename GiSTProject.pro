@@ -1,3 +1,5 @@
+QT += core
+
 QT -= gui
 
 CONFIG += c++17 console
@@ -19,7 +21,8 @@ SOURCES += \
         GiST/vec_t.cpp \
         GiST/gist_cursor.cpp \
         GiST/gist_htab.cpp \
-        main.cpp
+        main.cpp \
+        part.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -40,4 +43,5 @@ HEADERS += \
     GiST/gist_query.h \
     GiST/gist_support.h \
     GiST/gist_ustk.h \
-    GiST/vec_t.h
+    GiST/vec_t.h \
+    part.h

@@ -1,8 +1,10 @@
 #include <QCoreApplication>
 #include <QElapsedTimer>
+#include <QDebug>
 #include "GiST/gist.h"
 #include "BTree/gist_btree.h"
 #include "GiST/gist_cursor.h"
+#include "part.h"
 
 void myPrintPredFct(
         std::ostream& s, // what to print to
@@ -169,14 +171,41 @@ int stringTest()
     cout<<endl<<"Time is:"<<timer.elapsed()<<endl;
     return 0;
 }
-int partData()
-{
-
-}
 
 int main(int argc, char *argv[])
 {
     //intTest();
     //stringTest();
-    partData()
+    qDebug()<<"start...";
+    QString csvFile;
+#ifdef __linux__
+    csvFile = "/media/ali/Data/Programming/Projects/Part/Data/test1.csv";
+#elif _WIN32
+    csvFile = "D:\\Programming\\Projects\\Part\\Data\\data.csv";
+#endif
+
+    bool clean=true;
+    Part part;
+    if(clean)
+    {
+        part.dropGists();
+        part.importCSV(csvFile);
+    }
+    else
+        part.loadGists();
+
+    QElapsedTimer timer;
+    timer.start();
+
+    QStringList results=part.findKey("milestoneId_2970");
+    //results.append(part.findKey("updatedAt_14010510200905000"));
+    //results.append(part.findKey("createdAt_14010511150209000"));
+
+    uint64_t time1=timer.nsecsElapsed();
+    QSet<QString> ids(results.begin(), results.end());
+    uint64_t time=timer.nsecsElapsed();
+    for (QString res:ids)
+        qDebug()<<res;
+    qDebug()<<"Execute Time: "<<time1<<time<<" ns, record count:"<<ids.count();
+    qDebug()<<"finish.";
 }

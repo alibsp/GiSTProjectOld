@@ -655,8 +655,12 @@ void bt_ext_t::_loadPosInfo(
         {
             // we have to determine which one of the entries goes first
             int res = keyCmp(entry1.ptr(0), entry2.ptr(0));
+            cout<<"keyCmp:"<<(const char*)entry1.ptr(0)<<" "<<(const char*)entry2.ptr(0)<<endl;
             if (res == 0)
+            {
+                cout<<"dataCmp:"<<(const char*)data1<<" "<<(const char*)data2<<endl;;
                 res = dataCmp(data1, data2);
+            }
             if (res < 0)
             {
                 firstEntry = &entry1;
@@ -668,7 +672,8 @@ void bt_ext_t::_loadPosInfo(
             } else
             {
                 // res == 0: something's wrong (we've got perfect duplicates)
-                assert(0);
+                //assert(0);
+                res=0;
             }
         } else if (oneSlot < twoSlot)
         {
@@ -959,6 +964,13 @@ bt_ext_t bt_str_ext(gist_ext_t::bt_str_ext_id, "bt_str_ext",
                     printStringBtPred, printInt,
                     parseString, parseInt,
                     parseStringQuery, str_cmp, int_cmp,
+                    str_size, int_size, str_negInfty, int_negInfty);
+
+
+bt_ext_t bt_str_key_ext(gist_ext_t::bt_str_ext_id, "bt_str_key_ext",
+                    printStringBtPred, printInt,
+                    parseString, parseInt,
+                    parseStringQuery, str_cmp, str_cmp,
                     str_size, int_size, str_negInfty, int_negInfty);
 
 
