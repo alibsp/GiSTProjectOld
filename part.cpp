@@ -18,7 +18,7 @@ void Part::importCSV(QString filePath)
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly))
     {
-        //cout << file.errorString();
+        qDebug() << file.errorString(); //shahab
         return ;
     }
 
@@ -70,12 +70,12 @@ void Part::loadGists()
 }
 void Part::dropGists()
 {
-
-#ifdef __linux__
+    QDir dir("data/", "*.db");  //shahab //No need to check OS! QDir converts dir separator! Refer to manual
+/*#ifdef __linux__
     QDir dir("data/", "*.db");
 #elif _WIN32
     QDir dir("data\\", "*.db");
-#endif
+#endif*/
 
     QFileInfoList list = dir.entryInfoList();
     for (int i = 0; i < list.size(); ++i)
@@ -224,7 +224,11 @@ bool Part::insertId(const char *id)
     char myId[ID_LEN]={0};
     strcpy(myId, id);
 #ifdef __linux__
-    char path[]="data/id.db";
+    //char path[]="data/id.db";
+    char path[256];  //shahab
+    getcwd(path, sizeof(path));
+    strcat(path, "/data/id.db");
+    cerr << "insertId path: " << path << endl;
 #elif _WIN32
     char path[]="data\\id.db";
 #endif
@@ -234,9 +238,9 @@ bool Part::insertId(const char *id)
     {
         myGist = new gist();
         gists["id"] = myGist;
-        if(myGist->create(path, &bt_str_key_ext)!=RCOK)
+        if(myGist->create(path, &bt_str_key_ext)!=RCOK) //shahab
         {
-            if(myGist->open(path)!=RCOK)
+            if(myGist->open(path)!=RCOK)    //shahab
             {
                 cerr << "Can't Oepn File." << endl;
                 return false;

@@ -177,12 +177,12 @@ int main(int argc, char *argv[])
     //intTest();
     //stringTest();
     qDebug()<<"start...";
-    QString csvFile;
-#ifdef __linux__
+    QString csvFile = "/home/shahabseddigh/Desktop/GiSTProject/csv/minimal.csv"; //shahab
+/*#ifdef __linux__
     csvFile = "/media/ali/Data/Programming/Projects/Part/Data/test1.csv";
 #elif _WIN32
     csvFile = "D:\\Programming\\Projects\\Part\\Data\\data.csv";
-#endif
+#endif*/
 
     bool clean=true;
     Part part;
