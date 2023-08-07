@@ -188,6 +188,9 @@ void Part::insertTerm(const char *id, const char *term)
     char value[KEY_LEN]={0};
     extractKeyValue(term, key, value);
 
+    strcat(value, ":"); //shahab:duplicate error fix
+    strcat(value, id);  //shahab:duplicate error fix
+
     if(key[0]==0)
         strcpy(key, "nonekey");
 #ifdef __linux__
