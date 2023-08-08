@@ -2,7 +2,7 @@
 
 #include <QDir>
 #include <QFileInfoList>
-
+//#include <QDebug>
 #define ID_LEN 37
 #define KEY_LEN 101
 
@@ -18,7 +18,7 @@ void Part::importCSV(QString filePath)
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly))
     {
-        qDebug() << file.errorString(); //shahab
+        //cout << file.errorString();
         return ;
     }
 
@@ -30,20 +30,11 @@ void Part::importCSV(QString filePath)
         {
             QList<QByteArray> columns = line.split(';');
             QString id=QString(columns[0]);
-            QString keys=QString(columns[2]).replace("\"","").trimmed();
-            if(keys.startsWith('{'))
-                keys=keys.remove(0,1);
-            if(keys.endsWith('}'))
-                keys=keys.remove(-1,1);
-            qDebug()<<"Record "<<i;
-            //if(i>100 && i%10==0 && i<200)
-            //if(i>=131)
-            //    printAllKeys("id");
-            if(i==138)
-                printAllKeys("id");
+            QString keys=QString(columns[2]).replace("\"","");
+            cout<<"Record "<<i<<endl;
+            if(i==520)
+                i=520;
             insertRecord(columns[0].data(), keys.toUtf8().data());
-            if(i==138)
-                printAllKeys("id");
         }
         i++;
     }
@@ -79,12 +70,12 @@ void Part::loadGists()
 }
 void Part::dropGists()
 {
-    QDir dir("data/", "*.db");  //shahab //No need to check OS! QDir converts dir separator! Refer to manual
-    /*#ifdef __linux__
+
+    #ifdef __linux__
     QDir dir("data/", "*.db");
 #elif _WIN32
     QDir dir("data\\", "*.db");
-#endif*/
+#endif
 
     QFileInfoList list = dir.entryInfoList();
     for (int i = 0; i < list.size(); ++i)
@@ -110,17 +101,8 @@ void Part::insertRecord(const char *id, const char *keys)
                 term[j] = 0;
                 if(j)
                 {
-                    if(strcmp(myId, "f29519f2-0ab7-4bd3-baac-c0f21055cd78")==0 && strcmp(term, "changeType_updated_by_id")==0)
-                    {
-                        QMap<QString, gist*>::const_iterator gst = gists.constBegin();
-                        printAllKeys("id");
-                        while (gst != gists.constEnd())
-                        {
-                            //cout << gst.key() << ": " << gst.value() << Qt::endl;
-                            printAllKeys(gst.key());
-                            ++gst;
-                        }
-                    }
+                    if(strcmp(myId, "f29519f2-0ab7-4bd3-baac-c0f21055cd78")==0 && strcmp(term, "changeType_updated_by_id"))
+                        printAllKeys("changeType");
                     insertTerm(myId, term);
                 }
                 j=0;
@@ -131,7 +113,7 @@ void Part::insertRecord(const char *id, const char *keys)
                 break;
         }
     }
-    //cout<<"insertRecord finish at "<<elapsedTimer.nsecsElapsed()<<endl;
+    cout<<"insertRecord finish at "<<elapsedTimer.nsecsElapsed()<<endl;
 }
 
 QStringList Part::findKey(const char * key_value)
@@ -206,6 +188,9 @@ void Part::insertTerm(const char *id, const char *term)
     char value[KEY_LEN]={0};
     extractKeyValue(term, key, value);
 
+    strcat(value, ":"); //shahab:duplicate error fix
+    strcat(value, id);  //shahab:duplicate error fix
+
     if(key[0]==0)
         strcpy(key, "nonekey");
 #ifdef __linux__
@@ -242,26 +227,19 @@ bool Part::insertId(const char *id)
     char myId[ID_LEN]={0};
     strcpy(myId, id);
 #ifdef __linux__
-    //char path[]="data/id.db";
-    char path[256];  //shahab
-    getcwd(path, sizeof(path));
-    strcat(path, "/data/id.db");
-    //cerr << "insertId path: " << path << endl;
+    char path[]="data/id.db";
 #elif _WIN32
     char path[]="data\\id.db";
 #endif
-
-    int a=1;
-
 
     gist *myGist  =gists["id"];
     if(myGist==nullptr)
     {
         myGist = new gist();
         gists["id"] = myGist;
-        if(myGist->create(path, &bt_str_key_ext)!=RCOK) //shahab
+        if(myGist->create(path, &bt_str_key_ext)!=RCOK)
         {
-            if(myGist->open(path)!=RCOK)    //shahab
+            if(myGist->open(path)!=RCOK)
             {
                 cerr << "Can't Oepn File." << endl;
                 return false;
@@ -273,7 +251,7 @@ bool Part::insertId(const char *id)
     if(myGist->fetch_init(cursor, &q)!=RCOK)
     {
         cerr << "Can't initialize cursor." << endl;
-        return false;
+        return false;   //shahab
     }
     bool eof = false;
 
@@ -285,7 +263,7 @@ bool Part::insertId(const char *id)
         if(myGist->fetch(cursor, (void *)&key, keysz, (void *)&data, datasz, eof)!=RCOK)
         {
             cerr << "Can't fetch from cursor." << endl;
-            return false;
+            return false;   //shahab
         }
         if (!eof)
         {
@@ -295,13 +273,9 @@ bool Part::insertId(const char *id)
         }// process key and data...
     }
     strcpy(data, "A");
-    if(strcmp(myId, "b803e19c-7098-4a9f-9f02-9bb884bf62dc")==0)
-        strcpy(data, "B");
     myGist->insert((void *) &myId, 37, (void *) &data, datasz);
-    cout<<myId<<endl;
     myGist->flush();
-    //if(strcmp(myId, "fe48eefa-bb23-444a-8bcb-e73a31b014fd")==0)
-    //printAllKeys("id");
+
     //myGist->close();
     return true;
 }
@@ -332,10 +306,7 @@ void Part::printAllKeys(QString treeName)
         }
         if (!eof)
         {
-            //cout<<"find:"<<(char*)&keyFound<<", id:"<<id<<endl;
-            if(strcmp(id, "")==0)
-                cout<<"id is empty!!!"<<endl;
-            cout<<treeName.toStdString()<<","<<(char*)&keyFound<<","<<id<<endl;
+            cout<<"find:"<<(char*)&keyFound<<", id:"<<id<<endl;
             results.append(id);
         }
     }

@@ -1,7 +1,6 @@
 #ifndef PART_H
 #define PART_H
-#include <QDebug>
-#include <unistd.h> //shahab
+
 #include <QObject>
 #include <QElapsedTimer>
 #include <QMap>
