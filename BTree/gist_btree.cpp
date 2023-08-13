@@ -83,6 +83,25 @@ static int str_cmp(const void* a, const void* b)
     return 0;
 }
 
+static int uuid_cmp(const void* a, const void* b)
+{
+    uint64_t h1, h2, l1, l2;
+    memcpy(&l1, (const unsigned char*)a, 8);
+    memcpy(&l2, (const unsigned char*)b, 8);
+
+    memcpy(&h1, ((const unsigned char*)a)+8, 8);
+    memcpy(&h2, ((const unsigned char*)b)+8, 8);
+
+    if(h1>h2)       return 1;
+    else if(h1<h2)  return -1;
+    else if(h1==h2)
+    {
+        if(l1>l2)       return 1;
+        else if(l1<l2)  return -1;
+    }
+    return 0;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // gist_btree::gist_btree - constructor
 //
@@ -128,9 +147,11 @@ rc_t bt_ext_t::insert(
         shpid_t child)
 {
     const void* data;
-    if (page.is_leaf()) {
+    if (page.is_leaf())
+    {
         data = dataPtr.ptr(0);
-    } else {
+    } else
+    {
         // by convention, our key also contains a data pointer (to
         // make the internal node keys unique); we don't want to use
         // this during _binSearch(), so we 'skip' over it.
@@ -973,6 +994,12 @@ bt_ext_t bt_str_key_ext(gist_ext_t::bt_str_ext_id, "bt_str_key_ext",
                     parseStringQuery, str_cmp, str_cmp,
                     str_size, int_size, str_negInfty, int_negInfty);
 
+
+bt_ext_t bt_binary_key_ext(gist_ext_t::bt_binary_key_ext, "bt_binary_key_ext",
+                    printStringBtPred, printInt,
+                    parseString, parseInt,
+                    parseStringQuery, uuid_cmp, str_cmp,
+                    str_size, int_size, str_negInfty, int_negInfty);
 
 
 

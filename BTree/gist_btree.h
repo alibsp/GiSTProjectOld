@@ -122,6 +122,7 @@ private:
 extern bt_ext_t bt_int_ext;
 extern bt_ext_t bt_str_ext; // 0-terminated strings
 extern bt_ext_t bt_str_key_ext; // 0-terminated strings
+extern bt_ext_t bt_binary_key_ext; // for UUID store - aldaghi
 
 #ifdef AMDB
 extern amdb_ext_t amdb_bt_int_ext;

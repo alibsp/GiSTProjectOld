@@ -3,7 +3,8 @@
 #include <QDir>
 #include <QFileInfoList>
 //#include <QDebug>
-#define ID_LEN 37
+#define ID_LEN 16
+#define DATA_LEN 164 //4+16*10
 #define KEY_LEN 101
 
 Part::Part(QObject *parent) : QObject(parent)
@@ -90,7 +91,7 @@ void Part::insertRecord(const char *id, const char *keys)
     elapsedTimer.start();
     char myId[37]={0};
     strcpy(myId, id);
-    if(insertId(myId))
+    //if(insertId(myId))
     {
         int i=0;
         char term[KEY_LEN]={0};
@@ -155,8 +156,9 @@ QStringList Part::findKey(const char * key_value)
     return results;
 }
 
-
-bool Part::isKeyExist(const char *key_value)    //Mr. MahmoudiNik
+//Start Mr. MahmoudiNik
+//Continue by Aldaghi(Add unsigned char *data to reuslt)
+bool Part::isKeyExist(const char *key_value, void *data)
 {
     //This method checks if a "key-value" exists in tree or not
 
@@ -172,21 +174,19 @@ bool Part::isKeyExist(const char *key_value)    //Mr. MahmoudiNik
         return false;
     }
     bool eof = false;
-    smsize_t keysz=KEY_LEN, datasz=ID_LEN;
+    smsize_t keysz=KEY_LEN, datasz=DATA_LEN;
     char keyFound[KEY_LEN]={0};
-    char id[ID_LEN]={0};
     while (!eof)
     {
-        if(myGist->fetch(cursor, (void *)&keyFound, keysz, (void *)&id, datasz, eof)!=RCOK)
+        if(myGist->fetch(cursor, (void *)&keyFound, keysz, data, datasz, eof)!=RCOK)
         {
             cerr << "Can't fetch from cursor." << endl;
             return false;
         }
         if (!eof)
-        {
             return true;
-        }
     }
+    return false;
 }
 
 //term = "source_gitlab\0"
@@ -213,11 +213,11 @@ void Part::extractKeyValue(const char *term, char *key, char *value)
 }
 
 
-void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
+//void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
+void Part::hexStrToBin(const char* uuid, unsigned char* bins)   //aldaghi
 {
-    char i=0, byte=0;
-    unsigned char res=0;
-    unsigned char* bins = (unsigned char*)malloc( 16*sizeof(char) );    //Always assign a new, free memory to this pointer! As the reference will be copied to the *out parameter of the very first call to this function and thus, never will be deleted after going out of scope!
+    unsigned char i=0, byte=0, res=0;
+    //unsigned char* bins = (unsigned char*)malloc( 16*sizeof(char) );    //Always assign a new, free memory to this pointer! As the reference will be copied to the *out parameter of the very first call to this function and thus, never will be deleted after going out of scope!
     while(uuid[i]!=0)
     {
         if(uuid[i]=='-') {i++; continue;}
@@ -232,7 +232,7 @@ void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
         byte++; i+=2;
     }
 
-    *out = bins;
+    //*out = bins;
     //We cannot free bins here as the memory address now being used by *out !
 }
 
@@ -258,11 +258,12 @@ void Part::binToHexStr(const unsigned char* bins, char** out) //shahab
 //*id = 43bf9957-e944-408a-a17d-ea7ac40ffea7 <-> term = "source_gitlab\0"
 void Part::insertTerm(const char *id, const char *term)
 {
-    unsigned char* binaryUUID;  //shahab: I think we don't need to worry about allocating explict memory range for this, as it'll be assigned to another memory location later;
-    hexStrToBin(id, &binaryUUID);
+    unsigned char binaryUUID[ID_LEN];  //shahab: I think we don't need to worry about allocating explict memory range for this, as it'll be assigned to another memory location later;
+    hexStrToBin(id, binaryUUID);
 
-    /*char myId[ID_LEN]={0};
-    strcpy(myId, id);*/
+    unsigned char data[DATA_LEN]={0};
+
+
 
     char treeName[KEY_LEN]={0};
     char treeKey[KEY_LEN]={0};
@@ -300,19 +301,36 @@ void Part::insertTerm(const char *id, const char *term)
     //myGist
     //if -> bloom check (term)  -->0 --1>
     //TODO: Consider adding bloom filter
-    if( !isKeyExist(term) ) //shahab
+    unsigned int count=0;
+    if(strcmp(term, "source_gitlab")==0)
+        count=1;
+    isKeyExist(term, (void *)&data);
+    memcpy(&count, data, 4);
+    count++;
+    if(count<=10)
     {
-        myGist->insert((void *) &treeKey, KEY_LEN, (void *) binaryUUID, 16); //shahab
+        memcpy(data, &count, 4);
+        memcpy(data+(4+(count-1)*ID_LEN), binaryUUID, ID_LEN);
+        if(count<=1)
+            myGist->insert((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
+        else
+            myGist->updateValue((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
+
         myGist->flush();
     }
-    //else{}    //TODO: add code to create new posting-tree if key exsists!
+    else
+    {
+        count=10;
+    }
+    //TODO: add code to create new posting-tree if key exsists!
     //myGist->close();
 }
-
+//1402-05-22 Aldaghi: Store id in id tree as binary
 bool Part::insertId(const char *id)
 {
-    char myId[ID_LEN]={0};
-    strcpy(myId, id);
+    unsigned char binaryUUID[ID_LEN];  //shahab: I think we don't need to worry about allocating explict memory range for this, as it'll be assigned to another memory location later;
+    hexStrToBin(id, binaryUUID);
+
 #ifdef __linux__
     char path[]="data/id.db";
 #elif _WIN32
@@ -324,7 +342,7 @@ bool Part::insertId(const char *id)
     {
         myGist = new gist();
         gists["id"] = myGist;
-        if(myGist->create(path, &bt_str_key_ext)!=RCOK)
+        if(myGist->create(path, &bt_binary_key_ext)!=RCOK)
         {
             if(myGist->open(path)!=RCOK)
             {
@@ -333,7 +351,7 @@ bool Part::insertId(const char *id)
             }
         }
     }
-    bt_query_t q(bt_query_t::bt_eq, &myId);
+    bt_query_t q(bt_query_t::bt_eq, &binaryUUID);
     gist_cursor_t cursor;
     if(myGist->fetch_init(cursor, &q)!=RCOK)
     {
@@ -343,8 +361,8 @@ bool Part::insertId(const char *id)
     bool eof = false;
 
     char data[2]="A";
-    smsize_t keysz=KEY_LEN, datasz=2;
-    char key[KEY_LEN]={0};
+    smsize_t keysz=ID_LEN, datasz=2;
+    char key[ID_LEN]={0};
     while (!eof)
     {
         if(myGist->fetch(cursor, (void *)&key, keysz, (void *)&data, datasz, eof)!=RCOK)
@@ -360,7 +378,7 @@ bool Part::insertId(const char *id)
         }// process key and data...
     }
     strcpy(data, "A");
-    myGist->insert((void *) &myId, 37, (void *) &data, datasz);
+    myGist->insert((void *) &binaryUUID, ID_LEN, (void *) &data, datasz);
     myGist->flush();
 
     //myGist->close();
