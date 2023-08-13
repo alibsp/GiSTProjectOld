@@ -155,6 +155,41 @@ QStringList Part::findKey(const char * key_value)
     return results;
 }
 
+
+bool Part::isKeyExist(const char *key_value)    //Mr. MahmoudiNik
+{
+    //This method checks if a "key-value" exists in tree or not
+
+    char key[KEY_LEN]={0};
+    char value[KEY_LEN]={0};
+    extractKeyValue(key_value, key, value);
+    gist *myGist=gists[key];
+    bt_query_t q(bt_query_t::bt_eq, &value);
+    gist_cursor_t cursor;
+    if(myGist->fetch_init(cursor, &q)!=RCOK)
+    {
+        cerr << "Can't initialize cursor." << endl;
+        return false;
+    }
+    bool eof = false;
+    smsize_t keysz=KEY_LEN, datasz=ID_LEN;
+    char keyFound[KEY_LEN]={0};
+    char id[ID_LEN]={0};
+    while (!eof)
+    {
+        if(myGist->fetch(cursor, (void *)&keyFound, keysz, (void *)&id, datasz, eof)!=RCOK)
+        {
+            cerr << "Can't fetch from cursor." << endl;
+            return false;
+        }
+        if (!eof)
+        {
+            return true;
+        }
+    }
+}
+
+//term = "source_gitlab\0"
 void Part::extractKeyValue(const char *term, char *key, char *value)
 {
     for (int i=0, sw=0, j=0;;i++)
@@ -178,35 +213,80 @@ void Part::extractKeyValue(const char *term, char *key, char *value)
 }
 
 
+void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
+{
+    char i=0, byte=0;
+    unsigned char res=0;
+    unsigned char* bins = (unsigned char*)malloc( 16*sizeof(char) );    //Always assign a new, free memory to this pointer! As the reference will be copied to the *out parameter of the very first call to this function and thus, never will be deleted after going out of scope!
+    while(uuid[i]!=0)
+    {
+        if(uuid[i]=='-') {i++; continue;}
 
+        if(uuid[i] > 47 && uuid[i] < 58) {res = (uuid[i]-48)*16;}
+        else if(uuid[i] > 96 && uuid[i] < 103) {res = (uuid[i]-87)*16;}
+
+        if(uuid[i+1] > 47 && uuid[i+1] < 58) {res += (uuid[i+1]-48);}
+        else if(uuid[i+1] > 96 && uuid[i+1] < 103) {res += (uuid[i+1]-87);}
+
+        bins[byte] = res;
+        byte++; i+=2;
+    }
+
+    *out = bins;
+    //We cannot free bins here as the memory address now being used by *out !
+}
+
+
+void Part::binToHexStr(const unsigned char* bins, char** out) //shahab
+{
+    //char output[37];
+    char const hex_chars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    for( int i = 0, j = 0; i < 16; i++ )
+    {
+        char const byte = bins[i];
+
+        (*out)[j] = hex_chars[ ( byte & 0xF0 ) >> 4 ];
+        (*out)[j+1] = hex_chars[ ( byte & 0x0F ) ];
+        j+=2;
+        if( i==3 || i==5 || i==7 || i==9 ) {(*out)[j] = '-'; j++;}
+    }
+    (*out)[37] = 0;
+    //printf("%s\n\n", (*out));
+}
+
+
+//*id = 43bf9957-e944-408a-a17d-ea7ac40ffea7 <-> term = "source_gitlab\0"
 void Part::insertTerm(const char *id, const char *term)
 {
-    char myId[ID_LEN]={0};
-    strcpy(myId, id);
+    unsigned char* binaryUUID;  //shahab: I think we don't need to worry about allocating explict memory range for this, as it'll be assigned to another memory location later;
+    hexStrToBin(id, &binaryUUID);
 
-    char key[KEY_LEN]={0};
-    char value[KEY_LEN]={0};
-    extractKeyValue(term, key, value);
+    /*char myId[ID_LEN]={0};
+    strcpy(myId, id);*/
 
-    strcat(value, ":"); //shahab:duplicate error fix
-    strcat(value, id);  //shahab:duplicate error fix
+    char treeName[KEY_LEN]={0};
+    char treeKey[KEY_LEN]={0};
+    extractKeyValue(term, treeName, treeKey);
 
-    if(key[0]==0)
-        strcpy(key, "nonekey");
+    //strcat(value, ":"); //shahab:duplicate error fix
+    //strcat(value, id);  //shahab:duplicate error fix
+
+    if(treeName[0]==0)
+        strcpy(treeName, "nonekey");
 #ifdef __linux__
     char path[200]="data/";
 #elif _WIN32
     char path[200]="data\\";
 #endif
 
-    strcat(path, key);
+    strcat(path, treeName);
     strcat(path, ".db");
     //ایجاد پایگاه داده با افزونه BTree
-    gist *myGist  =gists[key];
+    gist *myGist  =gists[treeName];
     if(myGist==nullptr)
     {
         myGist = new gist();
-        gists[key] = myGist;
+        gists[treeName] = myGist;
 
         if(myGist->create(path, &bt_str_key_ext)!=RCOK)
             if(myGist->open(path)!=RCOK)
@@ -217,8 +297,15 @@ void Part::insertTerm(const char *id, const char *term)
     }
     //qDebug()<< id << key << value;
     //std::cout <<id <<" "<< key  <<" "<< value<<endl;
-    myGist->insert((void *) &value, KEY_LEN, (void *) &myId, ID_LEN);
-    myGist->flush();
+    //myGist
+    //if -> bloom check (term)  -->0 --1>
+    //TODO: Consider adding bloom filter
+    if( !isKeyExist(term) ) //shahab
+    {
+        myGist->insert((void *) &treeKey, KEY_LEN, (void *) binaryUUID, 16); //shahab
+        myGist->flush();
+    }
+    //else{}    //TODO: add code to create new posting-tree if key exsists!
     //myGist->close();
 }
 
