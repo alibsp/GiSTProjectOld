@@ -179,7 +179,8 @@ int main(int argc, char *argv[])
     qDebug()<<"start...";
     QString csvFile;
 #ifdef __linux__
-    csvFile = "/media/ali/Data/Programming/Projects/Part/Data/test1.csv";
+    //csvFile = "/media/ali/Data/Programming/Projects/Part/Data/test1.csv";
+    csvFile = "/home/shahabseddigh/Desktop/data2.csv";
 #elif _WIN32
     csvFile = "D:\\Programming\\Projects\\Part\\Data\\data.csv";
 #endif
@@ -204,8 +205,14 @@ int main(int argc, char *argv[])
     uint64_t time1=timer.nsecsElapsed();
     QSet<QString> ids(results.begin(), results.end());
     uint64_t time=timer.nsecsElapsed();
-    for (QString res:ids)
-        qDebug()<<res;
+    for (QString res:ids)   //shahab
+    {
+        char* output = (char*)malloc( 37*sizeof(char) );
+        unsigned char* bins = (unsigned char*)malloc( 37*sizeof(unsigned char) );
+        memcpy( bins, res.toStdString().c_str(), 16);
+        part.binToHexStr(bins, &output);
+        qDebug() << "findKey result: -->\t" << output;
+    }
     qDebug()<<"Execute Time: "<<time1<<time<<" ns, record count:"<<ids.count();
     qDebug()<<"finish.";
 }
