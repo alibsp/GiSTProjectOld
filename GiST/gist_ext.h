@@ -90,7 +90,8 @@ public:
         rt_rect_ext_id,
         bt_int_ext_id,		// B-tree
         bt_str_ext_id,
-        bt_binary_key_ext,      //For UUID
+        bt_str_key_binary_data_ext_id, //For data binary
+        bt_binary_key_ext_id,      //For UUID
         rstar_point_ext_id,	// R*-tree
         rstar_rect_ext_id,
         sp_point_ext_id,	// sphere-tree

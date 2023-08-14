@@ -102,6 +102,11 @@ static int uuid_cmp(const void* a, const void* b)
     return 0;
 }
 
+static int binary_cmp(const void* a, const void* b)
+{
+    return 0;
+}
+
 ///////////////////////////////////////////////////////////////////////////////
 // gist_btree::gist_btree - constructor
 //
@@ -995,7 +1000,13 @@ bt_ext_t bt_str_key_ext(gist_ext_t::bt_str_ext_id, "bt_str_key_ext",
                     str_size, int_size, str_negInfty, int_negInfty);
 
 
-bt_ext_t bt_binary_key_ext(gist_ext_t::bt_binary_key_ext, "bt_binary_key_ext",
+bt_ext_t bt_str_key_binary_data_ext(gist_ext_t::bt_str_key_binary_data_ext_id, "bt_str_key_binary_data_ext",
+                    printStringBtPred, printInt,
+                    parseString, parseInt,
+                    parseStringQuery, str_cmp, binary_cmp,
+                    str_size, int_size, str_negInfty, int_negInfty);
+
+bt_ext_t bt_binary_key_ext(gist_ext_t::bt_binary_key_ext_id, "bt_binary_key_ext",
                     printStringBtPred, printInt,
                     parseString, parseInt,
                     parseStringQuery, uuid_cmp, str_cmp,

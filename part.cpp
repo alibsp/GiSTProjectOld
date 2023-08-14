@@ -2,11 +2,15 @@
 
 #include <QDir>
 #include <QFileInfoList>
-//#include <QDebug>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <unistd.h>
+
+
 #define ID_LEN 16
 #define DATA_LEN 164 //4+16*10
 #define KEY_LEN 101
-
+  struct stat st = {0};
 Part::Part(QObject *parent) : QObject(parent)
 {
     // testInserts();
@@ -61,7 +65,7 @@ void Part::loadGists()
         if(myGist==nullptr)
         {
             myGist = new gist();
-            if(myGist->create(fileInfo.filePath().toLocal8Bit().data() , &bt_str_key_ext)!=RCOK)
+            if(myGist->create(fileInfo.filePath().toLocal8Bit().data() , &bt_str_key_binary_data_ext)!=RCOK)
             {
                 if(myGist->open(fileInfo.filePath().toLocal8Bit().data())==RCOK)
                     gists[keyName] = myGist;
@@ -117,17 +121,17 @@ void Part::insertRecord(const char *id, const char *keys)
     cout<<"insertRecord finish at "<<elapsedTimer.nsecsElapsed()<<endl;
 }
 
-QStringList Part::findKey(const char * key_value)
+QList<UUID> Part::findKey(const char * key_value)
 {
     //QElapsedTimer timer;
     //timer.start();
     char key[KEY_LEN]={0};
     char value[KEY_LEN]={0};
     extractKeyValue(key_value, key, value);
-    QStringList results;
+    QList<UUID> results;
     gist *myGist=gists[key];
 
-    bt_query_t q(bt_query_t::bt_eq, &value);
+    bt_query_t q(bt_query_t::bt_eq, (void*)value);
     gist_cursor_t cursor;
     if(myGist->fetch_init(cursor, &q)!=RCOK)
     {
@@ -135,21 +139,35 @@ QStringList Part::findKey(const char * key_value)
         return results;
     }
     bool eof = false;
-    smsize_t keysz=KEY_LEN, datasz=ID_LEN;
+    smsize_t keysz=KEY_LEN, datasz=DATA_LEN;
 
     char keyFound[KEY_LEN]={0};
-    char id[ID_LEN]={0};
+    char data[DATA_LEN]={0};
     while (!eof)
     {
-        if(myGist->fetch(cursor, (void *)&keyFound, keysz, (void *)&id, datasz, eof)!=RCOK)
+        if(myGist->fetch(cursor, (void *)&keyFound, keysz, (void *)&data, datasz, eof)!=RCOK)
         {
             cerr << "Can't fetch from cursor." << endl;
             return results;
         }
         if (!eof)
         {
-            //cout<<"find:"<<(char*)&keyFound<<", id:"<<id<<endl;
-            results.append(id);
+            unsigned int count=0;
+            memcpy(&count, data, 4);
+            for(size_t i=0;i<count && i< 10;i++)
+            {
+                unsigned char bin_id[ID_LEN]={0};
+                memcpy(bin_id, data+(4+i*ID_LEN), ID_LEN);
+                //binToHexStr(uuid, id);
+                UUID uuid(bin_id);
+                results.append(uuid);
+            }
+            if(count>10)
+            {
+                //go to posting tree
+                // can use printAllTree method pattern
+                //Then concat results
+            }
         }
     }
     //cout<<"Execute Time: "<<timer.nsecsElapsed()<<" ns, record count:"<<results.count()<<endl;
@@ -160,13 +178,18 @@ QStringList Part::findKey(const char * key_value)
 //Continue by Aldaghi(Add unsigned char *data to reuslt)
 bool Part::isKeyExist(const char *key_value, void *data)
 {
-    //This method checks if a "key-value" exists in tree or not
-
     char key[KEY_LEN]={0};
     char value[KEY_LEN]={0};
     extractKeyValue(key_value, key, value);
+    isKeyExist(key, value, data);
+}
+
+bool Part::isKeyExist(const char *key, const char *value, void *data)
+{
+    //This method checks if a "key-value" exists in tree or not
+
     gist *myGist=gists[key];
-    bt_query_t q(bt_query_t::bt_eq, &value);
+    bt_query_t q(bt_query_t::bt_eq, (void*)value);
     gist_cursor_t cursor;
     if(myGist->fetch_init(cursor, &q)!=RCOK)
     {
@@ -237,7 +260,7 @@ void Part::hexStrToBin(const char* uuid, unsigned char* bins)   //aldaghi
 }
 
 
-void Part::binToHexStr(const unsigned char* bins, char** out) //shahab
+void Part::binToHexStr(const unsigned char* bins, char* out) //shahab
 {
     //char output[37];
     char const hex_chars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
@@ -245,12 +268,12 @@ void Part::binToHexStr(const unsigned char* bins, char** out) //shahab
     {
         char const byte = bins[i];
 
-        (*out)[j] = hex_chars[ ( byte & 0xF0 ) >> 4 ];
-        (*out)[j+1] = hex_chars[ ( byte & 0x0F ) ];
+        (out)[j] = hex_chars[ ( byte & 0xF0 ) >> 4 ];
+        (out)[j+1] = hex_chars[ ( byte & 0x0F ) ];
         j+=2;
-        if( i==3 || i==5 || i==7 || i==9 ) {(*out)[j] = '-'; j++;}
+        if( i==3 || i==5 || i==7 || i==9 ) {(out)[j] = '-'; j++;}
     }
-    (*out)[37] = 0;
+    (out)[36] = 0;
     //printf("%s\n\n", (*out));
 }
 
@@ -276,11 +299,14 @@ void Part::insertTerm(const char *id, const char *term)
         strcpy(treeName, "nonekey");
 #ifdef __linux__
     char path[200]="data/";
+    char path_data_folder[200]="data/";
 #elif _WIN32
     char path[200]="data\\";
 #endif
 
     strcat(path, treeName);
+    strcat(path_data_folder, treeName);
+
     strcat(path, ".db");
     //ایجاد پایگاه داده با افزونه BTree
     gist *myGist  =gists[treeName];
@@ -289,7 +315,7 @@ void Part::insertTerm(const char *id, const char *term)
         myGist = new gist();
         gists[treeName] = myGist;
 
-        if(myGist->create(path, &bt_str_key_ext)!=RCOK)
+        if(myGist->create(path, &bt_str_key_binary_data_ext)!=RCOK)
             if(myGist->open(path)!=RCOK)
             {
                 cerr << "Can't Open File." << endl;
@@ -304,23 +330,61 @@ void Part::insertTerm(const char *id, const char *term)
     unsigned int count=0;
     if(strcmp(term, "source_gitlab")==0)
         count=1;
-    isKeyExist(term, (void *)&data);
+
+
+    isKeyExist(treeName, treeKey, (void *)data);
+
     memcpy(&count, data, 4);
     count++;
     if(count<=10)
     {
         memcpy(data, &count, 4);
         memcpy(data+(4+(count-1)*ID_LEN), binaryUUID, ID_LEN);
-        if(count<=1)
-            myGist->insert((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
-        else
-            myGist->updateValue((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
-
+        if(count>1)
+        {
+            bt_query_t q(bt_query_t::bt_eq, (void *)treeKey);
+            myGist->remove(&q);
+        }
+        myGist->insert((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
         myGist->flush();
     }
     else
     {
         count=10;
+        //Directory name: treeName
+        //File name     : treeKey
+        //key in tree   : binaryUUID
+        //type of tree  : bt_binary_key_ext
+
+
+        //mahmoud
+
+        //1.Check if directory not exists, then create directory
+        if (stat(path_data_folder, &st) == -1) {
+            mkdir(path_data_folder, 0700);
+        }
+        //2.Create sub Tree of binaryUUID's:
+        //2.1.make name of tree file
+         strcat(path_data_folder, "/");
+         strcat(path_data_folder, treeKey);
+         strcat(path_data_folder, ".db");
+
+        //std::cout << "path_data_folder" << path_data_folder << endl ;
+          gist *myGistSubTree  =gists[treeKey];
+          if(myGistSubTree==nullptr)
+          {
+              myGistSubTree = new gist();
+              gists[treeName] = myGistSubTree;
+
+              if(myGistSubTree->create(path_data_folder, &bt_binary_key_ext)!=RCOK)
+                  if(myGistSubTree->open(path_data_folder)!=RCOK)
+                  {
+                      cerr << "Can't Open File." << endl;
+                      return ;
+                  }
+          }
+          //MAHMOUD:CODE WORKS BUT ERROR IN record 27
+
     }
     //TODO: add code to create new posting-tree if key exsists!
     //myGist->close();
