@@ -35,12 +35,16 @@ public:
     void printAllKeys(QString treeName);    //shahab
     void hexStrToBin(const char* uuid, unsigned char *bins);   //shahab
     void binToHexStr(const unsigned char* bins, char* out); //shahab
+    FILE *openFile(const char *fileName, const char *mode);
 signals:
 private:
     QMap<QString, gist*> gists;
+    //QMap<QString, FILE*> files;
+    QList<QPair<QString, FILE*>> dupValuefiles;
     void insertTerm(const char *id, const char *term);
     bool insertId(const char *id);
     void extractKeyValue(const char *term, char *key, char *value);
+    QStringList findFiles(const QString &startDir, const QStringList &filters);
 };
 
 #endif // PART_H

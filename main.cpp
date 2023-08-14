@@ -179,8 +179,8 @@ int main(int argc, char *argv[])
     qDebug()<<"start...";
     QString csvFile;
 #ifdef __linux__
-    //csvFile = "/media/ali/Data/Programming/Projects/Part/Data/test1.csv";
-    csvFile = "/home/mahmoudmahmoudinik/Data/data2.csv";
+    csvFile = "/media/ali/Data/Programming/Projects/Part/Data/data2.csv";
+    //csvFile = "/home/mahmoudmahmoudinik/Data/data2.csv";
 #elif _WIN32
     csvFile = "D:\\Programming\\Projects\\Part\\Data\\data.csv";
 #endif

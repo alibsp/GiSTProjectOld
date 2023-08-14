@@ -4,18 +4,24 @@
 #include <QFileInfoList>
 #include <sys/types.h>
 #include <sys/stat.h>
+#include <QCryptographicHash>
 #include <unistd.h>
 
 
 #define ID_LEN 16
 #define DATA_LEN 164 //4+16*10
 #define KEY_LEN 101
-  struct stat st = {0};
+
 Part::Part(QObject *parent) : QObject(parent)
 {
     // testInserts();
     //dropGists();
     //loadGists();
+
+    char path[10]="data/";
+    struct stat st;
+    if (stat(path, &st) == -1)
+        mkdir(path, 0700);
 }
 
 void Part::importCSV(QString filePath)
@@ -73,19 +79,34 @@ void Part::loadGists()
         }
     }
 }
+QStringList Part::findFiles(const QString &startDir, const QStringList &filters)
+{
+    QStringList names;
+    QDir dir(startDir);
+
+    const auto files = dir.entryList(filters, QDir::Files);
+    for (const QString &file : files)
+        names += startDir + '/' + file;
+
+    const auto subdirs =  dir.entryList(QDir::AllDirs | QDir::NoDotAndDotDot);
+    for (const QString &subdir : subdirs)
+        names += findFiles(startDir + '/' + subdir, filters);
+    return names;
+}
+
 void Part::dropGists()
 {
 
-    #ifdef __linux__
-    QDir dir("data/", "*.db");
+#ifdef __linux__
+    QString path="data";
 #elif _WIN32
-    QDir dir("data\\", "*.db");
+    QString path = "data";
 #endif
 
-    QFileInfoList list = dir.entryInfoList();
+    QStringList list = findFiles(path, QStringList() << "*.db" << "*.dat");
     for (int i = 0; i < list.size(); ++i)
     {
-        QFile file (list[i].filePath());
+        QFile file (list[i]);
         file.remove();
     }
 }
@@ -105,11 +126,7 @@ void Part::insertRecord(const char *id, const char *keys)
             {
                 term[j] = 0;
                 if(j)
-                {
-                    if(strcmp(myId, "f29519f2-0ab7-4bd3-baac-c0f21055cd78")==0 && strcmp(term, "changeType_updated_by_id"))
-                        printAllKeys("changeType");
                     insertTerm(myId, term);
-                }
                 j=0;
             }
             else if((i==0&&keys[i]!='{') || i)
@@ -295,7 +312,7 @@ void Part::insertTerm(const char *id, const char *term)
     //strcat(value, ":"); //shahab:duplicate error fix
     //strcat(value, id);  //shahab:duplicate error fix
 
-    if(treeName[0]==0)
+    if(treeKey[0]==0)
         strcpy(treeName, "nonekey");
 #ifdef __linux__
     char path[200]="data/";
@@ -348,46 +365,64 @@ void Part::insertTerm(const char *id, const char *term)
         myGist->insert((void *) &treeKey, KEY_LEN, (void *) data, DATA_LEN);
         myGist->flush();
     }
-    else
+    else //count>10; postingTree
     {
-        count=10;
+
         //Directory name: treeName
         //File name     : treeKey
         //key in tree   : binaryUUID
         //type of tree  : bt_binary_key_ext
-
-
         //mahmoud
-
         //1.Check if directory not exists, then create directory
-        if (stat(path_data_folder, &st) == -1) {
+        struct stat st;
+        if (stat(path_data_folder, &st) == -1)
             mkdir(path_data_folder, 0700);
-        }
+
+        char * fileName=QCryptographicHash::hash(treeKey, QCryptographicHash::Md5).toHex().data();
+
         //2.Create sub Tree of binaryUUID's:
         //2.1.make name of tree file
-         strcat(path_data_folder, "/");
-         strcat(path_data_folder, treeKey);
-         strcat(path_data_folder, ".db");
-
-        //std::cout << "path_data_folder" << path_data_folder << endl ;
-          gist *myGistSubTree  =gists[treeKey];
-          if(myGistSubTree==nullptr)
-          {
-              myGistSubTree = new gist();
-              gists[treeName] = myGistSubTree;
-
-              if(myGistSubTree->create(path_data_folder, &bt_binary_key_ext)!=RCOK)
-                  if(myGistSubTree->open(path_data_folder)!=RCOK)
-                  {
-                      cerr << "Can't Open File." << endl;
-                      return ;
-                  }
-          }
-          //MAHMOUD:CODE WORKS BUT ERROR IN record 27
-
+        strcat(path_data_folder, "/");
+        strcat(path_data_folder, fileName);
+        strcat(path_data_folder, ".dat");
+        //aldaghi
+        if(dupValuefiles.size()>100)
+        {
+            QString filepath=dupValuefiles.first().first;
+            FILE* oldFile = dupValuefiles.first().second;
+            fclose(oldFile);
+            dupValuefiles.removeAt(0);
+        }
+        FILE* file = nullptr;
+        for (auto dupFileInfo:dupValuefiles)
+        {
+            if(dupFileInfo.first==QString(path_data_folder))
+            {
+                file = dupFileInfo.second;
+                break;
+            }
+        }
+        if(file==nullptr)
+        {
+            file = openFile(path_data_folder, "ab");
+            dupValuefiles.append(QPair(path_data_folder, file));
+        }
+        fwrite(binaryUUID, ID_LEN, 1, file);
+        //fclose(file);
     }
     //TODO: add code to create new posting-tree if key exsists!
     //myGist->close();
+}
+
+FILE* Part::openFile(const char* fileName, const char* mode)
+{
+    FILE* fp = fopen(fileName, mode);
+    if (fp == NULL)
+    {
+        perror("Error while opening the file.\n");
+        exit(EXIT_FAILURE);
+    }
+    return fp;
 }
 //1402-05-22 Aldaghi: Store id in id tree as binary
 bool Part::insertId(const char *id)
