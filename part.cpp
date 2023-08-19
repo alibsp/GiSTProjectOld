@@ -6,11 +6,20 @@
 #include <sys/stat.h>
 #include <QCryptographicHash>
 #include <unistd.h>
+#include <string.h>
 
+
+/*
+ * Macros here have been moved to header.
 
 #define ID_LEN 16
 #define DATA_LEN 164 //4+16*10
 #define KEY_LEN 101
+
+#define BUCKET_SIZE 10 //Mr.mahmoudi
+
+*/
+
 
 Part::Part(QObject *parent) : QObject(parent)
 {
@@ -138,7 +147,7 @@ void Part::insertRecord(const char *id, const char *keys)
     cout<<"insertRecord finish at "<<elapsedTimer.nsecsElapsed()<<endl;
 }
 
-QList<UUID> Part::findKey(const char * key_value)
+QList<UUID> Part::findKey(const char * key_value)   //Mr. mahmoudi??
 {
     //QElapsedTimer timer;
     //timer.start();
@@ -179,54 +188,105 @@ QList<UUID> Part::findKey(const char * key_value)
                 UUID uuid(bin_id);
                 results.append(uuid);
             }
-            if(count>10)
+            if(count==10)
             {
                 //go to posting tree
                 // can use printAllTree method pattern
                 //Then concat results
+
+                /*struct stat st;
+                long size;
+                int numberOfPages=0;
+                int recordsCount=0;
+                unsigned char buffer[16*BUCKET_SIZE];//160 here equal to 10 records
+                unsigned char curRecord[16];
+
+                //Make Postingfile path and  name
+                char postingFilePath[255];
+                snprintf(postingFilePath, 255, "data/%s/%s.dat", key, value);   //Shahab
+                strcat(postingFilePath, key);
+                strcat(postingFilePath, "/");
+                strcat(postingFilePath,value);
+                strcat(postingFilePath, ".dat");
+
+                 //1.CHECK FILE EXISTANCE:
+                 if (stat(postingFilePath, &st) == 0){
+                     // Posting File Exists and can be Read
+                     // Geting size of file
+                     size = st.st_size;
+                     recordsCount=(size/16); // get the record count in posting file 9986
+                     numberOfPages=recordsCount/BUCKET_SIZE; //BUCKET_SIZE:number of records that we want 998
+                     int remaining=recordsCount %  BUCKET_SIZE; // remaining records 6
+
+                      FILE *fp = openFile(postingFilePath, "r");
+                      if (fp != NULL)
+                      {
+                          for(int page=0;page<numberOfPages;page++){
+
+                              fread(buffer, sizeof(buffer), 1, fp);
+                              for(int j=0;j<BUCKET_SIZE;j++){
+                                  memcpy(&curRecord, buffer+(16*j), 16);
+                                  UUID uuid(curRecord);
+                                  results.append(uuid);
+                              }
+                          }
+
+                          if(remaining>0){
+                               //read last page for remaining data that is les tha a complete page
+                              unsigned char reamainingRecordsbuffer[16*remaining];
+                              fread(reamainingRecordsbuffer, sizeof(reamainingRecordsbuffer), 1, fp);
+                              for(int j=0;j<remaining;j++){
+                                  memcpy(&curRecord, reamainingRecordsbuffer+(16*j), 16);
+                                  UUID uuid(curRecord);
+                                  results.append(uuid);
+                              }
+                          }
+                          fclose(fp);
+
+                      }
+
+                 }
+
+
+
+
+            }*/
+            //---------------------------------------------|shahab|----------------------------------------------------
+            char postingFilePath[255];
+            int postingFileFd;
+            struct stat postingFileStatBuffer;
+            int readBytes = 0;
+            unsigned char postingFileReadBuffer[PAGING_COUNT*RECORD_SIZE];
+            unsigned char postingFileChunkBuffer[RECORD_SIZE];
+            char postingFileIsEof = 0;
+            char* binToHexBuffer[37];
+
+            snprintf(postingFilePath, 255, "data/%s/%s.dat", key, value);   //Shahab
+            if( (postingFileFd = openFileV2(postingFilePath, O_RDONLY | O_NOATIME)) > -1 )
+            {
+                 fstat(postingFileFd, &postingFileStatBuffer);
+                 //fprintf(stderr, "file size: %ld\n", postingFileStatBuffer.st_size/16);
+                 while(!postingFileIsEof)
+                 {
+                      //fprintf(stderr, "page numebr: %d\n", currentPage);
+                      readBytes =  readPostingFile(postingFileFd, postingFileStatBuffer.st_size/16, postingFileReadBuffer, &postingFileIsEof);
+                      for(int i =0; i<PAGING_COUNT; i++)
+                      {
+                          memcpy(postingFileChunkBuffer, postingFileReadBuffer+(i*RECORD_SIZE), 16);
+                          //binToHexStr(postingFileChunkBuffer, &binToHexBuffer);
+                          //printf("[%d]: %s\n", i, binToHexBuffer);
+                          UUID Hexuuid(postingFileChunkBuffer);
+                          results.append(Hexuuid);
+                      }
+                 }
             }
+            closePostingFd(postingFileFd);
+
+
         }
     }
     //cout<<"Execute Time: "<<timer.nsecsElapsed()<<" ns, record count:"<<results.count()<<endl;
     return results;
-}
-
-//Start Mr. MahmoudiNik
-//Continue by Aldaghi(Add unsigned char *data to reuslt)
-bool Part::isKeyExist(const char *key_value, void *data)
-{
-    char key[KEY_LEN]={0};
-    char value[KEY_LEN]={0};
-    extractKeyValue(key_value, key, value);
-    isKeyExist(key, value, data);
-}
-
-bool Part::isKeyExist(const char *key, const char *value, void *data)
-{
-    //This method checks if a "key-value" exists in tree or not
-
-    gist *myGist=gists[key];
-    bt_query_t q(bt_query_t::bt_eq, (void*)value);
-    gist_cursor_t cursor;
-    if(myGist->fetch_init(cursor, &q)!=RCOK)
-    {
-        cerr << "Can't initialize cursor." << endl;
-        return false;
-    }
-    bool eof = false;
-    smsize_t keysz=KEY_LEN, datasz=DATA_LEN;
-    char keyFound[KEY_LEN]={0};
-    while (!eof)
-    {
-        if(myGist->fetch(cursor, (void *)&keyFound, keysz, data, datasz, eof)!=RCOK)
-        {
-            cerr << "Can't fetch from cursor." << endl;
-            return false;
-        }
-        if (!eof)
-            return true;
-    }
-    return false;
 }
 
 //term = "source_gitlab\0"
@@ -251,49 +311,6 @@ void Part::extractKeyValue(const char *term, char *key, char *value)
             break;
     }
 }
-
-
-//void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
-void Part::hexStrToBin(const char* uuid, unsigned char* bins)   //aldaghi
-{
-    unsigned char i=0, byte=0, res=0;
-    //unsigned char* bins = (unsigned char*)malloc( 16*sizeof(char) );    //Always assign a new, free memory to this pointer! As the reference will be copied to the *out parameter of the very first call to this function and thus, never will be deleted after going out of scope!
-    while(uuid[i]!=0)
-    {
-        if(uuid[i]=='-') {i++; continue;}
-
-        if(uuid[i] > 47 && uuid[i] < 58) {res = (uuid[i]-48)*16;}
-        else if(uuid[i] > 96 && uuid[i] < 103) {res = (uuid[i]-87)*16;}
-
-        if(uuid[i+1] > 47 && uuid[i+1] < 58) {res += (uuid[i+1]-48);}
-        else if(uuid[i+1] > 96 && uuid[i+1] < 103) {res += (uuid[i+1]-87);}
-
-        bins[byte] = res;
-        byte++; i+=2;
-    }
-
-    //*out = bins;
-    //We cannot free bins here as the memory address now being used by *out !
-}
-
-
-void Part::binToHexStr(const unsigned char* bins, char* out) //shahab
-{
-    //char output[37];
-    char const hex_chars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
-    for( int i = 0, j = 0; i < 16; i++ )
-    {
-        char const byte = bins[i];
-
-        (out)[j] = hex_chars[ ( byte & 0xF0 ) >> 4 ];
-        (out)[j+1] = hex_chars[ ( byte & 0x0F ) ];
-        j+=2;
-        if( i==3 || i==5 || i==7 || i==9 ) {(out)[j] = '-'; j++;}
-    }
-    (out)[36] = 0;
-    //printf("%s\n\n", (*out));
-}
-
 
 //*id = 43bf9957-e944-408a-a17d-ea7ac40ffea7 <-> term = "source_gitlab\0"
 void Part::insertTerm(const char *id, const char *term)
@@ -378,27 +395,40 @@ void Part::insertTerm(const char *id, const char *term)
         if (stat(path_data_folder, &st) == -1)
             mkdir(path_data_folder, 0700);
 
-        char * fileName=QCryptographicHash::hash(treeKey, QCryptographicHash::Md5).toHex().data();
+        //char * fileName=QCryptographicHash::hash(treeKey, QCryptographicHash::Md5).toHex().data();
+        //Remove illigal '/' char from string so linux systems can accept our file names.
+        //Or we can replace it with specialChar
+        //And another limitation(in linux  and common filesystems) is maximum length for filename is 255(byte) and 4096 for directory+filename length
+        checkAndRemoveIlligalChar(treeKey,'/');//Mahmoud
 
         //2.Create sub Tree of binaryUUID's:
         //2.1.make name of tree file
         strcat(path_data_folder, "/");
-        strcat(path_data_folder, fileName);
+        strcat(path_data_folder, treeKey);
         strcat(path_data_folder, ".dat");
+
+        //mahmoud
+        struct timespec currentNano;
+
+
         //aldaghi
-        if(dupValuefiles.size()>100)
+        if(dupValueOrderFiles.size()>100)
         {
-            QString filepath=dupValuefiles.first().first;
-            FILE* oldFile = dupValuefiles.first().second;
+            //dupValueOrderFiles
+            QString filepath=dupValueOrderFiles.first().first.path;
+            FILE* oldFile = dupValueOrderFiles.first().second;
             fclose(oldFile);
             dupValuefiles.removeAt(0);
         }
         FILE* file = nullptr;
-        for (auto dupFileInfo:dupValuefiles)
+        for (auto dupFileInfo:dupValueOrderFiles)
         {
-            if(dupFileInfo.first==QString(path_data_folder))
+            if(dupFileInfo.first.path==QString(path_data_folder))
             {
                 file = dupFileInfo.second;
+                dupFileInfo.first.accessCount++;
+                clock_gettime(CLOCK_MONOTONIC,&currentNano);
+                dupFileInfo.first.accessTime=currentNano.tv_nsec;
                 break;
             }
         }
@@ -406,6 +436,17 @@ void Part::insertTerm(const char *id, const char *term)
         {
             file = openFile(path_data_folder, "ab");
             dupValuefiles.append(QPair(path_data_folder, file));
+
+            // Mahmoud
+            //******************************************************
+            FileStateManager stm;
+            stm.path=path_data_folder;
+            stm.accessCount=1;
+            clock_gettime(CLOCK_MONOTONIC,&currentNano);
+            stm.accessTime=currentNano.tv_nsec;
+            dupValueOrderFiles.append(QPair(stm, file));
+
+            //******************************************************
         }
         fwrite(binaryUUID, ID_LEN, 1, file);
         //fclose(file);
@@ -614,3 +655,198 @@ void Part::testInserts()
     insertRecord("273d5f42-53e2-47cc-b71c-bea9fb694c50", "{source_gitlab,type_issue,year_1401,yearMonth_140105,yearMonthDay_14010511,createdAt_14010511112425000,updatedAt_14010511112433000,userId_55,username_kousha.foroughi,updatedById_55,projectId_702,projectPathWithNamespace_signal/infrastructure/modules/partServiceSignalData,action_update,state_opened,issueId_247476,issueIid_424,labels_تخته: اندروید,labels_تخته: زیر ساخت,labels_نوع: بهبود,labels_وضعیت: آماده انجام,changeType_milestone_id,changeType_updated_at,changeType_updated_by_id,dataId_57577658-adb9-407b-8b7c-38e3f84cfc2c,groupName_Infrastructure,groupName_Modules,groupName_signal,groupId_1581,groupId_398,groupId_85,participantId_55,participantUsername_kousha.foroughi,milestoneId_2972}");
 }
 
+//-----------------------------------------------------------------------------|Mr. Mahmoudi|----------------------------------------------------------------------------------------
+#pragma region Mahmoudi
+
+
+void Part::checkAndRemoveIlligalChar(char *str, char c){
+    if(strchr(str, c) != NULL){
+        char *pr = str, *pw = str;
+        while (*pr) {
+            *pw = *pr++;
+            pw += (*pw != c);
+        }
+        *pw = '\0';
+    }
+}
+
+void Part::appropriateFileEliminate(){
+
+    //Make array list for sort beacuse of "accesscount" and "accessTime" changes every time
+    vector< pair <int,int> > vectOpenFiles;
+    int indexInList[100];
+    int fileAccessCount[100];
+    //int n = sizeof(arr)/sizeof(arr[0]);
+    int i=0;
+    for (auto orderFileInfo:dupValueOrderFiles)
+    {
+        indexInList[i]=i;
+        fileAccessCount[i]=orderFileInfo.first.accessCount;
+        vectOpenFiles.push_back( make_pair(fileAccessCount[i],indexInList[i]));
+
+    }
+    sort(vectOpenFiles.begin(), vectOpenFiles.end());
+
+
+
+}
+
+//Start Mr. MahmoudiNik
+//Continue by Aldaghi(Add unsigned char *data to reuslt)
+bool Part::isKeyExist(const char *key_value, void *data)
+{
+    char key[KEY_LEN]={0};
+    char value[KEY_LEN]={0};
+    extractKeyValue(key_value, key, value);
+    isKeyExist(key, value, data);
+}
+
+bool Part::isKeyExist(const char *key, const char *value, void *data)
+{
+    //This method checks if a "key-value" exists in tree or not
+
+    gist *myGist=gists[key];
+    bt_query_t q(bt_query_t::bt_eq, (void*)value);
+    gist_cursor_t cursor;
+    if(myGist->fetch_init(cursor, &q)!=RCOK)
+    {
+        cerr << "Can't initialize cursor." << endl;
+        return false;
+    }
+    bool eof = false;
+    smsize_t keysz=KEY_LEN, datasz=DATA_LEN;
+    char keyFound[KEY_LEN]={0};
+    while (!eof)
+    {
+        if(myGist->fetch(cursor, (void *)&keyFound, keysz, data, datasz, eof)!=RCOK)
+        {
+            cerr << "Can't fetch from cursor." << endl;
+            return false;
+        }
+        if (!eof)
+            return true;
+    }
+    return false;
+}
+
+
+#pragma regionend Mahmoudi
+//---------------------------------------------------------------------------|END Mr. Mahmoudi|--------------------------------------------------------------------------------------
+
+
+//-------------------------------------------------------------------------------|Shahab|--------------------------------------------------------------------------------------------
+#pragma region Shahab
+
+
+//void Part::hexStrToBin(const char* uuid, unsigned char** out)   //shahab
+void Part::hexStrToBin(const char* uuid, unsigned char* bins)   //aldaghi
+{
+    unsigned char i=0, byte=0, res=0;
+    //unsigned char* bins = (unsigned char*)malloc( 16*sizeof(char) );    //Always assign a new, free memory to this pointer! As the reference will be copied to the *out parameter of the very first call to this function and thus, never will be deleted after going out of scope!
+    while(uuid[i]!=0)
+    {
+        if(uuid[i]=='-') {i++; continue;}
+
+        if(uuid[i] > 47 && uuid[i] < 58) {res = (uuid[i]-48)*16;}
+        else if(uuid[i] > 96 && uuid[i] < 103) {res = (uuid[i]-87)*16;}
+
+        if(uuid[i+1] > 47 && uuid[i+1] < 58) {res += (uuid[i+1]-48);}
+        else if(uuid[i+1] > 96 && uuid[i+1] < 103) {res += (uuid[i+1]-87);}
+
+        bins[byte] = res;
+        byte++; i+=2;
+    }
+
+    //*out = bins;
+    //We cannot free bins here as the memory address now being used by *out !
+}
+
+void Part::binToHexStr(const unsigned char* bins, char* out) //shahab
+{
+    //char output[37];
+    char const hex_chars[16] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+    for( int i = 0, j = 0; i < 16; i++ )
+    {
+        char const byte = bins[i];
+
+        (out)[j] = hex_chars[ ( byte & 0xF0 ) >> 4 ];
+        (out)[j+1] = hex_chars[ ( byte & 0x0F ) ];
+        j+=2;
+        if( i==3 || i==5 || i==7 || i==9 ) {(out)[j] = '-'; j++;}
+    }
+    (out)[36] = 0;
+    //printf("%s\n\n", (*out));
+}
+
+char Part::compareBins(unsigned char* first, unsigned char* second) //shahab
+{
+    //char notEqual = 0;
+    for (char i = 0; i < 16; i++)   //equal
+    {
+        if( (first[i] ^ second[i]) == 0 ) { continue;}
+        else
+        {
+            if( (first[i] - second[i]) < 0 ) {return -1;}   //Second is bigger
+            return 1;   //They weren't equal, nor second was bigger! So first must be bigger!
+        }
+    }
+    return 0;   //They were equal
+}
+
+int Part::openFileV2(const char* pathname, int flags)   //shahab
+{
+    // O_RDONLY | O_NOATIME == 00 | 01000000 --> in octal
+    return open(pathname, flags);   //Less than zero means error!
+}
+
+//#define PAGING_COUNT 10   //Moved to header
+//#define RECORD_SIZE 16    //Moved to header
+static int currentPage = 1; //Static has scope of file and not exposed to linker; Shouldn't be moved to header!
+
+int Part::readPostingFile(int fd, int countOfDataInside, unsigned char* readBuffer, char* isEof)    //shahab
+{
+    //--------->NOTE: Never use SEEK_CUR if you've used read()! Reading forwards file offset!!!!
+    //static int currentPage = 1;
+    int numRead = 0;
+    //int fdCourser = lseek(fd, 0, SEEK_CUR);
+
+    //lseek(fd, PAGING_COUNT*RECORD_SIZE, SEEK_CUR );
+    if( (currentPage*PAGING_COUNT) > countOfDataInside )
+    {
+        const int remainingRecords = ( countOfDataInside-( (currentPage-1)*PAGING_COUNT ) );  //Why if we don't store this expression in a variable, it evaluates wrong when setting '\0' for readBuffer??
+        if(!(*isEof))
+        {
+            if( (numRead = read(fd, readBuffer, remainingRecords*RECORD_SIZE)) > 0 )
+            {
+                *isEof = 1;
+                currentPage++;
+                *(readBuffer + ( remainingRecords*RECORD_SIZE) ) = '\0';
+                return numRead;
+            }
+        }
+        else
+        {
+            return -1;
+            //You are ignoring EOF!
+        }
+    }
+    else if( (numRead = read(fd, readBuffer, PAGING_COUNT*RECORD_SIZE)) > 0 )
+    {
+        //fdCourser = lseek(fd, PAGING_COUNT*RECORD_SIZE, SEEK_CUR );
+        currentPage++;
+        return numRead;
+    }
+
+    return -2;
+    //Supressing error! Undefiend behavior happened!
+}
+
+int Part::closePostingFd(int fd)  //Shahab
+{
+    currentPage = 0;
+    return close(fd);
+}
+
+
+#pragma regionend Shahab
+//-----------------------------------------------------------------------------|END Shahab|------------------------------------------------------------------------------------------
